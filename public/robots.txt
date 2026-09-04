@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+
+Sitemap: https://sagar-narmadeshwar-shivling.in/sitemap.xml

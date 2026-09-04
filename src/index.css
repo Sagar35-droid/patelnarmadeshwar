@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: #FCFAF7;
+    color: #2D2D2D;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+}
+
+.bg-ivory {
+  background-color: #FCFAF7;
+}
+
+.bg-cream {
+  background-color: #F3EFE9;
+}
+
+.text-gold {
+  color: #C5A059;
+}
+
+.bg-gold {
+  background-color: #C5A059;
+}
+
+.border-gold {
+  border-color: rgba(197, 160, 89, 0.3);
+}
+
+.bg-charcoal {
+  background-color: #1A1A1A;
+}
+
+.text-charcoal {
+  color: #1A1A1A;
+}

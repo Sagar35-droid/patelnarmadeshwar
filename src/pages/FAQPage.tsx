@@ -1,0 +1,279 @@
+import React, { useEffect, useState } from 'react';
+import { updatePageSEO } from '../utils/seo';
+import { BUSINESS_CONFIG } from '../config/businessConfig';
+import { getGeneralWhatsAppLink } from '../utils/whatsapp';
+import { 
+  HelpCircle, 
+  ChevronDown, 
+  ChevronUp, 
+  Sparkles, 
+  MessageCircle, 
+  Phone, 
+  Truck, 
+  Banknote, 
+  ShieldCheck,
+  Search
+} from 'lucide-react';
+import { useRouter } from '../context/RouterContext';
+import { Breadcrumbs } from '../components/common/Breadcrumbs';
+
+interface FAQItem {
+  question: string;
+  questionHindi: string;
+  answer: string;
+  answerHindi?: string;
+  category: 'about' | 'delivery' | 'payment' | 'orders';
+}
+
+export const FAQPage: React.FC = () => {
+  const { navigate } = useRouter();
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+
+  const faqs: FAQItem[] = [
+    {
+      category: 'about',
+      question: 'What is a Narmadeshwar Shivling? (नर्मदेश्वर शिवलिंग क्या है?)',
+      questionHindi: 'नर्मदेश्वर शिवलिंग क्या है?',
+      answer: 'A Narmadeshwar Shivling is a self-manifested (Swayambhu) sacred stone naturally formed by the rapid river current and geological friction of the holy Narmada River. It is collected exclusively from the Narmada River basin around Bakawan in the Khargone district of Madhya Pradesh, India.',
+      answerHindi: 'नर्मदेश्वर शिवलिंग माँ नर्मदा नदी के तीव्र जल-प्रवाह और प्राकृतिक घर्षण द्वारा प्राकृतिक रूप से निर्मित स्वयंभू शिवलिंग है, जो मध्य प्रदेश के बकावां (खरगोन) क्षेत्र से प्राप्त होता है।'
+    },
+    {
+      category: 'about',
+      question: 'How to identify an original Narmadeshwar Shivling? (असली नर्मदेश्वर शिवलिंग की पहचान कैसे करें?)',
+      questionHindi: 'असली नर्मदेश्वर शिवलिंग की पहचान कैसे करें?',
+      answer: 'An authentic Narmadeshwar Shivling has natural mineral bands (such as natural Janeyu thread, Tilak, or Sun patterns) that go deep into the stone body rather than surface-painted designs. It is solid natural river cryptocrystalline quartz that feels naturally cool and smooth to touch with natural density.',
+      answerHindi: 'असली नर्मदेश्वर शिवलिंग पर प्राकृतिक जनेऊ, तिलक या सूर्य रेखाएं पत्थर की गहराई में समाहित होती हैं। यह 100% प्राकृतिक नदी पाषाण होता है जो छूने में शीतल, ठोस और प्राकृतिक चिकनाहट वाला होता है।'
+    },
+    {
+      category: 'about',
+      question: 'What is the ideal size of Narmadeshwar Shivling for home worship? (घर के मंदिर के लिए शिवलिंग का सही आकार क्या है?)',
+      questionHindi: 'घर के मंदिर के लिए शिवलिंग का सही आकार क्या है?',
+      answer: 'As per classical Vedic scriptures (Shiva Purana), a Shivling measuring 1 to 4 inches (अंगुष्ठ मात्र - approximately thumb size) is considered most auspicious and ideal for daily household puja in home temples.',
+      answerHindi: 'शिवपुराण एवं शास्त्रों के अनुसार गृहस्थ परिवारों के घर के मंदिर में 1 से 4 इंच (अंगुष्ठ मात्र) का नर्मदेश्वर शिवलिंग स्थापित करना अत्यंत शुभ एवं फलदायी माना गया है।'
+    },
+    {
+      category: 'about',
+      question: 'Are the Shivlings completely natural stones?',
+      questionHindi: 'क्या ये शिवलिंग पूर्णतः प्राकृतिक पाषाण हैं?',
+      answer: 'Yes, every Narmadeshwar Shivling is 100% natural river stone. The smooth oval structure is shaped organically over centuries by the sacred waters of the Narmada River without artificial casting or synthetic chemical processing.',
+      answerHindi: 'हाँ, प्रत्येक नर्मदेश्वर शिवलिंग 100% प्राकृतिक नदी पाषाण है। इसका चिकना और अंडाकार स्वरूप माँ नर्मदा के पावन जल द्वारा प्राकृतिक रूप से निर्मित होता है।'
+    },
+    {
+      category: 'about',
+      question: 'Why can two Shivlings look different in colour and shape?',
+      questionHindi: 'दो शिवलिंग रंग, आकार और बनावट में भिन्न क्यों दिखते हैं?',
+      answer: 'Because Narmadeshwar Shivlings are formed naturally in the riverbed, every single piece is unique. Natural differences in dimensions, colour shades, texture, and holy surface markings (such as natural Tilak, Janeyu thread lines, or Sun patterns) are natural characteristics of sacred river stones and not product defects.',
+      answerHindi: 'प्राकृतिक नदी पाषाण होने के कारण प्रत्येक शिवलिंग अद्वितीय होता है। प्राकृतिक रंग, माप, जनेऊ या तिलक रेखाओं का अंतर प्राकृतिक विशेषता है, कोई दोष नहीं।'
+    },
+    {
+      category: 'delivery',
+      question: 'Do you deliver across all states in India? (Pan India Delivery)',
+      questionHindi: 'क्या आप पूरे भारत में सुरक्षित डिलीवरी प्रदान करते हैं?',
+      answer: 'Yes, we provide safe Pan India Delivery covering all states and union territories (Metro cities and regional towns). Parcels are shipped with express logistics partners with full live online tracking.',
+      answerHindi: 'हाँ, हम पूरे भारत (Pan India) में सभी राज्यों एवं शहरों में सुरक्षित कूरियर डिलीवरी प्रदान करते हैं। पार्सल रवाना होते ही लाइव ट्रैकिंग नंबर प्रदान किया जाता है।'
+    },
+    {
+      category: 'delivery',
+      question: 'How are orders packaged for safe transit?',
+      questionHindi: 'सुरक्षित डिलीवरी के लिए ऑर्डर कैसे पैक किए जाते हैं?',
+      answer: 'Each sacred Shivling is wrapped in multi-layer shock-absorbent cushioning and cushioned bubble wrap, then secured inside a reinforced wooden crate (लकड़ी का बॉक्स) to ensure 100% safe transit during handling and shipping.',
+      answerHindi: 'प्रत्येक शिवलिंग को बहुस्तरीय सुरक्षात्मक बबल रैप और मजबूत लकड़ी के बॉक्स (Wooden Crate) में पैक किया जाता है ताकि परिवहन के दौरान पूर्ण सुरक्षा सुनिश्चित रहे।'
+    },
+    {
+      category: 'payment',
+      question: 'Is Cash on Delivery (COD) available?',
+      questionHindi: 'क्या Cash on Delivery (COD) की सुविधा उपलब्ध है?',
+      answer: 'Yes, Cash on Delivery is available for serviceable delivery locations with a ₹200 advance confirmation booking amount paid online during checkout.',
+      answerHindi: 'हाँ, अधिकांश पिन कोड्स पर ₹200 की ऑनलाइन अग्रिम बुकिंग राशि के साथ कैश ऑन डिलीवरी की सुविधा उपलब्ध है।'
+    },
+    {
+      category: 'payment',
+      question: 'How does the ₹200 COD booking amount work?',
+      questionHindi: '₹200 की COD अग्रिम बुकिंग राशि कैसे काम करती है?',
+      answer: 'The ₹200 booking amount is part of your total order amount, NOT an additional fee. It is paid online to confirm your order and wooden crate packing. The remaining balance (Total Order Amount - ₹200) is paid in cash at the time of delivery.',
+      answerHindi: '₹200 की बुकिंग राशि आपके कुल ऑर्डर मूल्य का ही एक हिस्सा है, कोई अतिरिक्त शुल्क नहीं। ऑर्डर कन्फर्म करने के लिए ₹200 ऑनलाइन दिए जाते हैं और शेष राशि डिलीवरी के समय नकद दी जाती है।'
+    },
+    {
+      category: 'payment',
+      question: 'How much will I pay in cash at the time of delivery?',
+      questionHindi: 'डिलीवरी के समय मुझे कितना नकद भुगतान करना होगा?',
+      answer: 'You only pay the remaining balance: [Total Order Amount minus ₹200]. For example, if your total order amount is ₹1,699, you pay ₹200 online during checkout and ₹1,499 in cash upon doorstep delivery.',
+      answerHindi: 'आप केवल शेष राशि [कुल मूल्य - ₹200] का भुगतान करेंगे। उदाहरण के लिए, ₹1,699 के ऑर्डर में ₹200 ऑनलाइन देने के बाद डिलीवरी पर ₹1,499 नकद देने होंगे।'
+    },
+    {
+      category: 'orders',
+      question: 'What happens if the parcel is damaged during transit?',
+      questionHindi: 'यदि पार्सल रास्ते में क्षतिग्रस्त हो जाए तो क्या होगा?',
+      answer: 'In the rare event of transit damage, customers should contact our support team on WhatsApp or phone within 24 hours of delivery with clear photos/videos of the packaging and product. Upon verification, a free replacement is arranged as per our Return & Replacement Policy.',
+      answerHindi: 'यदि पार्सल को रास्ते में कोई क्षति पहुँचती है, तो डिलीवरी के 24 घंटे के भीतर फोटो/वीडियो के साथ व्हाट्सएप पर संपर्क करें। सत्यापन के बाद निशुल्क प्रतिस्थापन (Replacement) की व्यवस्था की जाएगी।'
+    },
+    {
+      category: 'orders',
+      question: 'How can I track my order status?',
+      questionHindi: 'मैं अपने ऑर्डर की स्थिति कैसे जान सकता हूँ?',
+      answer: `All dispatch updates, including live courier AWB tracking links, are shared directly with you on WhatsApp (${BUSINESS_CONFIG.whatsappDisplay}) and SMS immediately upon dispatch. You can also message us anytime on WhatsApp for instant order updates.`,
+      answerHindi: `ऑर्डर डिस्पैच होते ही सभी विवरण व लाइव कूरियर ट्रैकिंग लिंक सीधे आपके व्हाट्सएप (${BUSINESS_CONFIG.whatsappDisplay}) पर साझा किए जाते हैं। आप किसी भी समय व्हाट्सएप पर तुरंत अपडेट प्राप्त कर सकते हैं।`
+    },
+    {
+      category: 'orders',
+      question: 'How can I contact customer support for custom guidance?',
+      questionHindi: 'विशेष मार्गदर्शन हेतु ग्राहक सहायता से कैसे संपर्क करें?',
+      answer: `You can reach our dedicated devotee support team directly on WhatsApp at ${BUSINESS_CONFIG.whatsappDisplay} or via phone call at ${BUSINESS_CONFIG.phoneDisplay}. We also provide live photo and video previews of sacred Shivlings upon request.`,
+      answerHindi: `आप सीधे व्हाट्सएप (${BUSINESS_CONFIG.whatsappDisplay}) या फोन कॉल (${BUSINESS_CONFIG.phoneDisplay}) पर हमारे प्रतिनिधि से संपर्क कर सकते हैं।`
+    }
+  ];
+
+  useEffect(() => {
+    updatePageSEO({
+      title: 'Frequently Asked Questions (FAQ) | Original Narmadeshwar Shivling',
+      description: 'Frequently asked questions on authentic Narmadeshwar Shivling identification, home puja size guidelines, safe wooden packaging, COD advance booking, and Pan India delivery.',
+      keywords: [
+        'Narmadeshwar Shivling FAQ',
+        'Narmadeshwar Shivling kya hai',
+        'asli Narmadeshwar Shivling ki pehchan',
+        'ghar ke liye shivling size',
+        'Narmadeshwar Shivling COD',
+        'Narmadeshwar Shivling delivery',
+        'नर्मदेश्वर शिवलिंग प्रश्न उत्तर'
+      ],
+      canonicalPath: '/faq',
+      breadcrumbs: [
+        { name: 'Home', url: '/' },
+        { name: 'Frequently Asked Questions (FAQ)', url: '/faq' }
+      ],
+      faqList: faqs.map((f) => ({
+        question: f.question,
+        answer: f.answer
+      }))
+    });
+  }, []);
+
+  const whatsappUrl = getGeneralWhatsAppLink('Namaste! Mujhe Narmadeshwar Shivling ke baare mein kuch sawal puchne hain.');
+
+  const filteredFaqs = selectedCategory === 'all' 
+    ? faqs 
+    : faqs.filter(f => f.category === selectedCategory);
+
+  return (
+    <main className="min-h-screen bg-[#FCFAF7] pb-16">
+      <Breadcrumbs items={[{ label: 'Frequently Asked Questions', isCurrent: true }]} />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-10">
+        
+        {/* Page Header */}
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 space-y-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3EFE9] border border-[#C5A059]/30 text-[#C5A059] text-xs font-bold uppercase tracking-wider">
+            <HelpCircle className="w-4 h-4 text-[#C5A059]" />
+            <span>अक्सर पूछे जाने वाले प्रश्न</span>
+          </div>
+          <h1 className="text-2xl sm:text-4xl font-serif font-bold text-[#1A1A1A] tracking-tight">
+            Frequently Asked Questions (FAQ)
+          </h1>
+          <p className="text-xs sm:text-sm text-stone-600 max-w-2xl mx-auto leading-relaxed">
+            Find answers to common questions about authentic Narmadeshwar Shivlings, worldwide delivery, wooden crate packaging, and COD payments.
+          </p>
+        </div>
+
+        {/* Category Filters */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+          {[
+            { id: 'all', label: 'All Questions / सभी प्रश्न' },
+            { id: 'about', label: 'Shivling & Authenticity' },
+            { id: 'delivery', label: 'Worldwide Delivery & Packing' },
+            { id: 'payment', label: 'COD & Payment' },
+            { id: 'orders', label: 'Tracking & Support' },
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setSelectedCategory(tab.id)}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                selectedCategory === tab.id
+                  ? 'bg-[#1A1A1A] text-white shadow-xs'
+                  : 'bg-white text-stone-700 border border-stone-200 hover:border-[#C5A059]'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* FAQ Accordion List */}
+        <div className="space-y-4">
+          {filteredFaqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <div
+                key={index}
+                className="bg-white rounded-2xl border border-[#C5A059]/25 overflow-hidden transition-all shadow-xs"
+              >
+                <button
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="w-full p-5 sm:p-6 text-left flex items-start justify-between gap-4 cursor-pointer hover:bg-[#FCFAF7]/60 transition-colors"
+                >
+                  <div className="space-y-1">
+                    <h3 className="text-sm sm:text-base font-serif font-bold text-[#1A1A1A] leading-snug">
+                      {faq.question}
+                    </h3>
+                    <p className="text-xs font-bold text-[#C5A059]">
+                      {faq.questionHindi}
+                    </p>
+                  </div>
+                  <div className="w-8 h-8 rounded-lg bg-[#F3EFE9] text-[#C5A059] flex items-center justify-center shrink-0 mt-0.5">
+                    {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  </div>
+                </button>
+
+                {isOpen && (
+                  <div className="px-5 sm:px-6 pb-6 pt-1 border-t border-stone-100 text-xs sm:text-sm text-stone-700 leading-relaxed space-y-2.5">
+                    <p>{faq.answer}</p>
+                    {faq.answerHindi && (
+                      <p className="text-xs text-stone-600 font-hindi bg-[#FCFAF7] p-3 rounded-xl border border-stone-200/70">
+                        {faq.answerHindi}
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Still Have Questions Box */}
+        <div className="mt-12 bg-white rounded-3xl p-6 sm:p-8 border border-[#C5A059]/30 text-center space-y-4 shadow-sm">
+          <div className="w-12 h-12 rounded-2xl bg-[#F3EFE9] border border-[#C5A059]/30 text-[#C5A059] flex items-center justify-center mx-auto">
+            <MessageCircle className="w-6 h-6 text-[#C5A059]" />
+          </div>
+          <div className="space-y-1">
+            <h3 className="text-lg font-serif font-bold text-[#1A1A1A]">
+              Still Have Questions? / क्या आपके कोई अन्य प्रश्न हैं?
+            </h3>
+            <p className="text-xs text-stone-600 max-w-md mx-auto">
+              Our team in Bakawan is available to assist you with Shivling selection, dimensions, video previews, and delivery queries.
+            </p>
+          </div>
+
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-3 px-6 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-2"
+            >
+              <MessageCircle className="w-4 h-4 fill-white" />
+              <span>Ask on WhatsApp: {BUSINESS_CONFIG.whatsappDisplay}</span>
+            </a>
+
+            <button
+              onClick={() => navigate('/products')}
+              className="py-3 px-6 bg-[#1A1A1A] hover:bg-[#C5A059] text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <Search className="w-4 h-4" />
+              <span>Explore Shivling Collection</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  );
+};
