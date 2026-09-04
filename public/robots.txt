@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin
 
-https://authenticnarmadeshwar.com/sitemap.xml
+Sitemap: https://authenticnarmadeshwar.com/sitemap.xml
