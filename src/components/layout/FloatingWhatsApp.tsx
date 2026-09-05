@@ -2,13 +2,30 @@ import React from 'react';
 import { getGeneralWhatsAppLink } from '../../utils/whatsapp';
 import { MessageCircle } from 'lucide-react';
 
+declare global {
+  interface Window {
+    gtag_report_conversion?: (url?: string) => boolean;
+  }
+}
+
 export const FloatingWhatsApp: React.FC = () => {
   const whatsappUrl = getGeneralWhatsAppLink();
+
+  const handleWhatsAppClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+
+    if (window.gtag_report_conversion) {
+      window.gtag_report_conversion(whatsappUrl);
+    } else {
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    }
+  };
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
       <a
         href={whatsappUrl}
+        onClick={handleWhatsAppClick}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Contact us on WhatsApp"
