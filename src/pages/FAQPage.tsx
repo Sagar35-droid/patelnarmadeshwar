@@ -54,6 +54,48 @@ export const FAQPage: React.FC = () => {
     },
     {
       category: 'about',
+      question: 'How to choose a Narmadeshwar Shivling for home? (घर के लिए नर्मदेश्वर शिवलिंग का चयन कैसे करें?)',
+      questionHindi: 'घर के लिए नर्मदेश्वर शिवलिंग का चयन कैसे करें?',
+      answer: 'When choosing a Narmadeshwar Shivling for your home temple, select a size between 2 to 4 inches that fits comfortably in your mandir space. Look for natural characteristics like smooth natural texture, balanced weight, and distinctive natural markings such as a natural Janeyu (sacred thread), Tilak, or Surya lines. Ensure you pair it with a proportionate Jaladhari (Argha/Peetham) for smooth Abhishek.',
+      answerHindi: 'घर के मंदिर के लिए 2 से 4 इंच आकार का नर्मदेश्वर शिवलिंग सर्वोत्तम रहता है। शिवलिंग का चयन करते समय उसकी प्राकृतिक बनावट, वजन, तथा प्राकृतिक जनेऊ, तिलक या त्रिपुंड चिह्नों को देखें। अभिषेक के लिए इसके साथ अनुकूल आकार की जलाधारी (जलहरी) का होना आवश्यक है।'
+    },
+    {
+      category: 'about',
+      question: 'What is the difference between Narmadeshwar Shivling and other Shivling? (नर्मदेश्वर शिवलिंग और अन्य शिवलिंग में क्या अंतर है?)',
+      questionHindi: 'नर्मदेश्वर शिवलिंग और अन्य शिवलिंग में क्या अंतर है?',
+      answer: 'Unlike carved marble, granite, or artificially moulded stone Shivlings, a Narmadeshwar Shivling is 100% naturally shaped by the sacred water currents of the Narmada River over decades. According to Sanatan tradition, Narmadeshwar Shivlings are inherently consecrated (Swayambhu / self-manifested) and do not mandatorily require elaborate temple Pran Pratishtha rituals. They are cryptocrystalline quartz stones that naturally maintain a cool temperature and smooth surface.',
+      answerHindi: 'मार्बल, ग्रेनाइट या ढाले हुए पत्थरों के विपरीत, नर्मदेश्वर शिवलिंग माँ नर्मदा के पावन जलप्रवाह से प्राकृतिक रूप से निर्मित स्वयंभू होते हैं। शास्त्रों के अनुसार यह पहले से ही प्रतिष्ठित माने जाते हैं और इन्हें घर में स्थापित करने के लिए किसी जटिल प्राण-प्रतिष्ठा की आवश्यकता नहीं होती। यह प्राकृतिक रूप से शीतल एवं स्थायी रहते हैं।'
+    },
+    {
+      category: 'about',
+      question: 'What is a Jaladhari? (शिवलिंग की जलहरी या जलाधारी क्या होती है?)',
+      questionHindi: 'शिवलिंग की जलहरी या जलाधारी क्या होती है?',
+      answer: 'A Jaladhari (also known as Argha, Peetham, or Yoni base) is the sacred base upon which the Shivling rests. In Hindu philosophy, it represents Maa Parvati (Shakti) holding and channelizing the continuous divine energy of Lord Shiva. The Jaladhari includes a spout (Nal) designed to channel water, milk, and Abhishek offerings smoothly towards the North direction during puja.',
+      answerHindi: 'जलाधारी (जलहरी या अर्घा) वह पावन आधार है जिस पर शिवलिंग विराजमान होता है। यह माँ पार्वती (शक्ति) का प्रतीक है जो शिव की दिव्य ऊर्जा को धारण करती है। इसमें एक प्रणाल (नाला) होता है जो अभिषेक के जल एवं दुग्ध को उत्तर दिशा की ओर प्रवाहित करता है।'
+    },
+    {
+      category: 'about',
+      question: 'What is an Akhand Shivling? (अखंड नर्मदेश्वर शिवलिंग क्या है?)',
+      questionHindi: 'अखंड नर्मदेश्वर शिवलिंग क्या है?',
+      answer: 'An Akhand Narmadeshwar Shivling is a single, continuous piece where both the Shivling and the Jaladhari base are sculpted from the exact same unbroken natural river stone block without any joints, glue, or chemical bonding. In Vedic tradition, an Akhand Shivling is revered for representing the seamless, indivisible unity of Shiva and Shakti.',
+      answerHindi: 'अखंड नर्मदेश्वर शिवलिंग वह दुर्लभ स्वरूप है जिसमें शिवलिंग और जलाधारी दोनों एक ही प्राकृतिक नर्मदा पाषाण से बिना किसी जोड़ (Joint) के तराशे जाते हैं। इसमें कोई अलग जोड़ या चिपकाव नहीं होता, जो शिव-शक्ति की अभिन्न एकता का प्रतीक माना जाता है।'
+    },
+    {
+      category: 'about',
+      question: 'How to care for a Narmadeshwar Shivling? (नर्मदेश्वर शिवलिंग की देखभाल कैसे करें?)',
+      questionHindi: 'नर्मदेश्वर शिवलिंग की देखभाल और रख-रखाव कैसे करें?',
+      answer: 'Caring for a Narmadeshwar Shivling is simple and natural. Clean it daily using fresh water, raw cow milk, or Ganga jal during Abhishek. After Abhishek, wipe it gently with a soft cotton cloth. Avoid synthetic chemical soaps, acids, or harsh abrasives. Applying pure natural sandalwood paste (Chandan) or a few drops of natural perfume/oil (Itr/pure oil) occasionally preserves the stone natural sheen and moisture.',
+      answerHindi: 'नर्मदेश्वर शिवलिंग की देखभाल अत्यंत सरल है। नित्य ताजे जल, कच्चे दूध या गंगाजल से अभिषेक करें। पूजा के पश्चात स्वच्छ सूती वस्त्र से पोंछें। कभी भी साबुन, एसिड या रासायनिक द्रव्यों का प्रयोग न करें। समय-समय पर शुद्ध प्राकृतिक चंदन या इत्र लगाने से पाषाण की प्राकृतिक चमक बनी रहती है।'
+    },
+    {
+      category: 'about',
+      question: 'How to perform Shivling puja at home? (घर पर नर्मदेश्वर शिवलिंग की नित्य पूजा कैसे करें?)',
+      questionHindi: 'घर पर नर्मदेश्वर शिवलिंग की नित्य पूजा कैसे करें?',
+      answer: 'Place the Shivling in your home temple with the Jaladhari spout pointing North (Uttar). Offer fresh water (Jal Abhishek) with a copper or brass pot while chanting "Om Namah Shivaya" (ॐ नमः शिवाय). Offer Bilva leaves (Belpatra), white flowers, and natural Chandan. Light an earthen ghee diya and incense dhoop. Conclude with heartfelt prayer. Elaborate rituals are not necessary; simple devotion and pure water are most cherished by Lord Shiva.',
+      answerHindi: 'घर के मंदिर में शिवलिंग को इस प्रकार स्थापित करें कि जलाधारी का मुख उत्तर दिशा की ओर हो। तांबे या पीतल के लोटे से "ॐ नमः शिवाय" का जप करते हुए जल अर्पित करें। बेलपत्र, श्वेत पुष्प और चंदन चढ़ाएं। घी का दीपक और धूप प्रज्वलित कर नमन करें। भोलेनाथ केवल सच्चे भाव और जल से ही प्रसन्न हो जाते हैं।'
+    },
+    {
+      category: 'about',
       question: 'Are the Shivlings completely natural stones?',
       questionHindi: 'क्या ये शिवलिंग पूर्णतः प्राकृतिक पाषाण हैं?',
       answer: 'Yes, every Narmadeshwar Shivling is 100% natural river stone. The smooth oval structure is shaped organically over centuries by the sacred waters of the Narmada River without artificial casting or synthetic chemical processing.',

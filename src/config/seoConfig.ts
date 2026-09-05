@@ -11,29 +11,30 @@ import { BUSINESS_CONFIG } from './businessConfig';
  */
 export const SITE_URL = (
   (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_SITE_URL) ||
-  'https://sagar-narmadeshwar-shivling.in'
+  'https://www.authenticnarmadeshwar.com'
 ).replace(/\/+$/, '');
 
 export const DEFAULT_SEO = {
   siteName: BUSINESS_CONFIG.name,
   defaultTitle: `${BUSINESS_CONFIG.name} | Original Natural Narmadeshwar Shivling with Pan India Delivery`,
   defaultDescription:
-    'Buy 100% Original Natural Narmadeshwar Shivling with natural Janeyu, Tilak & Sun lines direct from Narmada River, Bakawan (MP). Safe Pan India Delivery in reinforced wooden crate.',
+    'Buy 100% Original Natural Narmadeshwar Shivling & Akhand Shivling with Jaladhari direct from Narmada River, Bakawan (MP). Shivling for home puja with safe Pan India delivery.',
   defaultKeywords: [
     'Narmadeshwar Shivling',
-    'Natural Narmadeshwar Shivling',
     'Narmada Shivling',
     'Narmadeshwar Shivling online',
     'Narmadeshwar Shivling price',
+    'Shivling with Jaladhari',
+    'Narmada stone Shivling',
+    'Akhand Shivling',
+    'Shivling for home',
+    'Natural Narmadeshwar Shivling',
+    'Original Narmadeshwar Shivling',
     'buy Narmadeshwar Shivling',
     'Narmadeshwar Shivling for home puja',
-    'Narmadeshwar Shivling with Jaladhari',
-    'original Narmadeshwar Shivling',
-    'natural Shivling for puja',
-    'Narmadeshwar Shivling in India',
-    'Narmada Shivling India',
-    'Natural Shivling India',
+    'Bakawan Shivling',
     'Shivling online India',
+    'शिवलिंग',
     'नर्मदेश्वर शिवलिंग',
     'नर्मदा शिवलिंग',
     'नर्मदेश्वर शिवलिंग खरीदें',
@@ -42,17 +43,9 @@ export const DEFAULT_SEO = {
     'पूजा के लिए नर्मदेश्वर शिवलिंग',
     'प्राकृतिक नर्मदेश्वर शिवलिंग',
     'नर्मदेश्वर शिवलिंग जलहरी',
-    'narmadeshwar shivling kaha se kharide',
-    'narmadeshwar shivling price',
-    'narmadeshwar shivling online',
-    'ghar ke liye shivling',
-    'natural narmadeshwar shivling',
-    'narmada shivling online',
-    'shivling with jaladhari',
-    'puja ke liye shivling',
-    'Bakawan Shivling'
+    'अखंड नर्मदेश्वर शिवलिंग'
   ],
-  defaultImage: `${SITE_URL}/images/product-1.jpg`,
+  defaultImage: `${SITE_URL}/images/products/product-1.jpeg`,
   locale: 'en_IN',
   twitterHandle: '@sagarnarmadeshwar',
 };

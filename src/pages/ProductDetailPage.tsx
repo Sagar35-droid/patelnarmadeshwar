@@ -40,27 +40,30 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
   useEffect(() => {
     if (product) {
       setSelectedImage(product.mainImage);
-      const cleanTitle = `${product.name} (${product.size}) - Natural Narmadeshwar Shivling with Pan India Delivery`;
-      const cleanDesc = `Buy 100% Original Natural Narmadeshwar Shivling (${product.size}, ${product.weight}) with natural markings direct from Narmada River, Bakawan (MP). Safe Pan India Delivery in protective wooden box.`;
+      const cleanTitle = `${product.name} (${product.size}, ${product.weight}) | Natural Narmadeshwar Shivling with Jaladhari`;
+      const cleanDesc = `Buy authentic ${product.name} (${product.size}, ${product.weight}) Narmada stone Shivling with natural ${product.markingType}. Price ₹${pricing.sellingPrice}. Direct from Bakawan (MP) with safe Pan India wooden box delivery.`;
       
       updatePageSEO({
-        title: `${cleanTitle} | ${BUSINESS_CONFIG.name}`,
+        title: cleanTitle,
         description: cleanDesc,
         keywords: [
           product.name,
+          product.nameHindi,
           'Narmadeshwar Shivling',
-          'Natural Narmadeshwar Shivling',
-          'Narmadeshwar Shivling with Jaladhari',
-          'Narmada River Shivling',
-          'Bakawan Shivling',
+          'Narmada Shivling',
+          'Shivling with Jaladhari',
+          'Narmada stone Shivling',
+          'Akhand Shivling',
+          'Shivling for home',
           'Narmadeshwar Shivling price',
-          'buy Narmadeshwar Shivling online',
+          'Bakawan Shivling',
+          'शिवलिंग',
           'नर्मदेश्वर शिवलिंग',
-          'narmadeshwar shivling online'
+          'नर्मदा शिवलिंग'
         ],
         canonicalPath: `/products/${product.id}`,
         ogImage: product.mainImage,
-        imageAlt: `${product.name} - Natural Narmadeshwar Shivling (${product.size}) from Bakawan`,
+        imageAlt: `${product.name} - Natural Narmadeshwar Shivling (${product.size}, ${product.weight}) with Jaladhari from Bakawan`,
         ogType: 'product',
         breadcrumbs: [
           { name: 'Home', url: '/' },

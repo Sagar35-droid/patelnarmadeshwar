@@ -482,13 +482,13 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
               {relatedProductsList.map((prod) => (
                 <div
                   key={prod.id}
-                  onClick={() => navigate(`/product/${prod.slug || prod.id}`)}
+                  onClick={() => navigate(`/products/${prod.id}`)}
                   className="border border-stone-100 rounded-xl p-3 hover:border-[#C5A059]/50 hover:shadow-md transition-all cursor-pointer flex flex-col justify-between bg-[#FDFCF9]"
                 >
                   <div className="aspect-square bg-stone-100 rounded-lg overflow-hidden mb-2">
                     <img
                       src={prod.mainImage}
-                      alt={prod.name}
+                      alt={`${prod.name} - Natural Narmadeshwar Shivling from Bakawan`}
                       className="w-full h-full object-cover hover:scale-105 transition-transform"
                       referrerPolicy="no-referrer"
                     />

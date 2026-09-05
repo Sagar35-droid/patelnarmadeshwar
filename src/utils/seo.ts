@@ -36,6 +36,14 @@ export interface ArticleSchemaData {
   authorRole?: string;
 }
 
+export interface ItemListElementData {
+  name: string;
+  url: string;
+  image?: string;
+  price?: number;
+  position: number;
+}
+
 export interface PageSEOProps {
   title?: string;
   description?: string;
@@ -49,6 +57,7 @@ export interface PageSEOProps {
   productData?: ProductSchemaData;
   articleData?: ArticleSchemaData;
   faqList?: FAQItemSchema[];
+  itemListData?: ItemListElementData[];
 }
 
 function setMetaTag(name: string, content: string, isProperty = false) {
@@ -92,7 +101,8 @@ export function updatePageSEO({
   breadcrumbs,
   productData,
   articleData,
-  faqList
+  faqList,
+  itemListData
 }: PageSEOProps) {
   const cleanPath = canonicalPath.startsWith('/') ? canonicalPath : `/${canonicalPath}`;
   const canonicalUrl = `${SITE_URL}${cleanPath === '/' ? '' : cleanPath}`;
@@ -158,8 +168,8 @@ export function updatePageSEO({
     alternateName: ['Sagar Narmadeshwar', 'Sagar Shivling Bakawan', 'सागर नर्मदेश्वर शिवलिंग', 'Patel Narmadeshwar Shivling'],
     description: BUSINESS_CONFIG.taglineEnglish,
     url: SITE_URL,
-    logo: `${SITE_URL}/images/product-1.jpg`,
-    image: `${SITE_URL}/images/product-1.jpg`,
+    logo: `${SITE_URL}/images/products/product-1.jpeg`,
+    image: `${SITE_URL}/images/products/product-1.jpeg`,
     telephone: BUSINESS_CONFIG.phoneNumber,
     email: BUSINESS_CONFIG.email,
     taxID: BUSINESS_CONFIG.gstin,
@@ -364,7 +374,7 @@ export function updatePageSEO({
         name: BUSINESS_CONFIG.name,
         logo: {
           '@type': 'ImageObject',
-          url: `${SITE_URL}/images/product-1.jpg`
+          url: `${SITE_URL}/images/products/product-1.jpeg`
         }
       },
       inLanguage: ['en-IN', 'hi-IN']
@@ -391,5 +401,24 @@ export function updatePageSEO({
     setJsonLdScript('schema-faq', faqSchema);
   } else {
     removeJsonLdScript('schema-faq');
+  }
+
+  // 13. ItemList JSON-LD Schema (for Category and Listing Pages)
+  if (itemListData && itemListData.length > 0) {
+    const itemListSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      numberOfItems: itemListData.length,
+      itemListElement: itemListData.map((item) => ({
+        '@type': 'ListItem',
+        position: item.position,
+        name: item.name,
+        url: item.url.startsWith('http') ? item.url : `${SITE_URL}${item.url}`,
+        image: item.image ? (item.image.startsWith('http') ? item.image : `${SITE_URL}${item.image}`) : undefined
+      }))
+    };
+    setJsonLdScript('schema-itemlist', itemListSchema);
+  } else {
+    removeJsonLdScript('schema-itemlist');
   }
 }

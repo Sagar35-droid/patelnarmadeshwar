@@ -6,7 +6,6 @@ import {
   CreditCard, 
   Banknote, 
   MessageCircle, 
-  Search, 
   ShieldCheck 
 } from 'lucide-react';
 
@@ -53,13 +52,6 @@ export const WhyChooseUs: React.FC = () => {
       titleHindi: 'व्हाट्सएप ग्राहक सहायता',
       desc: 'Direct consultation, video/photo preview, and dedicated order guidance on WhatsApp.',
       descHindi: 'व्हाट्सएप पर शिवलिंग के वास्तविक वीडियो देखने व परामर्श की सुविधा।'
-    },
-    {
-      icon: Search,
-      title: 'Real-Time Order Tracking',
-      titleHindi: 'लाइव ऑर्डर ट्रैकिंग',
-      desc: 'Instant AWB courier updates from dispatch in Bakawan till doorstep delivery.',
-      descHindi: 'बकावां से प्रेषण से लेकर डिलीवरी तक अपने पार्सल की स्थिति ट्रैक करें।'
     },
   ];
 

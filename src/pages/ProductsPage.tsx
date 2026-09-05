@@ -10,25 +10,41 @@ export const ProductsPage: React.FC = () => {
 
   useEffect(() => {
     updatePageSEO({
-      title: 'Original Narmadeshwar Shivling Collection (40+ Products) | Pan India Delivery',
-      description: 'Explore 40+ authentic natural Narmadeshwar Shivlings with Jaladhari from Bakawan, MP. 1.5 to 12 inches for home mandir. Safe Pan India wooden box delivery.',
+      title: 'Narmadeshwar Shivling Online Collection | Price & Sizes | Sagar Narmadeshwar',
+      description: 'Explore authentic Narmadeshwar Shivling collection with Jaladhari from Bakawan, MP. Find Shivling for home mandir in 2-inch to 5-inch sizes with natural Janeyu and Tilak markings.',
       keywords: [
-        'Narmadeshwar Shivling collection',
+        'Narmadeshwar Shivling',
+        'Narmada Shivling',
+        'Narmadeshwar Shivling online',
+        'Narmadeshwar Shivling price',
+        'Shivling with Jaladhari',
+        'Narmada stone Shivling',
+        'Akhand Shivling',
+        'Shivling for home',
+        'Natural Narmadeshwar Shivling',
+        'Original Narmadeshwar Shivling',
         'buy Narmadeshwar Shivling',
-        'Narmadeshwar Shivling with Jaladhari',
-        'Original Shivling price',
-        'Bakawan Shivling online',
-        'नर्मदेश्वर शिवलिंग संग्रह',
-        'narmadeshwar shivling online',
-        'original narmada shivling'
+        'Bakawan Shivling',
+        'Shivling online India',
+        'शिवलिंग',
+        'नर्मदेश्वर शिवलिंग',
+        'नर्मदा शिवलिंग',
+        'नर्मदेश्वर शिवलिंग संग्रह'
       ],
       canonicalPath: '/products',
       breadcrumbs: [
         { name: 'Home', url: '/' },
         { name: 'Products Collection', url: '/products' }
-      ]
+      ],
+      itemListData: products.map((product, idx) => ({
+        position: idx + 1,
+        name: product.name,
+        url: `/products/${product.id}`,
+        image: product.mainImage,
+        price: product.price
+      }))
     });
-  }, []);
+  }, [products]);
 
   return (
     <main className="min-h-screen bg-[#FCFAF7] pb-20">

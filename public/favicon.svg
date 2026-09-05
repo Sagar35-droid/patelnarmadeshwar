@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="16" fill="#1A1A1A"/>
+  <ellipse cx="32" cy="48" rx="20" ry="6" fill="#C5A059" opacity="0.3"/>
+  <!-- Jaladhari Base -->
+  <path d="M16 44C16 41 24 39 32 39C40 39 48 41 48 44C48 47 42 49 32 49C22 49 16 47 16 44Z" fill="#C5A059"/>
+  <path d="M44 42L56 44L44 46Z" fill="#C5A059"/>
+  <!-- Shivling Lingam Body -->
+  <path d="M24 39C24 23 27 12 32 12C37 12 40 23 40 39C40 41 37 42 32 42C27 42 24 41 24 39Z" fill="#E6D5B8"/>
+  <!-- Sacred Tripundra / Tilak mark -->
+  <line x1="28" y1="24" x2="36" y2="24" stroke="#C5A059" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="28" y1="27" x2="36" y2="27" stroke="#C5A059" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="28" y1="30" x2="36" y2="30" stroke="#C5A059" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="32" cy="27" r="1" fill="#C83A2A"/>
+</svg>

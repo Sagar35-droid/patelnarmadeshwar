@@ -2,252 +2,6 @@ import { Product } from '../types';
 
 export const PRODUCTS: Product[] = [
   {
-    "id": "product-new-1",
-    "slug": "product-new-1",
-    "collectionNumber": 1,
-    "name": "3 Inch Shivling with 6 Inch Jaladhari",
-    "nameHindi": "3 इंच नर्मदेश्वर शिवलिंग साथ में 6 इंच जलधारी (350 ग्राम)",
-    "category": "Natural Narmadeshwar Shivling",
-    "badge": "Popular",
-    "size": "1.5 inch Shivling + 3 inch Jaladhari",
-    "weight": "350 gm",
-    "markingType": "100% Natural River Stone",
-    "jaladhariIncluded": true,
-    "shortDescription": "3 इंच प्राकृतिक नर्मदेश्वर शिवलिंग 6 इंच जलधारी के साथ। वजन 350 ग्राम।",
-    "fullDescription": "मां नर्मदा के पावन जल से प्राप्त 3 इंच का प्राकृतिक नर्मदेश्वर शिवलिंग, 6 इंच की जलधारी के साथ। दैनिक पूजन और अभिषेक के लिए सर्वोत्तम।",
-    "naturalCharacteristics": [
-      "प्राकृतिक अंडाकार स्वरूप (350 ग्राम)",
-      "नर्मदा नदी से प्राप्त असली नर्मदेश्वर पाषाण",
-      "स्वाभाविक चिकनी सतह",
-      "दैनिक जलाभिषेक हेतु शुभ"
-    ],
-    "features": [
-      "6 इंच जलधारी बेस शामिल",
-      "वजन: 350 gm",
-      "सुरक्षित पैकेजिंग",
-      "व्हाट्सएप पर सीधी सहायता"
-    ],
-    "mainImage": "/images/product-1.jpg",
-    "galleryImages": [
-      "/images/product-1.jpg"
-    ],
-    "mrp": 1215,
-    "sellingPrice": 900,
-    "price": 900,
-    "discountPercentage": 26,
-    "stock": 100,
-    "stockQuantity": 100,
-    "inStock": true,
-    "recommendedFor": "Home Temple, Daily Abhishekam",
-    "createdAt": "2026-08-21T15:00:00.000Z",
-    "updatedAt": "2026-08-23T10:18:24.573Z"
-  },
-  {
-    "id": "product-new-2",
-    "slug": "product-new-2",
-    "collectionNumber": 1,
-    "name": "3 Inch Shivling with 6 Inch Jaladhari",
-    "nameHindi": "3 इंच नर्मदेश्वर शिवलिंग साथ में 6 इंच जलधारी (300 ग्राम)",
-    "category": "Natural Narmadeshwar Shivling",
-    "badge": "Authentic",
-    "size": "1.5 inch Shivling + 3 inch Jaladhari",
-    "weight": "300 gm",
-    "markingType": "100% Natural River Stone",
-    "jaladhariIncluded": true,
-    "shortDescription": "3 इंच प्राकृतिक नर्मदेश्वर शिवलिंग 6 इंच जलधारी के साथ। वजन 300 ग्राम।",
-    "fullDescription": "सुंदर एवं सुगठित 3 इंच नर्मदेश्वर शिवलिंग 6 इंच जलधारी के साथ। गृह मंदिर और पूजा स्थल के लिए अत्यंत मनमोहक।",
-    "naturalCharacteristics": [
-      "सुंदर अंडाकार प्राकृतिक स्वरूप (300 ग्राम)",
-      "नर्मदा नदी बकावां का प्रामाणिक पाषाण",
-      "शांत एवं सौम्य बनावट",
-      "पवित्र ऊर्जा प्रदाता"
-    ],
-    "features": [
-      "6 इंच जलधारी बेस शामिल",
-      "वजन: 300 gm",
-      "किफायती एवं सुलभ पूजन",
-      "त्वरित एवं सुरक्षित डिलीवरी"
-    ],
-    "mainImage": "/images/product-2.jpg",
-    "galleryImages": [
-      "/images/product-2.jpg"
-    ],
-    "mrp": 944,
-    "sellingPrice": 699,
-    "price": 699,
-    "discountPercentage": 26,
-    "stock": 100,
-    "stockQuantity": 100,
-    "inStock": true,
-    "recommendedFor": "Office Desk, Home Puja, Gift",
-    "createdAt": "2026-08-21T15:00:00.000Z",
-    "updatedAt": "2026-08-23T10:18:26.607Z"
-  },
-  {
-    "id": "product-new-3",
-    "slug": "product-new-3",
-    "collectionNumber": 1,
-    "name": "2 Inch Shivling with 4 Inch Jaladhari",
-    "nameHindi": "2 इंच नर्मदेश्वर शिवलिंग साथ में 4 इंच जलधारी एवं नंदी (600 ग्राम)",
-    "category": "Natural Narmadeshwar Shivling",
-    "badge": "Authentic",
-    "size": "2 inch Shivling + 4 inch Jaladhari",
-    "weight": "600 gm",
-    "markingType": "100% Natural River Stone",
-    "jaladhariIncluded": true,
-    "shortDescription": "2 इंच प्राकृतिक नर्मदेश्वर शिवलिंग 4 इंच जलधारी और नंदी जी के साथ। वजन 600 ग्राम।",
-    "fullDescription": "प्राकृतिक आभा वाला 2 इंच नर्मदेश्वर शिवलिंग, 4 इंच जलधारी और नंदी जी की सुंदर प्रतिमा के साथ। वजन 600 ग्राम।",
-    "naturalCharacteristics": [
-      "प्राकृतिक भूरा-कत्थई वर्ण (600 ग्राम)",
-      "साथ में नंदी जी की उपस्थिति",
-      "नर्मदा जल से निर्मित चिकनी सतह",
-      "सकारात्मक ऊर्जा प्रदाता"
-    ],
-    "features": [
-      "4 इंच जलधारी एवं नंदी प्रतिमा शामिल",
-      "वजन: 600 gm",
-      "दैनिक पूजन हेतु परिपूर्ण",
-      "सुरक्षित डिलीवरी"
-    ],
-    "mainImage": "/images/product-3.jpg",
-    "galleryImages": [
-      "/images/product-3.jpg"
-    ],
-    "mrp": 1619,
-    "sellingPrice": 1199,
-    "price": 1199,
-    "discountPercentage": 26,
-    "stock": 50,
-    "stockQuantity": 50,
-    "inStock": true,
-    "recommendedFor": "Home Temple, Shiva-Nandi Sthapana",
-    "createdAt": "2026-08-21T15:00:00.000Z",
-    "updatedAt": "2026-08-23T10:18:22.265Z"
-  },
-  {
-    "id": "product-new-4",
-    "slug": "product-new-4",
-    "collectionNumber": 1,
-    "name": "2 Inch Shivling with 4 Inch Jaladhari",
-    "nameHindi": "2 इंच नर्मदेश्वर शिवलिंग साथ में 4 इंच जलधारी (500 ग्राम)",
-    "category": "Natural Narmadeshwar Shivling",
-    "badge": "Authentic",
-    "size": "2 inch Shivling + 4 inch Jaladhari",
-    "weight": "500 gm",
-    "markingType": "100% Natural River Stone",
-    "jaladhariIncluded": true,
-    "shortDescription": "2 इंच धारीदार प्राकृतिक नर्मदेश्वर शिवलिंग 4 इंच जलधारी के साथ। वजन 500 ग्राम।",
-    "fullDescription": "सुंदर प्राकृतिक धारीदार रेखाओं से युक्त 2 इंच नर्मदेश्वर शिवलिंग, 4 इंच काली जलधारी के साथ। वजन 500 ग्राम।",
-    "naturalCharacteristics": [
-      "प्राकृतिक धारीदार रेखाएं (500 ग्राम)",
-      "काली पाषाण जलधारी के साथ सुंदर संतुलन",
-      "नर्मदा नदी से प्राप्त असली नर्मदेश्वर पत्थर",
-      "स्पष्ट एवं शुभ प्राकृतिक आकृति"
-    ],
-    "features": [
-      "4 इंच जलधारी बेस शामिल",
-      "वजन: 500 gm",
-      "दैनिक जलाभिषेक के लिए उत्तम",
-      "सुरक्षित पैकिंग"
-    ],
-    "mainImage": "/images/product-4.jpg",
-    "galleryImages": [
-      "/images/product-4.jpg"
-    ],
-    "mrp": 1485,
-    "sellingPrice": 1100,
-    "price": 1100,
-    "discountPercentage": 26,
-    "stock": 20,
-    "stockQuantity": 20,
-    "inStock": true,
-    "recommendedFor": "Home Mandir, Daily Jalabhishek",
-    "createdAt": "2026-08-21T15:00:00.000Z",
-    "updatedAt": "2026-08-23T10:18:20.837Z"
-  },
-  {
-    "id": "product-new-5",
-    "slug": "product-new-5",
-    "collectionNumber": 1,
-    "name": "2 Inch Shivling with 4 Inch Jaladhari (Brass Set)",
-    "nameHindi": "2 इंच शिवलिंग साथ में 4 इंच पीतल जलधारी ब्रास सेट (900 ग्राम)",
-    "category": "Brass Set Shivling",
-    "badge": "Sacred Set",
-    "size": "2 inch Shivling + 4 inch Jaladhari",
-    "weight": "900 gm",
-    "markingType": "100% Natural River Stone",
-    "jaladhariIncluded": true,
-    "shortDescription": "2 इंच नर्मदेश्वर शिवलिंग के साथ 4 इंच पीतल जलधारी, त्रिशूल और स्टैंड सेट। वजन 900 ग्राम।",
-    "fullDescription": "संपूर्ण पूजा सेट जिसमें 2 इंच का पवित्र प्राकृतिक नर्मदेश्वर शिवलिंग, 4 इंच की पीतल जलधारी, त्रिशूल, नाग छत्र एवं नंदी शामिल है। वजन 900 ग्राम।",
-    "naturalCharacteristics": [
-      "प्राकृतिक स्वयंभू नर्मदेश्वर शिवलिंग",
-      "नर्मदा जल से निर्मित स्वाभाविक चिकनाई",
-      "प्रामाणिक बकावां नर्मदा पाषाण",
-      "दिव्य एवं शांत स्वरूप"
-    ],
-    "features": [
-      "4 इंच पीतल जलधारी, स्टैंड, त्रिशूल एवं नाग शामिल",
-      "वजन: 900 gm",
-      "गृह मंदिर के लिए संपूर्ण सेट",
-      "सुरक्षित डिलीवरी व्यवस्था"
-    ],
-    "mainImage": "/images/product-5.jpg",
-    "galleryImages": [
-      "/images/product-5.jpg"
-    ],
-    "mrp": 2430,
-    "sellingPrice": 1800,
-    "price": 1800,
-    "discountPercentage": 26,
-    "stock": 50,
-    "stockQuantity": 50,
-    "inStock": true,
-    "recommendedFor": "Pooja Altar, Brass Setup, Griha Pravesh Gift",
-    "createdAt": "2026-08-21T15:00:00.000Z",
-    "updatedAt": "2026-08-23T10:18:16.833Z"
-  },
-  {
-    "id": "product-new-6",
-    "slug": "product-new-6",
-    "collectionNumber": 1,
-    "name": "4 Inch Akhand Shivling",
-    "nameHindi": "4 इंच अखंड नर्मदेश्वर शिवलिंग (500 ग्राम)",
-    "category": "Akhand Narmadeshwar Shivling",
-    "badge": "Bestseller",
-    "size": "4 inch Akhand Shivling",
-    "weight": "500 gm",
-    "markingType": "100% Natural River Stone",
-    "jaladhariIncluded": false,
-    "shortDescription": "4 इंच का अखंड प्राकृतिक नर्मदेश्वर शिवलिंग। वजन 500 ग्राम।",
-    "fullDescription": "यह 4 इंच का अखंड नर्मदेश्वर शिवलिंग मां नर्मदा के पावन जल प्रवाह से प्राकृतिक रूप से निर्मित है। इसका स्वाभाविक आकार और प्राकृतिक ऊर्जा ध्यान एवं पूजन के लिए उत्तम है। वजन 500 ग्राम।",
-    "naturalCharacteristics": [
-      "प्राकृतिक अखंड स्वरूप (500 ग्राम)",
-      "नर्मदा नदी के जल प्रवाह से बनी स्वाभाविक चिकनी सतह",
-      "हाथों में धारण करने योग्य संतुलित 4 इंच आकार",
-      "100% शुद्ध एवं प्राकृतिक बकावां नर्मदेश्वर पाषाण"
-    ],
-    "features": [
-      "दैनिक जलाभिषेक एवं साधना हेतु आदर्श",
-      "वजन: 500 gm",
-      "सुरक्षित पैकेजिंग",
-      "व्हाट्सएप पर सीधी सहायता"
-    ],
-    "mainImage": "/images/product-6.jpg",
-    "galleryImages": [
-      "/images/product-6.jpg"
-    ],
-    "mrp": 1994,
-    "sellingPrice": 1499,
-    "price": 1499,
-    "discountPercentage": 25,
-    "stock": 50,
-    "stockQuantity": 50,
-    "inStock": true,
-    "recommendedFor": "Home Temple, Daily Abhishekam, Spiritual Meditation",
-    "createdAt": "2026-08-21T15:00:00.000Z",
-    "updatedAt": "2026-08-23T10:18:17.758Z"
-  },
-  {
     "id": "product-1",
     "slug": "product-1",
     "collectionNumber": 1,
@@ -277,15 +31,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-1.jpeg"
     ],
-    "mrp": 1485,
-    "sellingPrice": 1100,
-    "discountPercentage": 35,
+    "mrp": 1215,
+    "sellingPrice": 900,
+    "discountPercentage": 26,
     "stock": 1,
     "inStock": true,
     "recommendedFor": "Home Temple, Daily Abhishekam, Griha Pravesh Gift",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.699Z",
-    "price": 1100,
+    "price": 900,
     "stockQuantity": 1
   },
   {
@@ -318,15 +72,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-2.jpeg"
     ],
-    "mrp": 1620,
-    "sellingPrice": 1200,
-    "discountPercentage": 35,
+    "mrp": 944,
+    "sellingPrice": 699,
+    "discountPercentage": 26,
     "stock": 2,
     "inStock": true,
     "recommendedFor": "Personal Prayer Space, Office Desk Pooja, Spiritual Gifts",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 1200,
+    "price": 699,
     "stockQuantity": 2
   },
   {
@@ -359,15 +113,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-3.jpeg"
     ],
-    "mrp": 1889,
-    "sellingPrice": 1399,
-    "discountPercentage": 35,
+    "mrp": 1619,
+    "sellingPrice": 1199,
+    "discountPercentage": 26,
     "stock": 50,
     "inStock": true,
     "recommendedFor": "Main Altar Pooja, Mahashivratri Special Vrat",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 1399,
+    "price": 1199,
     "stockQuantity": 50
   },
   {
@@ -400,15 +154,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-4.jpeg"
     ],
-    "mrp": 1754,
-    "sellingPrice": 1299,
-    "discountPercentage": 35,
+    "mrp": 1485,
+    "sellingPrice": 1100,
+    "discountPercentage": 26,
     "stock": 1,
     "inStock": true,
     "recommendedFor": "Meditation Room, Family Pooja Ghar, Special Occasions",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 1299,
+    "price": 1100,
     "stockQuantity": 1
   },
   {
@@ -441,15 +195,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-5.jpeg"
     ],
-    "mrp": 2024,
-    "sellingPrice": 1499,
-    "discountPercentage": 35,
+    "mrp": 2430,
+    "sellingPrice": 1800,
+    "discountPercentage": 26,
     "stock": 20,
     "inStock": true,
     "recommendedFor": "Apartment Pooja Space, Travel Kit Pooja, Daily Sadhana",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 1499,
+    "price": 1800,
     "stockQuantity": 20
   },
   {
@@ -482,15 +236,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-6.jpeg"
     ],
-    "mrp": 2159,
-    "sellingPrice": 1599,
-    "discountPercentage": 35,
+    "mrp": 1994,
+    "sellingPrice": 1499,
+    "discountPercentage": 25,
     "stock": 1,
     "inStock": true,
     "recommendedFor": "Public Temple, Colony Mandir, Large Ashram Altar",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 1599,
+    "price": 1499,
     "stockQuantity": 1
   },
   {
@@ -523,15 +277,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-7.jpeg"
     ],
-    "mrp": 2159,
-    "sellingPrice": 1599,
+    "mrp": 1485,
+    "sellingPrice": 1100,
     "discountPercentage": 35,
     "stock": 1,
     "inStock": true,
     "recommendedFor": "Gift for Elders, Spiritual Collectors, Family Worship",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 1599,
+    "price": 1100,
     "stockQuantity": 1
   },
   {
@@ -564,15 +318,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-8.jpeg"
     ],
-    "mrp": 2159,
-    "sellingPrice": 1599,
+    "mrp": 1620,
+    "sellingPrice": 1200,
     "discountPercentage": 35,
     "stock": 1,
     "inStock": true,
     "recommendedFor": "Standard Pooja Room, Anniversary Spiritual Gift, Daily Worship",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 1599,
+    "price": 1200,
     "stockQuantity": 1
   },
   {
@@ -605,15 +359,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-9.jpeg"
     ],
-    "mrp": 5535,
-    "sellingPrice": 4100,
+    "mrp": 1889,
+    "sellingPrice": 1399,
     "discountPercentage": 35,
     "stock": 1,
     "inStock": true,
     "recommendedFor": "Family Harmony, Spiritual Awakening, Daily Pooja",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 4100,
+    "price": 1399,
     "stockQuantity": 1
   },
   {
@@ -646,15 +400,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-10.jpeg"
     ],
-    "mrp": 2969,
-    "sellingPrice": 2199,
+    "mrp": 1754,
+    "sellingPrice": 1299,
     "discountPercentage": 35,
     "stock": 1,
     "inStock": true,
     "recommendedFor": "New House Entry, Office Temple, Auspicious Gifting",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 2199,
+    "price": 1299,
     "stockQuantity": 1
   },
   {
@@ -687,15 +441,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-11.jpeg"
     ],
-    "mrp": 2969,
-    "sellingPrice": 2199,
+    "mrp": 2024,
+    "sellingPrice": 1499,
     "discountPercentage": 35,
     "stock": 1,
     "inStock": true,
     "recommendedFor": "Sadhana, Nag Panchami Vrat, Personal Altar",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 2199,
+    "price": 1499,
     "stockQuantity": 1
   },
   {
@@ -728,15 +482,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-12.jpeg"
     ],
-    "mrp": 2969,
-    "sellingPrice": 2199,
+    "mrp": 2159,
+    "sellingPrice": 1599,
     "discountPercentage": 35,
     "stock": 1,
     "inStock": true,
     "recommendedFor": "Study Room Temple, Business Desk, Daily Worship",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 2199,
+    "price": 1599,
     "stockQuantity": 1
   },
   {
@@ -769,15 +523,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-13.jpeg"
     ],
-    "mrp": 4185,
-    "sellingPrice": 3100,
+    "mrp": 2159,
+    "sellingPrice": 1599,
     "discountPercentage": 35,
     "stock": 1,
     "inStock": true,
     "recommendedFor": "Daily Abhishekam, Shivratri Vrat, Spiritual Gift",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 3100,
+    "price": 1599,
     "stockQuantity": 1
   },
   {
@@ -810,15 +564,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-14.jpeg"
     ],
-    "mrp": 4725,
-    "sellingPrice": 3500,
+    "mrp": 2159,
+    "sellingPrice": 1599,
     "discountPercentage": 35,
     "stock": 1,
     "inStock": true,
     "recommendedFor": "Home Temple Altar, Gift for Parents, Festive Pooja",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 3500,
+    "price": 1599,
     "stockQuantity": 1
   },
   {
@@ -892,15 +646,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-16.jpeg"
     ],
-    "mrp": 4185,
-    "sellingPrice": 3100,
+    "mrp": 2969,
+    "sellingPrice": 2199,
     "discountPercentage": 35,
     "stock": 1,
     "inStock": true,
     "recommendedFor": "Large Home Mandir, Family Trust Temple, Rudrabhishek",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 3100,
+    "price": 2199,
     "stockQuantity": 1
   },
   {
@@ -933,15 +687,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-17.jpeg"
     ],
-    "mrp": 6750,
-    "sellingPrice": 5000,
+    "mrp": 2969,
+    "sellingPrice": 2199,
     "discountPercentage": 35,
     "stock": 1,
     "inStock": true,
     "recommendedFor": "Meditation Altar, Yoga Room, Spiritual Sadhana",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 5000,
+    "price": 2199,
     "stockQuantity": 1
   },
   {
@@ -974,15 +728,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-18.jpeg"
     ],
-    "mrp": 6750,
-    "sellingPrice": 5000,
+    "mrp": 2969,
+    "sellingPrice": 2199,
     "discountPercentage": 35,
     "stock": 1,
     "inStock": true,
     "recommendedFor": "Main Temple, Ashram Altar, Lifetime Family Worship",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 5000,
+    "price": 2199,
     "stockQuantity": 1
   },
   {

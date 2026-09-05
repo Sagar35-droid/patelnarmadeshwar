@@ -7,37 +7,56 @@ import { CustomSizeEnquirySection } from '../components/home/CustomSizeEnquirySe
 import { AboutPreviewSection } from '../components/home/AboutPreviewSection';
 import { FeaturedProducts } from '../components/home/FeaturedProducts';
 import { BakawanLocationSection } from '../components/home/BakawanLocationSection';
+import { HomeFAQSection, HOME_FAQS } from '../components/home/HomeFAQSection';
 import { useRouter } from '../context/RouterContext';
 import { getGeneralWhatsAppLink } from '../utils/whatsapp';
 import { MessageCircle, Sparkles, PhoneCall } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../config/businessConfig';
+import { PRODUCTS } from '../data/products';
 
 export const HomePage: React.FC = () => {
   const { navigate } = useRouter();
 
   useEffect(() => {
+    // Top 20 featured products for ItemList schema
+    const featuredItems = PRODUCTS.slice(0, 20).map((product, idx) => ({
+      position: idx + 1,
+      name: product.name,
+      url: `/products/${product.id}`,
+      image: product.mainImage,
+      price: product.price
+    }));
+
     updatePageSEO({
-      title: 'Original Natural Narmadeshwar Shivling | Pan India Delivery',
-      description: 'Buy 100% original natural Narmadeshwar Shivling with natural Janeyu, Tilak and Sun lines direct from sacred Narmada River, Bakawan (MP). Safe Pan India Delivery in protective wooden box.',
+      title: 'Sagar Narmadeshwar Shivling | Original Narmada Stone Shivling with Jaladhari',
+      description: 'Buy 100% Original Natural Narmadeshwar Shivling & Akhand Shivling with Jaladhari direct from Narmada River, Bakawan (MP). Sourced with natural Janeyu & Tilak marks. Safe Pan India delivery.',
       keywords: [
         'Narmadeshwar Shivling',
-        'Original Narmadeshwar Shivling',
-        'Natural Narmadeshwar Shivling',
+        'Narmada Shivling',
         'Narmadeshwar Shivling online',
         'Narmadeshwar Shivling price',
-        'Narmada Shivling India',
-        'Narmadeshwar Shivling for home puja',
-        'Narmadeshwar Shivling with Jaladhari',
+        'Shivling with Jaladhari',
+        'Narmada stone Shivling',
+        'Akhand Shivling',
+        'Shivling for home',
+        'Natural Narmadeshwar Shivling',
+        'Original Narmadeshwar Shivling',
+        'buy Narmadeshwar Shivling',
+        'Bakawan Shivling',
+        'Shivling online India',
+        'शिवलिंग',
         'नर्मदेश्वर शिवलिंग',
         'नर्मदा शिवलिंग',
         'नर्मदेश्वर शिवलिंग खरीदें',
         'घर के लिए नर्मदेश्वर शिवलिंग',
-        'narmadeshwar shivling online',
-        'narmadeshwar shivling price',
-        'narmadeshwar shivling kaha se kharide',
-        'Bakawan Shivling'
+        'अखंड नर्मदेश्वर शिवलिंग'
       ],
       canonicalPath: '/',
+      itemListData: featuredItems,
+      faqList: HOME_FAQS.map((faq) => ({
+        question: faq.question,
+        answer: faq.answer
+      }))
     });
   }, []);
 
@@ -65,6 +84,9 @@ export const HomePage: React.FC = () => {
 
       {/* Bakawan Location & Map Section */}
       <BakawanLocationSection />
+
+      {/* Sacred Knowledge & FAQ Section */}
+      <HomeFAQSection />
 
       {/* Final Call to Action Section */}
       <section className="py-16 bg-gradient-to-br from-amber-950 via-stone-900 to-amber-900 text-white relative overflow-hidden">
