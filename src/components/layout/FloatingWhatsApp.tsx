@@ -1,24 +1,12 @@
 import React from 'react';
-import { getGeneralWhatsAppLink } from '../../utils/whatsapp';
+import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../../utils/whatsapp';
 import { MessageCircle } from 'lucide-react';
-
-declare global {
-  interface Window {
-    gtag_report_conversion?: (url?: string) => boolean;
-  }
-}
 
 export const FloatingWhatsApp: React.FC = () => {
   const whatsappUrl = getGeneralWhatsAppLink();
 
-  const handleWhatsAppClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-
-    if (window.gtag_report_conversion) {
-      window.gtag_report_conversion(whatsappUrl);
-    } else {
-      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-    }
+  const handleWhatsAppClick = () => {
+    trackWhatsAppConversion();
   };
 
   return (

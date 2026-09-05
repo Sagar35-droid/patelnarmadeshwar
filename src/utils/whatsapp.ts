@@ -1,6 +1,30 @@
 import { BUSINESS_CONFIG } from '../config/businessConfig';
 import { Product } from '../types';
 
+declare global {
+  interface Window {
+    dataLayer?: any[];
+    gtag?: (...args: any[]) => void;
+  }
+}
+
+/**
+ * Tracks a Google Ads contact conversion when a visitor clicks any WhatsApp button.
+ * Conversion Action: AW-18356820286/vVwuCNmx9O4cEL6ym7FE
+ * Fires synchronously before opening/redirecting to WhatsApp.
+ */
+export function trackWhatsAppConversion(): void {
+  try {
+    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-18356820286/vVwuCNmx9O4cEL6ym7FE'
+      });
+    }
+  } catch (error) {
+    console.error('WhatsApp conversion tracking error:', error);
+  }
+}
+
 /**
  * ============================================================================
  * WHATSAPP CONFIGURATION

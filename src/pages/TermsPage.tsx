@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { updatePageSEO } from '../utils/seo';
 import { FileText, Sparkles, CheckCircle2, AlertCircle, MessageCircle } from 'lucide-react';
-import { getGeneralWhatsAppLink } from '../utils/whatsapp';
+import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../utils/whatsapp';
 
 export const TermsPage: React.FC = () => {
 
@@ -136,6 +136,7 @@ export const TermsPage: React.FC = () => {
             <div className="flex justify-center">
               <a
                 href={whatsappUrl}
+                onClick={() => trackWhatsAppConversion()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-xs sm:text-sm rounded-full shadow-md inline-flex items-center gap-2 transition-all"

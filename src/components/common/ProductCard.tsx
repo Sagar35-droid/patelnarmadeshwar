@@ -2,7 +2,7 @@ import React from 'react';
 import { Product } from '../../types';
 import { useRouter } from '../../context/RouterContext';
 import { getPricingDetails, formatPrice } from '../../utils/pricing';
-import { getProductWhatsAppLink } from '../../utils/whatsapp';
+import { getProductWhatsAppLink, trackWhatsAppConversion } from '../../utils/whatsapp';
 import { MessageCircle, ArrowRight, Tag } from 'lucide-react';
 
 interface ProductCardProps {
@@ -153,6 +153,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, hideTitle = f
 
             <a
               href={whatsappUrl}
+              onClick={() => trackWhatsAppConversion()}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full py-2 sm:py-2.5 px-2 sm:px-3 text-[11px] sm:text-xs font-bold text-white bg-[#25D366] hover:bg-[#128C7E] rounded-xl transition-colors flex items-center justify-center gap-1.5 shadow-xs"

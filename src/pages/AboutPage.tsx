@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { updatePageSEO } from '../utils/seo';
 import { HINDI_ABOUT_CONTENT } from '../data/hindiAboutContent';
 import { useRouter } from '../context/RouterContext';
-import { getGeneralWhatsAppLink } from '../utils/whatsapp';
+import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../utils/whatsapp';
 import { BookOpen, Sparkles, CheckCircle2, MessageCircle, MapPin, Landmark, Compass, Video } from 'lucide-react';
 import { CustomerReviewsSection } from '../components/common/CustomerReviewsSection';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
@@ -392,6 +392,7 @@ export const AboutPage: React.FC = () => {
           <div className="text-center pt-2">
             <a
               href={whatsappUrl}
+              onClick={() => trackWhatsAppConversion()}
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 rounded-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-xs sm:text-sm shadow-xl transition-all inline-flex items-center gap-2"

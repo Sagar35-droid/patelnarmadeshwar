@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from '../../context/RouterContext';
 import { BUSINESS_CONFIG } from '../../config/businessConfig';
-import { getGeneralWhatsAppLink } from '../../utils/whatsapp';
+import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../../utils/whatsapp';
 import { MessageCircle, Sparkles, ArrowRight } from 'lucide-react';
 
 export const HeroSection: React.FC = () => {
@@ -51,6 +51,7 @@ export const HeroSection: React.FC = () => {
 
           <a
             href={whatsappUrl}
+            onClick={() => trackWhatsAppConversion()}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto border-2 border-[#C5A059] bg-white text-[#C5A059] px-8 py-4 rounded-xl font-bold hover:bg-[#C5A059]/10 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs"

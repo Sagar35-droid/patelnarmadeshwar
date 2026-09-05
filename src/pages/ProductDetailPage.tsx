@@ -3,7 +3,7 @@ import { useRouter } from '../context/RouterContext';
 import { useProducts } from '../context/ProductContext';
 import { updatePageSEO } from '../utils/seo';
 import { getPricingDetails, formatPrice } from '../utils/pricing';
-import { getProductWhatsAppLink, getProductWhatsAppOrderLink } from '../utils/whatsapp';
+import { getProductWhatsAppLink, getProductWhatsAppOrderLink, trackWhatsAppConversion } from '../utils/whatsapp';
 import {
   MessageCircle,
   ChevronRight,
@@ -254,6 +254,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
                 {isInStock ? (
                   <a
                     href={quantity > 1 ? getProductWhatsAppOrderLink(product, quantity) : getProductWhatsAppLink(product)}
+                    onClick={() => trackWhatsAppConversion()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-4 px-6 rounded-xl bg-[#25D366] hover:bg-[#128C7E] active:bg-[#075E54] text-white font-bold text-sm sm:text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-3 cursor-pointer transform hover:-translate-y-0.5"

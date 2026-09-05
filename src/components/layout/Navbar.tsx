@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from '../../context/RouterContext';
 import { BUSINESS_CONFIG } from '../../config/businessConfig';
+import { trackWhatsAppConversion } from '../../utils/whatsapp';
 import { Menu, X, Sparkles, Phone, MapPin, MessageCircle } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
@@ -92,6 +93,7 @@ export const Navbar: React.FC = () => {
           <div className="hidden md:flex items-center gap-3">
             <a
               href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent('Namaste, mujhe Sagar Narmadeshwar Shivling order karna hai.')}`}
+              onClick={() => trackWhatsAppConversion()}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#25D366] hover:bg-[#128C7E] text-white transition-all text-xs font-bold shadow-xs"
@@ -106,6 +108,7 @@ export const Navbar: React.FC = () => {
           <div className="flex md:hidden items-center gap-2">
             <a
               href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent('Namaste, mujhe Sagar Narmadeshwar Shivling order karna hai.')}`}
+              onClick={() => trackWhatsAppConversion()}
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-white bg-[#25D366] hover:bg-[#128C7E] rounded-full shadow-xs flex items-center justify-center"

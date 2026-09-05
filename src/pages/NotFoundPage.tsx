@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useRouter } from '../context/RouterContext';
 import { updatePageSEO } from '../utils/seo';
-import { getGeneralWhatsAppLink } from '../utils/whatsapp';
+import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../utils/whatsapp';
 import { Home, ShoppingBag, MessageCircle, ArrowRight, HelpCircle, Sparkles } from 'lucide-react';
 
 export const NotFoundPage: React.FC = () => {
@@ -67,6 +67,7 @@ export const NotFoundPage: React.FC = () => {
 
           <a
             href={whatsappUrl}
+            onClick={() => trackWhatsAppConversion()}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 text-[#25D366] hover:text-[#128C7E] font-bold transition-colors"

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { updatePageSEO } from '../utils/seo';
-import { getEnquiryFormWhatsAppLink } from '../utils/whatsapp';
+import { getEnquiryFormWhatsAppLink, trackWhatsAppConversion } from '../utils/whatsapp';
 import { MessageCircle, Send, CheckCircle2, Sparkles, ShieldCheck } from 'lucide-react';
 
 export const EnquiryPage: React.FC = () => {
@@ -22,6 +22,7 @@ export const EnquiryPage: React.FC = () => {
   }, []);
 
   const handleSendWhatsApp = () => {
+    trackWhatsAppConversion();
     const waUrl = getEnquiryFormWhatsAppLink({
       name,
       phone,

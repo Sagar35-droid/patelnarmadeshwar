@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from '../../context/RouterContext';
 import { BUSINESS_CONFIG } from '../../config/businessConfig';
-import { getGeneralWhatsAppLink } from '../../utils/whatsapp';
+import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../../utils/whatsapp';
 import { MessageCircle, Phone, Mail, MapPin, Clock, ShieldCheck, HeartHandshake } from 'lucide-react';
 
 export const Footer: React.FC = () => {
@@ -34,6 +34,7 @@ export const Footer: React.FC = () => {
             <div className="pt-2">
               <a
                 href={whatsappUrl}
+                onClick={() => trackWhatsAppConversion()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white text-xs font-bold px-5 py-2.5 rounded-full shadow-md transition-all"
@@ -238,7 +239,7 @@ export const Footer: React.FC = () => {
               </li>
               <li className="flex items-center gap-2.5">
                 <MessageCircle className="w-4 h-4 text-[#25D366] shrink-0" />
-                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                <a href={whatsappUrl} onClick={() => trackWhatsAppConversion()} target="_blank" rel="noopener noreferrer" className="hover:text-white">
                   {BUSINESS_CONFIG.whatsappDisplay} (WhatsApp)
                 </a>
               </li>

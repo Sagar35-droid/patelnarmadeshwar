@@ -5,7 +5,7 @@ import { getBlogPostBySlug, getRelatedBlogPosts, BLOG_POSTS } from '../data/blog
 import { updatePageSEO } from '../utils/seo';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { AuthorTrustCard } from '../components/common/AuthorTrustCard';
-import { getGeneralWhatsAppLink } from '../utils/whatsapp';
+import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../utils/whatsapp';
 import {
   Calendar,
   Clock,
@@ -381,6 +381,7 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
               </button>
               <a
                 href={whatsappInquiryUrl}
+                onClick={() => trackWhatsAppConversion()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs rounded-xl transition-all inline-flex items-center gap-2 border border-white/20"
@@ -532,6 +533,7 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
           </div>
           <a
             href={whatsappInquiryUrl}
+            onClick={() => trackWhatsAppConversion()}
             target="_blank"
             rel="noopener noreferrer"
             className="px-5 py-2.5 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-xs rounded-xl shadow-md transition-all inline-flex items-center gap-2 shrink-0"

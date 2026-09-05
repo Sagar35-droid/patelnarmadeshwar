@@ -1,6 +1,6 @@
 import React from 'react';
 import { BUSINESS_CONFIG } from '../../config/businessConfig';
-import { getGeneralWhatsAppLink } from '../../utils/whatsapp';
+import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../../utils/whatsapp';
 import {
   MapPin,
   Navigation,
@@ -159,6 +159,7 @@ export const BakawanLocationSection: React.FC = () => {
 
               <a
                 href={whatsappUrl}
+                onClick={() => trackWhatsAppConversion()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 py-3.5 px-4 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-xl font-bold text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2"

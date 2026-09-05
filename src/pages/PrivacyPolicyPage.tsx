@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { updatePageSEO } from '../utils/seo';
 import { useRouter } from '../context/RouterContext';
 import { ShieldCheck, Lock, FileText, CheckCircle2, MessageCircle } from 'lucide-react';
-import { getGeneralWhatsAppLink } from '../utils/whatsapp';
+import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../utils/whatsapp';
 
 export const PrivacyPolicyPage: React.FC = () => {
   const { navigate } = useRouter();
@@ -136,6 +136,7 @@ export const PrivacyPolicyPage: React.FC = () => {
             <div className="pt-2 flex justify-center">
               <a
                 href={whatsappUrl}
+                onClick={() => trackWhatsAppConversion()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-xs sm:text-sm rounded-full shadow-md inline-flex items-center gap-2 transition-all"

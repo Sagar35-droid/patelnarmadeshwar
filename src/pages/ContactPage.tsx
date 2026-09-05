@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { updatePageSEO } from '../utils/seo';
 import { BUSINESS_CONFIG } from '../config/businessConfig';
-import { getGeneralWhatsAppLink } from '../utils/whatsapp';
+import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../utils/whatsapp';
 import {
   MapPin,
   Phone,
@@ -35,6 +35,7 @@ export const ContactPage: React.FC = () => {
 
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    trackWhatsAppConversion();
     setFormSent(true);
     const msg = `Namaste ${BUSINESS_CONFIG.name} team! My name is ${name} (${phone}). Message: ${query}`;
     const url = `https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
@@ -110,7 +111,7 @@ export const ContactPage: React.FC = () => {
                 <MessageCircle className="w-5 h-5 text-[#25D366] shrink-0" />
                 <div>
                   <strong className="text-[#1A1A1A] block font-bold">WhatsApp Number:</strong>
-                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-[#25D366] font-bold hover:underline">
+                  <a href={whatsappUrl} onClick={() => trackWhatsAppConversion()} target="_blank" rel="noopener noreferrer" className="text-[#25D366] font-bold hover:underline">
                     {BUSINESS_CONFIG.whatsappDisplay}
                   </a>
                 </div>
@@ -140,6 +141,7 @@ export const ContactPage: React.FC = () => {
             <div className="pt-2">
               <a
                 href={whatsappUrl}
+                onClick={() => trackWhatsAppConversion()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full py-3.5 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-xs sm:text-sm rounded-full shadow-md transition-all flex items-center justify-center gap-2"

@@ -9,7 +9,7 @@ import { FeaturedProducts } from '../components/home/FeaturedProducts';
 import { BakawanLocationSection } from '../components/home/BakawanLocationSection';
 import { HomeFAQSection, HOME_FAQS } from '../components/home/HomeFAQSection';
 import { useRouter } from '../context/RouterContext';
-import { getGeneralWhatsAppLink } from '../utils/whatsapp';
+import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../utils/whatsapp';
 import { MessageCircle, Sparkles, PhoneCall } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../config/businessConfig';
 import { PRODUCTS } from '../data/products';
@@ -107,6 +107,7 @@ export const HomePage: React.FC = () => {
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href={whatsappUrl}
+              onClick={() => trackWhatsAppConversion()}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm sm:text-base shadow-xl transition-all flex items-center justify-center gap-2"

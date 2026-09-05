@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { updatePageSEO } from '../utils/seo';
 import { BUSINESS_CONFIG } from '../config/businessConfig';
-import { getGeneralWhatsAppLink } from '../utils/whatsapp';
+import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../utils/whatsapp';
 import { 
   HelpCircle, 
   ChevronDown, 
@@ -297,6 +297,7 @@ export const FAQPage: React.FC = () => {
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href={whatsappUrl}
+              onClick={() => trackWhatsAppConversion()}
               target="_blank"
               rel="noopener noreferrer"
               className="py-3 px-6 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-2"

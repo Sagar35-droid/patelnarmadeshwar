@@ -1,7 +1,7 @@
 import React from 'react';
 import { BUSINESS_CONFIG } from '../../config/businessConfig';
 import { useRouter } from '../../context/RouterContext';
-import { getGeneralWhatsAppLink } from '../../utils/whatsapp';
+import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../../utils/whatsapp';
 import { ShieldCheck, MapPin, Phone, MessageCircle, Sparkles } from 'lucide-react';
 
 interface AuthorTrustCardProps {
@@ -58,6 +58,7 @@ export const AuthorTrustCard: React.FC<AuthorTrustCardProps> = ({ category, clas
         <div className="flex items-center gap-2">
           <a
             href={whatsappUrl}
+            onClick={() => trackWhatsAppConversion()}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold rounded-lg text-xs transition-all shadow-xs"

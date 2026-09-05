@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { updatePageSEO } from '../utils/seo';
 import { BUSINESS_CONFIG } from '../config/businessConfig';
-import { getGeneralWhatsAppLink } from '../utils/whatsapp';
+import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../utils/whatsapp';
 import { 
   AlertTriangle, 
   Sparkles, 
@@ -148,6 +148,7 @@ export const DisclaimerPage: React.FC = () => {
             </p>
             <a
               href={whatsappUrl}
+              onClick={() => trackWhatsAppConversion()}
               target="_blank"
               rel="noopener noreferrer"
               className="py-2.5 px-5 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center gap-2 shrink-0"

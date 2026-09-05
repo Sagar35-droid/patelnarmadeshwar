@@ -1,5 +1,5 @@
 import React from 'react';
-import { getGeneralWhatsAppLink } from '../../utils/whatsapp';
+import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../../utils/whatsapp';
 import { MessageCircle } from 'lucide-react';
 
 export const CustomSizeEnquirySection: React.FC = () => {
@@ -19,6 +19,7 @@ export const CustomSizeEnquirySection: React.FC = () => {
             <div className="pt-2">
               <a
                 href={whatsappUrl}
+                onClick={() => trackWhatsAppConversion()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-xs sm:text-sm shadow-lg transition-all cursor-pointer"

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Sparkles, Video, Maximize2, Star, Quote, CheckCircle2, X, MapPin, Heart, MessageCircle } from 'lucide-react';
 import { GENUINE_CUSTOMER_REVIEWS, CustomerReviewItem } from '../../data/reviewsData';
 import { BUSINESS_CONFIG } from '../../config/businessConfig';
+import { trackWhatsAppConversion } from '../../utils/whatsapp';
 
 interface CustomerReviewsSectionProps {
   productName?: string;
@@ -45,6 +46,7 @@ export const CustomerReviewsSection: React.FC<CustomerReviewsSectionProps> = ({
             <a
               id="btn-submit-review"
               href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent('Namaste, main Sagar Narmadeshwar Shivling ke liye apna review aur anubhav share karna chahta hoon.')}`}
+              onClick={() => trackWhatsAppConversion()}
               target="_blank"
               rel="noopener noreferrer"
               className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#C5A059] via-[#D4B26F] to-[#997328] hover:from-[#B5924B] hover:to-[#856320] text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all flex items-center gap-2 cursor-pointer border border-[#C5A059]/40"
@@ -228,6 +230,7 @@ export const CustomerReviewsSection: React.FC<CustomerReviewsSectionProps> = ({
           <div>
             <a
               href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent('Namaste, main Sagar Narmadeshwar Shivling ke liye apna review aur anubhav share karna chahta hoon.')}`}
+              onClick={() => trackWhatsAppConversion()}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#8B6508] hover:text-[#5C4205] underline underline-offset-4 cursor-pointer transition-colors"
