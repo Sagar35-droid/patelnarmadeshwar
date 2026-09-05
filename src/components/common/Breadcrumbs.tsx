@@ -33,14 +33,18 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' 
             return (
               <li key={idx} className="inline-flex items-center gap-1.5">
                 {idx === 0 ? (
-                  <button
-                    onClick={() => navigate('/')}
+                  <a
+                    href="/"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigate('/');
+                    }}
                     className="hover:text-[#C5A059] font-medium transition-colors flex items-center gap-1 cursor-pointer"
                     title="Go to Home"
                   >
                     <Home className="w-3.5 h-3.5 text-stone-400" />
                     <span>Home</span>
-                  </button>
+                  </a>
                 ) : isLast || !item.path ? (
                   <span
                     className="text-[#1A1A1A] font-bold truncate max-w-[200px] sm:max-w-md"
@@ -49,12 +53,16 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' 
                     {item.label}
                   </span>
                 ) : (
-                  <button
-                    onClick={() => navigate(item.path!)}
+                  <a
+                    href={item.path}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigate(item.path!);
+                    }}
                     className="hover:text-[#C5A059] font-medium transition-colors cursor-pointer"
                   >
                     {item.label}
-                  </button>
+                  </a>
                 )}
 
                 {!isLast && (

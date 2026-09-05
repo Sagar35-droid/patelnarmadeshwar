@@ -29,48 +29,49 @@ import { NotFoundPage } from './pages/NotFoundPage';
 
 function MainContent() {
   const { currentPath, productId, blogSlug } = useRouter();
+  const normalizedPath = (currentPath.replace(/\/+$/, '') || '/').toLowerCase();
 
   let PageComponent = <HomePage />;
 
-  if (currentPath === '/' || currentPath === '') {
+  if (normalizedPath === '/' || normalizedPath === '') {
     PageComponent = <HomePage />;
-  } else if (currentPath === '/about') {
+  } else if (normalizedPath === '/about') {
     PageComponent = <AboutPage />;
-  } else if (currentPath === '/products') {
+  } else if (normalizedPath === '/products' || normalizedPath === '/product') {
     PageComponent = <ProductsPage />;
-  } else if (currentPath.startsWith('/products/') || currentPath.startsWith('/product/') || productId) {
-    PageComponent = <ProductDetailPage productId={productId || ''} />;
-  } else if (currentPath === '/blog') {
+  } else if (productId) {
+    PageComponent = <ProductDetailPage productId={productId} />;
+  } else if (normalizedPath === '/blog') {
     PageComponent = <BlogListPage />;
-  } else if (currentPath.startsWith('/blog/') && blogSlug) {
+  } else if (blogSlug) {
     PageComponent = <BlogDetailPage slug={blogSlug} />;
   } else if (
-    currentPath === '/cart' ||
-    currentPath === '/checkout' ||
-    currentPath === '/login' ||
-    currentPath === '/signup' ||
-    currentPath === '/my-orders' ||
-    currentPath === '/track-order' ||
-    currentPath === '/admin'
+    normalizedPath === '/cart' ||
+    normalizedPath === '/checkout' ||
+    normalizedPath === '/login' ||
+    normalizedPath === '/signup' ||
+    normalizedPath === '/my-orders' ||
+    normalizedPath === '/track-order' ||
+    normalizedPath === '/admin'
   ) {
     PageComponent = <ProductsPage />;
-  } else if (currentPath === '/enquiry') {
+  } else if (normalizedPath === '/enquiry') {
     PageComponent = <EnquiryPage />;
-  } else if (currentPath === '/contact') {
+  } else if (normalizedPath === '/contact') {
     PageComponent = <ContactPage />;
-  } else if (currentPath === '/privacy-policy') {
+  } else if (normalizedPath === '/privacy-policy') {
     PageComponent = <PrivacyPolicyPage />;
-  } else if (currentPath === '/terms-and-conditions') {
+  } else if (normalizedPath === '/terms-and-conditions') {
     PageComponent = <TermsPage />;
-  } else if (currentPath === '/shipping-policy') {
+  } else if (normalizedPath === '/shipping-policy') {
     PageComponent = <ShippingPolicyPage />;
-  } else if (currentPath === '/return-policy') {
+  } else if (normalizedPath === '/return-policy') {
     PageComponent = <ReturnPolicyPage />;
-  } else if (currentPath === '/cancellation-policy') {
+  } else if (normalizedPath === '/cancellation-policy') {
     PageComponent = <CancellationPolicyPage />;
-  } else if (currentPath === '/faq') {
+  } else if (normalizedPath === '/faq') {
     PageComponent = <FAQPage />;
-  } else if (currentPath === '/disclaimer') {
+  } else if (normalizedPath === '/disclaimer') {
     PageComponent = <DisclaimerPage />;
   } else {
     PageComponent = <NotFoundPage />;

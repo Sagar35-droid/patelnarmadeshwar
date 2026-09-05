@@ -159,8 +159,8 @@ export function updatePageSEO({
   setMetaTag('twitter:image', image);
   setMetaTag('twitter:image:alt', defaultAlt);
 
-  // 7. Organization & LocalBusiness JSON-LD Schema (Persistent)
-  const businessSchema = {
+  // 7. Organization & LocalBusiness JSON-LD Schema (Persistent, Strictly Verified Facts Only)
+  const businessSchema: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     '@id': `${SITE_URL}/#organization`,
@@ -182,42 +182,16 @@ export function updatePageSEO({
       postalCode: BUSINESS_CONFIG.address.pincode || '451113',
       addressCountry: 'IN'
     },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: 22.2536,
-      longitude: 75.9867
-    },
     areaServed: [
       {
         '@type': 'Country',
         name: 'India'
       }
-    ],
-    openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: [
-          'Monday',
-          'Tuesday',
-          'Wednesday',
-          'Thursday',
-          'Friday',
-          'Saturday',
-          'Sunday'
-        ],
-        opens: '00:00',
-        closes: '23:59'
-      }
-    ],
-    sameAs: [
-      BUSINESS_CONFIG.socialLinks?.facebook,
-      BUSINESS_CONFIG.socialLinks?.instagram,
-      BUSINESS_CONFIG.socialLinks?.youtube
-    ].filter(Boolean)
+    ]
   };
   setJsonLdScript('schema-business', businessSchema);
 
-  const websiteSchema = {
+  const websiteSchema: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     '@id': `${SITE_URL}/#website`,
@@ -227,11 +201,6 @@ export function updatePageSEO({
     description: DEFAULT_SEO.defaultDescription,
     publisher: {
       '@id': `${SITE_URL}/#organization`
-    },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${SITE_URL}/products?q={search_term_string}`,
-      'query-input': 'required name=search_term_string'
     },
     inLanguage: ['en-IN', 'hi-IN']
   };

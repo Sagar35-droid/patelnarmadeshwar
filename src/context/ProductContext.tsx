@@ -34,21 +34,42 @@ export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({ child
     (id: string) => {
       if (!id) return undefined;
       const cleanId = id.trim();
+      const lowerCleanId = cleanId.toLowerCase();
+
+      // 1. Direct match on ID or slug (case-sensitive first, then case-insensitive)
       const direct = products.find((p) => p.id === cleanId || p.slug === cleanId);
       if (direct) return direct;
 
-      // Handle pure numeric id e.g. "11" -> "product-11"
-      if (/^\d+$/.test(cleanId)) {
-        const found = products.find((p) => p.id === `product-${cleanId}` || p.id === `product-new-${cleanId}`);
-        if (found) return found;
+      const directLower = products.find(
+        (p) => p.id.toLowerCase() === lowerCleanId || (p.slug && p.slug.toLowerCase() === lowerCleanId)
+      );
+      if (directLower) return directLower;
+
+      // 2. Pure number: e.g. "1" to "38" (or "40")
+      const numMatch = cleanId.match(/^(\d+)$/);
+      if (numMatch) {
+        const num = parseInt(numMatch[1], 10);
+        // Direct ID check like product-1
+        const byId = products.find((p) => p.id === `product-${num}`);
+        if (byId) return byId;
+
+        // 1-based index in the 38 products collection (e.g. Product 30 -> products[29])
+        if (num >= 1 && num <= products.length) {
+          return products[num - 1];
+        }
       }
 
-      // Handle pr-1 or pr1
-      const prMatch = cleanId.match(/^pr-?(\d+)$/i);
-      if (prMatch) {
-        const num = prMatch[1];
-        const found = products.find((p) => p.id === `product-${num}` || p.id === `product-new-${num}`);
-        if (found) return found;
+      // 3. Prefix match: e.g. "product-30", "product-38", "product1", "item-5"
+      const prefixMatch = cleanId.match(/^(?:product|item|pr|p)[-_ ]?(\d+)$/i);
+      if (prefixMatch) {
+        const num = parseInt(prefixMatch[1], 10);
+        const byId = products.find((p) => p.id === `product-${num}`);
+        if (byId) return byId;
+
+        // If skipped ID (like product-30 or product-38), resolve to 1-based index
+        if (num >= 1 && num <= products.length) {
+          return products[num - 1];
+        }
       }
 
       return undefined;

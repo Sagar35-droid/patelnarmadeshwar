@@ -53,6 +53,18 @@ export const HOME_FAQS: HomeFAQItem[] = [
     questionHindi: 'घर पर नर्मदेश्वर शिवलिंग की नित्य पूजा कैसे करें?',
     answer: 'Place the Jaladhari facing North in your mandir. Offer fresh water (Jal Abhishek) while chanting "Om Namah Shivaya" (ॐ नमः शिवाय). Offer Bilva patra, white flowers, and pure Chandan. Conclude with a ghee diya and incense dhoop. Sincere devotion and pure water are supreme.',
     answerHindi: 'शिवलिंग को उत्तर मुखी जलाधारी के साथ स्थापित करें। "ॐ नमः शिवाय" का जप करते हुए जल अर्पित करें, बेलपत्र, पुष्प और चंदन चढ़ाएं तथा घी का दीपक प्रज्वलित करें।'
+  },
+  {
+    question: 'Which Shivling size is suitable for home?',
+    questionHindi: 'घर के मंदिर के लिए कौन सा शिवलिंग आकार सबसे उपयुक्त है?',
+    answer: 'For home puja (गृहस्थ मंदिर), scriptures and tradition recommend a Shivling between 2 to 4 inches (approximately thumb size - अंगुष्ठ मात्र). This size is ideal for daily Abhishek and respectful maintenance. Larger Shivlings (6 inches to 1 foot or more) are traditionally placed in ashrams, public temples, or dedicated large shrines.',
+    answerHindi: 'गृहस्थ मंदिर हेतु 2 से 4 इंच (अंगुष्ठ मात्र) का नर्मदेश्वर शिवलिंग सर्वोत्तम माना गया है। यह दैनिक जलाभिषेक और रख-रखाव के लिए अत्यंत सुविधाजनक होता है। 6 इंच से बड़े शिवलिंग मुख्य रूप से आश्रमों या बड़े देवालयों हेतु उपयुक्त होते हैं।'
+  },
+  {
+    question: 'What should I check before buying a Narmadeshwar Shivling?',
+    questionHindi: 'नर्मदेश्वर शिवलिंग खरीदते समय क्या जांचना चाहिए?',
+    answer: 'Verify that the Shivling originates from the Narmada River basin at Bakawan (Madhya Pradesh). Ensure it has natural river-formed smoothness, natural Janeyu or Tilak markings, and no artificial chemical polish or paint. The stone should feel naturally heavy and cool, with a matching well-fitted Jaladhari.',
+    answerHindi: 'सुनिश्चित करें कि शिवलिंग बकावां (मध्य प्रदेश) की नर्मदा नदी से प्राप्त हो। उस पर कोई रासायनिक पॉलिश या कृत्रिम रंग न हो, और प्राकृतिक जनेऊ या तिलक रेखाएं हों। पाषाण स्वाभाविक रूप से ठंडा व वजनदार होना चाहिए।'
   }
 ];
 

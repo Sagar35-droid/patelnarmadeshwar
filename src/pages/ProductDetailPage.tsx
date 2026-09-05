@@ -40,8 +40,10 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
   useEffect(() => {
     if (product) {
       setSelectedImage(product.mainImage);
-      const cleanTitle = `${product.name} (${product.size}, ${product.weight}) | Natural Narmadeshwar Shivling with Jaladhari`;
-      const cleanDesc = `Buy authentic ${product.name} (${product.size}, ${product.weight}) Narmada stone Shivling with natural ${product.markingType}. Price ₹${pricing.sellingPrice}. Direct from Bakawan (MP) with safe Pan India wooden box delivery.`;
+      const itemNum = product.id.replace('product-', '');
+      const pieceLabel = `Piece #${itemNum}`;
+      const cleanTitle = `${product.name} (${product.size}, ${product.weight}, ${pieceLabel}) | Authentic Narmadeshwar Shivling`;
+      const cleanDesc = `Buy authentic ${product.name} (${product.size}, ${product.weight}, ${pieceLabel}) natural Narmada stone Shivling. Price ₹${pricing.sellingPrice}. Direct from Bakawan, MP with secure wooden box delivery.`;
       
       updatePageSEO({
         title: cleanTitle,
@@ -68,7 +70,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
         breadcrumbs: [
           { name: 'Home', url: '/' },
           { name: 'Products Collection', url: '/products' },
-          { name: product.name, url: `/products/${product.id}` }
+          { name: `${product.name} (${pieceLabel})`, url: `/products/${product.id}` }
         ],
         productData: {
           id: product.id,
@@ -322,19 +324,27 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
                 Sacred Guides for Your Narmadeshwar Shivling
               </h2>
             </div>
-            <button
-              onClick={() => navigate('/blog')}
+            <a
+              href="/blog"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/blog');
+              }}
               className="text-xs font-bold text-[#8C6B2D] hover:underline cursor-pointer flex items-center gap-1"
             >
               <span>View All 10 Guides</span>
               <ChevronRight className="w-3.5 h-3.5" />
-            </button>
+            </a>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div
-              onClick={() => navigate('/blog/narmadeshwar-shivling-puja-vidhi-at-home')}
-              className="p-4 rounded-xl bg-[#FDFCF9] border border-stone-200 hover:border-[#C5A059] hover:shadow-xs transition-all cursor-pointer group"
+            <a
+              href="/blog/narmadeshwar-shivling-puja-vidhi-at-home"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/blog/narmadeshwar-shivling-puja-vidhi-at-home');
+              }}
+              className="p-4 rounded-xl bg-[#FDFCF9] border border-stone-200 hover:border-[#C5A059] hover:shadow-xs transition-all cursor-pointer group block"
             >
               <h3 className="text-sm font-serif font-bold text-[#1A1A1A] group-hover:text-[#8C6B2D] transition-colors mb-1">
                 Daily Puja Vidhi at Home →
@@ -342,11 +352,15 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
               <p className="text-xs text-stone-600 leading-relaxed">
                 Learn step-by-step Abhishek sequence, auspicious mantras, and correct Jaladhari direction.
               </p>
-            </div>
+            </a>
 
-            <div
-              onClick={() => navigate('/blog/how-to-identify-original-narmadeshwar-shivling')}
-              className="p-4 rounded-xl bg-[#FDFCF9] border border-stone-200 hover:border-[#C5A059] hover:shadow-xs transition-all cursor-pointer group"
+            <a
+              href="/blog/how-to-identify-original-narmadeshwar-shivling"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/blog/how-to-identify-original-narmadeshwar-shivling');
+              }}
+              className="p-4 rounded-xl bg-[#FDFCF9] border border-stone-200 hover:border-[#C5A059] hover:shadow-xs transition-all cursor-pointer group block"
             >
               <h3 className="text-sm font-serif font-bold text-[#1A1A1A] group-hover:text-[#8C6B2D] transition-colors mb-1">
                 How to Identify Original Stones →
@@ -354,11 +368,15 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
               <p className="text-xs text-stone-600 leading-relaxed">
                 4 practical hallmarks to distinguish genuine Narmada quartzite from synthetic copies.
               </p>
-            </div>
+            </a>
 
-            <div
-              onClick={() => navigate('/blog/narmadeshwar-shivling-size-for-home')}
-              className="p-4 rounded-xl bg-[#FDFCF9] border border-stone-200 hover:border-[#C5A059] hover:shadow-xs transition-all cursor-pointer group"
+            <a
+              href="/blog/narmadeshwar-shivling-size-for-home"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/blog/narmadeshwar-shivling-size-for-home');
+              }}
+              className="p-4 rounded-xl bg-[#FDFCF9] border border-stone-200 hover:border-[#C5A059] hover:shadow-xs transition-all cursor-pointer group block"
             >
               <h3 className="text-sm font-serif font-bold text-[#1A1A1A] group-hover:text-[#8C6B2D] transition-colors mb-1">
                 Size & Weight Guide for Mandir →
@@ -366,7 +384,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
               <p className="text-xs text-stone-600 leading-relaxed">
                 Understanding the Shastra अंगुष्ठ मात्र (thumb size) guidelines for householders.
               </p>
-            </div>
+            </a>
           </div>
 
           <div className="mt-6 pt-6 border-t border-stone-100">

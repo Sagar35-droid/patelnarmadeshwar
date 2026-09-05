@@ -27,9 +27,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, hideTitle = f
       )}
 
       {/* Image Container */}
-      <div 
-        onClick={() => navigate(`/products/${product.id}`)}
-        className={`relative ${hideTitle ? 'aspect-square p-2.5' : 'aspect-[4/3]'} bg-[#F3EFE9] overflow-hidden cursor-pointer flex items-center justify-center`}
+      <a 
+        href={`/products/${product.id}`}
+        onClick={(e) => {
+          e.preventDefault();
+          navigate(`/products/${product.id}`);
+        }}
+        className={`relative ${hideTitle ? 'aspect-square p-2.5' : 'aspect-[4/3]'} bg-[#F3EFE9] overflow-hidden cursor-pointer flex items-center justify-center block`}
+        title={`View ${product.name} Details`}
       >
         <img
           src={product.mainImage}
@@ -43,25 +48,31 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, hideTitle = f
             View Details <ArrowRight className="w-3.5 h-3.5" />
           </span>
         </div>
-      </div>
+      </a>
 
       {/* Card Body */}
       <div className="p-3.5 sm:p-5 flex-1 flex flex-col justify-between">
         <div>
           {/* Title and Hindi Name */}
-          {!hideTitle && (
-            <div className="mb-2">
-              <h3 
-                onClick={() => navigate(`/products/${product.id}`)}
-                className="text-base sm:text-lg font-serif font-bold text-[#1A1A1A] hover:text-[#C5A059] transition-colors cursor-pointer line-clamp-1"
+          <div className="mb-2">
+            <h3 className="text-sm sm:text-base font-serif font-bold text-[#1A1A1A] hover:text-[#C5A059] transition-colors line-clamp-1">
+              <a
+                href={`/products/${product.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate(`/products/${product.id}`);
+                }}
+                className="hover:underline cursor-pointer block truncate"
               >
                 {product.name}
-              </h3>
+              </a>
+            </h3>
+            {product.nameHindi && (
               <p className="text-[11px] sm:text-xs text-[#C5A059] font-medium mt-0.5 line-clamp-1">
                 {product.nameHindi}
               </p>
-            </div>
-          )}
+            )}
+          </div>
 
           {/* Details & Specifications */}
           <div className="grid grid-cols-2 gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-stone-600 bg-[#F3EFE9] p-2 sm:p-2.5 rounded-xl my-2.5 sm:my-3 border border-[#C5A059]/10">
@@ -128,13 +139,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, hideTitle = f
           </div>
 
           <div className="grid grid-cols-2 gap-1.5 sm:gap-2 pt-1">
-            <button
-              onClick={() => navigate(`/products/${product.id}`)}
+            <a
+              href={`/products/${product.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                navigate(`/products/${product.id}`);
+              }}
               className="w-full py-2 sm:py-2.5 px-2 sm:px-3 text-[11px] sm:text-xs font-bold rounded-xl bg-[#F3EFE9] hover:bg-[#C5A059] text-[#1A1A1A] hover:text-white transition-all flex items-center justify-center gap-1 shadow-xs cursor-pointer"
             >
               <span>Details</span>
               <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            </a>
 
             <a
               href={whatsappUrl}

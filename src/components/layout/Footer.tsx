@@ -51,60 +51,88 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
-                <button
-                  onClick={() => navigate('/')}
-                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300"
+                <a
+                  href="/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/');
+                  }}
+                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300 block"
                 >
                   Home (मुख्य पृष्ठ)
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => navigate('/about')}
-                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300"
+                <a
+                  href="/about"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/about');
+                  }}
+                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300 block"
                 >
                   About Narmadeshwar Shivling (जानकारी)
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => navigate('/products')}
-                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300"
+                <a
+                  href="/products"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/products');
+                  }}
+                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300 block"
                 >
                   Products Collection (शिवलिंग संग्रह)
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => navigate('/blog')}
-                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300 font-semibold"
+                <a
+                  href="/blog"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/blog');
+                  }}
+                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300 font-semibold block"
                 >
                   Sacred Guides & Blog (ज्ञान व गाइड)
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => navigate('/enquiry')}
-                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300"
+                <a
+                  href="/enquiry"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/enquiry');
+                  }}
+                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300 block"
                 >
                   Product Enquiry (पूछताछ)
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => navigate('/faq')}
-                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300 font-semibold"
+                <a
+                  href="/faq"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/faq');
+                  }}
+                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300 font-semibold block"
                 >
                   Frequently Asked Questions (FAQ)
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => navigate('/contact')}
-                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300"
+                <a
+                  href="/contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/contact');
+                  }}
+                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300 block"
                 >
                   Contact Us (संपर्क करें)
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -116,52 +144,76 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
-                <button
-                  onClick={() => navigate('/shipping-policy')}
-                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300"
+                <a
+                  href="/shipping-policy"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/shipping-policy');
+                  }}
+                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300 block"
                 >
                   Shipping Policy (शिपिंग नीति)
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => navigate('/return-policy')}
-                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300"
+                <a
+                  href="/return-policy"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/return-policy');
+                  }}
+                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300 block"
                 >
                   Return & Replacement Policy (वापसी नीति)
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => navigate('/cancellation-policy')}
-                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300"
+                <a
+                  href="/cancellation-policy"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/cancellation-policy');
+                  }}
+                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300 block"
                 >
                   Cancellation Policy (रद्दीकरण नीति)
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => navigate('/privacy-policy')}
-                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300"
+                <a
+                  href="/privacy-policy"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/privacy-policy');
+                  }}
+                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300 block"
                 >
                   Privacy Policy (गोपनीयता नीति)
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => navigate('/terms-and-conditions')}
-                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300"
+                <a
+                  href="/terms-and-conditions"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/terms-and-conditions');
+                  }}
+                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300 block"
                 >
                   Terms & Conditions (नियम एवं शर्तें)
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => navigate('/disclaimer')}
-                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300"
+                <a
+                  href="/disclaimer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/disclaimer');
+                  }}
+                  className="hover:text-[#C5A059] transition-colors cursor-pointer text-stone-300 block"
                 >
                   Disclaimer (अस्वीकरण)
-                </button>
+                </a>
               </li>
             </ul>
           </div>

@@ -69,9 +69,13 @@ export const Navbar: React.FC = () => {
                   : currentPath.startsWith(link.path);
 
               return (
-                <button
+                <a
                   key={link.path}
-                  onClick={() => handleNavClick(link.path)}
+                  href={link.path}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(link.path);
+                  }}
                   className={`py-1 text-xs font-semibold transition-all duration-200 cursor-pointer ${
                     isActive
                       ? 'text-[#C5A059] border-b-2 border-[#C5A059]'
@@ -79,7 +83,7 @@ export const Navbar: React.FC = () => {
                   }`}
                 >
                   {link.name}
-                </button>
+                </a>
               );
             })}
           </nav>
@@ -133,10 +137,14 @@ export const Navbar: React.FC = () => {
                 : currentPath.startsWith(link.path);
 
             return (
-              <button
+              <a
                 key={link.path}
-                onClick={() => handleNavClick(link.path)}
-                className={`w-full text-left px-4 py-3 rounded-xl text-xs uppercase tracking-widest font-bold flex items-center justify-between ${
+                href={link.path}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(link.path);
+                }}
+                className={`w-full text-left px-4 py-3 rounded-xl text-xs uppercase tracking-widest font-bold flex items-center justify-between block ${
                   isActive
                     ? 'bg-[#F3EFE9] text-[#C5A059] border-l-4 border-[#C5A059]'
                     : 'text-[#2D2D2D] hover:bg-[#F3EFE9]'
@@ -144,7 +152,7 @@ export const Navbar: React.FC = () => {
               >
                 <span>{link.name}</span>
                 {isActive && <span className="text-[#C5A059] text-[10px]">Active</span>}
-              </button>
+              </a>
             );
           })}
         </div>

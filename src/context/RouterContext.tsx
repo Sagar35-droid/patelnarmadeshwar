@@ -54,26 +54,28 @@ export const RouterProvider: React.FC<RouterProviderProps> = ({ children }) => {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // Parse productId if path is /products/product-1 or /product/product-1 ...
+  // Normalize path without trailing slashes (except root '/')
+  const cleanPath = currentPath.replace(/\/+$/, '') || '/';
+
+  // Parse productId if path is /products/:id or /product/:id
   let productId: string | null = null;
-  if (currentPath.startsWith('/products/')) {
-    const parts = currentPath.split('/products/');
-    if (parts[1]) {
-      productId = parts[1].replace(/\/$/, '');
-    }
-  } else if (currentPath.startsWith('/product/')) {
-    const parts = currentPath.split('/product/');
-    if (parts[1]) {
-      productId = parts[1].replace(/\/$/, '');
+  const productMatch = cleanPath.match(/^\/products?\/(.+)$/i);
+  if (productMatch && productMatch[1]) {
+    try {
+      productId = decodeURIComponent(productMatch[1].trim());
+    } catch {
+      productId = productMatch[1].trim();
     }
   }
 
-  // Parse blogSlug if path is /blog/some-article-slug
+  // Parse blogSlug if path is /blog/:slug
   let blogSlug: string | null = null;
-  if (currentPath.startsWith('/blog/')) {
-    const parts = currentPath.split('/blog/');
-    if (parts[1]) {
-      blogSlug = parts[1].replace(/\/$/, '');
+  const blogMatch = cleanPath.match(/^\/blog\/(.+)$/i);
+  if (blogMatch && blogMatch[1]) {
+    try {
+      blogSlug = decodeURIComponent(blogMatch[1].trim());
+    } catch {
+      blogSlug = blogMatch[1].trim();
     }
   }
 
