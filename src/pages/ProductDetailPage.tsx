@@ -36,6 +36,11 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
 
   const pricing = product ? getPricingDetails(product) : { mrp: 2499, sellingPrice: 1699, discountPercentage: 32, stock: 10, inStock: true };
   const isInStock = pricing.inStock && pricing.stock > 0;
+  const productType = product?.name.toLowerCase().includes('nandi')
+  ? 'Natural Stone Nandi Ji'
+  : product?.name.toLowerCase().includes('murti')
+  ? 'Narmada Stone Murti'
+  : 'Original Natural Narmadeshwar Shivling';
 
   useEffect(() => {
     if (product) {
@@ -43,11 +48,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
       const itemNum = product.id.replace('product-', '');
 const pieceLabel = `Piece #${itemNum}`;
 
-const productType = product.name.toLowerCase().includes('nandi')
-  ? 'Natural Stone Nandi Ji'
-  : product.name.toLowerCase().includes('murti')
-  ? 'Narmada Stone Murti'
-  : 'Original Natural Narmadeshwar Shivling';
+
 
 const cleanTitle = `${product.name} | ${product.size} | ${product.weight} | ${productType}`;
 
@@ -135,7 +136,7 @@ const cleanDesc = `Buy ${product.name} in ${product.size} (${product.weight}). $
             <div className="w-full aspect-square max-w-full bg-[#F3EFE9] rounded-2xl sm:rounded-3xl overflow-hidden border border-[#C5A059]/20 shadow-inner p-3 sm:p-6 lg:p-8 flex items-center justify-center relative">
               <img
                 src={selectedImage}
-                alt={`${product.name} - Natural Narmadeshwar Shivling with Jaladhari direct from Narmada River Bakawan`}
+               alt={`${product.name} - ${productType} (${product.size}, ${product.weight}) from Bakawan, Madhya Pradesh`}
                 referrerPolicy="no-referrer"
                 className="max-w-full max-h-full w-auto h-auto object-contain block mx-auto transition-transform duration-300 hover:scale-105"
               />
@@ -155,7 +156,12 @@ const cleanDesc = `Buy ${product.name} in ${product.size} (${product.weight}). $
                         : 'border-stone-200 hover:border-[#C5A059] opacity-75 hover:opacity-100'
                     }`}
                   >
-                    <img src={img} alt={`${product.name} angle ${idx + 1}`} referrerPolicy="no-referrer" className="w-full h-full object-contain" />
+                   <img
+       src={img}
+      alt={`${product.name} - ${productType} view ${idx + 1}, ${product.size}, ${product.weight}`}
+      referrerPolicy="no-referrer"
+     className="w-full h-full object-contain"
+/>
                   </button>
                 ))}
               </div>
