@@ -41,9 +41,17 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
     if (product) {
       setSelectedImage(product.mainImage);
       const itemNum = product.id.replace('product-', '');
-      const pieceLabel = `Piece #${itemNum}`;
-      const cleanTitle = `${product.name} | ${product.size} | ${product.weight} | Original Narmadeshwar Shivling`;
-const cleanDesc = `Buy ${product.name} in ${product.size} (${product.weight}). Natural Narmadeshwar Shivling from Narmada River, Bakawan, Madhya Pradesh. Price ₹${pricing.sellingPrice}. Pan India delivery available.`;
+const pieceLabel = `Piece #${itemNum}`;
+
+const productType = product.name.toLowerCase().includes('nandi')
+  ? 'Natural Stone Nandi Ji'
+  : product.name.toLowerCase().includes('murti')
+  ? 'Narmada Stone Murti'
+  : 'Original Natural Narmadeshwar Shivling';
+
+const cleanTitle = `${product.name} | ${product.size} | ${product.weight} | ${productType}`;
+
+const cleanDesc = `Buy ${product.name} in ${product.size} (${product.weight}). ${productType} from Narmada River, Bakawan, Madhya Pradesh. Price ₹${pricing.sellingPrice}. Pan India delivery available.`;
       
       updatePageSEO({
         title: cleanTitle,
