@@ -197,6 +197,17 @@ const cleanDesc = `Buy ${product.name} in ${product.size} (${product.weight}). $
                 <span className="text-sm sm:text-base font-bold text-[#1A1A1A]">{product.weight}</span>
               </div>
             </div>
+                  {/* Product Description for SEO & Customers */}
+<div className="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200 space-y-2">
+  <h2 className="text-base sm:text-lg font-serif font-bold text-[#1A1A1A]">
+    Product Details
+  </h2>
+
+  <p className="text-sm text-stone-700 leading-relaxed">
+    {product.shortDescription || product.fullDescription}
+  </p>
+</div>
+
 
             {/* Price, Discount & Stock Status */}
             <div className="bg-[#F3EFE9] p-4 sm:p-5 rounded-2xl border border-[#C5A059]/30 flex flex-wrap items-center justify-between gap-3 sm:gap-4">
