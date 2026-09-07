@@ -15,13 +15,6 @@ if (!fs.existsSync(indexHtmlPath)) {
 
 const indexHtmlContent = fs.readFileSync(indexHtmlPath, 'utf8');
 
-// Ensure dist/_redirects exists for Netlify
-const redirectsPath = path.join(distDir, '_redirects');
-if (!fs.existsSync(redirectsPath)) {
-  fs.writeFileSync(redirectsPath, '/*    /index.html   200\n');
-  console.log('Created dist/_redirects for Netlify SPA rewrite');
-}
-
 // Read products to extract all IDs
 const productsFilePath = path.join(rootDir, 'src/data/products.ts');
 const productsFileContent = fs.readFileSync(productsFilePath, 'utf8');
@@ -72,9 +65,11 @@ if (fs.existsSync(blogFilePath)) {
 let createdCount = 0;
 for (const route of routes) {
   const targetDir = path.join(distDir, route);
+
   if (!fs.existsSync(targetDir)) {
     fs.mkdirSync(targetDir, { recursive: true });
   }
+
   const targetFile = path.join(targetDir, 'index.html');
   fs.writeFileSync(targetFile, indexHtmlContent);
   createdCount++;
