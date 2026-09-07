@@ -243,6 +243,7 @@ export function updatePageSEO({
     const productSchema: Record<string, unknown> = {
       '@context': 'https://schema.org',
       '@type': 'Product',
+      '@id': `${canonicalUrl}#product`,
       name: productData.name,
       image: productData.image.startsWith('http') ? productData.image : `${SITE_URL}${productData.image}`,
       description: productData.description,
