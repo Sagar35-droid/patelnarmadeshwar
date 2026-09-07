@@ -73,7 +73,7 @@ const cleanDesc = `Buy ${product.name} in ${product.size} (${product.weight}). $
         ],
         canonicalPath: `/products/${product.id}`,
         ogImage: product.mainImage,
-        imageAlt: `${product.name} - Natural Narmadeshwar Shivling (${product.size}, ${product.weight}) with Jaladhari from Bakawan`,
+        imageAlt: `${product.name} - ${productType} (${product.size}, ${product.weight}) from Bakawan, Madhya Pradesh`,
         ogType: 'product',
         breadcrumbs: [
           { name: 'Home', url: '/' },
