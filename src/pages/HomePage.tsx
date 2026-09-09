@@ -7,6 +7,7 @@ import { CustomSizeEnquirySection } from '../components/home/CustomSizeEnquirySe
 import { AboutPreviewSection } from '../components/home/AboutPreviewSection';
 import { FeaturedProducts } from '../components/home/FeaturedProducts';
 import { BakawanLocationSection } from '../components/home/BakawanLocationSection';
+import { AboutSagarSection } from '../components/home/AboutSagarSection';
 import { HomeFAQSection, HOME_FAQS } from '../components/home/HomeFAQSection';
 import { useRouter } from '../context/RouterContext';
 import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../utils/whatsapp';
@@ -84,6 +85,9 @@ export const HomePage: React.FC = () => {
 
       {/* Bakawan Location & Map Section */}
       <BakawanLocationSection />
+
+      {/* About Sagar Narmadeshwar Shivling Section */}
+      <AboutSagarSection />
 
       {/* Sacred Knowledge & FAQ Section */}
       <HomeFAQSection />
