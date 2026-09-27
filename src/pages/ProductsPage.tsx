@@ -67,7 +67,7 @@ export const ProductsPage: React.FC = () => {
             <span className="bg-[#2D2D2D] px-3 py-1 rounded-full border border-stone-700">100% Natural River Stone</span>
             <span className="bg-[#2D2D2D] px-3 py-1 rounded-full border border-stone-700">Sourced from Bakawan (MP)</span>
             <span className="bg-[#2D2D2D] px-3 py-1 rounded-full border border-stone-700">Wooden Box Safe Packaging</span>
-            <span className="bg-[#2D2D2D] px-3 py-1 rounded-full border border-stone-700">Pan-India Direct Delivery</span>
+            <span className="bg-[#2D2D2D] px-3 py-1 rounded-full border border-stone-700">Worldwide Delivery</span>
           </div>
         </div>
       </section>

@@ -169,15 +169,15 @@ export const PRODUCTS: Product[] = [
     "id": "product-5",
     "slug": "product-5",
     "collectionNumber": 1,
-    "name": "4 Inch Akhand Shivling",
-    "nameHindi": "4 इंच अखंड नर्मदेश्वर शिवलिंग (550 grams)",
+    "name": "2 Inch Shivling 4 Inch Jaladhari Full Set",
+    "nameHindi": "2 इंच शिवलिंग 4 इंच जलधारी फुल सेट (550 grams)",
     "category": "Natural Narmadeshwar Shivling",
     "badge": "Bestseller",
-    "size": "4 inch Akhand Shivling",
+    "size": "2 inch Shivling + 4 inch Jaladhari Full Set",
     "weight": "550 grams",
     "markingType": "100% Natural River Stone",
     "jaladhariIncluded": true,
-    "shortDescription": "4 Inch Akhand Shivling। वजन: 550 grams। मां नर्मदा से प्राप्त 100% प्राकृतिक स्वयंभू नर्मदेश्वर शिवलिंग।",
+    "shortDescription": "2 Inch Shivling 4 Inch Jaladhari Full Set। वजन: 550 grams। मां नर्मदा से प्राप्त 100% प्राकृतिक स्वयंभू नर्मदेश्वर शिवलिंग।",
     "fullDescription": "मां नर्मदा के पावन जल प्रवाह से प्राकृतिक रूप से निर्मित स्वयंभू नर्मदेश्वर शिवलिंग। बकावां (मध्य प्रदेश) से सीधे आपके गृह मंदिर हेतु। इस पर कोई कृत्रिम नक्काशी या रासायनिक पॉलिश नहीं है।",
     "naturalCharacteristics": [
       "100% शुद्ध एवं प्राकृतिक नर्मदा नदी पाषाण",
@@ -186,7 +186,7 @@ export const PRODUCTS: Product[] = [
       "बिना किसी रासायनिक पॉलिश या कृत्रिम रंग के"
     ],
     "features": [
-      "आकार: 4 inch Akhand Shivling",
+      "आकार: 2 inch Shivling + 4 inch Jaladhari Full Set",
       "वजन: 550 grams",
       "सुरक्षित लकड़ी के बॉक्स में सुरक्षित पैकिंग",
       "व्हाट्सएप पर सीधी सहायता एवं आर्डर"
@@ -251,15 +251,15 @@ export const PRODUCTS: Product[] = [
     "id": "product-7",
     "slug": "product-7",
     "collectionNumber": 1,
-    "name": "4 Inch Akhand Shivling",
-    "nameHindi": "4 इंच अखंड नर्मदेश्वर शिवलिंग (550 grams)",
+    "name": "2 Inch Shivling 4 Inch Jaladhari",
+    "nameHindi": "2 इंच नर्मदेश्वर शिवलिंग साथ में 4 इंच जलधारी (550 grams)",
     "category": "Natural Narmadeshwar Shivling",
     "badge": "Bestseller",
-    "size": "4 inch Akhand Shivling",
+    "size": "2 inch Shivling + 4 inch Jaladhari",
     "weight": "550 grams",
     "markingType": "100% Natural River Stone",
     "jaladhariIncluded": true,
-    "shortDescription": "4 Inch Akhand Shivling। वजन: 550 grams। मां नर्मदा से प्राप्त 100% प्राकृतिक स्वयंभू नर्मदेश्वर शिवलिंग।",
+    "shortDescription": "2 Inch Shivling 4 Inch Jaladhari। वजन: 550 grams। मां नर्मदा से प्राप्त 100% प्राकृतिक स्वयंभू नर्मदेश्वर शिवलिंग।",
     "fullDescription": "मां नर्मदा के पावन जल प्रवाह से प्राकृतिक रूप से निर्मित स्वयंभू नर्मदेश्वर शिवलिंग। बकावां (मध्य प्रदेश) से सीधे आपके गृह मंदिर हेतु। इस पर कोई कृत्रिम नक्काशी या रासायनिक पॉलिश नहीं है।",
     "naturalCharacteristics": [
       "100% शुद्ध एवं प्राकृतिक नर्मदा नदी पाषाण",
@@ -268,7 +268,7 @@ export const PRODUCTS: Product[] = [
       "बिना किसी रासायनिक पॉलिश या कृत्रिम रंग के"
     ],
     "features": [
-      "आकार: 4 inch Akhand Shivling",
+      "आकार: 2 inch Shivling + 4 inch Jaladhari",
       "वजन: 550 grams",
       "सुरक्षित लकड़ी के बॉक्स में सुरक्षित पैकिंग",
       "व्हाट्सएप पर सीधी सहायता एवं आर्डर"
@@ -292,15 +292,15 @@ export const PRODUCTS: Product[] = [
     "id": "product-8",
     "slug": "product-8",
     "collectionNumber": 1,
-    "name": "4 Inch Akhand Shivling",
-    "nameHindi": "4 इंच अखंड नर्मदेश्वर शिवलिंग (550 grams)",
+    "name": "2 Inch Shivling 4 Inch Jaladhari",
+    "nameHindi": "2 इंच नर्मदेश्वर शिवलिंग साथ में 4 इंच जलधारी (550 grams)",
     "category": "Natural Narmadeshwar Shivling",
     "badge": "Bestseller",
-    "size": "4 inch Akhand Shivling",
+    "size": "2 inch Shivling + 4 inch Jaladhari",
     "weight": "550 grams",
     "markingType": "100% Natural River Stone",
     "jaladhariIncluded": true,
-    "shortDescription": "4 Inch Akhand Shivling। वजन: 550 grams। मां नर्मदा से प्राप्त 100% प्राकृतिक स्वयंभू नर्मदेश्वर शिवलिंग।",
+    "shortDescription": "2 Inch Shivling 4 Inch Jaladhari। वजन: 550 grams। मां नर्मदा से प्राप्त 100% प्राकृतिक स्वयंभू नर्मदेश्वर शिवलिंग।",
     "fullDescription": "मां नर्मदा के पावन जल प्रवाह से प्राकृतिक रूप से निर्मित स्वयंभू नर्मदेश्वर शिवलिंग। बकावां (मध्य प्रदेश) से सीधे आपके गृह मंदिर हेतु। इस पर कोई कृत्रिम नक्काशी या रासायनिक पॉलिश नहीं है।",
     "naturalCharacteristics": [
       "100% शुद्ध एवं प्राकृतिक नर्मदा नदी पाषाण",
@@ -309,7 +309,7 @@ export const PRODUCTS: Product[] = [
       "बिना किसी रासायनिक पॉलिश या कृत्रिम रंग के"
     ],
     "features": [
-      "आकार: 4 inch Akhand Shivling",
+      "आकार: 2 inch Shivling + 4 inch Jaladhari",
       "वजन: 550 grams",
       "सुरक्षित लकड़ी के बॉक्स में सुरक्षित पैकिंग",
       "व्हाट्सएप पर सीधी सहायता एवं आर्डर"
@@ -333,15 +333,15 @@ export const PRODUCTS: Product[] = [
     "id": "product-9",
     "slug": "product-9",
     "collectionNumber": 1,
-    "name": "3 Inch Shivling with 6 Inch Jaladhari",
-    "nameHindi": "3 इंच नर्मदेश्वर शिवलिंग साथ में 6 इंच जलधारी (2 kg)",
+    "name": "2 Inch Shivling 4 Inch Jaladhari",
+    "nameHindi": "2 इंच नर्मदेश्वर शिवलिंग साथ में 4 इंच जलधारी (2 kg)",
     "category": "Natural Narmadeshwar Shivling",
     "badge": "Bestseller",
-    "size": "3 inch Shivling + 6 inch Jaladhari",
+    "size": "2 inch Shivling + 4 inch Jaladhari",
     "weight": "2 kg",
     "markingType": "100% Natural River Stone",
     "jaladhariIncluded": true,
-    "shortDescription": "3 Inch Shivling with 6 Inch Jaladhari। वजन: 2 kg। मां नर्मदा से प्राप्त 100% प्राकृतिक स्वयंभू नर्मदेश्वर शिवलिंग।",
+    "shortDescription": "2 Inch Shivling 4 Inch Jaladhari। वजन: 2 kg। मां नर्मदा से प्राप्त 100% प्राकृतिक स्वयंभू नर्मदेश्वर शिवलिंग।",
     "fullDescription": "मां नर्मदा के पावन जल प्रवाह से प्राकृतिक रूप से निर्मित स्वयंभू नर्मदेश्वर शिवलिंग। बकावां (मध्य प्रदेश) से सीधे आपके गृह मंदिर हेतु। इस पर कोई कृत्रिम नक्काशी या रासायनिक पॉलिश नहीं है।",
     "naturalCharacteristics": [
       "100% शुद्ध एवं प्राकृतिक नर्मदा नदी पाषाण",
@@ -350,7 +350,7 @@ export const PRODUCTS: Product[] = [
       "बिना किसी रासायनिक पॉलिश या कृत्रिम रंग के"
     ],
     "features": [
-      "आकार: 3 inch Shivling + 6 inch Jaladhari",
+      "आकार: 2 inch Shivling + 4 inch Jaladhari",
       "वजन: 2 kg",
       "सुरक्षित लकड़ी के बॉक्स में सुरक्षित पैकिंग",
       "व्हाट्सएप पर सीधी सहायता एवं आर्डर"
@@ -374,15 +374,15 @@ export const PRODUCTS: Product[] = [
     "id": "product-10",
     "slug": "product-10",
     "collectionNumber": 1,
-    "name": "3 Inch Shivling with 6 Inch Jaladhari",
-    "nameHindi": "3 इंच नर्मदेश्वर शिवलिंग साथ में 6 इंच जलधारी (2 kg)",
+    "name": "2 Inch Shivling 4 Inch Jaladhari",
+    "nameHindi": "2 इंच नर्मदेश्वर शिवलिंग साथ में 4 इंच जलधारी (2 kg)",
     "category": "Natural Narmadeshwar Shivling",
     "badge": "Bestseller",
-    "size": "3 inch Shivling + 6 inch Jaladhari",
+    "size": "2 inch Shivling + 4 inch Jaladhari",
     "weight": "2 kg",
     "markingType": "100% Natural River Stone",
     "jaladhariIncluded": true,
-    "shortDescription": "3 Inch Shivling with 6 Inch Jaladhari। वजन: 2 kg। मां नर्मदा से प्राप्त 100% प्राकृतिक स्वयंभू नर्मदेश्वर शिवलिंग।",
+    "shortDescription": "2 Inch Shivling 4 Inch Jaladhari। वजन: 2 kg। मां नर्मदा से प्राप्त 100% प्राकृतिक स्वयंभू नर्मदेश्वर शिवलिंग।",
     "fullDescription": "मां नर्मदा के पावन जल प्रवाह से प्राकृतिक रूप से निर्मित स्वयंभू नर्मदेश्वर शिवलिंग। बकावां (मध्य प्रदेश) से सीधे आपके गृह मंदिर हेतु। इस पर कोई कृत्रिम नक्काशी या रासायनिक पॉलिश नहीं है।",
     "naturalCharacteristics": [
       "100% शुद्ध एवं प्राकृतिक नर्मदा नदी पाषाण",
@@ -391,7 +391,7 @@ export const PRODUCTS: Product[] = [
       "बिना किसी रासायनिक पॉलिश या कृत्रिम रंग के"
     ],
     "features": [
-      "आकार: 3 inch Shivling + 6 inch Jaladhari",
+      "आकार: 2 inch Shivling + 4 inch Jaladhari",
       "वजन: 2 kg",
       "सुरक्षित लकड़ी के बॉक्स में सुरक्षित पैकिंग",
       "व्हाट्सएप पर सीधी सहायता एवं आर्डर"
@@ -415,15 +415,15 @@ export const PRODUCTS: Product[] = [
     "id": "product-11",
     "slug": "product-11",
     "collectionNumber": 1,
-    "name": "3 Inch Shivling with 6 Inch Jaladhari",
-    "nameHindi": "3 इंच नर्मदेश्वर शिवलिंग साथ में 6 इंच जलधारी (2 kg)",
+    "name": "4 Inch Akhand Shivling",
+    "nameHindi": "4 इंच अखंड नर्मदेश्वर शिवलिंग (2 kg)",
     "category": "Natural Narmadeshwar Shivling",
     "badge": "Bestseller",
-    "size": "3 inch Shivling + 6 inch Jaladhari",
+    "size": "4 inch Akhand Shivling",
     "weight": "2 kg",
     "markingType": "100% Natural River Stone",
     "jaladhariIncluded": true,
-    "shortDescription": "3 Inch Shivling with 6 Inch Jaladhari। वजन: 2 kg। मां नर्मदा से प्राप्त 100% प्राकृतिक स्वयंभू नर्मदेश्वर शिवलिंग।",
+    "shortDescription": "4 Inch Akhand Shivling। वजन: 2 kg। मां नर्मदा से प्राप्त 100% प्राकृतिक स्वयंभू नर्मदेश्वर शिवलिंग।",
     "fullDescription": "मां नर्मदा के पावन जल प्रवाह से प्राकृतिक रूप से निर्मित स्वयंभू नर्मदेश्वर शिवलिंग। बकावां (मध्य प्रदेश) से सीधे आपके गृह मंदिर हेतु। इस पर कोई कृत्रिम नक्काशी या रासायनिक पॉलिश नहीं है।",
     "naturalCharacteristics": [
       "100% शुद्ध एवं प्राकृतिक नर्मदा नदी पाषाण",
@@ -432,7 +432,7 @@ export const PRODUCTS: Product[] = [
       "बिना किसी रासायनिक पॉलिश या कृत्रिम रंग के"
     ],
     "features": [
-      "आकार: 3 inch Shivling + 6 inch Jaladhari",
+      "आकार: 4 inch Akhand Shivling",
       "वजन: 2 kg",
       "सुरक्षित लकड़ी के बॉक्स में सुरक्षित पैकिंग",
       "व्हाट्सएप पर सीधी सहायता एवं आर्डर"
@@ -456,15 +456,15 @@ export const PRODUCTS: Product[] = [
     "id": "product-12",
     "slug": "product-12",
     "collectionNumber": 1,
-    "name": "3 Inch Shivling with 6 Inch Jaladhari",
-    "nameHindi": "3 इंच नर्मदेश्वर शिवलिंग साथ में 6 इंच जलधारी (2 kg)",
+    "name": "4 Inch Akhand Shivling",
+    "nameHindi": "4 इंच अखंड नर्मदेश्वर शिवलिंग (2 kg)",
     "category": "Natural Narmadeshwar Shivling",
     "badge": "Bestseller",
-    "size": "3 inch Shivling + 6 inch Jaladhari",
+    "size": "4 inch Akhand Shivling",
     "weight": "2 kg",
     "markingType": "100% Natural River Stone",
     "jaladhariIncluded": true,
-    "shortDescription": "3 Inch Shivling with 6 Inch Jaladhari। वजन: 2 kg। मां नर्मदा से प्राप्त 100% प्राकृतिक स्वयंभू नर्मदेश्वर शिवलिंग।",
+    "shortDescription": "4 Inch Akhand Shivling। वजन: 2 kg। मां नर्मदा से प्राप्त 100% प्राकृतिक स्वयंभू नर्मदेश्वर शिवलिंग।",
     "fullDescription": "मां नर्मदा के पावन जल प्रवाह से प्राकृतिक रूप से निर्मित स्वयंभू नर्मदेश्वर शिवलिंग। बकावां (मध्य प्रदेश) से सीधे आपके गृह मंदिर हेतु। इस पर कोई कृत्रिम नक्काशी या रासायनिक पॉलिश नहीं है।",
     "naturalCharacteristics": [
       "100% शुद्ध एवं प्राकृतिक नर्मदा नदी पाषाण",
@@ -473,7 +473,7 @@ export const PRODUCTS: Product[] = [
       "बिना किसी रासायनिक पॉलिश या कृत्रिम रंग के"
     ],
     "features": [
-      "आकार: 3 inch Shivling + 6 inch Jaladhari",
+      "आकार: 4 inch Akhand Shivling",
       "वजन: 2 kg",
       "सुरक्षित लकड़ी के बॉक्स में सुरक्षित पैकिंग",
       "व्हाट्सएप पर सीधी सहायता एवं आर्डर"
@@ -523,15 +523,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-13.jpeg"
     ],
-    "mrp": 2159,
-    "sellingPrice": 1599,
-    "discountPercentage": 35,
+    "mrp": 5425,
+    "sellingPrice": 3500,
+    "discountPercentage": 55,
     "stock": 1,
     "inStock": true,
     "recommendedFor": "Daily Abhishekam, Shivratri Vrat, Spiritual Gift",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 1599,
+    "price": 3500,
     "stockQuantity": 1
   },
   {
@@ -564,15 +564,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-14.jpeg"
     ],
-    "mrp": 2159,
-    "sellingPrice": 1599,
-    "discountPercentage": 35,
+    "mrp": 5425,
+    "sellingPrice": 3500,
+    "discountPercentage": 55,
     "stock": 1,
     "inStock": true,
     "recommendedFor": "Home Temple Altar, Gift for Parents, Festive Pooja",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 1599,
+    "price": 3500,
     "stockQuantity": 1
   },
   {
@@ -646,15 +646,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-16.jpeg"
     ],
-    "mrp": 2969,
-    "sellingPrice": 2199,
-    "discountPercentage": 35,
+    "mrp": 5425,
+    "sellingPrice": 3500,
+    "discountPercentage": 55,
     "stock": 1,
     "inStock": true,
     "recommendedFor": "Large Home Mandir, Family Trust Temple, Rudrabhishek",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 2199,
+    "price": 3500,
     "stockQuantity": 1
   },
   {
@@ -687,15 +687,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-17.jpeg"
     ],
-    "mrp": 2969,
-    "sellingPrice": 2199,
-    "discountPercentage": 35,
+    "mrp": 8517,
+    "sellingPrice": 5100,
+    "discountPercentage": 67,
     "stock": 1,
     "inStock": true,
     "recommendedFor": "Meditation Altar, Yoga Room, Spiritual Sadhana",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 2199,
+    "price": 5100,
     "stockQuantity": 1
   },
   {
@@ -728,15 +728,15 @@ export const PRODUCTS: Product[] = [
     "galleryImages": [
       "/images/products/product-18.jpeg"
     ],
-    "mrp": 2969,
-    "sellingPrice": 2199,
-    "discountPercentage": 35,
+    "mrp": 8517,
+    "sellingPrice": 5100,
+    "discountPercentage": 67,
     "stock": 1,
     "inStock": true,
     "recommendedFor": "Main Temple, Ashram Altar, Lifetime Family Worship",
     "createdAt": "2026-08-19T09:17:24.836Z",
     "updatedAt": "2026-08-22T16:51:42.700Z",
-    "price": 2199,
+    "price": 5100,
     "stockQuantity": 1
   },
   {
