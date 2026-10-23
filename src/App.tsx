@@ -41,7 +41,7 @@ function MainContent() {
     PageComponent = <ProductsPage />;
   } else if (productId) {
     PageComponent = <ProductDetailPage productId={productId} />;
-  } else if (normalizedPath === '/blog') {
+  } else if (normalizedPath === '/blog' || normalizedPath === '/hi/blog') {
     PageComponent = <BlogListPage />;
   } else if (blogSlug) {
     PageComponent = <BlogDetailPage slug={blogSlug} />;

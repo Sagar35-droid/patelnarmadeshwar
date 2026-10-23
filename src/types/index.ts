@@ -320,4 +320,8 @@ export interface BlogPost {
   relatedBlogSlugs: string[];
   relatedProductIds: string[];
   keywords: string[];
+  language?: 'en' | 'hi';
+  canonicalUrlPath?: string;
+  alternateUrlPath?: string;
+  alternateLanguageName?: string;
 }

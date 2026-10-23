@@ -25,6 +25,7 @@ const routes = [
   'products',
   'product',
   'blog',
+  'hi/blog',
   'faq',
   'contact',
   'enquiry',
@@ -58,6 +59,10 @@ if (fs.existsSync(blogFilePath)) {
   const blogSlugs = [...blogContent.matchAll(/slug:\s*['"]([^'"]+)['"]/g)].map((m) => m[1]);
   blogSlugs.forEach((slug) => {
     routes.push(`blog/${slug}`);
+  });
+  const hiMatches = [...blogContent.matchAll(/canonicalUrlPath:\s*['"]\/hi\/([^'"]+)['"]/g)].map((m) => m[1]);
+  hiMatches.forEach((hiPath) => {
+    routes.push(`hi/${hiPath}`);
   });
 }
 

@@ -44,6 +44,11 @@ export interface ItemListElementData {
   position: number;
 }
 
+export interface AlternateLink {
+  hreflang: string;
+  href: string;
+}
+
 export interface PageSEOProps {
   title?: string;
   description?: string;
@@ -58,6 +63,9 @@ export interface PageSEOProps {
   articleData?: ArticleSchemaData;
   faqList?: FAQItemSchema[];
   itemListData?: ItemListElementData[];
+  alternateLinks?: AlternateLink[];
+  locale?: string;
+  inLanguage?: string | string[];
 }
 
 function setMetaTag(name: string, content: string, isProperty = false) {
@@ -102,7 +110,10 @@ export function updatePageSEO({
   productData,
   articleData,
   faqList,
-  itemListData
+  itemListData,
+  alternateLinks,
+  locale,
+  inLanguage
 }: PageSEOProps) {
   const cleanPath = canonicalPath.startsWith('/') ? canonicalPath : `/${canonicalPath}`;
   const canonicalUrl = `${SITE_URL}${cleanPath === '/' ? '' : cleanPath}`;
@@ -114,6 +125,13 @@ export function updatePageSEO({
     ? (ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`)
     : DEFAULT_SEO.defaultImage;
   const defaultAlt = imageAlt || `${BUSINESS_CONFIG.name} - Original Natural Narmadeshwar Shivling with Pan India Delivery`;
+
+  // Update HTML Lang attribute
+  if (locale?.startsWith('hi')) {
+    document.documentElement.lang = 'hi';
+  } else {
+    document.documentElement.lang = 'en';
+  }
 
   // 1. Update Title
   document.title = fullTitle;
@@ -141,6 +159,20 @@ export function updatePageSEO({
   }
   canonicalElem.setAttribute('href', canonicalUrl);
 
+  // 4b. Alternate Hreflang Links
+  // Remove previously set dynamic alternate tags
+  document.querySelectorAll('link[data-seo-alternate="true"]').forEach((el) => el.remove());
+  if (alternateLinks && alternateLinks.length > 0) {
+    alternateLinks.forEach((alt) => {
+      const link = document.createElement('link');
+      link.setAttribute('rel', 'alternate');
+      link.setAttribute('hreflang', alt.hreflang);
+      link.setAttribute('href', alt.href);
+      link.setAttribute('data-seo-alternate', 'true');
+      document.head.appendChild(link);
+    });
+  }
+
   // 5. Open Graph Tags
   setMetaTag('og:site_name', BUSINESS_CONFIG.name, true);
   setMetaTag('og:title', fullTitle, true);
@@ -149,8 +181,8 @@ export function updatePageSEO({
   setMetaTag('og:type', ogType, true);
   setMetaTag('og:image', image, true);
   setMetaTag('og:image:alt', defaultAlt, true);
-  setMetaTag('og:locale', DEFAULT_SEO.locale, true);
-  setMetaTag('og:locale:alternate', 'hi_IN', true);
+  setMetaTag('og:locale', locale || DEFAULT_SEO.locale, true);
+  setMetaTag('og:locale:alternate', locale?.startsWith('hi') ? 'en_US' : 'hi_IN', true);
 
   // 6. Twitter Card Tags
   setMetaTag('twitter:card', 'summary_large_image');
@@ -347,7 +379,7 @@ export function updatePageSEO({
           url: `${SITE_URL}/images/products/product-1.jpeg`
         }
       },
-      inLanguage: ['en-IN', 'hi-IN']
+      inLanguage: inLanguage || ['en-IN', 'hi-IN']
     };
     setJsonLdScript('schema-article', articleSchema);
   } else {

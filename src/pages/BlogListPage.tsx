@@ -143,7 +143,7 @@ export const BlogListPage: React.FC = () => {
               className="bg-white rounded-2xl border border-stone-200/80 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col overflow-hidden group hover:border-[#C5A059]/40"
             >
               <div
-                onClick={() => navigate(`/blog/${post.slug}`)}
+                onClick={() => navigate(post.canonicalUrlPath || `/blog/${post.slug}`)}
                 className="relative h-48 sm:h-52 bg-stone-100 overflow-hidden cursor-pointer"
               >
                 <img
@@ -157,6 +157,11 @@ export const BlogListPage: React.FC = () => {
                   <span className="bg-[#1A1A1A]/90 backdrop-blur-xs text-[#E0C07B] text-[11px] font-bold px-2.5 py-0.5 rounded-md border border-[#C5A059]/30">
                     {post.category}
                   </span>
+                  {post.language && (
+                    <span className="bg-[#C5A059] text-[#1A1A1A] text-[10px] font-bold px-2 py-0.5 rounded-md shadow-xs">
+                      {post.language === 'hi' ? 'हिंदी' : 'English'}
+                    </span>
+                  )}
                   {post.isPillar && (
                     <span className="bg-[#C5A059] text-[#1A1A1A] text-[10px] font-bold px-2 py-0.5 rounded-md shadow-xs">
                       Pillar
@@ -182,7 +187,7 @@ export const BlogListPage: React.FC = () => {
                   </div>
 
                   <h2
-                    onClick={() => navigate(`/blog/${post.slug}`)}
+                    onClick={() => navigate(post.canonicalUrlPath || `/blog/${post.slug}`)}
                     className="text-lg sm:text-xl font-serif font-bold text-[#1A1A1A] group-hover:text-[#8C6B2D] transition-colors leading-snug cursor-pointer line-clamp-2"
                   >
                     {post.title}
@@ -198,10 +203,10 @@ export const BlogListPage: React.FC = () => {
                     Intent: <strong className="text-stone-700">{post.searchIntent}</strong>
                   </span>
                   <button
-                    onClick={() => navigate(`/blog/${post.slug}`)}
+                    onClick={() => navigate(post.canonicalUrlPath || `/blog/${post.slug}`)}
                     className="inline-flex items-center gap-1 text-xs font-bold text-[#8C6B2D] group-hover:text-[#654B1A] transition-colors cursor-pointer"
                   >
-                    <span>Read Article</span>
+                    <span>{post.language === 'hi' ? 'पूरा लेख पढ़ें' : 'Read Article'}</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>

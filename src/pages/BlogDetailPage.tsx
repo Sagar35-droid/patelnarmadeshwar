@@ -22,8 +22,10 @@ import {
   ShieldCheck,
   BookOpen,
   Award,
-  RefreshCw
+  RefreshCw,
+  Globe
 } from 'lucide-react';
+import { SITE_URL } from '../config/seoConfig';
 
 interface BlogDetailPageProps {
   slug: string;
@@ -45,31 +47,53 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
 
   useEffect(() => {
     if (post) {
+      const isHindi = post.language === 'hi';
+      const canonicalPath = post.canonicalUrlPath || `/blog/${post.slug}`;
+      const alternateLinks = post.alternateUrlPath
+        ? [
+            {
+              hreflang: isHindi ? 'en' : 'hi',
+              href: `${SITE_URL}${post.alternateUrlPath}`
+            },
+            {
+              hreflang: isHindi ? 'hi' : 'en',
+              href: `${SITE_URL}${canonicalPath}`
+            },
+            {
+              hreflang: 'x-default',
+              href: `${SITE_URL}/blog/how-to-choose-natural-narmadeshwar-shivling-for-home-temple`
+            }
+          ]
+        : undefined;
+
       updatePageSEO({
         title: post.seoTitle,
         description: post.metaDescription,
         keywords: post.keywords,
-        canonicalPath: `/blog/${post.slug}`,
+        canonicalPath: canonicalPath,
         ogImage: post.featuredImage,
         ogType: 'article',
+        locale: isHindi ? 'hi_IN' : 'en_US',
+        inLanguage: isHindi ? 'hi-IN' : 'en-IN',
+        alternateLinks,
         breadcrumbs: [
-          { name: 'Home', url: '/' },
-          { name: 'Sacred Guides', url: '/blog' },
-          { name: post.title, url: `/blog/${post.slug}` }
+          { name: isHindi ? 'मुख्य पृष्ठ' : 'Home', url: '/' },
+          { name: isHindi ? 'धार्मिक मार्गदर्शिका' : 'Sacred Guides', url: isHindi ? '/hi/blog' : '/blog' },
+          { name: post.title, url: canonicalPath }
         ],
         articleData: {
           title: post.title,
           description: post.metaDescription,
           image: post.featuredImage,
-          url: `/blog/${post.slug}`,
+          url: canonicalPath,
           publishDate: post.publishDate,
           modifiedDate: post.modifiedDate,
           authorName: post.author.name,
           authorRole: post.author.role
         },
         faqList: post.faqs.map((f) => ({
-          question: f.question,
-          answer: f.answer
+          question: isHindi && f.questionHindi ? f.questionHindi : f.question,
+          answer: isHindi && f.answerHindi ? f.answerHindi : f.answer
         }))
       });
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -82,6 +106,58 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
+  };
+
+  const parseInlineLinks = (text: string): React.ReactNode => {
+    if (!text || !text.includes('[')) return text;
+    const parts: (string | React.ReactNode)[] = [];
+    const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    let lastIndex = 0;
+    let match: RegExpExecArray | null;
+
+    while ((match = regex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(text.substring(lastIndex, match.index));
+      }
+      const linkText = match[1];
+      const href = match[2];
+      parts.push(
+        <a
+          key={`${match.index}-${href}`}
+          href={href}
+          onClick={(e) => {
+            if (href.startsWith('/')) {
+              e.preventDefault();
+              navigate(href);
+            }
+          }}
+          className="text-[#8C6B2D] font-semibold underline underline-offset-2 hover:text-[#5c4417] transition-colors"
+        >
+          {linkText}
+        </a>
+      );
+      lastIndex = regex.lastIndex;
+    }
+
+    if (lastIndex < text.length) {
+      parts.push(text.substring(lastIndex));
+    }
+
+    return parts;
+  };
+
+  const renderParagraphs = (text?: string): React.ReactNode => {
+    if (!text) return null;
+    const paragraphs = text.split(/\n\s*\n/);
+    return (
+      <div className="space-y-3">
+        {paragraphs.map((para, pIdx) => (
+          <p key={pIdx} className="leading-relaxed">
+            {parseInlineLinks(para)}
+          </p>
+        ))}
+      </div>
+    );
   };
 
   const whatsappInquiryUrl = getGeneralWhatsAppLink(
@@ -154,6 +230,50 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
             <p className="text-base sm:text-lg text-stone-600 font-medium font-serif italic">
               {post.titleHindi}
             </p>
+          )}
+
+          {/* Bilingual English / हिंदी Language Switcher */}
+          {post.alternateUrlPath && (
+            <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 bg-gradient-to-r from-amber-50/80 via-stone-50 to-amber-50/50 border border-[#C5A059]/40 rounded-2xl shadow-xs">
+              <div className="flex items-center gap-2 text-stone-800 text-xs sm:text-sm font-medium">
+                <Globe className="w-4 h-4 text-[#8C6B2D] shrink-0" />
+                <span>
+                  {post.language === 'hi'
+                    ? 'यह संपूर्ण गाइड अंग्रेजी (English) में भी उपलब्ध है:'
+                    : 'This complete guide is also available in Hindi (हिंदी):'}
+                </span>
+              </div>
+              <div className="inline-flex items-center p-1 bg-white rounded-xl border border-stone-200/80 shadow-xs gap-1">
+                <button
+                  onClick={() => {
+                    if (post.language !== 'en') {
+                      navigate(post.alternateUrlPath || '/blog/how-to-choose-natural-narmadeshwar-shivling-for-home-temple');
+                    }
+                  }}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    post.language === 'en'
+                      ? 'bg-[#1A1A1A] text-[#E0C07B] shadow-xs'
+                      : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
+                  }`}
+                >
+                  English
+                </button>
+                <button
+                  onClick={() => {
+                    if (post.language !== 'hi') {
+                      navigate(post.alternateUrlPath || '/hi/blog/ghar-ke-mandir-ke-liye-prakritik-narmadeshwar-shivling-kaise-chune');
+                    }
+                  }}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    post.language === 'hi'
+                      ? 'bg-[#1A1A1A] text-[#E0C07B] shadow-xs'
+                      : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
+                  }`}
+                >
+                  हिंदी (Hindi)
+                </button>
+              </div>
+            </div>
           )}
 
           {/* Topic Cluster Context Banner for Supporting Articles */}
@@ -299,11 +419,11 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
                 {section.heading}
               </h2>
 
-              {section.body && <p className="leading-relaxed">{section.body}</p>}
+              {section.body && renderParagraphs(section.body)}
 
               {section.callout && (
                 <div className="p-4 bg-[#FCFAF7] border-l-4 border-[#C5A059] rounded-r-xl my-4 text-stone-800 text-xs sm:text-sm italic font-medium">
-                  {section.callout}
+                  {parseInlineLinks(section.callout)}
                 </div>
               )}
 
@@ -312,7 +432,7 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
                   {section.bullets.map((bullet, bIdx) => (
                     <li key={bIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-700">
                       <CheckCircle2 className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" />
-                      <span>{bullet}</span>
+                      <span>{parseInlineLinks(bullet)}</span>
                     </li>
                   ))}
                 </ul>
@@ -324,11 +444,11 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
                     <h3 className="text-base sm:text-lg font-serif font-bold text-[#1A1A1A]">
                       {sub.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">{sub.body}</p>
+                    {renderParagraphs(sub.body)}
                     {sub.bullets && (
                       <ul className="space-y-1 pl-2 pt-1 list-disc list-inside text-xs text-stone-600">
                         {sub.bullets.map((b, bi) => (
-                          <li key={bi}>{b}</li>
+                          <li key={bi}>{parseInlineLinks(b)}</li>
                         ))}
                       </ul>
                     )}
@@ -344,9 +464,9 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
             <h3 className="text-lg font-serif font-bold text-[#1A1A1A] flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-[#C5A059]" /> Conclusion & Final Guidance
             </h3>
-            <p className="text-xs sm:text-sm text-stone-700 leading-relaxed font-medium">
-              {post.conclusion}
-            </p>
+            <div className="text-xs sm:text-sm text-stone-700 leading-relaxed font-medium">
+              {renderParagraphs(post.conclusion)}
+            </div>
           </section>
         )}
 

@@ -68,9 +68,9 @@ export const RouterProvider: React.FC<RouterProviderProps> = ({ children }) => {
     }
   }
 
-  // Parse blogSlug if path is /blog/:slug
+  // Parse blogSlug if path is /blog/:slug or /hi/blog/:slug
   let blogSlug: string | null = null;
-  const blogMatch = cleanPath.match(/^\/blog\/(.+)$/i);
+  const blogMatch = cleanPath.match(/^(?:\/hi)?\/blog\/(.+)$/i);
   if (blogMatch && blogMatch[1]) {
     try {
       blogSlug = decodeURIComponent(blogMatch[1].trim());
