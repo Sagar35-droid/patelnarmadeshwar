@@ -10,8 +10,8 @@ export const ProductsPage: React.FC = () => {
 
   useEffect(() => {
     updatePageSEO({
-      title: 'Narmadeshwar Shivling Online Collection | Price & Sizes | Sagar Narmadeshwar',
-      description: 'Explore authentic Narmadeshwar Shivling collection with Jaladhari from Bakawan, MP. Find Shivling for home mandir in 2-inch to 5-inch sizes with natural Janeyu and Tilak markings.',
+      title: 'Narmadeshwar Shivling Collection | Prices & Sizes | Authentic Narmadeshwar',
+      description: 'Explore all 38 natural Narmadeshwar Shivlings, Jaladhari bases, Akhand Shivlings and Nandi Ji statues from Bakawan, Madhya Pradesh. Verified weights, sizes & worldwide delivery.',
       keywords: [
         'Narmadeshwar Shivling',
         'Narmada Shivling',
@@ -32,6 +32,7 @@ export const ProductsPage: React.FC = () => {
         'नर्मदेश्वर शिवलिंग संग्रह'
       ],
       canonicalPath: '/products',
+      webPageType: 'CollectionPage',
       breadcrumbs: [
         { name: 'Home', url: '/' },
         { name: 'Products Collection', url: '/products' }
@@ -76,8 +77,8 @@ export const ProductsPage: React.FC = () => {
       {/* Mobile: 2 per row (grid-cols-2) | Tablet: 3 per row (md:grid-cols-3) | Desktop: 4 per row (lg:grid-cols-4) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} hideTitle={false} />
+          {products.map((product, idx) => (
+            <ProductCard key={product.id} product={product} hideTitle={false} priority={idx < 4} />
           ))}
         </div>
       </section>

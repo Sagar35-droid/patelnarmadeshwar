@@ -95,9 +95,9 @@ export const WhyChooseUs: React.FC = () => {
                   <h3 className="text-sm sm:text-base font-serif font-bold text-[#1A1A1A] mb-1 leading-snug">
                     {item.title}
                   </h3>
-                  <h4 className="text-xs font-bold text-[#8B6508] mb-2.5">
+                  <p className="text-xs font-bold text-[#8B6508] mb-2.5">
                     {item.titleHindi}
-                  </h4>
+                  </p>
                   <p className="text-xs text-stone-600 leading-relaxed mb-2">
                     {item.desc}
                   </p>

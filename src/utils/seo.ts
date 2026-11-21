@@ -21,6 +21,8 @@ export interface ProductSchemaData {
   mrp?: number;
   inStock: boolean;
   category?: string;
+  size?: string;
+  weight?: string;
   ratingValue?: number;
   reviewCount?: number;
 }
@@ -57,6 +59,7 @@ export interface PageSEOProps {
   ogImage?: string;
   imageAlt?: string;
   ogType?: 'website' | 'article' | 'product';
+  webPageType?: 'WebPage' | 'CollectionPage' | 'ItemPage' | 'AboutPage' | 'ContactPage' | 'FAQPage';
   noindex?: boolean;
   breadcrumbs?: BreadcrumbItem[];
   productData?: ProductSchemaData;
@@ -105,6 +108,7 @@ export function updatePageSEO({
   ogImage,
   imageAlt,
   ogType = 'website',
+  webPageType,
   noindex = false,
   breadcrumbs,
   productData,
@@ -115,16 +119,21 @@ export function updatePageSEO({
   locale,
   inLanguage
 }: PageSEOProps) {
-  const cleanPath = canonicalPath.startsWith('/') ? canonicalPath : `/${canonicalPath}`;
+  const normalizedPath = canonicalPath.replace(/\/+$/, '') || '/';
+  const cleanPath = normalizedPath.startsWith('/') ? normalizedPath : `/${normalizedPath}`;
   const canonicalUrl = `${SITE_URL}${cleanPath === '/' ? '' : cleanPath}`;
+  const hasBrandSuffix =
+    title?.includes(DEFAULT_SEO.siteName) ||
+    title?.includes(BUSINESS_CONFIG.name) ||
+    title?.includes('Narmadeshwar');
   const fullTitle = title
-    ? (title.includes(BUSINESS_CONFIG.name) ? title : `${title} | ${BUSINESS_CONFIG.name}`)
+    ? (hasBrandSuffix ? title : `${title} | ${DEFAULT_SEO.siteName}`)
     : DEFAULT_SEO.defaultTitle;
   const metaDescription = description || DEFAULT_SEO.defaultDescription;
   const image = ogImage
     ? (ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`)
     : DEFAULT_SEO.defaultImage;
-  const defaultAlt = imageAlt || `${BUSINESS_CONFIG.name} - Original Natural Narmadeshwar Shivling with Pan India Delivery`;
+  const defaultAlt = imageAlt || `${DEFAULT_SEO.siteName} - Natural Narmadeshwar Shivling from Bakawan, Madhya Pradesh`;
 
   // Update HTML Lang attribute
   if (locale?.startsWith('hi')) {
@@ -174,15 +183,15 @@ export function updatePageSEO({
   }
 
   // 5. Open Graph Tags
-  setMetaTag('og:site_name', BUSINESS_CONFIG.name, true);
+  setMetaTag('og:site_name', DEFAULT_SEO.siteName, true);
   setMetaTag('og:title', fullTitle, true);
   setMetaTag('og:description', metaDescription, true);
   setMetaTag('og:url', canonicalUrl, true);
-  setMetaTag('og:type', ogType, true);
+  setMetaTag('og:type', ogType === 'article' ? 'article' : 'website', true);
   setMetaTag('og:image', image, true);
   setMetaTag('og:image:alt', defaultAlt, true);
   setMetaTag('og:locale', locale || DEFAULT_SEO.locale, true);
-  setMetaTag('og:locale:alternate', locale?.startsWith('hi') ? 'en_US' : 'hi_IN', true);
+  setMetaTag('og:locale:alternate', locale?.startsWith('hi') ? 'en_IN' : 'hi_IN', true);
 
   // 6. Twitter Card Tags
   setMetaTag('twitter:card', 'summary_large_image');
@@ -191,33 +200,50 @@ export function updatePageSEO({
   setMetaTag('twitter:image', image);
   setMetaTag('twitter:image:alt', defaultAlt);
 
-  // 7. Organization & LocalBusiness JSON-LD Schema (Persistent, Strictly Verified Facts Only)
+  // 7. Organization & OnlineStore JSON-LD Schema (Strictly Verified Business Facts Only)
   const businessSchema: Record<string, unknown> = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': ['Organization', 'OnlineStore'],
     '@id': `${SITE_URL}/#organization`,
-    name: BUSINESS_CONFIG.name,
-    alternateName: ['Sagar Narmadeshwar', 'Sagar Shivling Bakawan', 'सागर नर्मदेश्वर शिवलिंग', 'Patel Narmadeshwar Shivling'],
+    name: DEFAULT_SEO.siteName,
+    alternateName: [
+      BUSINESS_CONFIG.name,
+      'Sagar Narmadeshwar Shivling',
+      'Sagar Shivling Bakawan',
+      'सागर नर्मदेश्वर शिवलिंग',
+      'प्रामाणिक नर्मदेश्वर'
+    ],
     description: BUSINESS_CONFIG.taglineEnglish,
     url: SITE_URL,
-    logo: `${SITE_URL}/images/products/product-1.jpeg`,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE_URL}/images/products/product-1.jpeg`
+    },
     image: `${SITE_URL}/images/products/product-1.jpeg`,
     telephone: BUSINESS_CONFIG.phoneNumber,
     email: BUSINESS_CONFIG.email,
     taxID: BUSINESS_CONFIG.gstin,
-    priceRange: '₹₹',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: `Village ${BUSINESS_CONFIG.address.village || 'Bakawan'}, Tehsil ${BUSINESS_CONFIG.address.tehsil || 'Barwah'}`,
       addressLocality: BUSINESS_CONFIG.address.city || 'Bakawan',
       addressRegion: BUSINESS_CONFIG.address.state || 'Madhya Pradesh',
       postalCode: BUSINESS_CONFIG.address.pincode || '451113',
       addressCountry: 'IN'
     },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: BUSINESS_CONFIG.phoneNumber,
+      contactType: 'customer service',
+      availableLanguage: ['English', 'Hindi']
+    },
     areaServed: [
       {
         '@type': 'Country',
         name: 'India'
+      },
+      {
+        '@type': 'Place',
+        name: 'Worldwide (where delivery is supported)'
       }
     ]
   };
@@ -228,8 +254,8 @@ export function updatePageSEO({
     '@type': 'WebSite',
     '@id': `${SITE_URL}/#website`,
     url: SITE_URL,
-    name: BUSINESS_CONFIG.name,
-    alternateName: 'सागर नर्मदेश्वर शिवलिंग',
+    name: DEFAULT_SEO.siteName,
+    alternateName: [BUSINESS_CONFIG.name, 'प्रामाणिक नर्मदेश्वर शिवलिंग'],
     description: DEFAULT_SEO.defaultDescription,
     publisher: {
       '@id': `${SITE_URL}/#organization`
@@ -239,9 +265,10 @@ export function updatePageSEO({
   setJsonLdScript('schema-website', websiteSchema);
 
   // 8. WebPage JSON-LD Schema
-  const webPageSchema = {
+  const resolvedPageType = webPageType || (ogType === 'article' || ogType === 'product' ? 'ItemPage' : 'WebPage');
+  const webPageSchema: Record<string, unknown> = {
     '@context': 'https://schema.org',
-    '@type': ogType === 'article' ? 'ItemPage' : 'WebPage',
+    '@type': resolvedPageType,
     '@id': canonicalUrl,
     url: canonicalUrl,
     name: fullTitle,
@@ -249,8 +276,11 @@ export function updatePageSEO({
     isPartOf: {
       '@id': `${SITE_URL}/#website`
     },
-    inLanguage: ['en-IN', 'hi-IN']
+    inLanguage: inLanguage || (locale?.startsWith('hi') ? 'hi-IN' : ['en-IN', 'hi-IN'])
   };
+  if (productData) {
+    webPageSchema.mainEntity = { '@id': `${canonicalUrl}#product` };
+  }
   setJsonLdScript('schema-webpage', webPageSchema);
 
   // 9. Breadcrumbs JSON-LD Schema
@@ -270,7 +300,7 @@ export function updatePageSEO({
     removeJsonLdScript('schema-breadcrumbs');
   }
 
-  // 10. Product JSON-LD Schema (Strictly factual without fake ratings)
+  // 10. Product JSON-LD Schema (Strictly factual — matches actual shipping/return policies)
   if (productData) {
     const productSchema: Record<string, unknown> = {
       '@context': 'https://schema.org',
@@ -281,9 +311,14 @@ export function updatePageSEO({
       description: productData.description,
       sku: productData.sku || productData.id,
       mpn: productData.id,
+      material: 'Natural Narmada River Stone',
+      countryOfOrigin: {
+        '@type': 'Country',
+        name: 'India'
+      },
       brand: {
         '@type': 'Brand',
-        name: BUSINESS_CONFIG.name
+        name: DEFAULT_SEO.siteName
       },
       category: productData.category || 'Natural Narmadeshwar Shivling',
       offers: {
@@ -297,48 +332,24 @@ export function updatePageSEO({
           ? 'https://schema.org/InStock'
           : 'https://schema.org/OutOfStock',
         seller: {
+          '@id': `${SITE_URL}/#organization`,
           '@type': 'Organization',
-          name: BUSINESS_CONFIG.name
-        },
-        hasMerchantReturnPolicy: {
-          '@type': 'MerchantReturnPolicy',
-          applicableCountry: 'IN',
-          returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-          merchantReturnDays: 7,
-          returnMethod: 'https://schema.org/ReturnByMail',
-          returnFees: 'https://schema.org/FreeReturn'
-        },
-        shippingDetails: {
-          '@type': 'OfferShippingDetails',
-          shippingRate: {
-            '@type': 'MonetaryAmount',
-            value: 0,
-            currency: 'INR'
-          },
-          shippingDestination: {
-            '@type': 'DefinedRegion',
-            addressCountry: 'IN'
-          },
-          deliveryTime: {
-            '@type': 'ShippingDeliveryTime',
-            handlingTime: {
-              '@type': 'QuantitativeValue',
-              minValue: 1,
-              maxValue: 2,
-              unitCode: 'd'
-            },
-            transitTime: {
-              '@type': 'QuantitativeValue',
-              minValue: 3,
-              maxValue: 7,
-              unitCode: 'd'
-            }
-          }
+          name: DEFAULT_SEO.siteName
         }
       }
     };
 
-    // Only include aggregateRating if real reviewCount > 0 is provided
+    if (productData.size) {
+      productSchema.size = productData.size;
+    }
+    if (productData.weight) {
+      productSchema.weight = {
+        '@type': 'QuantitativeValue',
+        name: productData.weight
+      };
+    }
+
+    // Only include aggregateRating if real verified reviewCount > 0 is explicitly supplied
     if (productData.reviewCount && productData.reviewCount > 0 && productData.ratingValue) {
       productSchema.aggregateRating = {
         '@type': 'AggregateRating',
@@ -368,12 +379,13 @@ export function updatePageSEO({
       dateModified: articleData.modifiedDate || articleData.publishDate,
       author: {
         '@type': 'Organization',
-        name: articleData.authorName || BUSINESS_CONFIG.name,
+        name: DEFAULT_SEO.siteName,
         url: SITE_URL
       },
       publisher: {
+        '@id': `${SITE_URL}/#organization`,
         '@type': 'Organization',
-        name: BUSINESS_CONFIG.name,
+        name: DEFAULT_SEO.siteName,
         logo: {
           '@type': 'ImageObject',
           url: `${SITE_URL}/images/products/product-1.jpeg`

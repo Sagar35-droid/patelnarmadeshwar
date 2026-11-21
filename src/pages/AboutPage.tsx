@@ -15,9 +15,10 @@ export const AboutPage: React.FC = () => {
 
   useEffect(() => {
     updatePageSEO({
-      title: 'About Narmadeshwar Shivling, Bakawan & Omkareshwar | बकावां, मध्य प्रदेश',
-      description: 'नर्मदेश्वर शिवलिंग क्या है, बकावां मध्य प्रदेश की पावन धरा, ओंकारेश्वर ज्योतिर्लिंग से इसका आध्यात्मिक संबंध, विशेषताएं, महत्व एवं घर बैठे दर्शन की सुविधा।',
+      title: 'About Authentic Narmadeshwar Shivling | Bakawan, Barwaha, MP',
+      description: 'Learn about Natural Narmadeshwar Shivling origin from the Narmada River in Bakawan (Barwaha, Khargone, MP), Omkareshwar Jyotirlinga heritage, and authentic river stone features.',
       canonicalPath: '/about',
+      webPageType: 'AboutPage',
       breadcrumbs: [
         { name: 'Home', url: '/' },
         { name: 'About Narmadeshwar Shivling', url: '/about' }
@@ -54,6 +55,10 @@ export const AboutPage: React.FC = () => {
             <img
               src={bakawanRiverImg}
               alt="Sacred Narmada River Ghat at Bakawan, Madhya Pradesh"
+              width={1200}
+              height={450}
+              fetchPriority="high"
+              decoding="async"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
@@ -163,6 +168,10 @@ export const AboutPage: React.FC = () => {
                 <img
                   src={omkareshwarImg}
                   alt="Omkareshwar Jyotirlinga Temple on Narmada River Ghat, Madhya Pradesh"
+                  width={640}
+                  height={336}
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="w-full h-72 sm:h-84 object-cover rounded-xl transform group-hover:scale-105 transition-transform duration-700"
                 />
@@ -201,9 +210,9 @@ export const AboutPage: React.FC = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 <div className="bg-[#2D2D2D] p-3.5 rounded-xl border border-[#C5A059]/20">
                   <Compass className="w-4 h-4 text-[#C5A059] mb-1.5" />
-                  <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-1">
+                  <h3 className="text-xs font-bold text-white uppercase tracking-wider mb-1">
                     प्राकृतिक स्वयंभू स्वरूप
-                  </h4>
+                  </h3>
                   <p className="text-[11px] text-stone-400">
                     नदी के निरंतर प्रवाह से निर्मित सहज प्राकृतिक गोलाकार पाषाण।
                   </p>
@@ -211,9 +220,9 @@ export const AboutPage: React.FC = () => {
 
                 <div className="bg-[#2D2D2D] p-3.5 rounded-xl border border-[#C5A059]/20">
                   <Sparkles className="w-4 h-4 text-[#C5A059] mb-1.5" />
-                  <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-1">
+                  <h3 className="text-xs font-bold text-white uppercase tracking-wider mb-1">
                     सांस्कृतिक धरोहर
-                  </h4>
+                  </h3>
                   <p className="text-[11px] text-stone-400">
                     सनातन धार्मिक परंपरा और अगाध आस्था का पावन प्रतीक।
                   </p>
@@ -351,9 +360,9 @@ export const AboutPage: React.FC = () => {
           {/* Steps & Benefits */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-[#2D2D2D] p-5 rounded-2xl border border-[#C5A059]/30 space-y-2">
-              <h4 className="text-xs font-bold text-[#C5A059] uppercase tracking-wider">
+              <h3 className="text-xs font-bold text-[#C5A059] uppercase tracking-wider">
                 घर बैठे यह अनुभव कैसे प्राप्त करें?
-              </h4>
+              </h3>
               <ul className="space-y-2 text-xs text-stone-300">
                 {HINDI_ABOUT_CONTENT.homeExperience.steps.map((st, idx) => (
                   <li key={idx} className="flex items-center gap-2">
@@ -367,9 +376,9 @@ export const AboutPage: React.FC = () => {
             </div>
 
             <div className="bg-[#2D2D2D] p-5 rounded-2xl border border-[#C5A059]/30 space-y-2">
-              <h4 className="text-xs font-bold text-[#C5A059] uppercase tracking-wider">
+              <h3 className="text-xs font-bold text-[#C5A059] uppercase tracking-wider">
                 यह अनुभव आपको क्या देगा?
-              </h4>
+              </h3>
               <ul className="space-y-2 text-xs text-stone-300">
                 {HINDI_ABOUT_CONTENT.homeExperience.benefits.map((ben, idx) => (
                   <li key={idx} className="flex items-center gap-2">

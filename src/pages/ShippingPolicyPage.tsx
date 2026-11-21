@@ -7,8 +7,8 @@ export const ShippingPolicyPage: React.FC = () => {
 
   useEffect(() => {
     updatePageSEO({
-      title: 'Shipping & Delivery Policy | Sagar Narmadeshwar Shivling',
-      description: 'Shipping and Delivery Policy for Sagar Narmadeshwar Shivling. Pan India Delivery guidelines, courier transit details, secure wooden packaging, and Cash on Delivery (COD) terms.',
+      title: 'Shipping & Delivery Policy | Authentic Narmadeshwar',
+      description: 'Shipping and Delivery Policy for Authentic Narmadeshwar. Worldwide delivery guidelines where supported, wooden box packaging, transit details, and Cash on Delivery terms.',
       canonicalPath: '/shipping-policy',
       breadcrumbs: [
         { name: 'Home', url: '/' },

@@ -109,9 +109,9 @@ export const HeroSection: React.FC = () => {
                 <div className="w-10 h-10 rounded-xl bg-[#F3EFE9] border border-[#C5A059]/30 flex items-center justify-center text-[#C5A059] mb-3 group-hover:scale-105 transition-transform">
                   <Icon className="w-5 h-5 text-[#C5A059]" />
                 </div>
-                <h3 className="font-serif font-bold text-sm text-[#1A1A1A] leading-snug">
+                <p className="font-serif font-bold text-sm text-[#1A1A1A] leading-snug">
                   {item.title}
-                </h3>
+                </p>
                 <p className="text-[11px] text-[#8B6508] font-medium mt-0.5 mb-1.5">
                   {item.hindi}
                 </p>

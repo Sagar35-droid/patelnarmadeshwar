@@ -21,9 +21,10 @@ export const ContactPage: React.FC = () => {
 
   useEffect(() => {
     updatePageSEO({
-      title: `Contact Us | ${BUSINESS_CONFIG.name} Bakawan, MP`,
-      description: `Contact ${BUSINESS_CONFIG.name} in Bakawan, MP. Phone: ${BUSINESS_CONFIG.phoneDisplay}, WhatsApp, address, and business hours for authentic Narmadeshwar Shivling enquiries and Pan India Delivery.`,
+      title: `Contact Us | Authentic Narmadeshwar — Bakawan, Madhya Pradesh`,
+      description: `Contact Authentic Narmadeshwar in Bakawan, Barwaha, Madhya Pradesh. Call or WhatsApp ${BUSINESS_CONFIG.phoneDisplay} for Natural Narmadeshwar Shivling enquiries and worldwide delivery.`,
       canonicalPath: '/contact',
+      webPageType: 'ContactPage',
       breadcrumbs: [
         { name: 'Home', url: '/' },
         { name: 'Contact Us', url: '/contact' }
@@ -236,9 +237,9 @@ export const ContactPage: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-[#C5A059]/20 pb-3">
             <div className="flex items-center gap-2">
               <MapPin className="w-5 h-5 text-[#C5A059]" />
-              <h3 className="font-serif font-bold text-lg text-[#1A1A1A]">
+              <h2 className="font-serif font-bold text-lg text-[#1A1A1A]">
                 Our Location on Google Maps • बकावां, मध्य प्रदेश
-              </h3>
+              </h2>
             </div>
             <a
               href="https://www.google.com/maps/search/?api=1&query=Bakawan,+Madhya+Pradesh+451113"

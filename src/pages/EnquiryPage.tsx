@@ -11,8 +11,8 @@ export const EnquiryPage: React.FC = () => {
 
   useEffect(() => {
     updatePageSEO({
-      title: 'Enquiry & Custom Order Form | Sagar Narmadeshwar Shivling',
-      description: 'Enquiry form for authentic Narmadeshwar Shivlings from Bakawan, Madhya Pradesh. Direct WhatsApp communication and Pan India Delivery assistance.',
+      title: 'Enquiry & Custom Order Form | Authentic Narmadeshwar',
+      description: 'Submit an enquiry for Natural Narmadeshwar Shivlings, Jaladhari bases and custom sizes from Bakawan, Madhya Pradesh. Direct WhatsApp assistance and worldwide delivery.',
       canonicalPath: '/enquiry',
       breadcrumbs: [
         { name: 'Home', url: '/' },

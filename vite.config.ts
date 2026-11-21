@@ -11,6 +11,21 @@ export default defineConfig(() => {
         '@': path.resolve(__dirname, '.'),
       },
     },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (id.includes('react')) return 'vendor-react';
+              if (id.includes('lucide-react')) return 'vendor-icons';
+              return 'vendor';
+            }
+            if (id.includes('src/data/blogData')) return 'data-blog';
+            if (id.includes('src/data/products')) return 'data-products';
+          },
+        },
+      },
+    },
     server: {
       host: '0.0.0.0',
       port: 3000,

@@ -7,8 +7,8 @@ export const TermsPage: React.FC = () => {
 
   useEffect(() => {
     updatePageSEO({
-      title: 'Terms & Conditions | Sagar Narmadeshwar Shivling',
-      description: 'Terms and Conditions covering website usage, product information, natural variations in Narmadeshwar Shivlings, and customer enquiry guidelines.',
+      title: 'Terms & Conditions | Authentic Narmadeshwar',
+      description: 'Terms and Conditions covering website usage, natural stone variations in Narmadeshwar Shivlings, and customer enquiry guidelines.',
       canonicalPath: '/terms-and-conditions',
       breadcrumbs: [
         { name: 'Home', url: '/' },

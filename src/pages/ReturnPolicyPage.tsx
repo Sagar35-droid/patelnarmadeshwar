@@ -18,8 +18,8 @@ import {
 export const ReturnPolicyPage: React.FC = () => {
   useEffect(() => {
     updatePageSEO({
-      title: 'Return & Replacement Policy | Sagar Narmadeshwar Shivling',
-      description: 'Official Return and Replacement Policy for authentic natural Narmadeshwar Shivling by Sagar Narmadeshwar Shivling, Bakawan.',
+      title: 'Return & Replacement Policy | Authentic Narmadeshwar',
+      description: 'Official Return and Transit-Damage Replacement Policy for natural Narmadeshwar Shivling orders from Authentic Narmadeshwar, Bakawan, Madhya Pradesh.',
       canonicalPath: '/return-policy',
       breadcrumbs: [
         { name: 'Home', url: '/' },
@@ -158,9 +158,9 @@ export const ReturnPolicyPage: React.FC = () => {
 
           {/* Section 3: Contact for Support */}
           <section className="bg-[#FCFAF7] p-6 rounded-2xl border border-stone-200 space-y-4">
-            <h3 className="text-sm font-serif font-bold text-[#1A1A1A]">
+            <h2 className="text-sm font-serif font-bold text-[#1A1A1A]">
               Need Assistance with an Order?
-            </h3>
+            </h2>
             <p className="text-xs text-stone-600">
               Our team in Bakawan is available 7 days a week to support you with dispatch, tracking, and transit queries.
             </p>

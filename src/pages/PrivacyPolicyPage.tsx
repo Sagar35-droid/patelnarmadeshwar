@@ -9,8 +9,8 @@ export const PrivacyPolicyPage: React.FC = () => {
 
   useEffect(() => {
     updatePageSEO({
-      title: 'Privacy Policy | Sagar Narmadeshwar Shivling',
-      description: 'Privacy Policy for Sagar Narmadeshwar Shivling. Information on how we collect and use enquiry details strictly for customer support and order communication.',
+      title: 'Privacy Policy | Authentic Narmadeshwar',
+      description: 'Privacy Policy for Authentic Narmadeshwar. How customer enquiry details are collected and used strictly for support and order communication.',
       canonicalPath: '/privacy-policy',
       breadcrumbs: [
         { name: 'Home', url: '/' },

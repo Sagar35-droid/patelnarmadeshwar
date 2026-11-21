@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { RouterProvider, useRouter } from './context/RouterContext';
 import { ProductProvider } from './context/ProductContext';
 import { Navbar } from './components/layout/Navbar';
@@ -11,21 +11,22 @@ import { Footer } from './components/layout/Footer';
 import { FloatingWhatsApp } from './components/layout/FloatingWhatsApp';
 
 import { HomePage } from './pages/HomePage';
-import { AboutPage } from './pages/AboutPage';
-import { ProductsPage } from './pages/ProductsPage';
-import { ProductDetailPage } from './pages/ProductDetailPage';
-import { EnquiryPage } from './pages/EnquiryPage';
-import { ContactPage } from './pages/ContactPage';
-import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
-import { TermsPage } from './pages/TermsPage';
-import { ShippingPolicyPage } from './pages/ShippingPolicyPage';
-import { ReturnPolicyPage } from './pages/ReturnPolicyPage';
-import { CancellationPolicyPage } from './pages/CancellationPolicyPage';
-import { FAQPage } from './pages/FAQPage';
-import { DisclaimerPage } from './pages/DisclaimerPage';
-import { BlogListPage } from './pages/BlogListPage';
-import { BlogDetailPage } from './pages/BlogDetailPage';
-import { NotFoundPage } from './pages/NotFoundPage';
+
+const AboutPage = lazy(() => import('./pages/AboutPage').then((m) => ({ default: m.AboutPage })));
+const ProductsPage = lazy(() => import('./pages/ProductsPage').then((m) => ({ default: m.ProductsPage })));
+const ProductDetailPage = lazy(() => import('./pages/ProductDetailPage').then((m) => ({ default: m.ProductDetailPage })));
+const EnquiryPage = lazy(() => import('./pages/EnquiryPage').then((m) => ({ default: m.EnquiryPage })));
+const ContactPage = lazy(() => import('./pages/ContactPage').then((m) => ({ default: m.ContactPage })));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage').then((m) => ({ default: m.PrivacyPolicyPage })));
+const TermsPage = lazy(() => import('./pages/TermsPage').then((m) => ({ default: m.TermsPage })));
+const ShippingPolicyPage = lazy(() => import('./pages/ShippingPolicyPage').then((m) => ({ default: m.ShippingPolicyPage })));
+const ReturnPolicyPage = lazy(() => import('./pages/ReturnPolicyPage').then((m) => ({ default: m.ReturnPolicyPage })));
+const CancellationPolicyPage = lazy(() => import('./pages/CancellationPolicyPage').then((m) => ({ default: m.CancellationPolicyPage })));
+const FAQPage = lazy(() => import('./pages/FAQPage').then((m) => ({ default: m.FAQPage })));
+const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage').then((m) => ({ default: m.DisclaimerPage })));
+const BlogListPage = lazy(() => import('./pages/BlogListPage').then((m) => ({ default: m.BlogListPage })));
+const BlogDetailPage = lazy(() => import('./pages/BlogDetailPage').then((m) => ({ default: m.BlogDetailPage })));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })));
 
 function MainContent() {
   const { currentPath, productId, blogSlug } = useRouter();
@@ -80,7 +81,11 @@ function MainContent() {
   return (
     <div className="min-h-screen flex flex-col font-sans bg-white text-stone-900 selection:bg-amber-200 selection:text-amber-950">
       <Navbar />
-      <div className="flex-1">{PageComponent}</div>
+      <div className="flex-1">
+        <Suspense fallback={<div className="min-h-[60vh] bg-[#FCFAF7]" />}>
+          {PageComponent}
+        </Suspense>
+      </div>
       <Footer />
       <FloatingWhatsApp />
     </div>

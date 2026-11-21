@@ -47,9 +47,9 @@ export const Footer: React.FC = () => {
 
           {/* Column 2: Explore & Customer Care */}
           <div>
-            <h4 className="text-xs font-bold text-[#C5A059] uppercase tracking-widest mb-4 border-b border-[#C5A059]/20 pb-2">
+            <p className="text-xs font-bold text-[#C5A059] uppercase tracking-widest mb-4 border-b border-[#C5A059]/20 pb-2">
               Explore & Support
-            </h4>
+            </p>
             <ul className="space-y-2.5 text-xs">
               <li>
                 <a
@@ -140,9 +140,9 @@ export const Footer: React.FC = () => {
 
           {/* Column 3: Transparent Policies */}
           <div>
-            <h4 className="text-xs font-bold text-[#C5A059] uppercase tracking-widest mb-4 border-b border-[#C5A059]/20 pb-2">
+            <p className="text-xs font-bold text-[#C5A059] uppercase tracking-widest mb-4 border-b border-[#C5A059]/20 pb-2">
               Policies / नीतियां
-            </h4>
+            </p>
             <ul className="space-y-2.5 text-xs">
               <li>
                 <a
@@ -221,9 +221,9 @@ export const Footer: React.FC = () => {
 
           {/* Column 4: Contact Details */}
           <div>
-            <h4 className="text-xs font-bold text-[#C5A059] uppercase tracking-widest mb-4 border-b border-[#C5A059]/20 pb-2">
+            <p className="text-xs font-bold text-[#C5A059] uppercase tracking-widest mb-4 border-b border-[#C5A059]/20 pb-2">
               Contact & Address / संपर्क
-            </h4>
+            </p>
             <ul className="space-y-3 text-xs text-stone-300">
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" />

@@ -22,6 +22,7 @@ import { CustomerReviewsSection } from '../components/common/CustomerReviewsSect
 
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { AuthorTrustCard } from '../components/common/AuthorTrustCard';
+import { ProductCard } from '../components/common/ProductCard';
 
 interface ProductDetailPageProps {
   productId: string;
@@ -29,7 +30,7 @@ interface ProductDetailPageProps {
 
 export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
   const { navigate } = useRouter();
-  const { getProductById } = useProducts();
+  const { products, getProductById } = useProducts();
   const product = getProductById(productId);
   const [selectedImage, setSelectedImage] = useState<string>(product?.mainImage || '');
   const [quantity, setQuantity] = useState<number>(1);
@@ -40,61 +41,71 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
   ? 'Natural Stone Nandi Ji'
   : product?.name.toLowerCase().includes('murti')
   ? 'Narmada Stone Murti'
-  : 'Original Natural Narmadeshwar Shivling';
+  : 'Natural Narmadeshwar Shivling';
 
   useEffect(() => {
-    if (product) {
-      setSelectedImage(product.mainImage);
-      const itemNum = product.id.replace('product-', '');
-const pieceLabel = `Piece #${itemNum}`;
-
-
-
-const cleanTitle = `${product.name} | ${product.size} | ${product.weight} | ${productType}`;
-
-const cleanDesc = `Buy ${product.name} in ${product.size} (${product.weight}). ${productType} from Narmada River, Bakawan, Madhya Pradesh. Price ₹${pricing.sellingPrice}. Pan India delivery available.`;
-      
+    if (!product) {
       updatePageSEO({
-        title: cleanTitle,
-        description: cleanDesc,
-        keywords: [
-          product.name,
-          product.nameHindi,
-          'Narmadeshwar Shivling',
-          'Narmada Shivling',
-          'Shivling with Jaladhari',
-          'Narmada stone Shivling',
-          'Akhand Shivling',
-          'Shivling for home',
-          'Narmadeshwar Shivling price',
-          'Bakawan Shivling',
-          'शिवलिंग',
-          'नर्मदेश्वर शिवलिंग',
-          'नर्मदा शिवलिंग'
-        ],
-        canonicalPath: `/products/${product.id}`,
-        ogImage: product.mainImage,
-        imageAlt: `${product.name} - ${productType} (${product.size}, ${product.weight}) from Bakawan, Madhya Pradesh`,
-        ogType: 'product',
-        breadcrumbs: [
-          { name: 'Home', url: '/' },
-          { name: 'Products Collection', url: '/products' },
-          { name: `${product.name} (${pieceLabel})`, url: `/products/${product.id}` }
-        ],
-        productData: {
-          id: product.id,
-          name: product.name,
-          description: cleanDesc,
-          image: product.mainImage,
-          sku: product.id,
-          price: pricing.sellingPrice,
-          mrp: pricing.mrp,
-          inStock: isInStock,
-          category: product.category || 'Natural Narmadeshwar Shivling'
-        }
+        title: 'Product Not Found | Authentic Narmadeshwar',
+        description: 'The requested Narmadeshwar Shivling piece was not found. Browse our complete collection of natural Narmada River stone Shivlings from Bakawan, Madhya Pradesh.',
+        canonicalPath: '/404',
+        noindex: true
       });
+      return;
     }
-  }, [product, pricing.sellingPrice, pricing.mrp, isInStock]);
+
+    setSelectedImage(product.mainImage);
+    const itemNum = product.id.replace('product-', '');
+    const pieceLabel = `#${itemNum}`;
+
+    const cleanTitle = `${product.name} (${pieceLabel}, ${product.weight}) | Authentic Narmadeshwar`;
+    const cleanDesc = `Buy ${product.name} (${pieceLabel}, ${product.size}, ${product.weight}, ${product.markingType}) at ₹${pricing.sellingPrice}. ${productType} from Narmada River, Bakawan, MP. Worldwide delivery.`;
+
+    updatePageSEO({
+      title: cleanTitle,
+      description: cleanDesc,
+      keywords: [
+        product.name,
+        `${product.name} ${pieceLabel}`,
+        product.nameHindi,
+        product.markingType,
+        'Narmadeshwar Shivling',
+        'Narmada Shivling',
+        'Shivling with Jaladhari',
+        'Narmada stone Shivling',
+        'Akhand Shivling',
+        'Shivling for home temple',
+        'Narmadeshwar Shivling price',
+        'Bakawan Shivling',
+        'शिवलिंग',
+        'नर्मदेश्वर शिवलिंग',
+        'नर्मदा शिवलिंग'
+      ],
+      canonicalPath: `/products/${product.id}`,
+      ogImage: product.mainImage,
+      imageAlt: `${product.name} (${pieceLabel}) - ${productType} (${product.size}, ${product.weight}) from Bakawan, Madhya Pradesh`,
+      ogType: 'product',
+      webPageType: 'ItemPage',
+      breadcrumbs: [
+        { name: 'Home', url: '/' },
+        { name: 'Products Collection', url: '/products' },
+        { name: `${product.name} (${pieceLabel})`, url: `/products/${product.id}` }
+      ],
+      productData: {
+        id: product.id,
+        name: `${product.name} (${pieceLabel})`,
+        description: cleanDesc,
+        image: product.mainImage,
+        sku: product.id.toUpperCase(),
+        price: pricing.sellingPrice,
+        mrp: pricing.mrp,
+        inStock: isInStock,
+        category: product.category || 'Natural Narmadeshwar Shivling',
+        size: product.size,
+        weight: product.weight
+      }
+    });
+  }, [product, productType, pricing.sellingPrice, pricing.mrp, isInStock]);
 
   if (!product) {
     return (
@@ -136,7 +147,11 @@ const cleanDesc = `Buy ${product.name} in ${product.size} (${product.weight}). $
             <div className="w-full aspect-square max-w-full bg-[#F3EFE9] rounded-2xl sm:rounded-3xl overflow-hidden border border-[#C5A059]/20 shadow-inner p-3 sm:p-6 lg:p-8 flex items-center justify-center relative">
               <img
                 src={selectedImage}
-               alt={`${product.name} - ${productType} (${product.size}, ${product.weight}) from Bakawan, Madhya Pradesh`}
+                alt={`${product.name} - ${productType} (${product.size}, ${product.weight}) from Bakawan, Madhya Pradesh`}
+                width={600}
+                height={600}
+                fetchPriority="high"
+                decoding="async"
                 referrerPolicy="no-referrer"
                 className="max-w-full max-h-full w-auto h-auto object-contain block mx-auto transition-transform duration-300 hover:scale-105"
               />
@@ -156,12 +171,16 @@ const cleanDesc = `Buy ${product.name} in ${product.size} (${product.weight}). $
                         : 'border-stone-200 hover:border-[#C5A059] opacity-75 hover:opacity-100'
                     }`}
                   >
-                   <img
-       src={img}
-      alt={`${product.name} - ${productType} view ${idx + 1}, ${product.size}, ${product.weight}`}
-      referrerPolicy="no-referrer"
-     className="w-full h-full object-contain"
-/>
+                    <img
+                      src={img}
+                      alt={`${product.name} - ${productType} view ${idx + 1}, ${product.size}, ${product.weight}`}
+                      width={80}
+                      height={80}
+                      loading="lazy"
+                      decoding="async"
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-contain"
+                    />
                   </button>
                 ))}
               </div>
@@ -317,7 +336,7 @@ const cleanDesc = `Buy ${product.name} in ${product.size} (${product.weight}). $
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1">
-                  <Truck className="w-3.5 h-3.5 text-[#C5A059]" /> Insured Wooden Box Packing
+                  <Truck className="w-3.5 h-3.5 text-[#C5A059]" /> Secure Wooden Box Packing
                 </span>
               </div>
             </div>
@@ -418,6 +437,48 @@ const cleanDesc = `Buy ${product.name} in ${product.size} (${product.weight}). $
           </div>
         </div>
       </section>
+
+      {/* Related Products Internal Linking Section */}
+      {(() => {
+        const sameCategory = products.filter(
+          (p) => p.id !== product.id && p.category === product.category
+        );
+        const fallbackOthers = products.filter(
+          (p) => p.id !== product.id && p.category !== product.category
+        );
+        const relatedProducts = [...sameCategory, ...fallbackOthers].slice(0, 4);
+        if (relatedProducts.length === 0) return null;
+        return (
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+            <div className="flex items-center justify-between gap-4 mb-6">
+              <div>
+                <span className="text-[10px] uppercase font-bold text-[#8C6B2D] tracking-wider">
+                  Explore More Natural Stones
+                </span>
+                <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#1A1A1A]">
+                  Related Narmadeshwar Shivlings
+                </h2>
+              </div>
+              <a
+                href="/products"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/products');
+                }}
+                className="text-xs font-bold text-[#8C6B2D] hover:underline flex items-center gap-1 shrink-0"
+              >
+                <span>View All 38 Products</span>
+                <ChevronRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+              {relatedProducts.map((rel) => (
+                <ProductCard key={rel.id} product={rel} hideTitle={false} />
+              ))}
+            </div>
+          </section>
+        );
+      })()}
 
       {/* Customer Reviews Section */}
       <CustomerReviewsSection />

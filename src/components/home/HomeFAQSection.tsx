@@ -15,56 +15,56 @@ export const HOME_FAQS: HomeFAQItem[] = [
   {
     question: 'What is a Narmadeshwar Shivling?',
     questionHindi: 'नर्मदेश्वर शिवलिंग क्या है?',
-    answer: 'A Narmadeshwar Shivling is a self-manifested (Swayambhu) sacred stone naturally formed by the rapid river currents and geological friction of the holy Narmada River. Found exclusively in the Narmada River basin around Bakawan (Madhya Pradesh, India), each stone is organically rounded over decades and considered naturally consecrated in Sanatan tradition.',
-    answerHindi: 'नर्मदेश्वर शिवलिंग माँ नर्मदा नदी के पावन प्रवाह और प्राकृतिक घर्षण द्वारा वर्षों में स्वतः निर्मित स्वयंभू पाषाण है, जो मध्य प्रदेश के बकावां क्षेत्र से प्राप्त होता है।'
+    answer: 'A Narmadeshwar Shivling is a self-manifested (Swayambhu) sacred stone naturally formed by the rapid river currents and geological friction of the holy Narmada River. Unlike carved stone idols, each Narmadeshwar Shivling attains its smooth oval shape naturally in the riverbed and is considered naturally consecrated in Sanatan Dharma.',
+    answerHindi: 'नर्मदेश्वर शिवलिंग माँ नर्मदा नदी के तीव्र जल-प्रवाह और प्राकृतिक घर्षण द्वारा वर्षों में स्वतः निर्मित स्वयंभू पाषाण है। इसे किसी मशीन से नहीं तराशा जाता और सनातन धर्म में यह स्वतः सिद्ध एवं पूजनीय माना गया है।'
   },
   {
-    question: 'How to choose a Narmadeshwar Shivling for home?',
-    questionHindi: 'घर के लिए नर्मदेश्वर शिवलिंग का चयन कैसे करें?',
-    answer: 'For a home temple (गृहस्थ पूजा), classical scriptures recommend a Shivling between 2 to 4 inches (अंगुष्ठ मात्र - thumb size). Choose based on sacred natural markings (such as natural Janeyu thread, Tilak, or Surya lines), balanced proportions, and pair it with an appropriately sized Jaladhari for daily Abhishek.',
-    answerHindi: 'घर के मंदिर के लिए 2 से 4 इंच (अंगुष्ठ मात्र) का शिवलिंग शास्त्रों के अनुसार सर्वोत्तम माना गया है। चयन करते समय प्राकृतिक जनेऊ, तिलक अथवा सूर्य रेखाएं और अनुकूल जलाधारी देखें।'
+    question: 'Where does an original Narmadeshwar Shivling come from?',
+    questionHindi: 'असली नर्मदेश्वर शिवलिंग कहाँ से प्राप्त होता है?',
+    answer: 'Original Narmadeshwar Shivlings come exclusively from the Narmada River basin around Bakawan (बकावां), Tehsil Barwaha, District Khargone, Madhya Pradesh, India. Bakawan is the historic village near Omkareshwar where hereditary artisan families collect and hand-finish natural Narmada river stones.',
+    answerHindi: 'असली नर्मदेश्वर शिवलिंग केवल मध्य प्रदेश के खरगोन जिले में बड़वाह के पास स्थित पावन बकावां (Bakawan) ग्राम में नर्मदा नदी के तट एवं गर्भ से प्राप्त होते हैं।'
   },
   {
-    question: 'What is the difference between Narmadeshwar Shivling and other Shivling?',
-    questionHindi: 'नर्मदेश्वर शिवलिंग और अन्य शिवलिंग में क्या अंतर है?',
-    answer: 'Unlike carved marble, granite, or synthetic resin Shivlings, Narmadeshwar Shivlings are 100% natural cryptocrystalline river quartz formed organically by the Narmada River. They are inherently Swayambhu (self-consecrated) and do not mandatorily require elaborate temple Pran Pratishtha. They remain naturally smooth and cool.',
-    answerHindi: 'मार्बल या कृत्रिम पत्थरों के विपरीत, नर्मदेश्वर शिवलिंग 100% प्राकृतिक नदी पाषाण हैं जो स्वतः सिद्ध (स्वयंभू) माने जाते हैं। इन्हें घर में स्थापित करने के लिए जटिल अनुष्ठान की आवश्यकता नहीं होती।'
+    question: 'How can you identify a natural Narmadeshwar Shivling?',
+    questionHindi: 'प्राकृतिक नर्मदेश्वर शिवलिंग की पहचान कैसे करें?',
+    answer: 'A natural Narmadeshwar Shivling is solid cryptocrystalline quartzite river stone that feels cool and heavy in hand. Its natural markings—such as Janeyu (sacred thread band), Tilak, or Surya lines—are deeply embedded inside the stone texture rather than painted or acid-etched on the surface.',
+    answerHindi: 'प्राकृतिक नर्मदेश्वर शिवलिंग ठोस नदी पाषाण होता है जो छूने में शीतल और वजनदार लगता है। इस पर दिखने वाले जनेऊ, तिलक या सूर्य चिन्ह पत्थर की बनावट में प्राकृतिक रूप से अंदर समाहित होते हैं, ऊपर से रंगे हुए नहीं होते।'
   },
   {
-    question: 'What is a Jaladhari?',
-    questionHindi: 'शिवलिंग की जलहरी या जलाधारी क्या है?',
-    answer: 'A Jaladhari (also known as Argha, Peetham, or Yoni base) is the sacred base upon which the Shivling rests. Symbolizing Maa Parvati (Shakti) channelizing the divine energy of Lord Shiva, it features a spout that directs Abhishek water and milk towards the North direction during puja.',
-    answerHindi: 'जलाधारी (जलहरी या अर्घा) वह पावन आधार है जिस पर शिवलिंग विराजमान होता है। यह शक्ति स्वरूपा माँ पार्वती का प्रतीक है, जिससे अभिषेक का जल उत्तर दिशा की ओर प्रवाहित होता है।'
+    question: 'What is the importance of a Narmada River Shivling?',
+    questionHindi: 'नर्मदा नदी के शिवलिंग का क्या महत्व है?',
+    answer: 'In Hindu scriptures (Shiva Purana and Skanda Purana), the Narmada River is revered as Shiva-Putri, and every stone from its bed is worshipped as "Narmada Ka Har Kankar, Shiv Shankar." Because Narmadeshwar Shivlings are considered Swayambhu (self-consecrated), households can establish them for daily worship with simple devotion without mandatory complex Pran Pratishtha rituals.',
+    answerHindi: 'शिवपुराण एवं स्कंदपुराण के अनुसार नर्मदा नदी भगवान शिव की पुत्री मानी जाती हैं और "नर्मदा का हर कंकर, शिव शंकर" कहा गया है। स्वयंभू होने के कारण घर के मंदिर में सरल भक्ति एवं जलाभिषेक से इसकी नित्य पूजा की जा सकती है।'
   },
   {
-    question: 'What is an Akhand Shivling?',
-    questionHindi: 'अखंड नर्मदेश्वर शिवलिंग क्या है?',
-    answer: 'An Akhand Narmadeshwar Shivling is crafted from a single, unbroken block of natural Narmada river stone, where both the Shivling body and the Jaladhari base form one continuous sacred piece with zero joints or bonding adhesives.',
-    answerHindi: 'अखंड नर्मदेश्वर शिवलिंग वह पावन स्वरूप है जिसमें शिवलिंग और जलाधारी दोनों एक ही अखंड नर्मदा पाषाण से बिना किसी जोड़ (Joint) के निर्मित होते हैं।'
+    question: 'How to choose a Narmadeshwar Shivling for a home temple?',
+    questionHindi: 'घर के मंदिर के लिए नर्मदेश्वर शिवलिंग कैसे चुनें?',
+    answer: 'For a home temple (गृहस्थ पूजा), choose a compact 2-inch to 4-inch natural Narmadeshwar Shivling with smooth texture, balanced proportions, and authentic markings like natural Janeyu or Tilak. Always pair it with a well-fitted Narmada stone Jaladhari so Abhishek water drains cleanly towards the North.',
+    answerHindi: 'घर के मंदिर के लिए 2 से 4 इंच का प्राकृतिक नर्मदेश्वर शिवलिंग चुनें जिसकी सतह चिकनी हो, आकार संतुलित हो और प्राकृतिक जनेऊ या तिलक चिन्ह हों। दैनिक अभिषेक के लिए इसके साथ उपयुक्त आकार की जलाधारी अवश्य लें।'
   },
   {
-    question: 'How to care for a Narmadeshwar Shivling?',
-    questionHindi: 'नर्मदेश्वर शिवलिंग की देखभाल और रख-रखाव कैसे करें?',
-    answer: 'Perform daily Abhishek with clean water, raw cow milk, or Ganga jal. Gently wipe with a soft, clean cotton cloth after puja. Avoid harsh chemicals, soaps, or acidic cleaners. Occasionally applying pure sandalwood paste (Chandan) maintains the stone natural moisture and natural luster.',
-    answerHindi: 'नित्य ताजे जल, गंगाजल या कच्चे दूध से अभिषेक करें। पूजा के बाद स्वच्छ सूती वस्त्र से पोंछें। कभी भी साबुन या केमिकल का प्रयोग न करें। शुद्ध चंदन लगाने से पाषाण की चमक सुरक्षित रहती है।'
+    question: 'How to choose the correct Narmadeshwar Shivling size?',
+    questionHindi: 'सही आकार (Size) का नर्मदेश्वर शिवलिंग कैसे चुनें?',
+    answer: 'Classical scriptures recommend a Shivling roughly thumb-sized (अंगुष्ठ मात्र — 1.5 to 4 inches in height) for home temples, paired with a 3-inch to 8-inch Jaladhari depending on your mandir shelf width. Larger sizes (6 inches to 1 foot and above) are suited for large altars, ashrams, or public temples.',
+    answerHindi: 'शास्त्रों में घर के मंदिर के लिए 1.5 से 4 इंच (अंगुष्ठ मात्र) का शिवलिंग और मंदिर के स्थान अनुसार 3 से 8 इंच की जलाधारी उपयुक्त बताई गई है। 6 इंच से 1 फीट के बड़े शिवलिंग आश्रमों या बड़े मंदिरों के लिए चुने जाते हैं।'
   },
   {
-    question: 'How to perform Shivling puja at home?',
-    questionHindi: 'घर पर नर्मदेश्वर शिवलिंग की नित्य पूजा कैसे करें?',
-    answer: 'Place the Jaladhari facing North in your mandir. Offer fresh water (Jal Abhishek) while chanting "Om Namah Shivaya" (ॐ नमः शिवाय). Offer Bilva patra, white flowers, and pure Chandan. Conclude with a ghee diya and incense dhoop. Sincere devotion and pure water are supreme.',
-    answerHindi: 'शिवलिंग को उत्तर मुखी जलाधारी के साथ स्थापित करें। "ॐ नमः शिवाय" का जप करते हुए जल अर्पित करें, बेलपत्र, पुष्प और चंदन चढ़ाएं तथा घी का दीपक प्रज्वलित करें।'
+    question: 'What is the difference between a Shivling and a Jaladhari?',
+    questionHindi: 'शिवलिंग और जलाधारी (जलहरी) में क्या अंतर है?',
+    answer: 'The Shivling is the central sacred cylindrical/oval stone representing Lord Shiva, whereas the Jaladhari (also called Argha or Peetham) is the channeled base platform symbolizing Maa Parvati (Shakti) that holds the Shivling and directs Abhishek water and milk towards the North direction. In an Akhand Shivling, both are sculpted from one unbroken river stone.',
+    answerHindi: 'शिवलिंग भगवान शिव का पावन केंद्रीय स्वरूप है, जबकि जलाधारी (अर्घा/पीठम) माँ पार्वती (शक्ति) का प्रतीक वह आधार है जिस पर शिवलिंग स्थापित होता है और जहाँ से अभिषेक का जल उत्तर दिशा में प्रवाहित होता है।'
   },
   {
-    question: 'Which Shivling size is suitable for home?',
-    questionHindi: 'घर के मंदिर के लिए कौन सा शिवलिंग आकार सबसे उपयुक्त है?',
-    answer: 'For home puja (गृहस्थ मंदिर), scriptures and tradition recommend a Shivling between 2 to 4 inches (approximately thumb size - अंगुष्ठ मात्र). This size is ideal for daily Abhishek and respectful maintenance. Larger Shivlings (6 inches to 1 foot or more) are traditionally placed in ashrams, public temples, or dedicated large shrines.',
-    answerHindi: 'गृहस्थ मंदिर हेतु 2 से 4 इंच (अंगुष्ठ मात्र) का नर्मदेश्वर शिवलिंग सर्वोत्तम माना गया है। यह दैनिक जलाभिषेक और रख-रखाव के लिए अत्यंत सुविधाजनक होता है। 6 इंच से बड़े शिवलिंग मुख्य रूप से आश्रमों या बड़े देवालयों हेतु उपयुक्त होते हैं।'
+    question: 'How to perform daily Narmadeshwar Shivling puja at home?',
+    questionHindi: 'घर पर नर्मदेश्वर शिवलिंग की दैनिक पूजा कैसे करें?',
+    answer: 'Place the Shivling so the Jaladhari spout points North (Uttar) while you sit facing East or North. Offer clean fresh water, raw milk, or Ganga jal using a copper or brass kalash while chanting "Om Namah Shivaya" (ॐ नमः शिवाय), apply pure Chandan paste, offer Bilva patra (Belpatra) and white flowers, light a ghee lamp, and conclude with silent prayer.',
+    answerHindi: 'शिवलिंग को उत्तर मुखी जलाधारी के साथ स्थापित करें और पूर्व या उत्तर मुख होकर बैठें। तांबे या पीतल के कलश से "ॐ नमः शिवाय" जपते हुए शुद्ध जल अर्पित करें, शुद्ध चंदन, बेलपत्र व पुष्प चढ़ाएं तथा घी का दीपक जलाकर नमन करें।'
   },
   {
-    question: 'What should I check before buying a Narmadeshwar Shivling?',
-    questionHindi: 'नर्मदेश्वर शिवलिंग खरीदते समय क्या जांचना चाहिए?',
-    answer: 'Verify that the Shivling originates from the Narmada River basin at Bakawan (Madhya Pradesh). Ensure it has natural river-formed smoothness, natural Janeyu or Tilak markings, and no artificial chemical polish or paint. The stone should feel naturally heavy and cool, with a matching well-fitted Jaladhari.',
-    answerHindi: 'सुनिश्चित करें कि शिवलिंग बकावां (मध्य प्रदेश) की नर्मदा नदी से प्राप्त हो। उस पर कोई रासायनिक पॉलिश या कृत्रिम रंग न हो, और प्राकृतिक जनेऊ या तिलक रेखाएं हों। पाषाण स्वाभाविक रूप से ठंडा व वजनदार होना चाहिए।'
+    question: 'How should I care for a natural Narmadeshwar Shivling?',
+    questionHindi: 'प्राकृतिक नर्मदेश्वर शिवलिंग की देखभाल कैसे करें?',
+    answer: 'Rinse gently with clean water after daily Abhishek and pat dry with a soft cotton cloth. Never use soap, detergent, acid, or abrasive scrubbers. Applying a light touch of natural sandalwood paste or pure oil occasionally keeps the stone nourished and naturally lustrous.',
+    answerHindi: 'अभिषेक के बाद शिवलिंग को स्वच्छ जल से धोकर मुलायम सूती वस्त्र से पोंछें। कभी भी साबुन, एसिड या केमिकल क्लीनर का उपयोग न करें। शुद्ध चंदन लगाने से प्राकृतिक पाषाण की चमक बनी रहती है।'
   }
 ];
 

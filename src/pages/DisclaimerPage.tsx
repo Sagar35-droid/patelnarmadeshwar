@@ -15,8 +15,8 @@ import {
 export const DisclaimerPage: React.FC = () => {
   useEffect(() => {
     updatePageSEO({
-      title: 'Disclaimer (अस्वीकरण) | Sagar Narmadeshwar Shivling',
-      description: 'Official Natural Stone and Sacred Belief Disclaimer for Sagar Narmadeshwar Shivling, Bakawan, Madhya Pradesh.',
+      title: 'Disclaimer (अस्वीकरण) | Authentic Narmadeshwar',
+      description: 'Natural River Stone variation notice and traditional devotional disclaimer for Authentic Narmadeshwar, Bakawan, Madhya Pradesh.',
       canonicalPath: '/disclaimer',
       breadcrumbs: [
         { name: 'Home', url: '/' },

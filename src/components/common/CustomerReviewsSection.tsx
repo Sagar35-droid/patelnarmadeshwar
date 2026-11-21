@@ -127,6 +127,9 @@ export const CustomerReviewsSection: React.FC<CustomerReviewsSectionProps> = ({
                         <img 
                           src={review.image} 
                           alt={review.imageAlt || `${review.customerName} - ${review.location}`}
+                          width={400}
+                          height={300}
+                          decoding="async"
                           className="relative z-10 max-h-full max-w-full w-auto h-auto object-contain group-hover/img:scale-105 transition-transform duration-500 drop-shadow-md"
                           loading="lazy"
                           referrerPolicy="no-referrer"

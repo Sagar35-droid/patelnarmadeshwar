@@ -9,8 +9,8 @@ export const NotFoundPage: React.FC = () => {
 
   useEffect(() => {
     updatePageSEO({
-      title: 'Page Not Found (404) | Sagar Narmadeshwar Shivling',
-      description: 'The sacred page you are looking for may have moved or does not exist. Browse our authentic Narmadeshwar Shivling collection or contact our Bakawan artisans.',
+      title: 'Page Not Found (404) | Authentic Narmadeshwar',
+      description: 'The page you are looking for may have moved or does not exist. Browse our authentic Narmadeshwar Shivling collection or contact our Bakawan artisans.',
       canonicalPath: '/404',
       noindex: true
     });

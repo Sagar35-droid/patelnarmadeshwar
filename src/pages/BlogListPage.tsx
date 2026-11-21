@@ -4,31 +4,53 @@ import { BLOG_POSTS } from '../data/blogData';
 import { updatePageSEO } from '../utils/seo';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { AuthorTrustCard } from '../components/common/AuthorTrustCard';
-import { BookOpen, Clock, Calendar, ArrowRight, Sparkles, Tag, Award, RefreshCw } from 'lucide-react';
+import { SITE_URL } from '../config/seoConfig';
+import { BookOpen, Clock, Calendar, ArrowRight, Sparkles, Tag, Award, Globe } from 'lucide-react';
 
 export const BlogListPage: React.FC = () => {
-  const { navigate } = useRouter();
+  const { currentPath, navigate } = useRouter();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const isHindiRoute = currentPath.toLowerCase().startsWith('/hi/blog');
 
   useEffect(() => {
+    const canonicalPath = isHindiRoute ? '/hi/blog' : '/blog';
     updatePageSEO({
-      title: 'Sacred Knowledge & Puja Guides | Narmadeshwar Shivling Articles',
-      description: 'Explore authentic guides on Narmadeshwar Shivling identification, daily puja vidhi, Jaladhari placement, Vastu rules, size guide, and direct Bakawan artisan heritage.',
-      canonicalPath: '/blog',
+      title: isHindiRoute
+        ? 'नर्मदेश्वर शिवलिंग ज्ञान एवं पूजा मार्गदर्शिका | हिंदी लेख'
+        : 'Sacred Knowledge & Puja Guides | Narmadeshwar Shivling Blog',
+      description: isHindiRoute
+        ? 'नर्मदेश्वर शिवलिंग की पहचान, घर के मंदिर हेतु सही आकार, नित्य पूजा विधि, जलाधारी नियम और बकावां (मध्य प्रदेश) की परंपरा की संपूर्ण जानकारी हिंदी में पढ़ें।'
+        : 'Explore authentic guides on Narmadeshwar Shivling identification, daily puja vidhi, Jaladhari placement, Vastu rules, size guide, and Bakawan artisan heritage.',
+      canonicalPath,
+      webPageType: 'CollectionPage',
+      locale: isHindiRoute ? 'hi_IN' : 'en_IN',
+      inLanguage: isHindiRoute ? 'hi-IN' : ['en-IN', 'hi-IN'],
+      alternateLinks: [
+        { hreflang: 'en', href: `${SITE_URL}/blog` },
+        { hreflang: 'hi', href: `${SITE_URL}/hi/blog` },
+        { hreflang: 'x-default', href: `${SITE_URL}/blog` }
+      ],
       keywords: [
         'Narmadeshwar Shivling blog',
         'Shivling puja guides',
         'How to identify original Shivling',
         'Shivling Vastu direction',
-        'Bakawan heritage articles'
+        'Bakawan heritage articles',
+        'नर्मदेश्वर शिवलिंग जानकारी'
       ],
       breadcrumbs: [
-        { name: 'Home', url: '/' },
-        { name: 'Sacred Guides & Blog', url: '/blog' }
-      ]
+        { name: isHindiRoute ? 'मुख्य पृष्ठ' : 'Home', url: '/' },
+        { name: isHindiRoute ? 'धार्मिक ज्ञान व लेख' : 'Sacred Guides & Blog', url: canonicalPath }
+      ],
+      itemListData: BLOG_POSTS.map((post, idx) => ({
+        position: idx + 1,
+        name: post.title,
+        url: post.canonicalUrlPath || `/blog/${post.slug}`,
+        image: post.featuredImage
+      }))
     });
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
+  }, [isHindiRoute]);
 
   const categories = ['All', ...Array.from(new Set(BLOG_POSTS.map((p) => p.category)))];
 
@@ -50,11 +72,44 @@ export const BlogListPage: React.FC = () => {
             <Sparkles className="w-3.5 h-3.5" /> Authentic Vedic & Artisan Knowledge
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#FCFAF7] leading-tight">
-            Sacred Narmadeshwar Shivling Guides & Knowledge
+            {isHindiRoute ? 'नर्मदेश्वर शिवलिंग ज्ञान व धार्मिक मार्गदर्शिका' : 'Sacred Narmadeshwar Shivling Guides & Knowledge'}
           </h1>
           <p className="text-stone-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            Written and published directly by the hereditary artisans of Bakawan, Madhya Pradesh. Comprehensive answers on authenticity, daily abhishek, sizing, and sacred traditions.
+            {isHindiRoute
+              ? 'बकावां, मध्य प्रदेश के पारंपरिक शिल्पकारों द्वारा प्रकाशित नर्मदेश्वर शिवलिंग पहचान, दैनिक अभिषेक, आकार चयन और पूजा विधि से जुड़े प्रामाणिक लेख।'
+              : 'Written and published directly by the hereditary artisans of Bakawan, Madhya Pradesh. Comprehensive answers on authenticity, daily abhishek, sizing, and sacred traditions.'}
           </p>
+          <div className="pt-1 flex items-center justify-center gap-2">
+            <a
+              href="/blog"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/blog');
+              }}
+              className={`px-3.5 py-1.5 rounded-full text-xs font-bold border transition-all ${
+                !isHindiRoute
+                  ? 'bg-[#C5A059] text-[#1A1A1A] border-[#C5A059]'
+                  : 'bg-[#2D2D2D] text-stone-300 border-stone-600 hover:border-[#C5A059]'
+              }`}
+            >
+              English Guides
+            </a>
+            <a
+              href="/hi/blog"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/hi/blog');
+              }}
+              className={`px-3.5 py-1.5 rounded-full text-xs font-bold border transition-all inline-flex items-center gap-1.5 ${
+                isHindiRoute
+                  ? 'bg-[#C5A059] text-[#1A1A1A] border-[#C5A059]'
+                  : 'bg-[#2D2D2D] text-stone-300 border-stone-600 hover:border-[#C5A059]'
+              }`}
+            >
+              <Globe className="w-3.5 h-3.5" />
+              <span>हिंदी मार्गदर्शिका</span>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -66,6 +121,10 @@ export const BlogListPage: React.FC = () => {
               <img
                 src={pillarPost.featuredImage}
                 alt={pillarPost.featuredImageAlt}
+                width={640}
+                height={360}
+                fetchPriority="high"
+                decoding="async"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
@@ -149,8 +208,11 @@ export const BlogListPage: React.FC = () => {
                 <img
                   src={post.featuredImage}
                   alt={post.featuredImageAlt}
+                  width={420}
+                  height={210}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute top-3 left-3 flex items-center gap-1.5">

@@ -72,8 +72,10 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
         keywords: post.keywords,
         canonicalPath: canonicalPath,
         ogImage: post.featuredImage,
+        imageAlt: post.featuredImageAlt,
         ogType: 'article',
-        locale: isHindi ? 'hi_IN' : 'en_US',
+        webPageType: 'ItemPage',
+        locale: isHindi ? 'hi_IN' : 'en_IN',
         inLanguage: isHindi ? 'hi-IN' : 'en-IN',
         alternateLinks,
         breadcrumbs: [
@@ -168,7 +170,7 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
     <div className="min-h-screen bg-[#FDFCF9]">
       <Breadcrumbs
         items={[
-          { label: 'Sacred Guides & Blog', path: '/blog' },
+          { label: post.language === 'hi' ? 'धार्मिक मार्गदर्शिका' : 'Sacred Guides & Blog', path: post.language === 'hi' ? '/hi/blog' : '/blog' },
           { label: post.title, isCurrent: true }
         ]}
       />
@@ -325,6 +327,10 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
           <img
             src={post.featuredImage}
             alt={post.featuredImageAlt}
+            width={800}
+            height={420}
+            fetchPriority="high"
+            decoding="async"
             className="w-full max-h-[420px] object-cover"
             referrerPolicy="no-referrer"
           />
@@ -610,6 +616,10 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
                     <img
                       src={prod.mainImage}
                       alt={`${prod.name} - Natural Narmadeshwar Shivling from Bakawan`}
+                      width={320}
+                      height={320}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover hover:scale-105 transition-transform"
                       referrerPolicy="no-referrer"
                     />

@@ -84,8 +84,11 @@ export const HomeBlogPreviewSection: React.FC = () => {
                 <div className="relative aspect-[16/10] bg-[#F3EFE9] overflow-hidden">
                   <img
                     src={article.image}
-                    alt={article.title}
+                    alt={`${article.title} - Authentic Narmadeshwar Guide`}
+                    width={480}
+                    height={300}
                     loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-3 left-3 bg-[#1A1A1A]/85 backdrop-blur-xs text-[#C5A059] text-[10px] font-bold px-2.5 py-1 rounded-full border border-[#C5A059]/30">

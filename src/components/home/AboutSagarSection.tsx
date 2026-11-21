@@ -85,9 +85,9 @@ export const AboutSagarSection: React.FC = () => {
                   <h3 className="text-base font-serif font-bold text-[#1A1A1A] mb-1 leading-snug">
                     {card.title}
                   </h3>
-                  <h4 className="text-xs text-[#8B6508] font-medium mb-2">
+                  <p className="text-xs text-[#8B6508] font-medium mb-2">
                     {card.titleHindi}
-                  </h4>
+                  </p>
                   <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
                     {card.text}
                   </p>

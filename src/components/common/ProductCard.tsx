@@ -8,9 +8,10 @@ import { MessageCircle, ArrowRight, Tag } from 'lucide-react';
 interface ProductCardProps {
   product: Product;
   hideTitle?: boolean;
+  priority?: boolean;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, hideTitle = false }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, hideTitle = false, priority = false }) => {
   const { navigate } = useRouter();
   const whatsappUrl = getProductWhatsAppLink(product);
   const pricing = getPricingDetails(product);
@@ -38,8 +39,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, hideTitle = f
       >
         <img
           src={product.mainImage}
-          alt={`${product.name} - Natural Narmadeshwar Shivling (${product.size}) from Bakawan`}
-          loading="lazy"
+          alt={`${product.name} - ${product.markingType} Natural Narmadeshwar Shivling (${product.size}, ${product.weight}) from Bakawan`}
+          width={400}
+          height={hideTitle ? 400 : 300}
+          loading={priority ? 'eager' : 'lazy'}
+          fetchPriority={priority ? 'high' : 'auto'}
+          decoding="async"
           referrerPolicy="no-referrer"
           className={`w-full h-full ${hideTitle ? 'object-contain' : 'object-cover'} group-hover:scale-105 transition-transform duration-500`}
         />

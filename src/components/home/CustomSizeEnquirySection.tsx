@@ -10,9 +10,9 @@ export const CustomSizeEnquirySection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center bg-[#1A1A1A] text-white p-8 sm:p-12 rounded-3xl shadow-xl border border-[#C5A059]/30 relative overflow-hidden">
           <div className="relative z-10 space-y-4 max-w-3xl mx-auto">
-            <h3 className="text-xl sm:text-3xl lg:text-4xl font-serif font-bold text-white leading-tight">
+            <h2 className="text-xl sm:text-3xl lg:text-4xl font-serif font-bold text-white leading-tight">
               क्या आपको किसी विशेष आकार या वजन का शिवलिंग चाहिए?
-            </h3>
+            </h2>
             <p className="text-[#F3EFE9] text-xs sm:text-sm sm:text-base leading-relaxed">
               हमारे पास बकावां से प्राप्त 2 इंच से लेकर 12 इंच तक के प्रामाणिक नर्मदेश्वर शिवलिंग उपलब्ध हैं। व्हाट्सएप पर अपनी आवश्यकता बताएं।
             </p>

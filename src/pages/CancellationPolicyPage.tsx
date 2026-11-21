@@ -17,8 +17,8 @@ import {
 export const CancellationPolicyPage: React.FC = () => {
   useEffect(() => {
     updatePageSEO({
-      title: 'Cancellation Policy | Sagar Narmadeshwar Shivling',
-      description: 'Official Order Cancellation and COD advance booking charge refund guidelines for Sagar Narmadeshwar Shivling, Bakawan.',
+      title: 'Cancellation Policy | Authentic Narmadeshwar',
+      description: 'Official Order Cancellation and COD advance booking refund guidelines for Authentic Narmadeshwar, Bakawan, Madhya Pradesh.',
       canonicalPath: '/cancellation-policy',
       breadcrumbs: [
         { name: 'Home', url: '/' },

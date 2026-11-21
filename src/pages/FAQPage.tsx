@@ -168,8 +168,8 @@ export const FAQPage: React.FC = () => {
 
   useEffect(() => {
     updatePageSEO({
-      title: 'Frequently Asked Questions (FAQ) | Original Narmadeshwar Shivling',
-      description: 'Frequently asked questions on authentic Narmadeshwar Shivling identification, home puja size guidelines, safe wooden packaging, COD advance booking, and Pan India delivery.',
+      title: 'Frequently Asked Questions (FAQ) | Authentic Narmadeshwar Shivling',
+      description: 'Answers on natural Narmadeshwar Shivling identification, Bakawan origin, home temple sizing, Jaladhari placement, wooden crate packing, and worldwide delivery.',
       keywords: [
         'Narmadeshwar Shivling FAQ',
         'Narmadeshwar Shivling kya hai',
@@ -180,6 +180,7 @@ export const FAQPage: React.FC = () => {
         'नर्मदेश्वर शिवलिंग प्रश्न उत्तर'
       ],
       canonicalPath: '/faq',
+      webPageType: 'FAQPage',
       breadcrumbs: [
         { name: 'Home', url: '/' },
         { name: 'Frequently Asked Questions (FAQ)', url: '/faq' }
@@ -253,9 +254,9 @@ export const FAQPage: React.FC = () => {
                   className="w-full p-5 sm:p-6 text-left flex items-start justify-between gap-4 cursor-pointer hover:bg-[#FCFAF7]/60 transition-colors"
                 >
                   <div className="space-y-1">
-                    <h3 className="text-sm sm:text-base font-serif font-bold text-[#1A1A1A] leading-snug">
+                    <h2 className="text-sm sm:text-base font-serif font-bold text-[#1A1A1A] leading-snug">
                       {faq.question}
-                    </h3>
+                    </h2>
                     <p className="text-xs font-bold text-[#C5A059]">
                       {faq.questionHindi}
                     </p>
@@ -286,9 +287,9 @@ export const FAQPage: React.FC = () => {
             <MessageCircle className="w-6 h-6 text-[#C5A059]" />
           </div>
           <div className="space-y-1">
-            <h3 className="text-lg font-serif font-bold text-[#1A1A1A]">
+            <h2 className="text-lg font-serif font-bold text-[#1A1A1A]">
               Still Have Questions? / क्या आपके कोई अन्य प्रश्न हैं?
-            </h3>
+            </h2>
             <p className="text-xs text-stone-600 max-w-md mx-auto">
               Our team in Bakawan is available to assist you with Shivling selection, dimensions, video previews, and delivery queries.
             </p>
