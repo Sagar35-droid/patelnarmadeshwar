@@ -85,10 +85,8 @@ const orgSchema = {
   alternateName: Array.from(
     new Set([
       BUSINESS_CONFIG.name,
-      'Sagar Narmadeshwar Shivling',
-      'Sagar Shivling Bakawan',
-      'सागर नर्मदेश्वर शिवलिंग',
       'प्रामाणिक नर्मदेश्वर',
+      'Authentic Narmadeshwar Shivling',
     ])
   ).filter((n) => n !== DEFAULT_SEO.siteName),
   description: BUSINESS_CONFIG.taglineEnglish,
@@ -100,7 +98,7 @@ const orgSchema = {
   image: `${SITE_URL}/images/products/product-1.jpeg`,
   telephone: BUSINESS_CONFIG.phoneNumber,
   email: BUSINESS_CONFIG.email,
-  taxID: BUSINESS_CONFIG.gstin,
+  ...(BUSINESS_CONFIG.gstin ? { taxID: BUSINESS_CONFIG.gstin } : {}),
   founder: {
     '@type': 'Person',
     '@id': `${SITE_URL}/#founder`,
@@ -393,7 +391,7 @@ const homeBodyHtml = `
 const homeHtml = renderPageHtml({
   title: DEFAULT_SEO.defaultTitle,
   description:
-    'Explore natural Narmadeshwar Shivlings, Jaladhari bases and complete puja sets from Bakawan, Madhya Pradesh. Secure wooden box packaging, verified weights, and worldwide delivery.',
+    'Explore natural Narmadeshwar Shivlings, Jaladhari bases and complete puja sets from Bakawan, Madhya Pradesh. Secure wooden box packaging, measured weights, and worldwide delivery.',
   canonicalPath: '/',
   bodyHtml: homeBodyHtml,
   extraSchemas: [
@@ -422,7 +420,7 @@ const staticPages = [
     route: 'products',
     title: 'Narmadeshwar Shivling Collection | Prices & Sizes | Authentic Narmadeshwar',
     description:
-      'Explore all 38 natural Narmadeshwar Shivlings, Jaladhari bases, Akhand Shivlings and Nandi Ji statues from Bakawan, Madhya Pradesh. Verified weights, sizes & worldwide delivery.',
+      'Explore all 38 natural Narmadeshwar Shivlings, Jaladhari bases, Akhand Shivlings and Nandi Ji statues from Bakawan, Madhya Pradesh. Measured weights, sizes & worldwide delivery.',
     canonicalPath: '/products',
     webPageType: 'CollectionPage',
     breadcrumbs: [
@@ -699,14 +697,17 @@ function buildProductHtml(product, isAlias = false) {
   <p>${escapeHtml(product.shortDescription || description)}</p>
   <p>${escapeHtml(product.fullDescription || '')}</p>
   <ul>
+    <li>Piece ID: ${escapeHtml(pieceLabel)} (${escapeHtml(product.id.toUpperCase())})</li>
     <li>Price: ₹${pricing.sellingPrice}</li>
     <li>Size: ${escapeHtml(product.size)}</li>
     <li>Weight: ${escapeHtml(product.weight)}</li>
     <li>Material: Natural Narmada River Stone (${escapeHtml(product.markingType)})</li>
+    <li>Packaging: Cushioned Wooden Box with Protective Wrapping</li>
     <li>Origin: Narmada River, Bakawan, Barwaha, Madhya Pradesh, India</li>
     <li>Availability: ${isInStock ? 'In Stock' : 'Out of Stock'}</li>
   </ul>
-  <p>Order or inquire on WhatsApp: <a href="https://wa.me/${escapeAttr(BUSINESS_CONFIG.whatsappNumber)}">${escapeHtml(BUSINESS_CONFIG.phoneDisplay)}</a></p>
+  <p><strong>Natural Stone Variation Disclosure:</strong> Every Narmadeshwar Shivling is naturally formed in the Narmada River. Each stone has its own unique shape, colour tone, natural markings, and texture — no two natural pieces are identical.</p>
+  <p>Order or inquire on WhatsApp with ${escapeHtml(BUSINESS_CONFIG.ownerName)}: <a href="https://wa.me/${escapeAttr(BUSINESS_CONFIG.whatsappNumber)}">${escapeHtml(BUSINESS_CONFIG.phoneDisplay)}</a></p>
 </article>`;
 
   return renderPageHtml({
@@ -776,9 +777,11 @@ for (const post of BLOG_POSTS) {
     datePublished: post.publishDate,
     dateModified: post.modifiedDate || post.publishDate,
     author: {
-      '@type': 'Organization',
-      name: DEFAULT_SEO.siteName,
-      url: SITE_URL,
+      '@type': 'Person',
+      name: BUSINESS_CONFIG.ownerName,
+      jobTitle: BUSINESS_CONFIG.ownerRole || 'Founder & Owner',
+      worksFor: { '@id': `${SITE_URL}/#organization` },
+      url: `${SITE_URL}/about`,
     },
     publisher: {
       '@id': `${SITE_URL}/#organization`,

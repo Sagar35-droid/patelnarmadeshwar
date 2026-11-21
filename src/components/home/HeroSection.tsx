@@ -19,7 +19,7 @@ export const HeroSection: React.FC = () => {
       icon: ShieldCheck,
       title: 'Carefully Selected Products',
       hindi: 'सावधानीपूर्वक चयनित उत्पाद',
-      desc: 'Individually verified for natural shape, size and markings'
+      desc: 'Individually inspected for natural shape, size and markings'
     },
     {
       icon: PackageCheck,
@@ -43,16 +43,19 @@ export const HeroSection: React.FC = () => {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         
-        {/* Top GSTIN & Authentic Origin Pill */}
+        {/* Top Origin & Direct Contact Header Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pb-6 border-b border-[#C5A059]/15 mb-8">
           <div className="inline-flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-full border border-[#C5A059]/30 shadow-2xs">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-xs sm:text-sm font-mono font-semibold text-[#1A1A1A] tracking-wide">
-              GSTIN: {BUSINESS_CONFIG.gstin}
+            <span className="w-2 h-2 rounded-full bg-emerald-500" />
+            <span className="text-xs sm:text-sm font-semibold text-[#1A1A1A] tracking-wide">
+              Origin: Bakawan, Madhya Pradesh
             </span>
           </div>
           <div className="text-xs sm:text-sm font-serif text-[#8B6508] tracking-wider font-semibold">
-            Authentic Narmadeshwar • Bakawan, Khargone (M.P.) • Worldwide Delivery
+            {BUSINESS_CONFIG.name} • Founder: {BUSINESS_CONFIG.ownerName} •{' '}
+            <a href={`tel:${BUSINESS_CONFIG.phoneNumber}`} className="hover:underline">
+              {BUSINESS_CONFIG.phoneDisplay}
+            </a>
           </div>
         </div>
 

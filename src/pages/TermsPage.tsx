@@ -108,13 +108,13 @@ export const TermsPage: React.FC = () => {
             </p>
           </div>
 
-          {/* Section 4: Enquiry & Order Confirmation */}
+          {/* Section 4: WhatsApp Ordering & Personal Confirmation */}
           <div className="space-y-3">
             <h3 className="text-base sm:text-lg font-serif font-bold text-[#1A1A1A]">
-              4. Enquiry & Order Confirmation (ऑर्डर की पुष्टि)
+              4. WhatsApp Ordering &amp; Confirmation (ऑर्डर की पुष्टि)
             </h3>
             <p className="text-xs sm:text-sm leading-relaxed text-stone-700">
-              Submitting an enquiry through our form or WhatsApp does not constitute an immediate financial transaction. Every order is finalized only after direct consultation via WhatsApp, where photos, live videos, exact dimensions, weight, and dispatch details are mutually agreed upon.
+              Adding items to Cart, using Buy Now, or submitting the Checkout/Enquiry form prepares your order details for WhatsApp (+91 9301531448) without collecting any payment or booking charges on the website. Owner Keshrilal Patel personally discusses payment options, shipping charges, COD availability, and stone photos/videos with you on WhatsApp before your order is confirmed for dispatch.
             </p>
           </div>
 

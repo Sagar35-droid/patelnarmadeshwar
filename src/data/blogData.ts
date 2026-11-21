@@ -18,8 +18,8 @@ export const BLOG_POSTS: BlogPost[] = [
     publishDate: '2026-08-10',
     modifiedDate: '2026-09-01',
     author: {
-      name: 'Authentic Narmadeshwar',
-      role: 'Heritage Artisans',
+      name: 'Keshrilal Patel — Authentic Narmadeshwar',
+      role: 'Founder & Owner • Heritage Artisans',
       location: 'Bakawan, Khargone, Madhya Pradesh'
     },
     featuredImage: '/images/products/product-1.jpeg',
@@ -145,8 +145,8 @@ export const BLOG_POSTS: BlogPost[] = [
     publishDate: '2026-08-11',
     modifiedDate: '2026-09-01',
     author: {
-      name: 'Authentic Narmadeshwar',
-      role: 'Heritage Artisans',
+      name: 'Keshrilal Patel — Authentic Narmadeshwar',
+      role: 'Founder & Owner • Heritage Artisans',
       location: 'Bakawan, Khargone, Madhya Pradesh'
     },
     featuredImage: '/images/products/product-2.jpeg',
@@ -226,7 +226,7 @@ export const BLOG_POSTS: BlogPost[] = [
       textHindi: 'शत-प्रतिशत असली नर्मदेश्वर शिवलिंग देखें',
       link: '/products',
       description: 'Inspected for genuine mineral density and natural patterns by Bakawan artisans.',
-      badge: 'Verified Natural Stone'
+      badge: 'Natural Narmada Stone'
     },
     relatedBlogSlugs: [
       'what-is-narmadeshwar-shivling',
@@ -260,8 +260,8 @@ export const BLOG_POSTS: BlogPost[] = [
     publishDate: '2026-08-12',
     modifiedDate: '2026-09-01',
     author: {
-      name: 'Authentic Narmadeshwar',
-      role: 'Heritage Artisans',
+      name: 'Keshrilal Patel — Authentic Narmadeshwar',
+      role: 'Founder & Owner • Heritage Artisans',
       location: 'Bakawan, Khargone, Madhya Pradesh'
     },
     featuredImage: '/images/products/product-3.jpeg',
@@ -373,8 +373,8 @@ export const BLOG_POSTS: BlogPost[] = [
     publishDate: '2026-08-13',
     modifiedDate: '2026-09-01',
     author: {
-      name: 'Authentic Narmadeshwar',
-      role: 'Heritage Artisans',
+      name: 'Keshrilal Patel — Authentic Narmadeshwar',
+      role: 'Founder & Owner • Heritage Artisans',
       location: 'Bakawan, Khargone, Madhya Pradesh'
     },
     featuredImage: '/images/products/product-4.jpeg',
@@ -438,7 +438,7 @@ export const BLOG_POSTS: BlogPost[] = [
       text: 'Explore Shastra-Compliant 2 to 4 Inch Home Shivling Sets',
       textHindi: 'शास्त्रसम्मत 2 से 4 इंच शिवलिंग सेट देखें',
       link: '/products',
-      description: 'Hand-measured and weight-verified natural river stones with matching solid brass bases.',
+      description: 'Hand-measured natural river stones with listed weights and matching solid brass bases.',
       badge: 'Perfect Home Size'
     },
     relatedBlogSlugs: [
@@ -473,8 +473,8 @@ export const BLOG_POSTS: BlogPost[] = [
     publishDate: '2026-08-14',
     modifiedDate: '2026-09-01',
     author: {
-      name: 'Authentic Narmadeshwar',
-      role: 'Heritage Artisans',
+      name: 'Keshrilal Patel — Authentic Narmadeshwar',
+      role: 'Founder & Owner • Heritage Artisans',
       location: 'Bakawan, Khargone, Madhya Pradesh'
     },
     featuredImage: '/images/products/product-5.jpeg',
@@ -577,8 +577,8 @@ export const BLOG_POSTS: BlogPost[] = [
     publishDate: '2026-08-15',
     modifiedDate: '2026-09-01',
     author: {
-      name: 'Authentic Narmadeshwar',
-      role: 'Heritage Artisans',
+      name: 'Keshrilal Patel — Authentic Narmadeshwar',
+      role: 'Founder & Owner • Heritage Artisans',
       location: 'Bakawan, Khargone, Madhya Pradesh'
     },
     featuredImage: '/images/products/product-6.jpeg',
@@ -669,8 +669,8 @@ export const BLOG_POSTS: BlogPost[] = [
     publishDate: '2026-08-16',
     modifiedDate: '2026-09-01',
     author: {
-      name: 'Authentic Narmadeshwar',
-      role: 'Heritage Artisans',
+      name: 'Keshrilal Patel — Authentic Narmadeshwar',
+      role: 'Founder & Owner • Heritage Artisans',
       location: 'Bakawan, Khargone, Madhya Pradesh'
     },
     featuredImage: '/images/products/product-7.jpeg',
@@ -773,8 +773,8 @@ export const BLOG_POSTS: BlogPost[] = [
     publishDate: '2026-08-17',
     modifiedDate: '2026-09-01',
     author: {
-      name: 'Authentic Narmadeshwar',
-      role: 'Heritage Artisans',
+      name: 'Keshrilal Patel — Authentic Narmadeshwar',
+      role: 'Founder & Owner • Heritage Artisans',
       location: 'Bakawan, Khargone, Madhya Pradesh'
     },
     featuredImage: '/images/products/product-8.jpeg',
@@ -828,7 +828,7 @@ export const BLOG_POSTS: BlogPost[] = [
     conclusion: 'Ordering directly from traditional artisans in Bakawan gives you complete confidence in the authenticity, beauty, and safe delivery of your sacred home Shivling.',
     conclusionHindi: 'बकावां के प्रामाणिक कारीगरों से सीधे ऑनलाइन जुड़कर आप बिना किसी संशय के अपने मंदिर हेतु असली नर्मदेश्वर शिवलिंग प्राप्त कर सकते हैं।',
     productCta: {
-      text: 'Explore Verified Authentic Narmada Shivlings Ready to Ship',
+      text: 'Explore Authentic Narmada Shivlings Ready to Ship',
       textHindi: 'तुरंत डिलीवरी हेतु उपलब्ध प्रामाणिक शिवलिंग देखें',
       link: '/products',
       description: 'Transparent specs, live WhatsApp preview, and cushioned wooden box shipping across India and worldwide where supported.',
@@ -866,8 +866,8 @@ export const BLOG_POSTS: BlogPost[] = [
     publishDate: '2026-08-18',
     modifiedDate: '2026-09-01',
     author: {
-      name: 'Authentic Narmadeshwar',
-      role: 'Heritage Artisans',
+      name: 'Keshrilal Patel — Authentic Narmadeshwar',
+      role: 'Founder & Owner • Heritage Artisans',
       location: 'Bakawan, Khargone, Madhya Pradesh'
     },
     featuredImage: '/images/products/product-9.jpeg',
@@ -875,7 +875,7 @@ export const BLOG_POSTS: BlogPost[] = [
     geoAnswer: {
       question: 'What is the price of an original Narmadeshwar Shivling in India?',
       directAnswer: 'Authentic Narmadeshwar Shivlings for home temples generally range from ₹600 to ₹3,500+ depending on stone height (2 to 5 inches), stone weight density, the rarity of natural mineral markings (such as Janeyu, Tilak, or Ardhanarishwar patterns), and whether a solid brass Jaladhari base with Nandi is included. Large temple-grade stones (6 to 12+ inches) are priced higher based on raw weight.',
-      learnMoreText: 'View transparent pricing across our entire 40-product collection',
+      learnMoreText: 'View transparent pricing across our entire 38-product collection',
       learnMoreSlug: 'buy-narmadeshwar-shivling-online-buying-guide'
     },
     geoAnswerHindi: {
@@ -927,7 +927,7 @@ export const BLOG_POSTS: BlogPost[] = [
       text: 'View Transparent Prices for All Authentic Shivlings',
       textHindi: 'सभी शिवलिंगों की पारदर्शी मूल्य सूची देखें',
       link: '/products',
-      description: 'Explore all 40 verified products with honest weights, dimensions, and prices.',
+      description: 'Explore all 38 natural products with honest weights, dimensions, and prices.',
       badge: 'Direct Artisan Rates'
     },
     relatedBlogSlugs: [
@@ -962,8 +962,8 @@ export const BLOG_POSTS: BlogPost[] = [
     publishDate: '2026-08-19',
     modifiedDate: '2026-09-01',
     author: {
-      name: 'Authentic Narmadeshwar',
-      role: 'Heritage Artisans',
+      name: 'Keshrilal Patel — Authentic Narmadeshwar',
+      role: 'Founder & Owner • Heritage Artisans',
       location: 'Bakawan, Khargone, Madhya Pradesh'
     },
     featuredImage: '/images/products/product-10.jpeg',
@@ -1059,8 +1059,8 @@ export const BLOG_POSTS: BlogPost[] = [
     publishDate: '2026-10-23',
     modifiedDate: '2026-10-23',
     author: {
-      name: 'Authentic Narmadeshwar',
-      role: 'Hereditary Artisans',
+      name: 'Keshrilal Patel — Authentic Narmadeshwar',
+      role: 'Founder & Owner • Hereditary Artisans',
       location: 'Bakawan, Khargone, Madhya Pradesh'
     },
     featuredImage: '/images/products/product-11.jpeg',
@@ -1120,7 +1120,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         heading: 'Buyer\'s Pre-Order Checklist: What to Verify Before Ordering Online',
-        body: 'When ordering a sacred Narmadeshwar Shivling online, it is essential to ensure authenticity, ethical sourcing, and safe transit. Here is a practical 5-point checklist every buyer should review before completing their purchase:\n\n1. Verified Origin from Bakawan (M.P.): Bakawan in Khargone district is the sole historic artisan center on the banks of the Narmada River where hereditary craftspeople hand-finish naturally tumbled river stones. Always confirm direct provenance from Bakawan rather than anonymous industrial resellers.\n\n2. Weight and Specification Transparency: Authentic Narmada quartzite is remarkably dense. A 2-inch stone set typically weighs 350g to 500g, a 3-inch set weighs 1.5kg to 2kg, and a 4-inch set weighs roughly 3.5kg to 4kg. Be cautious of sellers who do not disclose exact weights or dimensions.\n\n3. Natural Untampered River Markings: Look for natural, asymmetrical mineral bands, Janeyu circles, or Tilak streaks that blend organically into the stone. Avoid stones with unnaturally crisp, painted, or geometric markings that indicate artificial tampering.\n\n4. Reinforced Wooden Box Packaging: Sacred stone artifacts must be shielded during domestic and international transit. Ensure your order is dispatched in heavy-duty, reinforced wooden packaging with multi-layered shock-absorbing cushioning to eliminate any risk of transit damage.\n\n5. Direct Artisan WhatsApp Communication: Reputable workshops allow you to connect directly with hereditary artisans via WhatsApp to view high-resolution photos and videos of the exact Shivling you will receive before dispatch.\n\nIf you have specific dimensions or altar requirements, you can explore our complete [Natural Narmadeshwar Shivling Collection](/products) or reach out directly through our [Contact Page](/contact).',
+        body: 'When ordering a sacred Narmadeshwar Shivling online, it is essential to ensure authenticity, ethical sourcing, and safe transit. Here is a practical 5-point checklist every buyer should review before completing their purchase:\n\n1. Direct Origin from Bakawan (M.P.): Bakawan in Khargone district is the sole historic artisan center on the banks of the Narmada River where hereditary craftspeople hand-finish naturally tumbled river stones. Always confirm direct provenance from Bakawan rather than anonymous industrial resellers.\n\n2. Weight and Specification Transparency: Authentic Narmada quartzite is remarkably dense. A 2-inch stone set typically weighs 350g to 500g, a 3-inch set weighs 1.5kg to 2kg, and a 4-inch set weighs roughly 3.5kg to 4kg. Be cautious of sellers who do not disclose exact weights or dimensions.\n\n3. Natural Untampered River Markings: Look for natural, asymmetrical mineral bands, Janeyu circles, or Tilak streaks that blend organically into the stone. Avoid stones with unnaturally crisp, painted, or geometric markings that indicate artificial tampering.\n\n4. Reinforced Wooden Box Packaging: Sacred stone artifacts must be shielded during domestic and international transit. Ensure your order is dispatched in heavy-duty, reinforced wooden packaging with multi-layered shock-absorbing cushioning to eliminate any risk of transit damage.\n\n5. Direct Artisan WhatsApp Communication: Reputable workshops allow you to connect directly with hereditary artisans via WhatsApp to view high-resolution photos and videos of the exact Shivling you will receive before dispatch.\n\nIf you have specific dimensions or altar requirements, you can explore our complete [Natural Narmadeshwar Shivling Collection](/products) or reach out directly through our [Contact Page](/contact).',
         callout: 'Always choose hereditary artisans from Bakawan who provide weight specifications, natural photo previews, and reinforced wooden packaging.'
       }
     ],
@@ -1162,7 +1162,7 @@ export const BLOG_POSTS: BlogPost[] = [
         answerHindi: 'बकावां से प्रत्येक शिवलिंग को मजबूत लकड़ी के बॉक्स में मल्टी-लेयर बबल रैप और फोम कुशनिंग के साथ सुरक्षित पैक किया जाता है, जिससे देश-विदेश में पारगमन के दौरान किसी भी क्षति की संभावना नहीं रहती।'
       }
     ],
-    conclusion: 'Choosing an authentic Natural Narmadeshwar Shivling for your home temple is a sacred, fulfilling milestone. By adhering to the traditional householder size range of 1.5 to 4 inches, selecting a proportionate Jaladhari base oriented to the North or East, verifying natural mineral traits from Bakawan, and maintaining a simple, loving daily Abhishek routine, you welcome a source of eternal peace, focus, and positive spiritual vibration into your living space.\n\nAt Authentic Narmadeshwar, our team in Bakawan (Madhya Pradesh) is honored to assist devotees in finding their ideal sacred stone. We invite you to explore our verified [Natural Narmadeshwar Shivling Collection](/products), read our [puja guides](/blog), or connect with us directly on our [Contact Page](/contact) or via WhatsApp for personal assistance and live stone previews.',
+    conclusion: 'Choosing an authentic Natural Narmadeshwar Shivling for your home temple is a sacred, fulfilling milestone. By adhering to the traditional householder size range of 1.5 to 4 inches, selecting a proportionate Jaladhari base oriented to the North or East, verifying natural mineral traits from Bakawan, and maintaining a simple, loving daily Abhishek routine, you welcome a source of eternal peace, focus, and positive spiritual vibration into your living space.\n\nAt Authentic Narmadeshwar, our team in Bakawan (Madhya Pradesh) is honored to assist devotees in finding their ideal sacred stone. We invite you to explore our [Natural Narmadeshwar Shivling Collection](/products), read our [puja guides](/blog), or connect with us directly on our [Contact Page](/contact) or via WhatsApp for personal assistance and live stone previews.',
     conclusionHindi: 'घर के मंदिर में मां नर्मदा के पावन स्वयंभू शिवलिंग की स्थापना अत्यंत मंगलकारी और सात्विक फलदायी मानी जाती है। सही आकार, प्रामाणिक बकावां पाषाण और उपयुक्त जलहरी का चुनाव कर आप अपने घर में सुख, शांति और सकारात्मक ऊर्जा का संचार कर सकते हैं।',
     productCta: {
       text: 'Explore Authentic Narmadeshwar Shivlings with Jaladhari for Home Temple',
@@ -1213,8 +1213,8 @@ export const BLOG_POSTS: BlogPost[] = [
     publishDate: '2026-10-23',
     modifiedDate: '2026-10-23',
     author: {
-      name: 'प्रामाणिक नर्मदेश्वर (Authentic Narmadeshwar)',
-      role: 'वंशानुगत शिल्पकार परिवार',
+      name: 'केसरीलाल पटेल — प्रामाणिक नर्मदेश्वर',
+      role: 'संस्थापक एवं स्वामी • बकावां',
       location: 'बकावां, खरगोन, मध्य प्रदेश'
     },
     featuredImage: '/images/products/product-11.jpeg',

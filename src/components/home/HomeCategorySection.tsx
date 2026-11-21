@@ -19,7 +19,7 @@ export const HomeCategorySection: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-10 space-y-2.5">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F3EFE9] border border-[#C5A059]/30 text-[#8B6508] text-xs font-bold uppercase tracking-wider">
             <Layers className="w-3.5 h-3.5 text-[#8B6508]" />
-            <span>प्रमुख संग्रह श्रेणियाँ • Verified Categories</span>
+            <span>प्रमुख संग्रह श्रेणियाँ • Collection Categories</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#1A1A1A] tracking-tight">
             Explore Authentic Collections by Type

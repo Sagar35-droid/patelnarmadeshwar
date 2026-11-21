@@ -43,7 +43,7 @@ export const ProductsPage: React.FC = () => {
     updatePageSEO({
       title: 'Narmadeshwar Shivling Collection | Prices & Sizes | Authentic Narmadeshwar',
       description:
-        'Explore all 38 natural Narmadeshwar Shivlings, Jaladhari bases, Akhand Shivlings and Nandi Ji statues from Bakawan, Madhya Pradesh. Verified weights, sizes & worldwide delivery.',
+        'Explore all 38 natural Narmadeshwar Shivlings, Jaladhari bases, Akhand Shivlings and Nandi Ji statues from Bakawan, Madhya Pradesh. Measured weights, sizes & worldwide delivery.',
       keywords: [
         'Narmadeshwar Shivling',
         'Narmada Shivling',
@@ -128,7 +128,7 @@ export const ProductsPage: React.FC = () => {
             Narmadeshwar Shivling Collection (नर्मदेश्वर शिवलिंग)
           </h1>
           <p className="text-[#F3EFE9] text-xs sm:text-sm max-w-3xl mx-auto leading-relaxed font-light">
-            Explore authentic, naturally formed Narmadeshwar Shivlings directly from the sacred Narmada River in Bakawan, Madhya Pradesh. All 38 natural pieces come with verified size, exact weight, and matching Jaladhari options.
+            Explore authentic, naturally formed Narmadeshwar Shivlings directly from the sacred Narmada River in Bakawan, Madhya Pradesh. All 38 natural pieces come with listed dimensions, measured weight, and matching Jaladhari options.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-2 pt-2 text-[11px] text-stone-300">
             <span className="bg-[#2D2D2D] px-3 py-1 rounded-full border border-stone-700">
@@ -176,7 +176,7 @@ export const ProductsPage: React.FC = () => {
 
             <div className="text-xs font-medium text-stone-600">
               Showing <strong className="text-[#1A1A1A]">{filteredProducts.length}</strong> of{' '}
-              <strong className="text-[#1A1A1A]">{products.length}</strong> verified natural pieces
+              <strong className="text-[#1A1A1A]">{products.length}</strong> natural pieces
             </div>
           </div>
 

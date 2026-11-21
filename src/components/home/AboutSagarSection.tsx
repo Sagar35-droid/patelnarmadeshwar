@@ -73,9 +73,12 @@ export const AboutSagarSection: React.FC = () => {
                 </p>
               </div>
             </div>
-            <span className="text-xs font-mono font-bold text-[#8B6508] bg-white px-3 py-1.5 rounded-lg border border-[#C5A059]/25 self-start sm:self-center">
-              GSTIN: {BUSINESS_CONFIG.gstin}
-            </span>
+            <a
+              href={`tel:${BUSINESS_CONFIG.phoneNumber}`}
+              className="text-xs font-mono font-bold text-[#8B6508] bg-white px-3 py-1.5 rounded-lg border border-[#C5A059]/25 self-start sm:self-center hover:underline"
+            >
+              Contact: {BUSINESS_CONFIG.phoneDisplay}
+            </a>
           </div>
 
           <p>

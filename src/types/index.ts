@@ -31,6 +31,7 @@ export interface BusinessInfo {
   };
   announcementText?: string;
   gstin?: string;
+  googleReviewUrl?: string;
   cancellationPolicyConfig?: {
     canCancelBeforeDispatch: boolean;
     cancellationNoticeHours?: number;

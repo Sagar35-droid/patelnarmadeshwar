@@ -290,7 +290,7 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
             <div className="p-3 bg-amber-50/70 border border-amber-200/80 rounded-xl flex items-center justify-between gap-3 text-xs text-amber-900">
               <span className="flex items-center gap-1.5 font-medium">
                 <BookOpen className="w-4 h-4 text-[#8C6B2D] shrink-0" />
-                Part of our verified topic cluster on Narmadeshwar Shivling
+                Part of our curated topic cluster on Narmadeshwar Shivling
               </span>
               <button
                 onClick={() => navigate('/blog/what-is-narmadeshwar-shivling')}
@@ -363,7 +363,7 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
                         Direct Answer / Key Takeaway (English)
                       </h3>
                       <span className="text-[10px] font-bold text-stone-600 bg-white px-2.5 py-0.5 rounded-full border border-[#C5A059]/40">
-                        Verified Origin: Bakawan (M.P.)
+                        Origin: Bakawan, Madhya Pradesh
                       </span>
                     </div>
                     <h4 className="text-sm sm:text-base font-bold text-[#1A1A1A]">

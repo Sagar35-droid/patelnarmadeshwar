@@ -53,10 +53,10 @@ export const WhyChooseUs: React.FC = () => {
     },
     {
       icon: FileText,
-      title: 'Transparent Specifications & GST Billing',
-      titleHindi: 'स्पष्ट विनिर्देश एवं अधिकृत बिलिंग',
-      desc: `Registered enterprise (GSTIN: ${BUSINESS_CONFIG.gstin}) providing clear weight, size, and honest pricing.`,
-      descHindi: `पूर्ण पारदर्शिता: सटीक वजन, नाप एवं अधिकृत GST बिलिंग (GSTIN: ${BUSINESS_CONFIG.gstin})।`
+      title: 'Transparent Pricing & Specifications',
+      titleHindi: 'स्पष्ट विनिर्देश एवं पारदर्शी मूल्य',
+      desc: `Every listing clearly states measured dimensions, approximate weight, and price with personal WhatsApp consultation by ${BUSINESS_CONFIG.ownerName}.`,
+      descHindi: `प्रत्येक उत्पाद के साथ सटीक आकार, वजन एवं स्पष्ट मूल्य की पारदर्शी जानकारी।`
     }
   ];
 

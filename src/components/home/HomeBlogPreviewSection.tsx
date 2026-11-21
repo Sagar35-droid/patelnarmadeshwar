@@ -56,7 +56,7 @@ export const HomeBlogPreviewSection: React.FC = () => {
               Devotee Guides &amp; Sacred Knowledge
             </h2>
             <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">
-              Read verified guides on choosing an authentic Narmadeshwar Shivling, understanding natural river markings, and caring for your sacred shrine.
+              Read practical guides on choosing an authentic Narmadeshwar Shivling, understanding natural river markings, and caring for your sacred shrine.
             </p>
           </div>
 

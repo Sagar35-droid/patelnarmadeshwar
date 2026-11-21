@@ -92,14 +92,14 @@ export const ShippingPolicyPage: React.FC = () => {
             </p>
           </div>
 
-          {/* Section 4: WhatsApp Confirmation Prior to Order */}
+          {/* Section 4: Shipping Charges, Packaging & WhatsApp Confirmation */}
           <div className="space-y-3">
             <h3 className="text-base sm:text-lg font-serif font-bold text-[#1A1A1A] flex items-center gap-2">
               <MessageCircle className="w-5 h-5 text-[#25D366]" />
-              <span>4. Confirmation Prior to Ordering (ऑर्डर से पूर्व व्हाट्सएप संपर्क)</span>
+              <span>4. Shipping Charges, Wooden Box Packaging &amp; Confirmation Prior to Dispatch</span>
             </h3>
             <p className="text-xs sm:text-sm leading-relaxed text-stone-700">
-              Customers should contact us through WhatsApp to confirm delivery availability, transit feasibility, shipping costs, and packaging specifications before placing an order.
+              Every order is packed in protective cushioning and a reinforced wooden box to protect natural river stones during transit. Applicable domestic or international shipping charges (which depend on parcel weight and delivery destination), courier serviceability, and COD eligibility are confirmed with you transparently on WhatsApp (+91 9301531448) before dispatch.
             </p>
           </div>
 

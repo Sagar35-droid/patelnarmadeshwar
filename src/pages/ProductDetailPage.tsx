@@ -433,7 +433,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
             <div className="bg-[#FCFAF7] rounded-2xl border border-[#C5A059]/30 overflow-hidden">
               <div className="px-4 py-3 bg-[#F3EFE9] border-b border-[#C5A059]/25">
                 <h2 className="text-sm sm:text-base font-serif font-bold text-[#1A1A1A]">
-                  Verified Product Specifications
+                  Product Specifications
                 </h2>
               </div>
               <dl className="divide-y divide-[#C5A059]/15 text-xs sm:text-sm">
@@ -461,6 +461,12 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
                   <dt className="text-stone-600 font-medium">Jaladhari</dt>
                   <dd className="col-span-2 font-bold text-[#1A1A1A]">
                     {product.jaladhariIncluded ? 'Included' : 'Not Included'}
+                  </dd>
+                </div>
+                <div className="grid grid-cols-3 gap-2 px-4 py-2.5">
+                  <dt className="text-stone-600 font-medium">Packaging</dt>
+                  <dd className="col-span-2 font-bold text-[#1A1A1A]">
+                    Cushioned Wooden Box with Protective Wrapping
                   </dd>
                 </div>
                 <div className="grid grid-cols-3 gap-2 px-4 py-2.5">
@@ -505,9 +511,9 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
 
             {/* Natural Stone Variation Required Disclosure */}
             <div className="bg-amber-50/70 p-4 rounded-2xl border border-[#C5A059]/30 space-y-2 text-xs text-stone-700 leading-relaxed">
-              <p className="font-bold text-[#1A1A1A]">Natural River Stone Authenticity Note</p>
+              <p className="font-bold text-[#1A1A1A]">Natural Stone Variation Disclosure</p>
               <p>
-                Every Narmadeshwar Shivling is naturally formed in the Narmada River. Each piece has its own unique shape, texture, natural patterns and appearance. No two natural Shivlings are exactly alike.
+                Every Narmadeshwar Shivling is naturally formed in the Narmada River. Each stone has its own unique shape, colour tone, natural markings, surface texture, and appearance — no two natural pieces are exactly identical. You can request live photos or video of the exact piece on WhatsApp before dispatch.
               </p>
             </div>
 

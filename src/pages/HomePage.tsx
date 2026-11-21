@@ -31,7 +31,7 @@ export const HomePage: React.FC = () => {
 
     updatePageSEO({
       title: 'Authentic Narmadeshwar Shivling | Natural Narmada River Stone Shivlings from Bakawan',
-      description: 'Explore natural Narmadeshwar Shivlings, Jaladhari bases and complete puja sets from Bakawan, Madhya Pradesh. Secure wooden box packaging, verified weights, and worldwide delivery.',
+      description: 'Explore natural Narmadeshwar Shivlings, Jaladhari bases and complete puja sets from Bakawan, Madhya Pradesh. Secure wooden box packaging, measured weights, and worldwide delivery.',
       keywords: [
         'Narmadeshwar Shivling',
         'Original Narmada Shivling',

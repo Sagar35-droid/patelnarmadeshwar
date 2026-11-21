@@ -27,7 +27,6 @@ export const BUSINESS_CONFIG: BusinessInfo = {
   },
   socialLinks: {},
   announcementText: "🙏 Har Har Mahadev! Original Natural Narmadeshwar Shivlings with Safe Worldwide Delivery.",
-  gstin: "23BNAPP9375D1ZY",
   cancellationPolicyConfig: {
     canCancelBeforeDispatch: true,
     cancellationNoticeHours: 12,

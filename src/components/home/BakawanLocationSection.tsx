@@ -114,11 +114,11 @@ export const BakawanLocationSection: React.FC = () => {
                 <div className="p-3.5 rounded-xl bg-[#FCFAF7] border border-[#C5A059]/20 flex items-start gap-2.5">
                   <Phone className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-[#1A1A1A] font-bold text-xs">Direct Calling & Support</strong>
+                    <strong className="block text-[#1A1A1A] font-bold text-xs">Direct Calling &amp; WhatsApp</strong>
                     <a href={`tel:${BUSINESS_CONFIG.phoneNumber}`} className="text-[#8B6508] font-bold text-xs hover:underline">
                       {BUSINESS_CONFIG.phoneDisplay}
                     </a>
-                    <span className="text-[11px] text-stone-500 block">GSTIN: {BUSINESS_CONFIG.gstin}</span>
+                    <span className="text-[11px] text-stone-500 block">{BUSINESS_CONFIG.ownerName} ({BUSINESS_CONFIG.ownerRole})</span>
                   </div>
                 </div>
 

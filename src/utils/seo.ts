@@ -231,10 +231,8 @@ export function updatePageSEO({
     alternateName: Array.from(
       new Set([
         BUSINESS_CONFIG.name,
-        'Sagar Narmadeshwar Shivling',
-        'Sagar Shivling Bakawan',
-        'सागर नर्मदेश्वर शिवलिंग',
-        'प्रामाणिक नर्मदेश्वर'
+        'प्रामाणिक नर्मदेश्वर',
+        'Authentic Narmadeshwar Shivling'
       ])
     ).filter((n) => n !== DEFAULT_SEO.siteName),
     description: BUSINESS_CONFIG.taglineEnglish,
@@ -246,7 +244,7 @@ export function updatePageSEO({
     image: `${SITE_URL}/images/products/product-1.jpeg`,
     telephone: BUSINESS_CONFIG.phoneNumber,
     email: BUSINESS_CONFIG.email,
-    taxID: BUSINESS_CONFIG.gstin,
+    ...(BUSINESS_CONFIG.gstin ? { taxID: BUSINESS_CONFIG.gstin } : {}),
     founder: {
       '@type': 'Person',
       '@id': `${SITE_URL}/#founder`,
@@ -421,9 +419,13 @@ export function updatePageSEO({
       datePublished: articleData.publishDate,
       dateModified: articleData.modifiedDate || articleData.publishDate,
       author: {
-        '@type': 'Organization',
-        name: DEFAULT_SEO.siteName,
-        url: SITE_URL
+        '@type': 'Person',
+        '@id': `${SITE_URL}/#founder`,
+        name: BUSINESS_CONFIG.ownerName,
+        jobTitle: BUSINESS_CONFIG.ownerRole || 'Founder & Owner',
+        worksFor: {
+          '@id': `${SITE_URL}/#organization`
+        }
       },
       publisher: {
         '@id': `${SITE_URL}/#organization`,

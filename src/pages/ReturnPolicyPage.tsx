@@ -92,7 +92,7 @@ export const ReturnPolicyPage: React.FC = () => {
             </div>
           </section>
 
-          {/* Section 2: Damaged During Transit */}
+          {/* Section 2: Transit Damage & Wrong Product Handling */}
           <section className="space-y-4">
             <div className="flex items-center gap-3 pb-3 border-b border-[#C5A059]/20">
               <div className="w-10 h-10 rounded-xl bg-[#F3EFE9] border border-[#C5A059]/30 text-[#C5A059] flex items-center justify-center font-bold shrink-0">
@@ -100,14 +100,14 @@ export const ReturnPolicyPage: React.FC = () => {
               </div>
               <div>
                 <h2 className="text-base sm:text-lg font-serif font-bold text-[#1A1A1A]">
-                  2. Damaged During Transit (परिवहन के दौरान क्षति पर प्रतिस्थापन)
+                  2. Damaged During Transit or Wrong Product Received
                 </h2>
-                <span className="text-[11px] text-stone-500">Protected wooden crate transit &amp; damage replacement support</span>
+                <span className="text-[11px] text-stone-500">Protected wooden crate transit &amp; replacement resolution</span>
               </div>
             </div>
 
             <p className="text-stone-700">
-              We pack every Narmadeshwar Shivling with utmost devotion in multi-layer foam, bubble protection, and shock-resistant wooden crates. However, if the product is damaged or broken during transportation:
+              We pack every Narmadeshwar Shivling with utmost care in multi-layer foam, protective wrapping, and cushioned wooden boxes. Replacement or resolution support is available in the following situations:
             </p>
 
             <div className="space-y-3 pt-1">
@@ -115,10 +115,10 @@ export const ReturnPolicyPage: React.FC = () => {
                 <Clock className="w-5 h-5 text-[#C5A059] shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-xs sm:text-sm font-bold text-[#1A1A1A] block">
-                    Report Within 24 Hours
+                    Report Within 24 Hours of Delivery
                   </strong>
                   <p className="text-xs text-stone-600 mt-0.5">
-                    The customer must contact us via WhatsApp ({BUSINESS_CONFIG.whatsappDisplay}) or phone ({BUSINESS_CONFIG.phoneDisplay}) within <strong>24 hours of parcel delivery</strong>.
+                    If your parcel arrives <strong>damaged in transit</strong> or if an <strong>incorrect product</strong> was delivered compared to what was confirmed on WhatsApp, please contact us via WhatsApp ({BUSINESS_CONFIG.whatsappDisplay}) or phone ({BUSINESS_CONFIG.phoneDisplay}) within <strong>24 hours of delivery</strong>.
                   </p>
                 </div>
               </div>
@@ -127,10 +127,10 @@ export const ReturnPolicyPage: React.FC = () => {
                 <Camera className="w-5 h-5 text-[#C5A059] shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-xs sm:text-sm font-bold text-[#1A1A1A] block">
-                    Provide Photos & Unboxing Video
+                    Share Parcel Unboxing Video &amp; Clear Photos
                   </strong>
                   <p className="text-xs text-stone-600 mt-0.5">
-                    Customer must provide clear photos and videos showing the outer packaging with shipping label and the damaged product stone.
+                    Customers must provide a continuous unboxing video and clear photos showing the outer wooden packaging, shipping label, and the damaged or incorrect item received.
                   </p>
                 </div>
               </div>
@@ -139,10 +139,10 @@ export const ReturnPolicyPage: React.FC = () => {
                 <PackageCheck className="w-5 h-5 text-[#C5A059] shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-xs sm:text-sm font-bold text-[#1A1A1A] block">
-                    Review & Replacement Process
+                    Return Eligibility, Return Shipping &amp; Replacement Timelines
                   </strong>
                   <p className="text-xs text-stone-600 mt-0.5">
-                    The replacement request will be promptly reviewed by our support team. If the damage is confirmed to have occurred during transit, a replacement will be provided according to product availability.
+                    Because each natural Narmada stone is unique and selected with customers via WhatsApp prior to dispatch, undamaged orders are generally not eligible for discretionary return once dispatched. For verified transit damage or wrong-product delivery, our team confirms return shipping instructions (if a return is required) and the replacement dispatch timeline directly on WhatsApp based on stone availability and destination.
                   </p>
                 </div>
               </div>
@@ -151,7 +151,7 @@ export const ReturnPolicyPage: React.FC = () => {
             <div className="p-4 rounded-2xl bg-rose-50/70 border border-rose-200 text-rose-900 text-xs flex items-start gap-2.5">
               <AlertTriangle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
               <div>
-                <strong>Return Instructions:</strong> Customers should not return or ship back the product without receiving official return instructions and authorization from our support team.
+                <strong>Return Authorization Required:</strong> Please do not ship back any parcel without receiving prior return instructions, shipping arrangement details, and authorization from owner {BUSINESS_CONFIG.ownerName} or our support team on WhatsApp ({BUSINESS_CONFIG.phoneDisplay}).
               </div>
             </div>
           </section>

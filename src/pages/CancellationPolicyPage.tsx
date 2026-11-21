@@ -89,7 +89,7 @@ export const CancellationPolicyPage: React.FC = () => {
                     Once Order is Dispatched
                   </strong>
                   <p className="text-xs text-stone-600 mt-0.5">
-                    Once the order has been handed over to our courier partner (Delhivery) and assigned an AWB tracking number, <strong>cancellation may not be possible</strong> as the parcel is already in transit.
+                    Once the order has been handed over to our shipping/courier partner and assigned a tracking number, <strong>cancellation may not be possible</strong> as the parcel is already in transit.
                   </p>
                 </div>
               </div>
