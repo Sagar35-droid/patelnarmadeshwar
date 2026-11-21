@@ -35,9 +35,9 @@ export const Navbar: React.FC = () => {
             <span className="flex items-center gap-1 text-white">
               <MapPin className="w-3 h-3 text-white" /> Bakawan, MP
             </span>
-            <span className="flex items-center gap-1 text-white">
+            <a href={`tel:${BUSINESS_CONFIG.phoneNumber}`} className="flex items-center gap-1 text-white hover:underline">
               <Phone className="w-3 h-3 text-white" /> {BUSINESS_CONFIG.phoneDisplay}
-            </span>
+            </a>
           </div>
         </div>
       </div>

@@ -4,10 +4,10 @@ export const BUSINESS_CONFIG: BusinessInfo = {
   name: "Sagar Narmadeshwar Shivling",
   taglineHindi: "प्राकृतिक नर्मदा नदी से प्राप्त पवित्र एवं प्रामाणिक शिवलिंग",
   taglineEnglish: "Authentic & Natural Narmadeshwar Shivling Direct from Narmada River, Bakawan, Madhya Pradesh",
-  whatsappNumber: "917697369590", // EDITABLE: Change to your actual WhatsApp number with country code without '+'
-  whatsappDisplay: "+91 76973 69590",
-  phoneNumber: "+91 76973 69590",
-  phoneDisplay: "+91 76973 69590",
+  whatsappNumber: "919301531448", // EDITABLE: Change to your actual WhatsApp number with country code without '+'
+  whatsappDisplay: "+91 9301531448",
+  phoneNumber: "+919301531448",
+  phoneDisplay: "+91 9301531448",
   email: "keshrilalpatel9@gmail.com",
   address: {
     street: "Bakawan",

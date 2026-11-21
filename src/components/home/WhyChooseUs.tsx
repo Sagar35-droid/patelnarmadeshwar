@@ -1,107 +1,140 @@
 import React from 'react';
 import { 
-  Sparkles, 
+  Gem, 
   PackageCheck, 
-  Truck, 
-  CreditCard, 
-  Banknote, 
+  Globe2, 
   MessageCircle, 
-  ShieldCheck 
+  ShieldCheck, 
+  CheckCircle2,
+  FileText,
+  MapPin
 } from 'lucide-react';
+import { BUSINESS_CONFIG } from '../../config/businessConfig';
+import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../../utils/whatsapp';
 
 export const WhyChooseUs: React.FC = () => {
-  const trustPoints = [
+  const whatsappUrl = getGeneralWhatsAppLink('Namaste! Mujhe Authentic Narmadeshwar Shivling ke baare mein jankari chahiye.');
+
+  const verifiedTrustPoints = [
     {
-      icon: Sparkles,
-      title: 'Natural Narmadeshwar Shivling',
-      titleHindi: 'प्राकृतिक नर्मदेश्वर शिवलिंग',
-      desc: 'Authentic self-manifested river stones gathered from the holy Narmada River.',
-      descHindi: 'माँ नर्मदा नदी के पावन तट से प्राप्त मूल एवं स्वयंभू प्राकृतिक पाषाण।'
+      icon: Gem,
+      title: 'Natural Narmada River Stone',
+      titleHindi: 'प्राकृतिक नर्मदा नदी पाषाण',
+      desc: 'Naturally formed river stone collected responsibly from the sacred Narmada River around Bakawan, Madhya Pradesh.',
+      descHindi: 'माँ नर्मदा नदी के पावन तटवर्ती क्षेत्र (बकावां, मध्य प्रदेश) से प्राप्त स्वाभाविक नदी पाषाण।'
+    },
+    {
+      icon: CheckCircle2,
+      title: 'Carefully Selected Products',
+      titleHindi: 'सावधानीपूर्वक चयनित उत्पाद',
+      desc: 'Every Shivling is individually inspected for natural shape, balanced proportions, and authentic river markings.',
+      descHindi: 'प्रत्येक शिवलिंग का आकार, अनुपात एवं प्राकृतिक स्वरूप का ध्यानपूर्वक परीक्षण किया जाता है।'
     },
     {
       icon: PackageCheck,
-      title: 'Secure Packaging',
-      titleHindi: 'सुरक्षित एवं संरक्षित पैकेजिंग',
-      desc: 'Multi-layer bubble wrapping and reinforced wooden crates for safe door delivery.',
-      descHindi: 'सुरक्षित परिवहन हेतु बहुस्तरीय सुरक्षा व मजबूत लकड़ी के बॉक्स की पैकिंग।'
+      title: 'Secure Wooden Box Packaging',
+      titleHindi: 'सुरक्षित काष्ठ बॉक्स पैकेजिंग',
+      desc: 'Packed in sturdy wooden boxes with multi-layer protective cushioning to ensure safe transit to your doorstep.',
+      descHindi: 'मजबूत लकड़ी के बॉक्स में सुरक्षित पैकिंग ताकि आपके घर तक सुरक्षित पहुंच सके।'
     },
     {
-      icon: Truck,
-      title: 'Worldwide Delivery',
-      titleHindi: 'विश्वव्यापी डिलीवरी',
-      desc: 'Insured worldwide transit with safe door delivery via trusted express couriers.',
-      descHindi: 'विश्वसनीय कूरियर भागीदारों द्वारा देश-विदेश में सुरक्षित डिलीवरी।'
-    },
-    {
-      icon: CreditCard,
-      title: 'Secure Online Payment',
-      titleHindi: 'सुरक्षित ऑनलाइन भुगतान',
-      desc: '100% encrypted checkout supporting UPI (GPay, PhonePe, Paytm), Cards & Net Banking.',
-      descHindi: 'रेज़रपे द्वारा सुरक्षित UPI, क्रेडिट/डेबिट कार्ड व नेट बैंकिंग सुविधा।'
-    },
-    {
-      icon: Banknote,
-      title: 'COD Available',
-      titleHindi: 'कैश ऑन डिलीवरी सुविधा',
-      desc: 'Doorstep cash payment option with a ₹200 advance confirmation amount.',
-      descHindi: 'मात्र ₹200 अग्रिम बुकिंग शुल्क के साथ घर पर शेष भुगतान की सुविधा।'
+      icon: Globe2,
+      title: 'Delivery Across India and Worldwide',
+      titleHindi: 'भारत एवं विश्वव्यापी डिलीवरी',
+      desc: 'Reliable doorstep shipping across all Indian pincodes and international locations via reputed courier partners.',
+      descHindi: 'प्रतिष्ठित कूरियर सेवाओं के माध्यम से संपूर्ण भारत एवं विदेशों में घर तक डिलीवरी।'
     },
     {
       icon: MessageCircle,
-      title: 'WhatsApp Customer Support',
-      titleHindi: 'व्हाट्सएप ग्राहक सहायता',
-      desc: 'Direct consultation, video/photo preview, and dedicated order guidance on WhatsApp.',
-      descHindi: 'व्हाट्सएप पर शिवलिंग के वास्तविक वीडियो देखने व परामर्श की सुविधा।'
+      title: 'Direct WhatsApp Video & Guidance',
+      titleHindi: 'व्हाट्सएप पर सीधी सहायता व वीडियो',
+      desc: 'View actual photos and video previews of the exact piece before ordering, with direct support from our Bakawan team.',
+      descHindi: 'ऑर्डर करने से पूर्व वास्तविक शिवलिंग के फोटो एवं वीडियो देखने की सुविधा।'
     },
+    {
+      icon: FileText,
+      title: 'Transparent Specifications & GST Billing',
+      titleHindi: 'स्पष्ट विनिर्देश एवं अधिकृत बिलिंग',
+      desc: `Registered enterprise (GSTIN: ${BUSINESS_CONFIG.gstin}) providing clear weight, size, and honest pricing.`,
+      descHindi: `पूर्ण पारदर्शिता: सटीक वजन, नाप एवं अधिकृत GST बिलिंग (GSTIN: ${BUSINESS_CONFIG.gstin})।`
+    }
   ];
 
   return (
-    <section className="py-14 sm:py-16 bg-[#FCFAF7] border-y border-[#C5A059]/20">
+    <section className="py-16 sm:py-20 bg-[#FCFAF7] border-b border-[#C5A059]/20" id="why-choose-us">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3EFE9] border border-[#C5A059]/30 text-[#C5A059] text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3EFE9] border border-[#C5A059]/30 text-[#8B6508] text-xs font-bold uppercase tracking-wider">
             <ShieldCheck className="w-4 h-4 text-[#C5A059]" />
-            <span>विश्वास एवं प्रामाणिकता</span>
+            <span>सत्यता एवं प्रामाणिकता</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#1A1A1A] tracking-tight">
-            Why Devotees Trust Us / ग्राहक हम पर भरोसा क्यों करते हैं
+            Why Choose Authentic Narmadeshwar
           </h2>
           <p className="text-stone-600 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
-            Serving Devotees with Natural Narmadeshwar Shivling direct from Bakawan, Madhya Pradesh with transparent policies.
+            Directly from Bakawan, Khargone district, Madhya Pradesh. Transparent product specifications, natural river stones, and sincere devotee support.
           </p>
         </div>
 
         {/* Factual Trust Points Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {trustPoints.map((item, index) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {verifiedTrustPoints.map((item, index) => {
             const Icon = item.icon;
             return (
               <div
                 key={index}
-                className="bg-white p-5 rounded-2xl border border-[#C5A059]/25 hover:border-[#C5A059] hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
+                className="bg-white p-6 rounded-2xl border border-[#C5A059]/25 hover:border-[#C5A059] hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-[#F3EFE9] border border-[#C5A059]/30 text-[#C5A059] flex items-center justify-center group-hover:scale-105 transition-transform">
-                      <Icon className="w-5 h-5 text-[#C5A059]" />
-                    </div>
+                  <div className="w-12 h-12 rounded-xl bg-[#F3EFE9] border border-[#C5A059]/30 text-[#C5A059] flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                    <Icon className="w-6 h-6 text-[#C5A059]" />
                   </div>
 
-                  <h3 className="text-xs sm:text-sm font-bold text-[#1A1A1A] mb-1 leading-snug">
+                  <h3 className="text-sm sm:text-base font-serif font-bold text-[#1A1A1A] mb-1 leading-snug">
                     {item.title}
                   </h3>
-                  <h4 className="text-[11px] font-bold text-[#C5A059] mb-2">
+                  <h4 className="text-xs font-bold text-[#8B6508] mb-2.5">
                     {item.titleHindi}
                   </h4>
-                  <p className="text-[11px] text-stone-600 leading-relaxed">
+                  <p className="text-xs text-stone-600 leading-relaxed mb-2">
                     {item.desc}
+                  </p>
+                  <p className="text-[11px] text-stone-500 leading-relaxed">
+                    {item.descHindi}
                   </p>
                 </div>
               </div>
             );
           })}
+        </div>
+
+        {/* Reassurance Callout Bar */}
+        <div className="mt-12 bg-white rounded-2xl p-6 sm:p-8 border border-[#C5A059]/30 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="space-y-1 text-center sm:text-left">
+            <div className="flex items-center justify-center sm:justify-start gap-2 text-xs font-bold text-[#8B6508] uppercase">
+              <MapPin className="w-4 h-4 text-[#C5A059]" />
+              <span>Workshop Location</span>
+            </div>
+            <p className="font-serif font-bold text-[#1A1A1A] text-base sm:text-lg">
+              Bakawan, Tehsil Barwah, Dist. Khargone (M.P.) — 451113
+            </p>
+            <p className="text-xs text-stone-600">
+              Devotees can contact us directly on WhatsApp to ask questions, request live video previews, or get size recommendations.
+            </p>
+          </div>
+
+          <a
+            href={whatsappUrl}
+            onClick={() => trackWhatsAppConversion()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 px-6 py-3 rounded-xl bg-[#25D366] hover:bg-[#1ebd59] text-white text-xs sm:text-sm font-bold flex items-center gap-2 shadow-sm transition-all"
+          >
+            <MessageCircle className="w-4 h-4 fill-white" />
+            <span>Connect on WhatsApp</span>
+          </a>
         </div>
 
       </div>

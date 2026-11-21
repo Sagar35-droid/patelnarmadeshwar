@@ -88,7 +88,7 @@ export const AboutPreviewSection: React.FC = () => {
             </ul>
 
             <div className="bg-white p-4 rounded-xl border border-[#C5A059]/30 text-[11px] text-[#1A1A1A] italic">
-              "सागर नर्मदेश्वर शिवलिंग का ध्येय श्रद्धालुओं तक पारदर्शी एवं प्रामाणिक जानकारी पहुंचाना है।"
+              "प्रामाणिक नर्मदेश्वर (Authentic Narmadeshwar) का ध्येय श्रद्धालुओं तक पारदर्शी, सत्य एवं प्रामाणिक जानकारी पहुंचाना है।"
             </div>
           </div>
 

@@ -30,10 +30,10 @@ export function trackWhatsAppConversion(): void {
  * WHATSAPP CONFIGURATION
  * EDITABLE: You can update your business WhatsApp number below at any time.
  * Format: Country code followed by mobile number without '+' or special characters.
- * Example: "917697369590" for +91 76973 69590
+ * Example: "919301531448" for +91 9301531448
  * ============================================================================
  */
-export const WHATSAPP_NUMBER: string = BUSINESS_CONFIG.whatsappNumber || "917697369590";
+export const WHATSAPP_NUMBER: string = BUSINESS_CONFIG.whatsappNumber || "919301531448";
 
 /**
  * Generate a WhatsApp order link for any product.
