@@ -6,6 +6,7 @@
 import React, { Suspense, lazy } from 'react';
 import { RouterProvider, useRouter } from './context/RouterContext';
 import { ProductProvider } from './context/ProductContext';
+import { CartProvider } from './context/CartContext';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { FloatingWhatsApp } from './components/layout/FloatingWhatsApp';
@@ -15,6 +16,9 @@ import { HomePage } from './pages/HomePage';
 const AboutPage = lazy(() => import('./pages/AboutPage').then((m) => ({ default: m.AboutPage })));
 const ProductsPage = lazy(() => import('./pages/ProductsPage').then((m) => ({ default: m.ProductsPage })));
 const ProductDetailPage = lazy(() => import('./pages/ProductDetailPage').then((m) => ({ default: m.ProductDetailPage })));
+const CartPage = lazy(() => import('./pages/CartPage').then((m) => ({ default: m.CartPage })));
+const CheckoutPage = lazy(() => import('./pages/CheckoutPage').then((m) => ({ default: m.CheckoutPage })));
+const OrderConfirmationPage = lazy(() => import('./pages/OrderConfirmationPage').then((m) => ({ default: m.OrderConfirmationPage })));
 const EnquiryPage = lazy(() => import('./pages/EnquiryPage').then((m) => ({ default: m.EnquiryPage })));
 const ContactPage = lazy(() => import('./pages/ContactPage').then((m) => ({ default: m.ContactPage })));
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage').then((m) => ({ default: m.PrivacyPolicyPage })));
@@ -29,7 +33,7 @@ const BlogDetailPage = lazy(() => import('./pages/BlogDetailPage').then((m) => (
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })));
 
 function MainContent() {
-  const { currentPath, productId, blogSlug } = useRouter();
+  const { currentPath, productId, blogSlug, orderId } = useRouter();
   const normalizedPath = (currentPath.replace(/\/+$/, '') || '/').toLowerCase();
 
   let PageComponent = <HomePage />;
@@ -46,9 +50,13 @@ function MainContent() {
     PageComponent = <BlogListPage />;
   } else if (blogSlug) {
     PageComponent = <BlogDetailPage slug={blogSlug} />;
+  } else if (normalizedPath === '/cart') {
+    PageComponent = <CartPage />;
+  } else if (normalizedPath === '/checkout') {
+    PageComponent = <CheckoutPage />;
+  } else if (orderId || normalizedPath === '/order-confirmed') {
+    PageComponent = <OrderConfirmationPage orderId={orderId || undefined} />;
   } else if (
-    normalizedPath === '/cart' ||
-    normalizedPath === '/checkout' ||
     normalizedPath === '/login' ||
     normalizedPath === '/signup' ||
     normalizedPath === '/my-orders' ||
@@ -96,7 +104,9 @@ export default function App() {
   return (
     <RouterProvider>
       <ProductProvider>
-        <MainContent />
+        <CartProvider>
+          <MainContent />
+        </CartProvider>
       </ProductProvider>
     </RouterProvider>
   );

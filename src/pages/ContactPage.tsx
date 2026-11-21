@@ -41,7 +41,13 @@ export const ContactPage: React.FC = () => {
     const msg = `Namaste ${BUSINESS_CONFIG.name} team! My name is ${name} (${phone}). Message: ${query}`;
     const url = `https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
     setTimeout(() => {
-      window.open(url, '_blank');
+      const link = document.createElement('a');
+      link.href = url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }, 800);
   };
 
@@ -78,6 +84,9 @@ export const ContactPage: React.FC = () => {
               <h2 className="text-2xl font-serif font-bold text-[#1A1A1A] mt-3">
                 {BUSINESS_CONFIG.name}
               </h2>
+              <p className="text-xs font-semibold text-[#8B6508] mt-1">
+                Owner / Founder: {BUSINESS_CONFIG.ownerName}
+              </p>
               <p className="text-xs text-stone-500 mt-1">
                 {BUSINESS_CONFIG.taglineHindi}
               </p>

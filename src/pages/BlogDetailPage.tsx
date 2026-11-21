@@ -174,7 +174,7 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
   );
 
   return (
-    <div className="min-h-screen bg-[#FDFCF9]">
+    <main className="min-h-screen bg-[#FDFCF9]">
       <Breadcrumbs
         items={[
           { label: post.language === 'hi' ? 'धार्मिक मार्गदर्शिका' : 'Sacred Guides & Blog', path: post.language === 'hi' ? '/hi/blog' : '/blog' },
@@ -305,7 +305,7 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
           <div className="flex items-center justify-between pt-2">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-[#1A1A1A] border border-[#C5A059] flex items-center justify-center text-[#E0C07B] font-serif font-bold text-sm">
-                S
+                A
               </div>
               <div>
                 <p className="text-xs font-bold text-[#1A1A1A] flex items-center gap-1">
@@ -736,6 +736,6 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
           </button>
         </div>
       </article>
-    </div>
+    </main>
   );
 };

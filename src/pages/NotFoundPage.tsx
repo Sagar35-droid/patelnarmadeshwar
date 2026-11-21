@@ -20,14 +20,14 @@ export const NotFoundPage: React.FC = () => {
   const whatsappUrl = getGeneralWhatsAppLink('Namaste! Mujhe website par ek page nahi mila, kripya sahayata karein.');
 
   return (
-    <div className="min-h-[70vh] bg-[#FDFCF9] flex items-center justify-center px-4 py-16">
+    <main className="min-h-[70vh] bg-[#FDFCF9] flex items-center justify-center px-4 py-16">
       <div className="max-w-xl w-full bg-white rounded-3xl border border-stone-200/80 p-8 sm:p-10 shadow-lg text-center space-y-6">
-        <div className="w-20 h-20 rounded-3xl bg-[#FAF6EE] border-2 border-[#C5A059] flex items-center justify-center mx-auto text-[#C5A059] shadow-sm">
+        <div className="w-20 h-20 rounded-3xl bg-[#FAF6EE] border-2 border-[#C5A059] flex items-center justify-center mx-auto text-[#8B6508] shadow-sm">
           <Sparkles className="w-10 h-10 animate-pulse" />
         </div>
 
         <div className="space-y-2">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#C5A059]">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#8B6508]">
             Error 404 • Page Not Found
           </span>
           <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#1A1A1A]">
@@ -77,6 +77,6 @@ export const NotFoundPage: React.FC = () => {
           </a>
         </div>
       </div>
-    </div>
+    </main>
   );
 };

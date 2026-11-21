@@ -102,7 +102,7 @@ export const ReturnPolicyPage: React.FC = () => {
                 <h2 className="text-base sm:text-lg font-serif font-bold text-[#1A1A1A]">
                   2. Damaged During Transit (परिवहन के दौरान क्षति पर प्रतिस्थापन)
                 </h2>
-                <span className="text-[11px] text-stone-500">Insured transit protection for safe doorstep delivery</span>
+                <span className="text-[11px] text-stone-500">Protected wooden crate transit &amp; damage replacement support</span>
               </div>
             </div>
 

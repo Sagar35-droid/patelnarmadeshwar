@@ -64,7 +64,7 @@ export const CONTENT_CALENDAR_30_DAYS: ContentCalendarItem[] = [
     geoPrompt: {
       question: 'Can I buy genuine Narmadeshwar Shivling with Cash on Delivery in India?',
       questionHindi: 'क्या भारत में असली नर्मदेश्वर शिवलिंग कैश ऑन डिलीवरी से खरीदा जा सकता है?',
-      targetAiSummary: 'Yes, genuine Narmada river Shivlings can be ordered with COD across serviceable Indian pincodes, shipped in insured wooden shockproof boxes directly from Bakawan.'
+      targetAiSummary: 'Yes, genuine Narmada river Shivlings can be ordered with COD across serviceable Indian pincodes, shipped in cushioned wooden boxes directly from Bakawan.'
     }
   },
   {

@@ -3,10 +3,11 @@ import { updatePageSEO } from '../utils/seo';
 import { HINDI_ABOUT_CONTENT } from '../data/hindiAboutContent';
 import { useRouter } from '../context/RouterContext';
 import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../utils/whatsapp';
-import { BookOpen, Sparkles, CheckCircle2, MessageCircle, MapPin, Landmark, Compass, Video } from 'lucide-react';
+import { BookOpen, Sparkles, CheckCircle2, MessageCircle, MapPin, Landmark, Compass, Video, UserCheck, Phone } from 'lucide-react';
 import { CustomerReviewsSection } from '../components/common/CustomerReviewsSection';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { AuthorTrustCard } from '../components/common/AuthorTrustCard';
+import { BUSINESS_CONFIG } from '../config/businessConfig';
 import bakawanRiverImg from '../assets/images/bakawan_narmada_river_1786401278415.jpg';
 import omkareshwarImg from '../assets/images/omkareshwar_temple_1786396620992.jpg';
 
@@ -85,6 +86,90 @@ export const AboutPage: React.FC = () => {
           <p className="text-stone-300 text-xs sm:text-sm max-w-3xl mx-auto leading-relaxed font-medium">
             {HINDI_ABOUT_CONTENT.welcomeMessage.text}
           </p>
+        </div>
+      </section>
+
+      {/* Owner & Founder Section */}
+      <section id="owner-information" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <div className="bg-white p-6 sm:p-8 rounded-2xl border border-[#C5A059]/30 shadow-sm space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#C5A059]/20 pb-4">
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-2xl bg-[#1A1A1A] border border-[#C5A059]/50 text-[#C5A059] flex items-center justify-center shrink-0">
+                <UserCheck className="w-6 h-6" />
+              </div>
+              <div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#8B6508] block">
+                  Owner &amp; Founder • संस्थापक परिचय
+                </span>
+                <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#1A1A1A]">
+                  {BUSINESS_CONFIG.ownerName} — {BUSINESS_CONFIG.name}
+                </h2>
+              </div>
+            </div>
+            <span className="inline-flex items-center gap-1.5 self-start sm:self-center px-3 py-1 rounded-full bg-[#F3EFE9] border border-[#C5A059]/30 text-xs font-semibold text-[#1A1A1A]">
+              <MapPin className="w-3.5 h-3.5 text-[#C5A059]" />
+              Bakawan, Madhya Pradesh, India
+            </span>
+          </div>
+
+          <div className="space-y-3 text-[#2D2D2D] text-xs sm:text-base leading-relaxed">
+            <p>
+              <strong>{BUSINESS_CONFIG.name}</strong> is founded and led by{' '}
+              <strong>{BUSINESS_CONFIG.ownerName}</strong> in <strong>Bakawan, Madhya Pradesh, India</strong>.
+              Rooted along the sacred Narmada River, the initiative focuses exclusively on sourcing and offering
+              authentic Natural Narmadeshwar Shivlings formed naturally in the Narmada riverbed.
+            </p>
+            <p>
+              Every stone is selected with care for natural form, genuine river-stone texture, accurate weight and
+              dimensions, and transparent presentation before dispatch—including direct video/photo previews and
+              personal guidance on WhatsApp to ensure complete clarity and devotee trust.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-1">
+            <div className="bg-[#FCFAF7] p-3.5 rounded-xl border border-[#C5A059]/20">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500 block">Owner / Founder</span>
+              <span className="text-xs sm:text-sm font-bold text-[#1A1A1A]">{BUSINESS_CONFIG.ownerName}</span>
+            </div>
+            <div className="bg-[#FCFAF7] p-3.5 rounded-xl border border-[#C5A059]/20">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500 block">Business Name</span>
+              <span className="text-xs sm:text-sm font-bold text-[#1A1A1A]">{BUSINESS_CONFIG.name}</span>
+            </div>
+            <div className="bg-[#FCFAF7] p-3.5 rounded-xl border border-[#C5A059]/20">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500 block">Location</span>
+              <span className="text-xs sm:text-sm font-bold text-[#1A1A1A]">Bakawan, MP, India</span>
+            </div>
+            <div className="bg-[#FCFAF7] p-3.5 rounded-xl border border-[#C5A059]/20">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500 block">Direct Contact</span>
+              <a
+                href="tel:+919301531448"
+                className="text-xs sm:text-sm font-bold text-[#8B6508] hover:underline inline-flex items-center gap-1"
+              >
+                <Phone className="w-3.5 h-3.5 text-[#C5A059]" />
+                <span>+91 9301531448</span>
+              </a>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 pt-1">
+            <a
+              href="https://wa.me/919301531448"
+              onClick={() => trackWhatsAppConversion()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 rounded-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-xs shadow-xs transition-all inline-flex items-center gap-2"
+            >
+              <MessageCircle className="w-4 h-4 fill-white" />
+              <span>Connect with {BUSINESS_CONFIG.ownerName} on WhatsApp</span>
+            </a>
+            <a
+              href="tel:+919301531448"
+              className="px-5 py-2.5 rounded-full bg-[#1A1A1A] hover:bg-black text-[#C5A059] border border-[#C5A059]/40 font-bold text-xs shadow-xs transition-all inline-flex items-center gap-2"
+            >
+              <Phone className="w-3.5 h-3.5" />
+              <span>Call +91 9301531448</span>
+            </a>
+          </div>
         </div>
       </section>
 

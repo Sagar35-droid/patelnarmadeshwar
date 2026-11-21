@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from '../context/RouterContext';
 import { useProducts } from '../context/ProductContext';
+import { useCart } from '../context/CartContext';
 import { updatePageSEO } from '../utils/seo';
 import { getPricingDetails, formatPrice } from '../utils/pricing';
 import { getProductWhatsAppLink, getProductWhatsAppOrderLink, trackWhatsAppConversion } from '../utils/whatsapp';
@@ -14,12 +15,16 @@ import {
   AlertCircle,
   PhoneCall,
   Sparkles,
-  BookOpen,
-  ExternalLink
+  ShoppingBag,
+  Zap,
+  ZoomIn,
+  X,
+  Check,
+  Info,
+  RotateCcw,
 } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../config/businessConfig';
 import { CustomerReviewsSection } from '../components/common/CustomerReviewsSection';
-
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { AuthorTrustCard } from '../components/common/AuthorTrustCard';
 import { ProductCard } from '../components/common/ProductCard';
@@ -31,30 +36,40 @@ interface ProductDetailPageProps {
 export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId }) => {
   const { navigate } = useRouter();
   const { products, getProductById } = useProducts();
+  const { addItem } = useCart();
+
   const product = getProductById(productId);
   const [selectedImage, setSelectedImage] = useState<string>(product?.mainImage || '');
   const [quantity, setQuantity] = useState<number>(1);
+  const [addedToCart, setAddedToCart] = useState<boolean>(false);
+  const [zoomOpen, setZoomOpen] = useState<boolean>(false);
 
-  const pricing = product ? getPricingDetails(product) : { mrp: 2499, sellingPrice: 1699, discountPercentage: 32, stock: 10, inStock: true };
+  const pricing = product
+    ? getPricingDetails(product)
+    : { mrp: 2499, sellingPrice: 1699, discountPercentage: 32, stock: 10, inStock: true };
   const isInStock = pricing.inStock && pricing.stock > 0;
   const productType = product?.name.toLowerCase().includes('nandi')
-  ? 'Natural Stone Nandi Ji'
-  : product?.name.toLowerCase().includes('murti')
-  ? 'Narmada Stone Murti'
-  : 'Natural Narmadeshwar Shivling';
+    ? 'Natural Stone Nandi Ji'
+    : product?.name.toLowerCase().includes('murti')
+    ? 'Narmada Stone Murti'
+    : 'Natural Narmadeshwar Shivling';
 
   useEffect(() => {
     if (!product) {
       updatePageSEO({
         title: 'Product Not Found | Authentic Narmadeshwar',
-        description: 'The requested Narmadeshwar Shivling piece was not found. Browse our complete collection of natural Narmada River stone Shivlings from Bakawan, Madhya Pradesh.',
+        description:
+          'The requested Narmadeshwar Shivling piece was not found. Browse our complete collection of natural Narmada River stone Shivlings from Bakawan, Madhya Pradesh.',
         canonicalPath: '/404',
-        noindex: true
+        noindex: true,
       });
       return;
     }
 
     setSelectedImage(product.mainImage);
+    setQuantity(1);
+    setAddedToCart(false);
+
     const itemNum = product.id.replace('product-', '');
     const pieceLabel = `#${itemNum}`;
 
@@ -79,7 +94,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
         'Bakawan Shivling',
         'शिवलिंग',
         'नर्मदेश्वर शिवलिंग',
-        'नर्मदा शिवलिंग'
+        'नर्मदा शिवलिंग',
       ],
       canonicalPath: `/products/${product.id}`,
       ogImage: product.mainImage,
@@ -89,7 +104,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
       breadcrumbs: [
         { name: 'Home', url: '/' },
         { name: 'Products Collection', url: '/products' },
-        { name: `${product.name} (${pieceLabel})`, url: `/products/${product.id}` }
+        { name: `${product.name} (${pieceLabel})`, url: `/products/${product.id}` },
       ],
       productData: {
         id: product.id,
@@ -103,62 +118,96 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
         inStock: isInStock,
         category: product.category || 'Natural Narmadeshwar Shivling',
         size: product.size,
-        weight: product.weight
-      }
+        weight: product.weight,
+      },
     });
   }, [product, productType, pricing.sellingPrice, pricing.mrp, isInStock]);
 
+  useEffect(() => {
+    if (!zoomOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setZoomOpen(false);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [zoomOpen]);
+
   if (!product) {
     return (
-      <div className="py-24 text-center space-y-4 bg-[#FCFAF7] min-h-[60vh] flex flex-col items-center justify-center px-4">
-        <h2 className="text-2xl font-serif font-bold text-[#1A1A1A]">Product Not Found / उत्पाद उपलब्ध नहीं है</h2>
+      <main className="py-24 text-center space-y-4 bg-[#FCFAF7] min-h-[60vh] flex flex-col items-center justify-center px-4">
+        <h1 className="text-2xl font-serif font-bold text-[#1A1A1A]">
+          Product Not Found / उत्पाद उपलब्ध नहीं है
+        </h1>
         <p className="text-sm text-stone-600 max-w-md">
           Aap jis shivling ko dekh rahe hain, woh upalabdha nahi hai ya link sahi nahi hai. Kripya hamari poori collection dekhein.
         </p>
-        <button 
-          onClick={() => navigate('/products')} 
-          className="px-6 py-3 bg-[#1A1A1A] hover:bg-[#C5A059] text-white font-bold rounded-xl transition-all cursor-pointer shadow-md text-sm"
+        <button
+          onClick={() => navigate('/products')}
+          className="px-6 py-3 bg-[#1A1A1A] hover:bg-[#8B6508] text-white font-bold rounded-xl transition-all cursor-pointer shadow-md text-sm"
         >
           View Products Collection / सभी शिवलिंग देखें
         </button>
-      </div>
+      </main>
     );
   }
 
-  const whatsappUrl = getProductWhatsAppLink(product);
+  const pieceNumber = product.id.replace('product-', '');
+  const handleAddToCart = () => {
+    if (!isInStock) return;
+    addItem(product, quantity);
+    setAddedToCart(true);
+  };
+
+  const handleBuyNow = () => {
+    if (!isInStock) return;
+    navigate(`/checkout?buyNow=${product.id}&qty=${quantity}`);
+  };
 
   return (
     <main className="min-h-screen bg-[#FCFAF7] pb-16 sm:pb-20">
-      
-      {/* Breadcrumb Navigation */}
       <Breadcrumbs
         items={[
           { label: 'Products Collection', path: '/products' },
-          { label: product.name, isCurrent: true }
+          { label: `${product.name} (#${pieceNumber})`, isCurrent: true },
         ]}
       />
 
       {/* Main Product Showcase Section */}
       <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-4 sm:pt-8">
         <div className="bg-white p-4 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl border border-[#C5A059]/30 shadow-md grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start">
-          
-          {/* Left Column: Product Image Only */}
+          {/* Left Column: Product Gallery + Zoom Modal Trigger */}
           <div className="w-full min-w-0 flex flex-col space-y-4">
-            {/* Main Featured Image Display */}
-            <div className="w-full aspect-square max-w-full bg-[#F3EFE9] rounded-2xl sm:rounded-3xl overflow-hidden border border-[#C5A059]/20 shadow-inner p-3 sm:p-6 lg:p-8 flex items-center justify-center relative">
-              <img
-                src={selectedImage}
-                alt={`${product.name} - ${productType} (${product.size}, ${product.weight}) from Bakawan, Madhya Pradesh`}
-                width={600}
-                height={600}
-                fetchPriority="high"
-                decoding="async"
-                referrerPolicy="no-referrer"
-                className="max-w-full max-h-full w-auto h-auto object-contain block mx-auto transition-transform duration-300 hover:scale-105"
-              />
+            <div className="w-full aspect-square max-w-full bg-[#F3EFE9] rounded-2xl sm:rounded-3xl overflow-hidden border border-[#C5A059]/20 shadow-inner p-3 sm:p-6 lg:p-8 flex items-center justify-center relative group">
+              <button
+                type="button"
+                onClick={() => setZoomOpen(true)}
+                className="w-full h-full flex items-center justify-center cursor-zoom-in"
+                aria-label={`Zoom image of ${product.name}`}
+              >
+                <img
+                  src={selectedImage}
+                  alt={`${product.name} (#${pieceNumber}) - ${productType} (${product.size}, ${product.weight}) from Bakawan, Madhya Pradesh`}
+                  width={600}
+                  height={600}
+                  fetchPriority="high"
+                  decoding="async"
+                  referrerPolicy="no-referrer"
+                  className="max-w-full max-h-full w-auto h-auto object-contain block mx-auto transition-transform duration-300 group-hover:scale-105"
+                />
+              </button>
+              <button
+                type="button"
+                onClick={() => setZoomOpen(true)}
+                aria-label="Open full-size image preview"
+                className="absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-white/95 border border-[#C5A059]/30 text-[#1A1A1A] text-xs font-bold inline-flex items-center gap-1.5 shadow-sm hover:bg-[#1A1A1A] hover:text-white transition-colors cursor-pointer"
+              >
+                <ZoomIn className="w-3.5 h-3.5" />
+                <span>Zoom</span>
+              </button>
             </div>
 
-            {/* Thumbnail Gallery (if product has multiple images) */}
             {product.galleryImages && product.galleryImages.length > 1 && (
               <div className="flex items-center gap-2.5 sm:gap-3 overflow-x-auto pb-2">
                 {product.galleryImages.map((img, idx) => (
@@ -186,58 +235,41 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
                 ))}
               </div>
             )}
+
+            {/* Natural Variation Callout below gallery */}
+            <div className="p-3.5 rounded-2xl bg-[#FCFAF7] border border-[#C5A059]/25 text-xs text-stone-600 leading-relaxed flex items-start gap-2.5">
+              <Info className="w-4 h-4 text-[#8B6508] shrink-0 mt-0.5" />
+              <span>
+                Product images represent the actual natural stone wherever applicable. Natural variations are expected.
+              </span>
+            </div>
           </div>
 
-          {/* Right Column: Details & Ordering */}
+          {/* Right Column: Details, Specs, Cart/Buy Now & WhatsApp Ordering */}
           <div className="w-full min-w-0 flex flex-col space-y-4 sm:space-y-5">
-            
             {/* Product Title (H1) */}
             <div className="space-y-1">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#C5A059]/15 text-[#8C6B2D] text-[11px] font-bold uppercase tracking-wider border border-[#C5A059]/30">
-                <Sparkles className="w-3 h-3 text-[#C5A059]" /> 100% Natural River Stone
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#C5A059]/15 text-[#8B6508] text-[11px] font-bold uppercase tracking-wider border border-[#C5A059]/30">
+                <Sparkles className="w-3 h-3 text-[#8B6508]" />
+                <span>Natural Narmada River Stone • Piece #{pieceNumber}</span>
               </div>
               <h1 className="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-[#1A1A1A] leading-snug">
                 {product.name}
               </h1>
               {product.nameHindi && (
-                <p className="text-sm font-medium text-stone-600 font-serif">
-                  {product.nameHindi}
-                </p>
+                <p className="text-sm font-medium text-stone-600 font-serif">{product.nameHindi}</p>
               )}
             </div>
-
-            {/* View Details: Size & Weight Information Block ONLY */}
-            <div className="bg-[#F3EFE9] p-4 sm:p-5 rounded-2xl border border-[#C5A059]/30 space-y-2.5 sm:space-y-3">
-              <div className="flex items-center justify-between text-stone-800">
-                <span className="text-sm sm:text-base font-bold text-stone-700">Size:</span>
-                <span className="text-sm sm:text-base font-bold text-[#1A1A1A]">{product.size}</span>
-              </div>
-              <div className="flex items-center justify-between text-stone-800 pt-2.5 sm:pt-3 border-t border-[#C5A059]/20">
-                <span className="text-sm sm:text-base font-bold text-stone-700">Weight:</span>
-                <span className="text-sm sm:text-base font-bold text-[#1A1A1A]">{product.weight}</span>
-              </div>
-            </div>
-                  {/* Product Description for SEO & Customers */}
-<div className="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200 space-y-2">
-  <h2 className="text-base sm:text-lg font-serif font-bold text-[#1A1A1A]">
-    Product Details
-  </h2>
-
-  <p className="text-sm text-stone-700 leading-relaxed">
-    {product.shortDescription || product.fullDescription}
-  </p>
-</div>
-
 
             {/* Price, Discount & Stock Status */}
             <div className="bg-[#F3EFE9] p-4 sm:p-5 rounded-2xl border border-[#C5A059]/30 flex flex-wrap items-center justify-between gap-3 sm:gap-4">
               <div>
-                <span className="text-[10px] uppercase text-stone-500 font-bold block tracking-wider">
+                <span className="text-[10px] uppercase text-stone-600 font-bold block tracking-wider">
                   Sacred Offering Price / मूल्य
                 </span>
                 <div className="flex items-baseline gap-2 mt-1 flex-wrap">
                   {pricing.mrp > pricing.sellingPrice && (
-                    <span className="text-xs sm:text-base text-stone-400 line-through font-semibold">
+                    <span className="text-xs sm:text-base text-stone-500 line-through font-semibold">
                       {formatPrice(pricing.mrp)}
                     </span>
                   )}
@@ -255,38 +287,40 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
               <div>
                 {pricing.stock > 5 ? (
                   <span className="text-xs bg-emerald-100 text-emerald-800 font-bold px-3 py-1.5 rounded-full border border-emerald-300 block text-center">
-                    ✓ In Stock ({pricing.stock} available)
+                    In Stock ({pricing.stock} available)
                   </span>
                 ) : pricing.stock > 0 ? (
                   <span className="text-xs bg-amber-100 text-amber-900 font-bold px-3 py-1.5 rounded-full border border-amber-300 block text-center">
-                    ⚡ Only {pricing.stock} left!
+                    Only {pricing.stock} left!
                   </span>
                 ) : (
                   <span className="text-xs bg-rose-100 text-rose-800 font-bold px-3 py-1.5 rounded-full border border-rose-300 block text-center">
-                    ✕ Out of Stock
+                    Out of Stock
                   </span>
                 )}
               </div>
             </div>
 
-            {/* WhatsApp Ordering Section */}
-            <div className="bg-white p-4 sm:p-6 rounded-2xl border-2 border-emerald-500/30 shadow-md space-y-4">
+            {/* Ordering Controls (Quantity, Add to Cart, Buy Now, WhatsApp) */}
+            <div className="bg-white p-4 sm:p-6 rounded-2xl border-2 border-[#C5A059]/35 shadow-sm space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-xs sm:text-sm font-bold text-stone-700">Quantity / मात्रा:</span>
                 <div className="flex items-center border border-stone-300 rounded-xl bg-[#FCFAF7] overflow-hidden">
                   <button
+                    type="button"
                     disabled={quantity <= 1}
                     onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                    className="p-2 text-stone-600 hover:bg-stone-200 disabled:opacity-40 disabled:hover:bg-transparent transition-colors cursor-pointer"
+                    className="p-2 text-stone-700 hover:bg-stone-200 disabled:opacity-40 disabled:hover:bg-transparent transition-colors cursor-pointer"
                     aria-label="Decrease quantity"
                   >
                     <Minus className="w-4 h-4" />
                   </button>
                   <span className="px-4 text-xs sm:text-sm font-bold text-stone-900">{quantity}</span>
                   <button
+                    type="button"
                     disabled={quantity >= pricing.stock}
                     onClick={() => setQuantity((q) => Math.min(pricing.stock, q + 1))}
-                    className="p-2 text-stone-600 hover:bg-stone-200 disabled:opacity-40 disabled:hover:bg-transparent transition-colors cursor-pointer"
+                    className="p-2 text-stone-700 hover:bg-stone-200 disabled:opacity-40 disabled:hover:bg-transparent transition-colors cursor-pointer"
                     aria-label="Increase quantity"
                   >
                     <Plus className="w-4 h-4" />
@@ -294,67 +328,232 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
                 </div>
               </div>
 
-              {/* Primary "WhatsApp par Order Karein" Action */}
-              <div>
-                {isInStock ? (
+              {isInStock ? (
+                <div className="space-y-2.5">
+                  {/* Add to Cart + Buy Now */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <button
+                      type="button"
+                      onClick={handleAddToCart}
+                      className={`py-3.5 px-4 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer border ${
+                        addedToCart
+                          ? 'bg-emerald-600 text-white border-emerald-600'
+                          : 'bg-[#F3EFE9] hover:bg-[#1A1A1A] text-[#1A1A1A] hover:text-white border-[#C5A059]'
+                      }`}
+                    >
+                      {addedToCart ? (
+                        <>
+                          <Check className="w-4 h-4" />
+                          <span>Added to Cart</span>
+                        </>
+                      ) : (
+                        <>
+                          <ShoppingBag className="w-4 h-4" />
+                          <span>Add to Cart</span>
+                        </>
+                      )}
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={handleBuyNow}
+                      className="py-3.5 px-4 rounded-xl bg-[#1A1A1A] hover:bg-black text-[#C5A059] border border-[#C5A059]/60 font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+                    >
+                      <Zap className="w-4 h-4" />
+                      <span>Buy Now</span>
+                    </button>
+                  </div>
+
+                  {addedToCart && (
+                    <div className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-between text-xs text-emerald-900">
+                      <span className="font-medium">Added {quantity} piece(s) to cart.</span>
+                      <a
+                        href="/cart"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigate('/cart');
+                        }}
+                        className="font-bold underline hover:text-emerald-700"
+                      >
+                        View Cart →
+                      </a>
+                    </div>
+                  )}
+
+                  {/* Primary "WhatsApp par Order Karein" Action */}
                   <a
-                    href={quantity > 1 ? getProductWhatsAppOrderLink(product, quantity) : getProductWhatsAppLink(product)}
+                    href={
+                      quantity > 1
+                        ? getProductWhatsAppOrderLink(product, quantity)
+                        : getProductWhatsAppLink(product)
+                    }
                     onClick={() => trackWhatsAppConversion()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-4 px-6 rounded-xl bg-[#25D366] hover:bg-[#128C7E] active:bg-[#075E54] text-white font-bold text-sm sm:text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-3 cursor-pointer transform hover:-translate-y-0.5"
+                    className="w-full py-4 px-6 rounded-xl bg-[#25D366] hover:bg-[#128C7E] active:bg-[#075E54] text-white font-bold text-sm sm:text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-3 cursor-pointer"
                     id="btn-whatsapp-order"
                   >
-                    <MessageCircle className="w-6 h-6 fill-white shrink-0" />
-                    <span>WhatsApp par Order Karein (व्हाट्सएप पर ऑर्डर करें)</span>
+                    <MessageCircle className="w-5 h-5 fill-white shrink-0" />
+                    <span>WhatsApp par Order Karein</span>
                   </a>
-                ) : (
-                  <div className="p-3 bg-rose-50 rounded-xl border border-rose-200 text-center flex items-center justify-center gap-2 text-rose-700 text-xs font-bold">
-                    <AlertCircle className="w-4 h-4" />
-                    <span>यह शिवलिंग वर्तमान में स्टॉक में नहीं है। आप फिर भी WhatsApp पर पूछताछ कर सकते हैं।</span>
-                  </div>
-                )}
-                <p className="text-[11px] text-stone-500 text-center mt-2 font-medium">
-                  बटन दबाते ही WhatsApp खुलेगा और <strong>"{`Namaste, mujhe ${product.name} order karna hai.`}"</strong> मैसेज तैयार मिलेगा।
-                </p>
-              </div>
+                </div>
+              ) : (
+                <div className="p-3 bg-rose-50 rounded-xl border border-rose-200 text-center flex items-center justify-center gap-2 text-rose-700 text-xs font-bold">
+                  <AlertCircle className="w-4 h-4" />
+                  <span>
+                    यह शिवलिंग वर्तमान में स्टॉक में नहीं है। आप फिर भी WhatsApp पर पूछताछ कर सकते हैं।
+                  </span>
+                </div>
+              )}
 
               {/* Call support */}
               <div className="flex items-center justify-center gap-2 pt-1 text-xs text-stone-600">
-                <PhoneCall className="w-3.5 h-3.5 text-[#C5A059]" />
+                <PhoneCall className="w-3.5 h-3.5 text-[#8B6508]" />
                 <span>कॉल द्वारा भी ऑर्डर कर सकते हैं: </span>
-                <a 
-                  href={`tel:${BUSINESS_CONFIG.phoneNumber}`} 
-                  className="font-bold text-[#1A1A1A] hover:text-[#C5A059] underline"
+                <a
+                  href={`tel:${BUSINESS_CONFIG.phoneNumber}`}
+                  className="font-bold text-[#1A1A1A] hover:text-[#8B6508] underline"
                 >
                   {BUSINESS_CONFIG.phoneDisplay}
                 </a>
               </div>
 
-              <div className="flex items-center justify-center gap-4 text-[10px] text-stone-500 pt-2 border-t border-stone-100">
+              <div className="flex flex-wrap items-center justify-center gap-3 text-[11px] text-stone-600 pt-2 border-t border-stone-100">
                 <span className="flex items-center gap-1">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#C5A059]" /> Direct from Bakawan
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#8B6508]" /> Direct from Bakawan
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1">
-                  <Truck className="w-3.5 h-3.5 text-[#C5A059]" /> Secure Wooden Box Packing
+                  <Truck className="w-3.5 h-3.5 text-[#8B6508]" /> Cushioned Wooden Box Packing
                 </span>
               </div>
             </div>
 
-            {/* Cash on Delivery (COD) */}
-            <div className="bg-[#F3EFE9] p-4 sm:p-5 rounded-2xl border border-[#C5A059]/30 space-y-2">
-              <div className="flex items-center gap-2 text-xs sm:text-sm font-serif font-bold text-[#1A1A1A]">
-                <span className="text-base">💵</span>
-                <span>Cash on Delivery (COD)</span>
+            {/* Structured Product Specifications Table */}
+            <div className="bg-[#FCFAF7] rounded-2xl border border-[#C5A059]/30 overflow-hidden">
+              <div className="px-4 py-3 bg-[#F3EFE9] border-b border-[#C5A059]/25">
+                <h2 className="text-sm sm:text-base font-serif font-bold text-[#1A1A1A]">
+                  Verified Product Specifications
+                </h2>
               </div>
-              <p className="text-xs text-stone-700 leading-relaxed font-medium">
-                “चयनित स्थानों पर Cash on Delivery (COD) की सुविधा उपलब्ध है। COD की उपलब्धता आपके स्थान और पिनकोड के अनुसार WhatsApp पर तुरंत कन्फर्म कर दी जाएगी।”
+              <dl className="divide-y divide-[#C5A059]/15 text-xs sm:text-sm">
+                <div className="grid grid-cols-3 gap-2 px-4 py-2.5">
+                  <dt className="text-stone-600 font-medium">Piece ID</dt>
+                  <dd className="col-span-2 font-bold text-[#1A1A1A]">#{pieceNumber} ({product.id.toUpperCase()})</dd>
+                </div>
+                <div className="grid grid-cols-3 gap-2 px-4 py-2.5">
+                  <dt className="text-stone-600 font-medium">Type</dt>
+                  <dd className="col-span-2 font-bold text-[#1A1A1A]">{productType}</dd>
+                </div>
+                <div className="grid grid-cols-3 gap-2 px-4 py-2.5">
+                  <dt className="text-stone-600 font-medium">Dimensions</dt>
+                  <dd className="col-span-2 font-bold text-[#1A1A1A]">{product.size}</dd>
+                </div>
+                <div className="grid grid-cols-3 gap-2 px-4 py-2.5">
+                  <dt className="text-stone-600 font-medium">Weight</dt>
+                  <dd className="col-span-2 font-bold text-[#1A1A1A]">{product.weight}</dd>
+                </div>
+                <div className="grid grid-cols-3 gap-2 px-4 py-2.5">
+                  <dt className="text-stone-600 font-medium">Stone &amp; Pattern</dt>
+                  <dd className="col-span-2 font-bold text-[#1A1A1A]">{product.markingType}</dd>
+                </div>
+                <div className="grid grid-cols-3 gap-2 px-4 py-2.5">
+                  <dt className="text-stone-600 font-medium">Jaladhari</dt>
+                  <dd className="col-span-2 font-bold text-[#1A1A1A]">
+                    {product.jaladhariIncluded ? 'Included' : 'Not Included'}
+                  </dd>
+                </div>
+                <div className="grid grid-cols-3 gap-2 px-4 py-2.5">
+                  <dt className="text-stone-600 font-medium">Origin</dt>
+                  <dd className="col-span-2 font-bold text-[#1A1A1A]">
+                    Narmada River, Bakawan, MP, India
+                  </dd>
+                </div>
+                {product.recommendedFor && (
+                  <div className="grid grid-cols-3 gap-2 px-4 py-2.5">
+                    <dt className="text-stone-600 font-medium">Recommended For</dt>
+                    <dd className="col-span-2 font-semibold text-[#1A1A1A]">{product.recommendedFor}</dd>
+                  </div>
+                )}
+              </dl>
+            </div>
+
+            {/* Product Description & Natural Characteristics */}
+            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200 space-y-3">
+              <h2 className="text-base sm:text-lg font-serif font-bold text-[#1A1A1A]">
+                Product Details &amp; Natural Characteristics
+              </h2>
+              <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
+                {product.shortDescription}
+              </p>
+              {product.fullDescription && (
+                <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
+                  {product.fullDescription}
+                </p>
+              )}
+              {product.naturalCharacteristics && product.naturalCharacteristics.length > 0 && (
+                <ul className="space-y-1.5 pt-1 text-xs text-stone-700">
+                  {product.naturalCharacteristics.map((trait, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <Check className="w-3.5 h-3.5 text-[#8B6508] shrink-0 mt-0.5" />
+                      <span>{trait}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
+            {/* Natural Stone Variation Required Disclosure */}
+            <div className="bg-amber-50/70 p-4 rounded-2xl border border-[#C5A059]/30 space-y-2 text-xs text-stone-700 leading-relaxed">
+              <p className="font-bold text-[#1A1A1A]">Natural River Stone Authenticity Note</p>
+              <p>
+                Every Narmadeshwar Shivling is naturally formed in the Narmada River. Each piece has its own unique shape, texture, natural patterns and appearance. No two natural Shivlings are exactly alike.
               </p>
             </div>
 
+            {/* WhatsApp Ordering & Policy Links */}
+            <div className="bg-[#F3EFE9] p-4 sm:p-5 rounded-2xl border border-[#C5A059]/30 space-y-3">
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-serif font-bold text-[#1A1A1A]">
+                <Truck className="w-4 h-4 text-[#8B6508]" />
+                <span>WhatsApp Ordering, Shipping &amp; Replacement Policies</span>
+              </div>
+              <p className="text-xs text-stone-700 leading-relaxed">
+                Orders are completed personally via WhatsApp (+91 9301531448) with owner Keshrilal Patel, who discusses payment options and delivery details before confirming dispatch. Parcels are shipped in multi-layer cushioned wooden crates. Report transit damage with unboxing video within 24 hours of delivery.
+              </p>
+              <div className="flex flex-wrap gap-3 text-xs font-bold text-[#8B6508]">
+                <a
+                  href="/shipping-policy"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/shipping-policy');
+                  }}
+                  className="hover:underline inline-flex items-center gap-1"
+                >
+                  <Truck className="w-3.5 h-3.5" /> Shipping Policy
+                </a>
+                <a
+                  href="/return-policy"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/return-policy');
+                  }}
+                  className="hover:underline inline-flex items-center gap-1"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" /> Return &amp; Replacement
+                </a>
+                <a
+                  href="/cancellation-policy"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate('/cancellation-policy');
+                  }}
+                  className="hover:underline inline-flex items-center gap-1"
+                >
+                  <ShieldCheck className="w-3.5 h-3.5" /> Cancellation Policy
+                </a>
+              </div>
+            </div>
           </div>
-
         </div>
       </section>
 
@@ -363,7 +562,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
         <div className="bg-white rounded-2xl border border-stone-200/80 p-6 sm:p-8 shadow-xs">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mb-6 border-b border-stone-100 pb-4">
             <div>
-              <span className="text-[10px] uppercase font-bold text-[#8C6B2D] tracking-wider">
+              <span className="text-[10px] uppercase font-bold text-[#8B6508] tracking-wider">
                 Devotional Learning
               </span>
               <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#1A1A1A]">
@@ -376,9 +575,9 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
                 e.preventDefault();
                 navigate('/blog');
               }}
-              className="text-xs font-bold text-[#8C6B2D] hover:underline cursor-pointer flex items-center gap-1"
+              className="text-xs font-bold text-[#8B6508] hover:underline cursor-pointer flex items-center gap-1"
             >
-              <span>View All 10 Guides</span>
+              <span>View All Guides</span>
               <ChevronRight className="w-3.5 h-3.5" />
             </a>
           </div>
@@ -392,7 +591,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
               }}
               className="p-4 rounded-xl bg-[#FDFCF9] border border-stone-200 hover:border-[#C5A059] hover:shadow-xs transition-all cursor-pointer group block"
             >
-              <h3 className="text-sm font-serif font-bold text-[#1A1A1A] group-hover:text-[#8C6B2D] transition-colors mb-1">
+              <h3 className="text-sm font-serif font-bold text-[#1A1A1A] group-hover:text-[#8B6508] transition-colors mb-1">
                 Daily Puja Vidhi at Home →
               </h3>
               <p className="text-xs text-stone-600 leading-relaxed">
@@ -408,7 +607,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
               }}
               className="p-4 rounded-xl bg-[#FDFCF9] border border-stone-200 hover:border-[#C5A059] hover:shadow-xs transition-all cursor-pointer group block"
             >
-              <h3 className="text-sm font-serif font-bold text-[#1A1A1A] group-hover:text-[#8C6B2D] transition-colors mb-1">
+              <h3 className="text-sm font-serif font-bold text-[#1A1A1A] group-hover:text-[#8B6508] transition-colors mb-1">
                 How to Identify Original Stones →
               </h3>
               <p className="text-xs text-stone-600 leading-relaxed">
@@ -424,8 +623,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
               }}
               className="p-4 rounded-xl bg-[#FDFCF9] border border-stone-200 hover:border-[#C5A059] hover:shadow-xs transition-all cursor-pointer group block"
             >
-              <h3 className="text-sm font-serif font-bold text-[#1A1A1A] group-hover:text-[#8C6B2D] transition-colors mb-1">
-                Size & Weight Guide for Mandir →
+              <h3 className="text-sm font-serif font-bold text-[#1A1A1A] group-hover:text-[#8B6508] transition-colors mb-1">
+                Size &amp; Weight Guide for Mandir →
               </h3>
               <p className="text-xs text-stone-600 leading-relaxed">
                 Understanding the Shastra अंगुष्ठ मात्र (thumb size) guidelines for householders.
@@ -453,7 +652,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
           <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
             <div className="flex items-center justify-between gap-4 mb-6">
               <div>
-                <span className="text-[10px] uppercase font-bold text-[#8C6B2D] tracking-wider">
+                <span className="text-[10px] uppercase font-bold text-[#8B6508] tracking-wider">
                   Explore More Natural Stones
                 </span>
                 <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#1A1A1A]">
@@ -466,7 +665,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
                   e.preventDefault();
                   navigate('/products');
                 }}
-                className="text-xs font-bold text-[#8C6B2D] hover:underline flex items-center gap-1 shrink-0"
+                className="text-xs font-bold text-[#8B6508] hover:underline flex items-center gap-1 shrink-0"
               >
                 <span>View All 38 Products</span>
                 <ChevronRight className="w-3.5 h-3.5" />
@@ -484,7 +683,48 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
       {/* Customer Reviews Section */}
       <CustomerReviewsSection />
 
+      {/* Full-screen Image Zoom Lightbox Modal */}
+      {zoomOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Full-size view of ${product.name}`}
+          onClick={() => setZoomOpen(false)}
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-xs flex items-center justify-center p-4"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative max-w-3xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl border border-[#C5A059]/40"
+          >
+            <div className="px-4 py-3 bg-[#FCFAF7] border-b border-stone-200 flex items-center justify-between gap-4">
+              <div className="min-w-0">
+                <p className="font-serif font-bold text-sm sm:text-base text-[#1A1A1A] truncate">
+                  {product.name} (#{pieceNumber})
+                </p>
+                <p className="text-xs text-stone-600">
+                  {product.size} • {product.weight}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setZoomOpen(false)}
+                aria-label="Close image zoom modal"
+                className="w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 flex items-center justify-center cursor-pointer shrink-0"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="bg-[#F3EFE9] p-4 sm:p-6 flex items-center justify-center max-h-[80vh]">
+              <img
+                src={selectedImage}
+                alt={`${product.name} full preview`}
+                className="max-h-[70vh] max-w-full w-auto h-auto object-contain rounded-lg"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 };
-

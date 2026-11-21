@@ -110,38 +110,38 @@ export const FAQPage: React.FC = () => {
     },
     {
       category: 'delivery',
-      question: 'Do you deliver across all states in India? (Pan India Delivery)',
-      questionHindi: 'क्या आप पूरे भारत में सुरक्षित डिलीवरी प्रदान करते हैं?',
-      answer: 'Yes, we provide safe Pan India Delivery covering all states and union territories (Metro cities and regional towns). Parcels are shipped with express logistics partners with full live online tracking.',
-      answerHindi: 'हाँ, हम पूरे भारत (Pan India) में सभी राज्यों एवं शहरों में सुरक्षित कूरियर डिलीवरी प्रदान करते हैं। पार्सल रवाना होते ही लाइव ट्रैकिंग नंबर प्रदान किया जाता है।'
+      question: 'Do you deliver across India and internationally?',
+      questionHindi: 'क्या आप पूरे भारत एवं विदेशों में सुरक्षित डिलीवरी प्रदान करते हैं?',
+      answer: 'Yes, we provide delivery across India and worldwide locations where express courier serviceability is supported. Parcels are dispatched with established courier partners with tracking details shared on WhatsApp.',
+      answerHindi: 'हाँ, हम भारत एवं उन सभी अंतर्राष्ट्रीय स्थानों पर सुरक्षित कूरियर डिलीवरी प्रदान करते हैं जहाँ कूरियर सेवा उपलब्ध है। पार्सल रवाना होते ही ट्रैकिंग विवरण साझा किया जाता है।'
     },
     {
       category: 'delivery',
       question: 'How are orders packaged for safe transit?',
       questionHindi: 'सुरक्षित डिलीवरी के लिए ऑर्डर कैसे पैक किए जाते हैं?',
-      answer: 'Each sacred Shivling is wrapped in multi-layer shock-absorbent cushioning and cushioned bubble wrap, then secured inside a reinforced wooden crate (लकड़ी का बॉक्स) to ensure 100% safe transit during handling and shipping.',
-      answerHindi: 'प्रत्येक शिवलिंग को बहुस्तरीय सुरक्षात्मक बबल रैप और मजबूत लकड़ी के बॉक्स (Wooden Crate) में पैक किया जाता है ताकि परिवहन के दौरान पूर्ण सुरक्षा सुनिश्चित रहे।'
+      answer: 'Each sacred Shivling is wrapped in multi-layer shock-absorbent cushioning and bubble wrap, then secured inside a reinforced wooden crate (लकड़ी का बॉक्स) to protect the stone during handling and shipping.',
+      answerHindi: 'प्रत्येक शिवलिंग को बहुस्तरीय सुरक्षात्मक बबल रैप और मजबूत लकड़ी के बॉक्स (Wooden Crate) में पैक किया जाता है ताकि परिवहन के दौरान सुरक्षित रहे।'
     },
     {
       category: 'payment',
-      question: 'Is Cash on Delivery (COD) available?',
-      questionHindi: 'क्या Cash on Delivery (COD) की सुविधा उपलब्ध है?',
-      answer: 'Yes, Cash on Delivery is available for serviceable delivery locations with a ₹200 advance confirmation booking amount paid online during checkout.',
-      answerHindi: 'हाँ, अधिकांश पिन कोड्स पर ₹200 की ऑनलाइन अग्रिम बुकिंग राशि के साथ कैश ऑन डिलीवरी की सुविधा उपलब्ध है।'
+      question: 'How do I place an order on Authentic Narmadeshwar?',
+      questionHindi: 'मैं Authentic Narmadeshwar से ऑर्डर कैसे कर सकता हूँ?',
+      answer: 'You can add products to your cart or click Buy Now on any product page, enter your name, phone number, and delivery address on the checkout page, and click "Place Order via WhatsApp". Your itemized order details will open directly in WhatsApp (+91 9301531448) to connect with our team.',
+      answerHindi: 'आप किसी भी उत्पाद को कार्ट में जोड़कर या "Buy Now" पर क्लिक करके चेकआउट पेज पर अपना नाम, फोन नंबर और पता भर सकते हैं। "Place Order via WhatsApp" पर क्लिक करते ही आपका पूरा ऑर्डर विवरण सीधे हमारे व्हाट्सएप (+91 9301531448) पर तैयार हो जाएगा।'
     },
     {
       category: 'payment',
-      question: 'How does the ₹200 COD booking amount work?',
-      questionHindi: '₹200 की COD अग्रिम बुकिंग राशि कैसे काम करती है?',
-      answer: 'The ₹200 booking amount is part of your total order amount, NOT an additional fee. It is paid online to confirm your order and wooden crate packing. The remaining balance (Total Order Amount - ₹200) is paid in cash at the time of delivery.',
-      answerHindi: '₹200 की बुकिंग राशि आपके कुल ऑर्डर मूल्य का ही एक हिस्सा है, कोई अतिरिक्त शुल्क नहीं। ऑर्डर कन्फर्म करने के लिए ₹200 ऑनलाइन दिए जाते हैं और शेष राशि डिलीवरी के समय नकद दी जाती है।'
+      question: 'Do I need to pay any advance booking fee on the website?',
+      questionHindi: 'क्या वेबसाइट पर कोई अग्रिम बुकिंग शुल्क (Advance Booking Charge) देना आवश्यक है?',
+      answer: 'No. We do not collect online payments, card details, or any mandatory advance booking amount on the website. All payment options and delivery details are discussed personally with owner Keshrilal Patel on WhatsApp before your order is confirmed.',
+      answerHindi: 'नहीं। वेबसाइट पर किसी भी प्रकार का ऑनलाइन भुगतान या अनिवार्य अग्रिम बुकिंग शुल्क नहीं लिया जाता है। सभी भुगतान विकल्प और डिलीवरी विवरण सीधे व्हाट्सएप पर केशरीलाल पटेल जी से बातचीत के बाद तय किए जाते हैं।'
     },
     {
       category: 'payment',
-      question: 'How much will I pay in cash at the time of delivery?',
-      questionHindi: 'डिलीवरी के समय मुझे कितना नकद भुगतान करना होगा?',
-      answer: 'You only pay the remaining balance: [Total Order Amount minus ₹200]. For example, if your total order amount is ₹1,699, you pay ₹200 online during checkout and ₹1,499 in cash upon doorstep delivery.',
-      answerHindi: 'आप केवल शेष राशि [कुल मूल्य - ₹200] का भुगतान करेंगे। उदाहरण के लिए, ₹1,699 के ऑर्डर में ₹200 ऑनलाइन देने के बाद डिलीवरी पर ₹1,499 नकद देने होंगे।'
+      question: 'What payment methods are accepted when confirming my order on WhatsApp?',
+      questionHindi: 'व्हाट्सएप पर ऑर्डर कन्फर्म करते समय कौन-कौन से भुगतान विकल्प उपलब्ध हैं?',
+      answer: 'When you send your order message on WhatsApp, our team will discuss suitable payment options (such as UPI, bank transfer, or Cash on Delivery depending on courier serviceability at your PIN code) and share a live video preview of your stone before dispatch.',
+      answerHindi: 'जब आप व्हाट्सएप पर ऑर्डर संदेश भेजते हैं, तो हमारी टीम आपके पिन कोड और कूरियर सेवा के अनुसार उपयुक्त भुगतान विकल्पों (जैसे UPI, बैंक ट्रांसफर या COD उपलब्धता) और डिलीवरी विवरण पर व्यक्तिगत चर्चा करती है।'
     },
     {
       category: 'orders',
@@ -223,7 +223,7 @@ export const FAQPage: React.FC = () => {
             { id: 'all', label: 'All Questions / सभी प्रश्न' },
             { id: 'about', label: 'Shivling & Authenticity' },
             { id: 'delivery', label: 'Worldwide Delivery & Packing' },
-            { id: 'payment', label: 'COD & Payment' },
+            { id: 'payment', label: 'Ordering & Payment' },
             { id: 'orders', label: 'Tracking & Support' },
           ].map((tab) => (
             <button

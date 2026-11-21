@@ -31,7 +31,46 @@ export const Footer: React.FC = () => {
               बकावां (मध्य प्रदेश) स्थित नर्मदा नदी के पावन तट से प्राप्त प्रामाणिक, प्राकृतिक नर्मदेश्वर शिवलिंग के प्रमुख विक्रेता।
             </p>
 
-            <div className="pt-2">
+            <div className="bg-[#242424] border border-[#C5A059]/25 rounded-xl p-3.5 space-y-1.5 text-xs">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-[#C5A059]">
+                Owner Information
+              </p>
+              <p className="text-stone-200">
+                <span className="text-stone-400">Owner:</span>{' '}
+                <strong className="text-white">{BUSINESS_CONFIG.ownerName}</strong>
+              </p>
+              <p className="text-stone-200">
+                <span className="text-stone-400">Business:</span>{' '}
+                <span>{BUSINESS_CONFIG.name}</span>
+              </p>
+              <p className="text-stone-200">
+                <span className="text-stone-400">Location:</span>{' '}
+                <span>Bakawan, Madhya Pradesh, India</span>
+              </p>
+              <p className="text-stone-200">
+                <span className="text-stone-400">Phone:</span>{' '}
+                <a
+                  href="tel:+919301531448"
+                  className="text-[#C5A059] font-semibold hover:underline"
+                >
+                  +91 9301531448
+                </a>
+              </p>
+              <p className="text-stone-200">
+                <span className="text-stone-400">WhatsApp:</span>{' '}
+                <a
+                  href="https://wa.me/919301531448"
+                  onClick={() => trackWhatsAppConversion()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#25D366] font-semibold hover:underline"
+                >
+                  wa.me/919301531448
+                </a>
+              </p>
+            </div>
+
+            <div className="pt-1">
               <a
                 href={whatsappUrl}
                 onClick={() => trackWhatsAppConversion()}

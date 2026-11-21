@@ -18,7 +18,7 @@ export const CancellationPolicyPage: React.FC = () => {
   useEffect(() => {
     updatePageSEO({
       title: 'Cancellation Policy | Authentic Narmadeshwar',
-      description: 'Official Order Cancellation and COD advance booking refund guidelines for Authentic Narmadeshwar, Bakawan, Madhya Pradesh.',
+      description: 'Official Order Cancellation guidelines for WhatsApp-confirmed orders from Authentic Narmadeshwar, Bakawan, Madhya Pradesh.',
       canonicalPath: '/cancellation-policy',
       breadcrumbs: [
         { name: 'Home', url: '/' },
@@ -44,7 +44,7 @@ export const CancellationPolicyPage: React.FC = () => {
             Cancellation Policy
           </h1>
           <p className="text-xs sm:text-sm text-stone-600 max-w-2xl mx-auto leading-relaxed">
-            Clear guidelines regarding order cancellation windows, dispatch protocols, and Cash on Delivery booking charges.
+            Clear guidelines regarding order cancellation windows, dispatch protocols, and WhatsApp order confirmation.
           </p>
         </div>
 
@@ -96,7 +96,7 @@ export const CancellationPolicyPage: React.FC = () => {
             </div>
           </section>
 
-          {/* Section 2: COD ₹200 Booking Charge Policy */}
+          {/* Section 2: WhatsApp-Based Ordering & Personal Confirmation */}
           <section className="space-y-4">
             <div className="flex items-center gap-3 pb-3 border-b border-[#C5A059]/20">
               <div className="w-10 h-10 rounded-xl bg-[#F3EFE9] border border-[#C5A059]/30 text-[#C5A059] flex items-center justify-center font-bold shrink-0">
@@ -104,34 +104,34 @@ export const CancellationPolicyPage: React.FC = () => {
               </div>
               <div>
                 <h2 className="text-base sm:text-lg font-serif font-bold text-[#1A1A1A]">
-                  2. Cash on Delivery (COD) ₹200 Booking Charge
+                  2. WhatsApp Order Confirmation &amp; Zero Website Pre-Payment
                 </h2>
-                <span className="text-[11px] text-stone-500">Advance confirmation and balance calculation</span>
+                <span className="text-[11px] text-stone-500">Direct communication with owner Keshrilal Patel</span>
               </div>
             </div>
 
             <div className="bg-amber-50/80 p-4 rounded-2xl border border-amber-200 text-amber-950 space-y-2">
               <p className="font-serif font-bold text-sm">
-                "₹200 is collected online to confirm a Cash on Delivery order. The remaining order amount is payable at the time of delivery."
+                Authentic Narmadeshwar does not collect online payments or mandatory advance booking fees on the website.
               </p>
               <p className="text-xs text-amber-900 leading-relaxed">
-                The ₹200 booking charge is a component of your total order amount, ensuring authentic devotee commitments and safe wooden crate transit. It is deducted from your final cash payment upon delivery.
+                All payment methods, shipping details, and wooden crate packing are discussed personally on WhatsApp ({BUSINESS_CONFIG.phoneDisplay}) before your order is confirmed and dispatched.
               </p>
             </div>
 
-            {/* Configured Refund Rule Box */}
+            {/* Configured Cancellation Note Box */}
             <div className="bg-[#FCFAF7] p-5 rounded-2xl border border-stone-200 space-y-2">
               <div className="flex items-center gap-2 text-stone-900 font-bold text-xs">
                 <HelpCircle className="w-4 h-4 text-[#C5A059]" />
-                <span>Handling of ₹200 Booking Amount upon Pre-Dispatch Cancellation:</span>
+                <span>Pre-Dispatch Order Cancellation Support:</span>
               </div>
               <p className="text-xs text-stone-700 leading-relaxed">
-                {config?.codAdvanceRefundNote || 
-                  "If an order is cancelled prior to wooden crate packaging and dispatch, the ₹200 advance booking charge will be refunded to the original payment source within 3–5 working days."}
+                {config?.refundNote ||
+                  "All orders are discussed and confirmed personally on WhatsApp (+91 9301531448). If you wish to cancel an order before it is packed and dispatched from Bakawan, please contact our team directly via WhatsApp or phone call."}
               </p>
-              {config?.codAdvanceRefundNoteHindi && (
+              {config?.refundNoteHindi && (
                 <p className="text-xs text-stone-600 font-hindi leading-relaxed pt-1 border-t border-stone-200/60">
-                  {config.codAdvanceRefundNoteHindi}
+                  {config.refundNoteHindi}
                 </p>
               )}
             </div>

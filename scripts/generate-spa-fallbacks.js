@@ -101,6 +101,21 @@ const orgSchema = {
   telephone: BUSINESS_CONFIG.phoneNumber,
   email: BUSINESS_CONFIG.email,
   taxID: BUSINESS_CONFIG.gstin,
+  founder: {
+    '@type': 'Person',
+    '@id': `${SITE_URL}/#founder`,
+    name: BUSINESS_CONFIG.ownerName,
+    jobTitle: BUSINESS_CONFIG.ownerRole || 'Founder & Owner',
+    worksFor: {
+      '@id': `${SITE_URL}/#organization`,
+    },
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: BUSINESS_CONFIG.address.city || 'Bakawan',
+      addressRegion: BUSINESS_CONFIG.address.state || 'Madhya Pradesh',
+      addressCountry: 'IN',
+    },
+  },
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Village Bakawan, Tehsil Barwaha, District Khargone',
@@ -134,7 +149,7 @@ const websiteSchema = {
 };
 
 function wrapRootFallbackHtml(innerHtml) {
-  return `<div id="root"><header><nav aria-label="Primary"><a href="/">Home</a> | <a href="/about">About Bakawan</a> | <a href="/products">Narmadeshwar Shivling Collection</a> | <a href="/blog">Sacred Guides</a> | <a href="/hi/blog">हिंदी गाइड</a> | <a href="/faq">FAQ</a> | <a href="/enquiry">Enquiry</a> | <a href="/contact">Contact</a></nav></header><main>${innerHtml}</main><footer><p><strong>${escapeHtml(DEFAULT_SEO.siteName)}</strong> — Narmada River, Village Bakawan, Tehsil Barwaha, District Khargone, Madhya Pradesh 451113, India. Phone/WhatsApp: <a href="tel:${escapeAttr(BUSINESS_CONFIG.phoneNumber)}">${escapeHtml(BUSINESS_CONFIG.phoneDisplay)}</a>. <a href="/shipping-policy">Shipping Policy</a> | <a href="/return-policy">Return Policy</a> | <a href="/privacy-policy">Privacy Policy</a></p></footer></div>`;
+  return `<div id="root"><header><nav aria-label="Primary"><a href="/">Home</a> | <a href="/about">About Bakawan</a> | <a href="/products">Narmadeshwar Shivling Collection</a> | <a href="/blog">Sacred Guides</a> | <a href="/hi/blog">हिंदी गाइड</a> | <a href="/faq">FAQ</a> | <a href="/enquiry">Enquiry</a> | <a href="/contact">Contact</a></nav></header><main>${innerHtml}</main><footer><p><strong>${escapeHtml(DEFAULT_SEO.siteName)}</strong> — Owner: ${escapeHtml(BUSINESS_CONFIG.ownerName)} — Narmada River, Village Bakawan, Tehsil Barwaha, District Khargone, Madhya Pradesh 451113, India. Phone: <a href="tel:${escapeAttr(BUSINESS_CONFIG.phoneNumber)}">${escapeHtml(BUSINESS_CONFIG.phoneDisplay)}</a> | <a href="https://wa.me/${escapeAttr(BUSINESS_CONFIG.whatsappNumber)}">WhatsApp</a>. <a href="/shipping-policy">Shipping Policy</a> | <a href="/return-policy">Return Policy</a> | <a href="/privacy-policy">Privacy Policy</a></p></footer></div>`;
 }
 
 function renderPageHtml({
@@ -401,6 +416,7 @@ const staticPages = [
       { name: 'Home', url: '/' },
       { name: 'About Narmadeshwar Shivling', url: '/about' },
     ],
+    bodyHtml: `<h1>About Authentic Narmadeshwar — Bakawan, Madhya Pradesh</h1><section><h2>Owner &amp; Founder: ${escapeHtml(BUSINESS_CONFIG.ownerName)}</h2><p>${escapeHtml(DEFAULT_SEO.siteName)} is founded and led by ${escapeHtml(BUSINESS_CONFIG.ownerName)} in Bakawan, Madhya Pradesh, India. Rooted along the sacred Narmada River, we source and offer authentic Natural Narmadeshwar Shivlings with transparent weights, dimensions, and devotee support. Contact: <a href="tel:${escapeAttr(BUSINESS_CONFIG.phoneNumber)}">${escapeHtml(BUSINESS_CONFIG.phoneDisplay)}</a> | <a href="https://wa.me/${escapeAttr(BUSINESS_CONFIG.whatsappNumber)}">WhatsApp</a>.</p></section>`,
   },
   {
     route: 'products',
@@ -541,7 +557,7 @@ const staticPages = [
     route: 'cancellation-policy',
     title: 'Cancellation Policy | Authentic Narmadeshwar',
     description:
-      'Official Order Cancellation and COD advance booking refund guidelines for Authentic Narmadeshwar, Bakawan, Madhya Pradesh.',
+      'Official Order Cancellation guidelines for WhatsApp-confirmed orders from Authentic Narmadeshwar, Bakawan, Madhya Pradesh.',
     canonicalPath: '/cancellation-policy',
     breadcrumbs: [
       { name: 'Home', url: '/' },
@@ -586,6 +602,27 @@ const staticPages = [
     title: 'Narmadeshwar Shivling Collection | Authentic Narmadeshwar',
     description: 'Browse our collection of authentic Narmadeshwar Shivlings from Bakawan, Madhya Pradesh.',
     canonicalPath: '/products',
+    noindex: true,
+  },
+  {
+    route: 'cart',
+    title: 'Shopping Cart | Authentic Narmadeshwar',
+    description: 'Review your selected Natural Narmadeshwar Shivlings in your shopping cart before checkout or WhatsApp ordering.',
+    canonicalPath: '/cart',
+    noindex: true,
+  },
+  {
+    route: 'checkout',
+    title: 'Checkout via WhatsApp | Authentic Narmadeshwar',
+    description: 'Enter your delivery details to prepare and send your Natural Narmadeshwar Shivling order via WhatsApp.',
+    canonicalPath: '/checkout',
+    noindex: true,
+  },
+  {
+    route: 'order-confirmed',
+    title: 'Order Reference | Authentic Narmadeshwar',
+    description: 'Order summary and WhatsApp confirmation reference for Authentic Narmadeshwar, Bakawan, Madhya Pradesh.',
+    canonicalPath: '/order-confirmed',
     noindex: true,
   },
 ];

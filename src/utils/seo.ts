@@ -247,6 +247,21 @@ export function updatePageSEO({
     telephone: BUSINESS_CONFIG.phoneNumber,
     email: BUSINESS_CONFIG.email,
     taxID: BUSINESS_CONFIG.gstin,
+    founder: {
+      '@type': 'Person',
+      '@id': `${SITE_URL}/#founder`,
+      name: BUSINESS_CONFIG.ownerName,
+      jobTitle: BUSINESS_CONFIG.ownerRole || 'Founder & Owner',
+      worksFor: {
+        '@id': `${SITE_URL}/#organization`
+      },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: BUSINESS_CONFIG.address.city || 'Bakawan',
+        addressRegion: BUSINESS_CONFIG.address.state || 'Madhya Pradesh',
+        addressCountry: 'IN'
+      }
+    },
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Village Bakawan, Tehsil Barwaha, District Khargone',

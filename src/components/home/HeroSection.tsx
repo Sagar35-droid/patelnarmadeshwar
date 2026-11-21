@@ -51,7 +51,7 @@ export const HeroSection: React.FC = () => {
               GSTIN: {BUSINESS_CONFIG.gstin}
             </span>
           </div>
-          <div className="text-xs sm:text-sm font-serif text-[#C5A059] tracking-wider font-semibold">
+          <div className="text-xs sm:text-sm font-serif text-[#8B6508] tracking-wider font-semibold">
             Authentic Narmadeshwar • Bakawan, Khargone (M.P.) • Worldwide Delivery
           </div>
         </div>
@@ -67,7 +67,7 @@ export const HeroSection: React.FC = () => {
           </h1>
 
           <p className="text-base sm:text-xl font-serif text-[#8B6508] font-medium max-w-3xl mx-auto leading-relaxed">
-            Explore Natural Narmadeshwar Shivlings, Jaladhari Bases and Complete Puja Sets from Bakawan, Madhya Pradesh.
+            Authentic Natural Narmadeshwar Shivlings, sourced from the sacred Narmada River at Bakawan, Madhya Pradesh.
           </p>
 
           <p className="text-stone-600 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useRouter } from '../../context/RouterContext';
+import { useCart } from '../../context/CartContext';
 import { BUSINESS_CONFIG } from '../../config/businessConfig';
 import { trackWhatsAppConversion } from '../../utils/whatsapp';
-import { Menu, X, Sparkles, Phone, MapPin, MessageCircle } from 'lucide-react';
+import { Menu, X, Sparkles, Phone, MapPin, MessageCircle, ShoppingBag } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
   const { currentPath, navigate } = useRouter();
+  const { totalItems } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
@@ -79,8 +81,8 @@ export const Navbar: React.FC = () => {
                   }}
                   className={`py-1 text-xs font-semibold transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? 'text-[#C5A059] border-b-2 border-[#C5A059]'
-                      : 'text-[#2D2D2D] hover:text-[#C5A059]'
+                      ? 'text-[#8B6508] border-b-2 border-[#C5A059]'
+                      : 'text-[#2D2D2D] hover:text-[#8B6508]'
                   }`}
                 >
                   {link.name}
@@ -89,8 +91,26 @@ export const Navbar: React.FC = () => {
             })}
           </nav>
 
-          {/* Right Action Button (WhatsApp Order) */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Right Action Buttons (Cart + WhatsApp Order) */}
+          <div className="hidden md:flex items-center gap-2.5">
+            <a
+              href="/cart"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick('/cart');
+              }}
+              aria-label={`Shopping Cart (${totalItems} items)`}
+              className="relative inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full border border-[#C5A059]/40 bg-[#FCFAF7] hover:bg-[#F3EFE9] text-[#1A1A1A] transition-colors text-xs font-bold cursor-pointer"
+            >
+              <ShoppingBag className="w-4 h-4 text-[#8B6508]" />
+              <span>Cart</span>
+              {totalItems > 0 && (
+                <span className="min-w-[18px] h-[18px] px-1 rounded-full bg-[#1A1A1A] text-[#C5A059] text-[10px] font-bold flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
+            </a>
+
             <a
               href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent('Namaste, mujhe Authentic Narmadeshwar Shivling order karna hai.')}`}
               onClick={() => trackWhatsAppConversion()}
@@ -106,6 +126,24 @@ export const Navbar: React.FC = () => {
 
           {/* Mobile Actions */}
           <div className="flex md:hidden items-center gap-2">
+            <a
+              href="/cart"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick('/cart');
+              }}
+              aria-label={`Shopping Cart (${totalItems} items)`}
+              className="relative p-2 text-[#1A1A1A] bg-[#F3EFE9] hover:bg-[#C5A059]/20 rounded-full border border-[#C5A059]/30 flex items-center justify-center"
+              title="Shopping Cart"
+            >
+              <ShoppingBag className="w-5 h-5 text-[#8B6508]" />
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-[#1A1A1A] text-[#C5A059] text-[10px] font-bold flex items-center justify-center border border-white">
+                  {totalItems}
+                </span>
+              )}
+            </a>
+
             <a
               href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent('Namaste, mujhe Authentic Narmadeshwar Shivling order karna hai.')}`}
               onClick={() => trackWhatsAppConversion()}
@@ -149,15 +187,29 @@ export const Navbar: React.FC = () => {
                 }}
                 className={`w-full text-left px-4 py-3 rounded-xl text-xs uppercase tracking-widest font-bold flex items-center justify-between block ${
                   isActive
-                    ? 'bg-[#F3EFE9] text-[#C5A059] border-l-4 border-[#C5A059]'
+                    ? 'bg-[#F3EFE9] text-[#8B6508] border-l-4 border-[#C5A059]'
                     : 'text-[#2D2D2D] hover:bg-[#F3EFE9]'
                 }`}
               >
                 <span>{link.name}</span>
-                {isActive && <span className="text-[#C5A059] text-[10px]">Active</span>}
+                {isActive && <span className="text-[#8B6508] text-[10px]">Active</span>}
               </a>
             );
           })}
+          <a
+            href="/cart"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('/cart');
+            }}
+            className="w-full text-left px-4 py-3 rounded-xl text-xs uppercase tracking-widest font-bold flex items-center justify-between text-[#2D2D2D] hover:bg-[#F3EFE9]"
+          >
+            <span className="flex items-center gap-2">
+              <ShoppingBag className="w-4 h-4 text-[#8B6508]" />
+              Shopping Cart
+            </span>
+            <span className="text-[#8B6508] font-bold">({totalItems})</span>
+          </a>
         </div>
       )}
     </header>

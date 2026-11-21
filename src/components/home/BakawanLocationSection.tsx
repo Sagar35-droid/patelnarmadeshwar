@@ -24,7 +24,7 @@ export const BakawanLocationSection: React.FC = () => {
   // Nearby pilgrimage and transit reference points
   const nearbyLandmarks = [
     { name: 'Maheshwar Fort & Narmada Ghats', dist: '25 km', hindi: 'महेश्वर किला व नर्मदा घाट' },
-    { name: 'Barwah Tehsil Hub', dist: '15 km', hindi: 'बड़वाह तहसील' },
+    { name: 'Barwaha Tehsil Hub', dist: '15 km', hindi: 'बड़वाह तहसील' },
     { name: 'Omkareshwar Jyotirlinga', dist: '65 km', hindi: 'ओंकारेश्वर ज्योतिर्लिंग' },
     { name: 'Indore Airport & Station', dist: '90 km', hindi: 'देवी अहिल्याबाई इंदौर एयरपोर्ट' },
   ];
@@ -49,7 +49,7 @@ export const BakawanLocationSection: React.FC = () => {
             From Bakawan, Narmada
           </h2>
 
-          <p className="text-[#C5A059] text-sm sm:text-base font-serif font-semibold">
+          <p className="text-[#8B6508] text-sm sm:text-base font-serif font-semibold">
             माँ नर्मदा तट, बकावां (खरगोन) — स्वयंभू नर्मदेश्वर शिवलिंग की पावन जन्मस्थली
           </p>
 
@@ -73,7 +73,7 @@ export const BakawanLocationSection: React.FC = () => {
                     {BUSINESS_CONFIG.name}
                   </h3>
                   <p className="text-xs text-stone-500 font-medium mt-0.5">
-                    Authentic Workshop & Spiritual Center
+                    Owner / Founder: {BUSINESS_CONFIG.ownerName} • Bakawan, MP
                   </p>
                 </div>
                 <div className="w-10 h-10 rounded-xl bg-[#F3EFE9] border border-[#C5A059]/30 flex items-center justify-center shrink-0">
@@ -115,7 +115,7 @@ export const BakawanLocationSection: React.FC = () => {
                   <Phone className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" />
                   <div>
                     <strong className="block text-[#1A1A1A] font-bold text-xs">Direct Calling & Support</strong>
-                    <a href={`tel:${BUSINESS_CONFIG.phoneNumber}`} className="text-[#C5A059] font-bold text-xs hover:underline">
+                    <a href={`tel:${BUSINESS_CONFIG.phoneNumber}`} className="text-[#8B6508] font-bold text-xs hover:underline">
                       {BUSINESS_CONFIG.phoneDisplay}
                     </a>
                     <span className="text-[11px] text-stone-500 block">GSTIN: {BUSINESS_CONFIG.gstin}</span>
@@ -135,7 +135,7 @@ export const BakawanLocationSection: React.FC = () => {
                     <div key={idx} className="p-2.5 bg-[#FCFAF7] rounded-xl border border-[#C5A059]/15 text-left">
                       <div className="flex items-center justify-between gap-1">
                         <span className="text-[11px] font-bold text-[#1A1A1A] truncate">{lm.name}</span>
-                        <span className="text-[11px] font-bold text-[#C5A059] shrink-0">{lm.dist}</span>
+                        <span className="text-[11px] font-bold text-[#8B6508] shrink-0">{lm.dist}</span>
                       </div>
                       <span className="text-[10px] text-stone-500 block truncate">{lm.hindi}</span>
                     </div>
@@ -212,7 +212,7 @@ export const BakawanLocationSection: React.FC = () => {
                 href={googleMapsPlaceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#C5A059] font-bold hover:underline inline-flex items-center gap-1"
+                className="text-[#8B6508] font-bold hover:underline inline-flex items-center gap-1"
               >
                 <span>View Full Map in Google Maps</span>
                 <ExternalLink className="w-3.5 h-3.5" />

@@ -91,9 +91,7 @@ export function isProductInStock(product: Product): boolean {
 export function getPricingDetails(product: Product) {
   const mrp = getProductMRP(product);
   const sellingPrice = getProductSellingPrice(product);
-  const discountPercentage = typeof product.discountPercentage === 'number' && product.discountPercentage > 0
-    ? product.discountPercentage
-    : calculateDiscountPercentage(mrp, sellingPrice);
+  const discountPercentage = calculateDiscountPercentage(mrp, sellingPrice);
   const stock = getProductStock(product);
   const inStock = isProductInStock(product);
 

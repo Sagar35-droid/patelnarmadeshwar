@@ -118,16 +118,16 @@ export const ShippingPolicyPage: React.FC = () => {
 
             <div className="space-y-2 text-xs text-stone-700 leading-relaxed">
               <p>
-                • <strong>Location & Courier Dependent:</strong> Cash on Delivery (COD) availability depends on location, product weight, and courier network coverage.
+                • <strong>Location &amp; Courier Dependent:</strong> Payment methods and Cash on Delivery (COD) availability depend on your delivery location, product weight, and courier serviceability.
               </p>
               <p>
-                • <strong>Not Guaranteed for Every Location:</strong> COD is not guaranteed for all PIN codes or remote areas.
+                • <strong>No Mandatory Online Pre-Payment on Website:</strong> We do not collect any payment or booking charges automatically on this website.
               </p>
               <p>
-                • <strong>International Orders:</strong> COD is generally restricted to domestic routes where courier COD services operate. International orders require pre-confirmation on WhatsApp.
+                • <strong>International Orders:</strong> International shipments are confirmed directly via WhatsApp after checking courier feasibility and customs requirements.
               </p>
               <p>
-                • <strong>Seamless WhatsApp Process:</strong> COD verification is completed seamlessly through our existing WhatsApp enquiry and ordering process.
+                • <strong>Personal WhatsApp Discussion:</strong> Owner Keshrilal Patel (+91 9301531448) will personally discuss payment options and delivery details with you on WhatsApp before confirming your order.
               </p>
             </div>
           </div>

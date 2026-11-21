@@ -28,7 +28,13 @@ export const EnquiryPage: React.FC = () => {
       phone,
       message,
     });
-    window.open(waUrl, '_blank');
+    const link = document.createElement('a');
+    link.href = waUrl;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -154,14 +160,14 @@ export const EnquiryPage: React.FC = () => {
 
               </div>
 
-              {/* Cash on Delivery Info Box */}
+              {/* Direct WhatsApp Discussion Note */}
               <div className="bg-[#F3EFE9] p-4 rounded-xl border border-[#C5A059]/30 space-y-1.5">
                 <div className="flex items-center gap-2 text-xs font-serif font-bold text-[#1A1A1A]">
-                  <span className="text-base">💵</span>
-                  <span>Cash on Delivery (COD)</span>
+                  <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                  <span>Direct WhatsApp Ordering &amp; Payment Discussion</span>
                 </div>
                 <p className="text-[11px] text-stone-700 leading-relaxed font-medium">
-                  “चयनित स्थानों पर Cash on Delivery (COD) की सुविधा उपलब्ध है। COD की उपलब्धता आपके स्थान और उत्पाद के अनुसार अलग-अलग हो सकती है। ऑर्डर की पुष्टि से पहले WhatsApp पर COD की उपलब्धता की जानकारी प्राप्त करें।”
+                  हमारी वेबसाइट पर कोई ऑनलाइन भुगतान नहीं लिया जाता। भुगतान विकल्प, पिन कोड के अनुसार COD उपलब्धता और डिलीवरी विवरण सीधे WhatsApp (+91 9301531448) पर केशरीलाल पटेल जी से बातचीत द्वारा तय किए जाते हैं।
                 </p>
               </div>
 

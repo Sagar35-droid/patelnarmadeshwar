@@ -1,9 +1,11 @@
 import React from 'react';
-import { MapPin, Sparkles, ShieldCheck, MessageCircle, PackageCheck, HeartHandshake } from 'lucide-react';
+import { MapPin, Sparkles, MessageCircle, PackageCheck, HeartHandshake, UserCheck, ArrowRight } from 'lucide-react';
+import { useRouter } from '../../context/RouterContext';
 import { BUSINESS_CONFIG } from '../../config/businessConfig';
 import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../../utils/whatsapp';
 
 export const AboutSagarSection: React.FC = () => {
+  const { navigate } = useRouter();
   const whatsappUrl = getGeneralWhatsAppLink('Namaste! Mujhe Authentic Narmadeshwar Shivling ke baare mein jankari chahiye.');
 
   const infoCards = [
@@ -57,8 +59,27 @@ export const AboutSagarSection: React.FC = () => {
 
         {/* Main Descriptive Content */}
         <div className="max-w-4xl mx-auto space-y-5 text-stone-700 text-sm sm:text-base leading-relaxed">
+          <div className="bg-[#FCFAF7] border border-[#C5A059]/30 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-[#1A1A1A] text-[#C5A059] flex items-center justify-center shrink-0">
+                <UserCheck className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-sm font-serif font-bold text-[#1A1A1A]">
+                  {BUSINESS_CONFIG.ownerName} — {BUSINESS_CONFIG.ownerRole}
+                </p>
+                <p className="text-xs text-stone-600">
+                  {BUSINESS_CONFIG.name} • Village Bakawan, Tehsil Barwaha, Khargone, Madhya Pradesh
+                </p>
+              </div>
+            </div>
+            <span className="text-xs font-mono font-bold text-[#8B6508] bg-white px-3 py-1.5 rounded-lg border border-[#C5A059]/25 self-start sm:self-center">
+              GSTIN: {BUSINESS_CONFIG.gstin}
+            </span>
+          </div>
+
           <p>
-            <strong>Authentic Narmadeshwar</strong> is an artisan-led initiative based in the historic stone-craft village of <strong>Bakawan</strong>, situated along the sacred Narmada River basin in Khargone district, Madhya Pradesh. For generations, the artisan families of Bakawan have respectfully gathered, identified, and hand-finished these sacred river stones for devotees worldwide.
+            <strong>Authentic Narmadeshwar</strong>, founded by <strong>{BUSINESS_CONFIG.ownerName}</strong> in <strong>Bakawan</strong>, is situated along the sacred Narmada River basin in Khargone district, Madhya Pradesh, India. Our focus is sourcing and offering authentic Natural Narmadeshwar Shivlings from the sacred Narmada River directly to devotees.
           </p>
           <p>
             Unlike commercially mass-produced, chemically cast, or artificially molded alternatives, every stone in our collection is an authentic geological river creation formed by centuries of natural water flow and whirlpool friction. We provide transparent specifications—including individual high-resolution photographs, exact dimensions in inches, true weight in grams, and matching hand-carved stone Jaladharis.
@@ -97,7 +118,7 @@ export const AboutSagarSection: React.FC = () => {
           })}
         </div>
 
-        {/* WhatsApp Callout CTA */}
+        {/* WhatsApp Callout & About Page CTA */}
         <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
           <a
             href={whatsappUrl}
@@ -108,6 +129,17 @@ export const AboutSagarSection: React.FC = () => {
           >
             <MessageCircle className="w-4 h-4 fill-white" />
             <span>व्हाट्सएप पर कारीगरों से संपर्क करें</span>
+          </a>
+          <a
+            href="/about"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/about');
+            }}
+            className="px-6 py-3 rounded-xl bg-[#1A1A1A] hover:bg-black text-white font-bold text-xs sm:text-sm shadow-md transition-all inline-flex items-center gap-2"
+          >
+            <span>Read Our Bakawan Story</span>
+            <ArrowRight className="w-4 h-4 text-[#C5A059]" />
           </a>
         </div>
 

@@ -1,5 +1,7 @@
 export interface BusinessInfo {
   name: string;
+  ownerName: string;
+  ownerRole?: string;
   taglineHindi: string;
   taglineEnglish: string;
   whatsappNumber: string; // E.164 format without plus or spaces for wa.me link e.g. 919876543210
@@ -32,9 +34,8 @@ export interface BusinessInfo {
   cancellationPolicyConfig?: {
     canCancelBeforeDispatch: boolean;
     cancellationNoticeHours?: number;
-    codAdvanceRefundRule: string;
-    codAdvanceRefundNote: string;
-    codAdvanceRefundNoteHindi: string;
+    refundNote: string;
+    refundNoteHindi: string;
   };
 }
 
@@ -111,8 +112,10 @@ export interface CustomerDetails {
   notes?: string;
 }
 
-export type PaymentStatus = 'Paid' | 'Pending' | 'Failed' | 'Refunded' | 'Cash on Delivery';
-export type OrderStatus = 'Pending' | 'Confirmed' | 'New' | 'Processing' | 'Packing' | 'Shipped' | 'In Transit' | 'Out for Delivery' | 'Delivered' | 'Cancelled';
+export type OrderStatus =
+  | 'Prepared for WhatsApp'
+  | 'Pending'
+  | 'Cancelled';
 
 export interface CustomerRecord {
   customerId: string;
@@ -128,17 +131,6 @@ export interface CustomerRecord {
   lastOrderDate: string;
   createdAt: string;
   updatedAt: string;
-}
-
-export interface PaymentTransactionRecord {
-  paymentId: string;
-  orderId: string;
-  customerName: string;
-  customerPhone: string;
-  amount: number;
-  paymentMethod: string;
-  paymentStatus: PaymentStatus | string;
-  createdAt: string;
 }
 
 export interface DelhiveryScanEvent {
@@ -170,41 +162,12 @@ export interface OrderRecord {
   orderId: string;
   userId?: string;
   customerId?: string;
-  razorpayOrderId?: string;
-  razorpayPaymentId?: string;
-  razorpaySignature?: string;
   items: CartItem[];
   customer: CustomerDetails;
   subtotal: number;
   shippingFee: number;
-  couponDiscount?: number;
   totalAmount: number;
-  paymentStatus: PaymentStatus | string;
   orderStatus: OrderStatus | string;
-  isStockDeducted?: boolean;
-  
-  // Shipment & Delhivery Tracking Fields
-  courier?: string; // Default: 'Delhivery'
-  courierName?: string;
-  awbNumber?: string;
-  trackingNumber?: string;
-  shipmentStatus?: string;
-  trackingUrl?: string;
-  shippedAt?: string;
-  dispatchDate?: string;
-  deliveredAt?: string;
-  estimatedDeliveryDate?: string;
-  estimatedDelivery?: string;
-  currentLocation?: string;
-  lastTrackingUpdate?: string;
-  delhiveryStatusDetails?: DelhiveryTrackingResult;
-  
-  // Payment & COD Booking Charge Details
-  paymentMethod?: 'Online' | 'COD' | string;
-  bookingCharge?: number;
-  bookingChargePaid?: boolean;
-  remainingAmount?: number;
-
   createdAt: string;
   updatedAt?: string;
 }

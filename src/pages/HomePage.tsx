@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { updatePageSEO } from '../utils/seo';
 import { HeroSection } from '../components/home/HeroSection';
+import { HomeCategorySection } from '../components/home/HomeCategorySection';
 import { FeaturedProducts } from '../components/home/FeaturedProducts';
 import { WhyChooseUs } from '../components/home/WhyChooseUs';
 import { CustomerReviewsSection } from '../components/common/CustomerReviewsSection';
@@ -64,7 +65,10 @@ export const HomePage: React.FC = () => {
       {/* 1. Hero Section with Exact Approved Headline & Verified Trust Highlights */}
       <HeroSection />
 
-      {/* 2. Featured Products Collection */}
+      {/* 2. Verified Product-Type Categories */}
+      <HomeCategorySection />
+
+      {/* 3. Featured Products Collection */}
       <FeaturedProducts />
 
       {/* 4. Why Choose Authentic Narmadeshwar (Strictly Verified Business Facts) */}

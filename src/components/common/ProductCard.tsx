@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Product } from '../../types';
 import { useRouter } from '../../context/RouterContext';
+import { useCart } from '../../context/CartContext';
 import { getPricingDetails, formatPrice } from '../../utils/pricing';
 import { getProductWhatsAppLink, trackWhatsAppConversion } from '../../utils/whatsapp';
-import { MessageCircle, ArrowRight, Tag } from 'lucide-react';
+import { MessageCircle, ArrowRight, Tag, ShoppingBag, Check } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -11,11 +12,28 @@ interface ProductCardProps {
   priority?: boolean;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, hideTitle = false, priority = false }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  hideTitle = false,
+  priority = false,
+}) => {
   const { navigate } = useRouter();
+  const { addItem } = useCart();
+  const [justAdded, setJustAdded] = useState(false);
+
   const whatsappUrl = getProductWhatsAppLink(product);
   const pricing = getPricingDetails(product);
   const isInStock = pricing.inStock && (pricing.stock === undefined || pricing.stock > 0);
+  const pieceNum = product.id.replace('product-', '');
+
+  const handleQuickAdd = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!isInStock) return;
+    addItem(product, 1);
+    setJustAdded(true);
+    window.setTimeout(() => setJustAdded(false), 1600);
+  };
 
   return (
     <div className="group bg-white rounded-2xl border border-[#C5A059]/20 hover:border-[#C5A059] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden relative">
@@ -23,33 +41,37 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, hideTitle = f
       {!hideTitle && (
         <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 bg-[#1A1A1A]/90 border border-[#C5A059]/40 backdrop-blur-md text-[#C5A059] text-xs font-semibold px-3 py-1 rounded-full shadow-md">
           <Tag className="w-3 h-3 text-[#C5A059]" />
-          <span>{product.markingType}</span>
+          <span>Piece #{pieceNum}</span>
         </div>
       )}
 
       {/* Image Container */}
-      <a 
+      <a
         href={`/products/${product.id}`}
         onClick={(e) => {
           e.preventDefault();
           navigate(`/products/${product.id}`);
         }}
-        className={`relative ${hideTitle ? 'aspect-square p-2.5' : 'aspect-[4/3]'} bg-[#F3EFE9] overflow-hidden cursor-pointer flex items-center justify-center block`}
+        className={`relative ${
+          hideTitle ? 'aspect-square p-2.5' : 'aspect-[4/3]'
+        } bg-[#F3EFE9] overflow-hidden cursor-pointer flex items-center justify-center block`}
         title={`View ${product.name} Details`}
       >
         <img
           src={product.mainImage}
-          alt={`${product.name} - ${product.markingType} Natural Narmadeshwar Shivling (${product.size}, ${product.weight}) from Bakawan`}
+          alt={`${product.name} (#${pieceNum}) - ${product.markingType} Natural Narmadeshwar Shivling (${product.size}, ${product.weight}) from Bakawan`}
           width={400}
           height={hideTitle ? 400 : 300}
           loading={priority ? 'eager' : 'lazy'}
           fetchPriority={priority ? 'high' : 'auto'}
           decoding="async"
           referrerPolicy="no-referrer"
-          className={`w-full h-full ${hideTitle ? 'object-contain' : 'object-cover'} group-hover:scale-105 transition-transform duration-500`}
+          className={`w-full h-full ${
+            hideTitle ? 'object-contain' : 'object-cover'
+          } group-hover:scale-105 transition-transform duration-500`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-          <span className="text-white text-xs font-bold flex items-center gap-1 bg-[#C5A059] px-3.5 py-1.5 rounded-full shadow-md">
+          <span className="text-white text-xs font-bold flex items-center gap-1 bg-[#8B6508] px-3.5 py-1.5 rounded-full shadow-md">
             View Details <ArrowRight className="w-3.5 h-3.5" />
           </span>
         </div>
@@ -60,7 +82,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, hideTitle = f
         <div>
           {/* Title and Hindi Name */}
           <div className="mb-2">
-            <h3 className="text-sm sm:text-base font-serif font-bold text-[#1A1A1A] hover:text-[#C5A059] transition-colors line-clamp-1">
+            <h3 className="text-sm sm:text-base font-serif font-bold text-[#1A1A1A] hover:text-[#8B6508] transition-colors line-clamp-1">
               <a
                 href={`/products/${product.id}`}
                 onClick={(e) => {
@@ -73,7 +95,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, hideTitle = f
               </a>
             </h3>
             {product.nameHindi && (
-              <p className="text-[11px] sm:text-xs text-[#C5A059] font-medium mt-0.5 line-clamp-1">
+              <p className="text-[11px] sm:text-xs text-[#8B6508] font-medium mt-0.5 line-clamp-1">
                 {product.nameHindi}
               </p>
             )}
@@ -82,11 +104,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, hideTitle = f
           {/* Details & Specifications */}
           <div className="grid grid-cols-2 gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-stone-600 bg-[#F3EFE9] p-2 sm:p-2.5 rounded-xl my-2.5 sm:my-3 border border-[#C5A059]/10">
             <div>
-              <span className="text-stone-400 block text-[9px] sm:text-[10px] uppercase tracking-wider font-semibold">Size</span>
-              <span className="font-bold text-[#1A1A1A] truncate block">{product.size.split('+')[0]}</span>
+              <span className="text-stone-500 block text-[9px] sm:text-[10px] uppercase tracking-wider font-semibold">
+                Size
+              </span>
+              <span className="font-bold text-[#1A1A1A] truncate block">
+                {product.size.split('+')[0]}
+              </span>
             </div>
             <div>
-              <span className="text-stone-400 block text-[9px] sm:text-[10px] uppercase tracking-wider font-semibold">Weight</span>
+              <span className="text-stone-500 block text-[9px] sm:text-[10px] uppercase tracking-wider font-semibold">
+                Weight
+              </span>
               <span className="font-bold text-[#1A1A1A] truncate block">{product.weight}</span>
             </div>
           </div>
@@ -100,12 +128,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, hideTitle = f
 
         {/* Price & Action Buttons */}
         <div className="pt-2.5 sm:pt-3 border-t border-[#C5A059]/15 flex flex-col gap-2 sm:gap-2.5">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-2">
             <div>
-              <span className="text-[9px] sm:text-[10px] uppercase text-stone-400 font-bold block">Sacred Offering</span>
+              <span className="text-[9px] sm:text-[10px] uppercase text-stone-500 font-bold block">
+                Sacred Offering
+              </span>
               <div className="flex items-baseline gap-1 sm:gap-1.5 flex-wrap">
                 {pricing.mrp > pricing.sellingPrice && (
-                  <span className="text-[11px] sm:text-xs text-stone-400 line-through font-medium">
+                  <span className="text-[11px] sm:text-xs text-stone-500 line-through font-medium">
                     {formatPrice(pricing.mrp)}
                   </span>
                 )}
@@ -120,7 +150,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, hideTitle = f
               </div>
             </div>
 
-            <div className="text-right">
+            <div className="text-right shrink-0">
               {pricing.stock !== undefined && pricing.stock !== null ? (
                 pricing.stock > 5 ? (
                   <span className="text-[9px] sm:text-[10px] bg-emerald-50 text-emerald-700 font-bold px-1.5 sm:px-2 py-0.5 rounded-full border border-emerald-200 block">
@@ -143,29 +173,45 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, hideTitle = f
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-1.5 sm:gap-2 pt-1">
+          <div className="flex items-center gap-1.5 pt-1">
             <a
               href={`/products/${product.id}`}
               onClick={(e) => {
                 e.preventDefault();
                 navigate(`/products/${product.id}`);
               }}
-              className="w-full py-2 sm:py-2.5 px-2 sm:px-3 text-[11px] sm:text-xs font-bold rounded-xl bg-[#F3EFE9] hover:bg-[#C5A059] text-[#1A1A1A] hover:text-white transition-all flex items-center justify-center gap-1 shadow-xs cursor-pointer"
+              className="flex-1 py-2 px-2 text-[11px] sm:text-xs font-bold rounded-xl bg-[#F3EFE9] hover:bg-[#1A1A1A] text-[#1A1A1A] hover:text-white transition-all flex items-center justify-center gap-1 shadow-xs cursor-pointer"
             >
               <span>Details</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3 h-3 shrink-0" />
             </a>
+
+            {isInStock && (
+              <button
+                type="button"
+                onClick={handleQuickAdd}
+                aria-label={justAdded ? `Added ${product.name} to cart` : `Add ${product.name} to cart`}
+                title="Add to Cart"
+                className={`py-2 px-2.5 rounded-xl text-xs font-bold transition-colors flex items-center justify-center cursor-pointer border shrink-0 ${
+                  justAdded
+                    ? 'bg-emerald-600 text-white border-emerald-600'
+                    : 'bg-white hover:bg-[#1A1A1A] text-[#1A1A1A] hover:text-[#C5A059] border-[#C5A059]/40'
+                }`}
+              >
+                {justAdded ? <Check className="w-3.5 h-3.5" /> : <ShoppingBag className="w-3.5 h-3.5" />}
+              </button>
+            )}
 
             <a
               href={whatsappUrl}
               onClick={() => trackWhatsAppConversion()}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-2 sm:py-2.5 px-2 sm:px-3 text-[11px] sm:text-xs font-bold text-white bg-[#25D366] hover:bg-[#128C7E] rounded-xl transition-colors flex items-center justify-center gap-1.5 shadow-xs"
+              className="flex-1 py-2 px-2 text-[11px] sm:text-xs font-bold text-white bg-[#25D366] hover:bg-[#128C7E] rounded-xl transition-colors flex items-center justify-center gap-1 shadow-xs"
               title="WhatsApp par Order Karein"
             >
               <MessageCircle className="w-3.5 h-3.5 fill-white shrink-0" />
-              <span className="truncate">WhatsApp Order</span>
+              <span className="truncate">WhatsApp</span>
             </a>
           </div>
         </div>
@@ -173,4 +219,3 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, hideTitle = f
     </div>
   );
 };
-

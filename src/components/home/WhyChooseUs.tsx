@@ -41,8 +41,8 @@ export const WhyChooseUs: React.FC = () => {
       icon: Globe2,
       title: 'Delivery Across India and Worldwide',
       titleHindi: 'भारत एवं विश्वव्यापी डिलीवरी',
-      desc: 'Reliable doorstep shipping across all Indian pincodes and international locations via reputed courier partners.',
-      descHindi: 'प्रतिष्ठित कूरियर सेवाओं के माध्यम से संपूर्ण भारत एवं विदेशों में घर तक डिलीवरी।'
+      desc: 'Reliable doorstep shipping across India and worldwide locations where courier delivery is supported via established courier partners.',
+      descHindi: 'प्रतिष्ठित कूरियर सेवाओं के माध्यम से भारत एवं सेवा-योग्य अंतर्राष्ट्रीय स्थानों पर सुरक्षित डिलीवरी।'
     },
     {
       icon: MessageCircle,
@@ -118,7 +118,7 @@ export const WhyChooseUs: React.FC = () => {
               <span>Workshop Location</span>
             </div>
             <p className="font-serif font-bold text-[#1A1A1A] text-base sm:text-lg">
-              Bakawan, Tehsil Barwah, Dist. Khargone (M.P.) — 451113
+              Bakawan, Tehsil Barwaha, Dist. Khargone (M.P.) — 451113
             </p>
             <p className="text-xs text-stone-600">
               Devotees can contact us directly on WhatsApp to ask questions, request live video previews, or get size recommendations.

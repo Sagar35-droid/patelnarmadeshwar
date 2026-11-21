@@ -82,3 +82,68 @@ Message: ${formData.message}`;
   return `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
 }
 
+export interface OrderWhatsAppParams {
+  orderId?: string;
+  items: Array<{
+    productId: string;
+    name?: string;
+    size?: string;
+    weight?: string;
+    quantity: number;
+    unitPrice: number;
+  }>;
+  subtotal: number;
+  customer?: {
+    fullName: string;
+    phone: string;
+    address: string;
+    city: string;
+    state: string;
+    pincode: string;
+    notes?: string;
+  };
+}
+
+export function getOrderWhatsAppMessageText(params: OrderWhatsAppParams): string {
+  const lines: string[] = [];
+
+  lines.push('Namaste! Mujhe Authentic Narmadeshwar se order karna hai.');
+  if (params.orderId) {
+    lines.push(`Reference ID: ${params.orderId}`);
+  }
+
+  if (params.customer) {
+    lines.push('');
+    lines.push('*Customer Details:*');
+    lines.push(`Name: ${params.customer.fullName}`);
+    lines.push(`Phone: ${params.customer.phone}`);
+    lines.push(
+      `Delivery Address: ${params.customer.address}, ${params.customer.city}, ${params.customer.state} - ${params.customer.pincode}`
+    );
+    if (params.customer.notes) {
+      lines.push(`Notes: ${params.customer.notes}`);
+    }
+  }
+
+  lines.push('');
+  lines.push('*Ordered Products:*');
+  params.items.forEach((item, idx) => {
+    const lineTotal = item.unitPrice * item.quantity;
+    lines.push(
+      `${idx + 1}. ${item.name || item.productId} (ID: ${item.productId}) | Qty: ${item.quantity} | Price: ₹${item.unitPrice.toLocaleString('en-IN')} each | Subtotal: ₹${lineTotal.toLocaleString('en-IN')}`
+    );
+  });
+
+  lines.push('');
+  lines.push(`*Total Order Amount:* ₹${params.subtotal.toLocaleString('en-IN')}`);
+  lines.push('');
+  lines.push('Please share payment methods, delivery details, and confirm my order.');
+
+  return lines.join('\n');
+}
+
+export function getOrderWhatsAppLink(params: OrderWhatsAppParams): string {
+  const number = WHATSAPP_NUMBER;
+  const text = getOrderWhatsAppMessageText(params);
+  return `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
+}

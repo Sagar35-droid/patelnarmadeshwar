@@ -45,7 +45,7 @@ export const CustomerReviewsSection: React.FC<CustomerReviewsSectionProps> = ({
           <div className="pt-2 flex items-center justify-center gap-3">
             <a
               id="btn-submit-review"
-              href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent('Namaste, main Sagar Narmadeshwar Shivling ke liye apna review aur anubhav share karna chahta hoon.')}`}
+              href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent('Namaste, main Authentic Narmadeshwar ke liye apna review aur anubhav share karna chahta hoon.')}`}
               onClick={() => trackWhatsAppConversion()}
               target="_blank"
               rel="noopener noreferrer"
@@ -232,7 +232,7 @@ export const CustomerReviewsSection: React.FC<CustomerReviewsSectionProps> = ({
 
           <div>
             <a
-              href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent('Namaste, main Sagar Narmadeshwar Shivling ke liye apna review aur anubhav share karna chahta hoon.')}`}
+              href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent('Namaste, main Authentic Narmadeshwar ke liye apna review aur anubhav share karna chahta hoon.')}`}
               onClick={() => trackWhatsAppConversion()}
               target="_blank"
               rel="noopener noreferrer"

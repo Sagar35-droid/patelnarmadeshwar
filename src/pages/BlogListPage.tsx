@@ -62,7 +62,7 @@ export const BlogListPage: React.FC = () => {
       : BLOG_POSTS.filter((p) => p.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-[#FDFCF9]">
+    <main className="min-h-screen bg-[#FDFCF9]">
       <Breadcrumbs items={[{ label: 'Sacred Guides & Blog', path: '/blog', isCurrent: true }]} />
 
       {/* Header Banner */}
@@ -194,7 +194,7 @@ export const BlogListPage: React.FC = () => {
       </div>
 
       {/* Articles Grid */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredPosts.map((post) => (
             <article
@@ -281,7 +281,7 @@ export const BlogListPage: React.FC = () => {
         <div className="mt-14">
           <AuthorTrustCard />
         </div>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 };

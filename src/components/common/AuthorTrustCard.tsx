@@ -28,9 +28,9 @@ export const AuthorTrustCard: React.FC<AuthorTrustCardProps> = ({ category, clas
               <ShieldCheck className="w-3 h-3 text-[#C5A059]" /> Verified Artisans of Bakawan
             </span>
           </div>
-          <p className="text-xs text-stone-600 flex items-center gap-1.5 pt-0.5">
+          <p className="text-xs text-stone-600 flex items-center gap-1.5 pt-0.5 flex-wrap">
             <MapPin className="w-3.5 h-3.5 text-[#C5A059] shrink-0" />
-            <span>Village {BUSINESS_CONFIG.address.village || 'Bakawan'}, Tehsil {BUSINESS_CONFIG.address.tehsil || 'Barwaha'}, Khargone, Madhya Pradesh</span>
+            <span>Owner: <strong className="text-[#1A1A1A]">{BUSINESS_CONFIG.ownerName}</strong> • Village {BUSINESS_CONFIG.address.village || 'Bakawan'}, Tehsil {BUSINESS_CONFIG.address.tehsil || 'Barwaha'}, Khargone, Madhya Pradesh</span>
           </p>
         </div>
       </div>
