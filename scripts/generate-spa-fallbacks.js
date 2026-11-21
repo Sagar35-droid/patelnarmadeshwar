@@ -59,18 +59,38 @@ function serializeJsonLd(obj) {
   return JSON.stringify(obj, null, 2).replace(/<\//g, '<\\/');
 }
 
+function buildWeightSchema(weight) {
+  if (!weight) return undefined;
+  const trimmed = String(weight).trim();
+  const match = trimmed.match(/^(\d+(?:\.\d+)?)\s*(kg|kgs|gm|grams?|g)\b/i);
+  if (match) {
+    const val = parseFloat(match[1]);
+    const unitRaw = match[2].toLowerCase();
+    const isKg = unitRaw.startsWith('k');
+    return {
+      '@type': 'QuantitativeValue',
+      value: val,
+      unitCode: isKg ? 'KGM' : 'GRM',
+      unitText: trimmed,
+    };
+  }
+  return { '@type': 'QuantitativeValue', name: trimmed };
+}
+
 const orgSchema = {
   '@context': 'https://schema.org',
-  '@type': ['Organization', 'OnlineStore'],
+  '@type': ['Organization', 'LocalBusiness', 'OnlineStore'],
   '@id': `${SITE_URL}/#organization`,
   name: DEFAULT_SEO.siteName,
-  alternateName: [
-    BUSINESS_CONFIG.name,
-    'Sagar Narmadeshwar Shivling',
-    'Sagar Shivling Bakawan',
-    'सागर नर्मदेश्वर शिवलिंग',
-    'प्रामाणिक नर्मदेश्वर',
-  ],
+  alternateName: Array.from(
+    new Set([
+      BUSINESS_CONFIG.name,
+      'Sagar Narmadeshwar Shivling',
+      'Sagar Shivling Bakawan',
+      'सागर नर्मदेश्वर शिवलिंग',
+      'प्रामाणिक नर्मदेश्वर',
+    ])
+  ).filter((n) => n !== DEFAULT_SEO.siteName),
   description: BUSINESS_CONFIG.taglineEnglish,
   url: SITE_URL,
   logo: {
@@ -83,6 +103,7 @@ const orgSchema = {
   taxID: BUSINESS_CONFIG.gstin,
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Village Bakawan, Tehsil Barwaha, District Khargone',
     addressLocality: BUSINESS_CONFIG.address.city || 'Bakawan',
     addressRegion: BUSINESS_CONFIG.address.state || 'Madhya Pradesh',
     postalCode: BUSINESS_CONFIG.address.pincode || '451113',
@@ -112,6 +133,10 @@ const websiteSchema = {
   inLanguage: ['en-IN', 'hi-IN'],
 };
 
+function wrapRootFallbackHtml(innerHtml) {
+  return `<div id="root"><header><nav aria-label="Primary"><a href="/">Home</a> | <a href="/about">About Bakawan</a> | <a href="/products">Narmadeshwar Shivling Collection</a> | <a href="/blog">Sacred Guides</a> | <a href="/hi/blog">हिंदी गाइड</a> | <a href="/faq">FAQ</a> | <a href="/enquiry">Enquiry</a> | <a href="/contact">Contact</a></nav></header><main>${innerHtml}</main><footer><p><strong>${escapeHtml(DEFAULT_SEO.siteName)}</strong> — Narmada River, Village Bakawan, Tehsil Barwaha, District Khargone, Madhya Pradesh 451113, India. Phone/WhatsApp: <a href="tel:${escapeAttr(BUSINESS_CONFIG.phoneNumber)}">${escapeHtml(BUSINESS_CONFIG.phoneDisplay)}</a>. <a href="/shipping-policy">Shipping Policy</a> | <a href="/return-policy">Return Policy</a> | <a href="/privacy-policy">Privacy Policy</a></p></footer></div>`;
+}
+
 function renderPageHtml({
   title,
   description,
@@ -127,6 +152,7 @@ function renderPageHtml({
   breadcrumbs = [],
   extraSchemas = [],
   mainEntityId,
+  bodyHtml = '',
 }) {
   const cleanPath = canonicalPath === '/' ? '/' : canonicalPath.replace(/\/+$/, '');
   const canonicalUrl = `${SITE_URL}${cleanPath === '/' ? '/' : cleanPath}`;
@@ -252,6 +278,8 @@ function renderPageHtml({
   });
 
   html = html.replace('  </head>', `${injections.join('\n')}\n  </head>`);
+  const fallbackContent = bodyHtml || `<h1>${escapeHtml(title)}</h1><p>${escapeHtml(description)}</p>`;
+  html = html.replace('<div id="root"></div>', wrapRootFallbackHtml(fallbackContent));
   return html;
 }
 
@@ -289,12 +317,17 @@ const HOME_CORE_FAQS = [
   {
     question: 'What is the difference between a Shivling and a Jaladhari?',
     answer:
-      'The Shivling is the central sacred cylindrical/oval stone representing Lord Shiva, whereas the Jaladhari (also called Argha or Peetham) is the channeled base platform symbolizing Maa Parvati (Shakti) that holds the Shivling and directs Abhishek water and milk towards the North direction.',
+      'The Shivling is the central sacred cylindrical/oval stone representing Lord Shiva, whereas the Jaladhari (also called Argha or Peetham) is the channeled base platform symbolizing Maa Parvati (Shakti) that holds the Shivling and directs Abhishek water and milk towards the North direction. In an Akhand Shivling, both are sculpted from one unbroken river stone.',
   },
   {
     question: 'How to perform daily Narmadeshwar Shivling puja at home?',
     answer:
-      'Place the Shivling so the Jaladhari spout points North while you sit facing East or North. Offer clean fresh water, raw milk, or Ganga jal using a copper or brass kalash while chanting "Om Namah Shivaya", apply pure Chandan paste, offer Bilva patra and white flowers, light a ghee lamp, and conclude with prayer.',
+      'Place the Shivling so the Jaladhari spout points North (Uttar) while you sit facing East or North. Offer clean fresh water, raw milk, or Ganga jal using a copper or brass kalash while chanting "Om Namah Shivaya", apply pure Chandan paste, offer Bilva patra and white flowers, light a ghee lamp, and conclude with silent prayer.',
+  },
+  {
+    question: 'How should I care for a natural Narmadeshwar Shivling?',
+    answer:
+      'Rinse gently with clean water after daily Abhishek and pat dry with a soft cotton cloth. Never use soap, detergent, acid, or abrasive scrubbers. Applying a light touch of natural sandalwood paste or pure oil occasionally keeps the stone nourished and naturally lustrous.',
   },
 ];
 
@@ -322,11 +355,32 @@ const homeFaqSchema = {
   })),
 };
 
+const homeBodyHtml = `
+<section>
+  <h1>Original Narmadeshwar Shivling from the Sacred Narmada River</h1>
+  <p>Explore Natural Narmadeshwar Shivlings, Jaladhari Bases and Complete Puja Sets from Bakawan, Barwaha, Khargone District, Madhya Pradesh, India. Worldwide delivery where supported. Call or WhatsApp ${escapeHtml(BUSINESS_CONFIG.phoneDisplay)}.</p>
+</section>
+<section>
+  <h2>Featured Natural Narmadeshwar Shivling Collection</h2>
+  <ul>${PRODUCTS.slice(0, 20)
+    .map((p) => {
+      const pr = getPricingDetails(p);
+      return `<li><a href="/products/${escapeAttr(p.id)}">${escapeHtml(p.name)}</a> — ${escapeHtml(p.size)}, ${escapeHtml(p.weight)} — ₹${pr.sellingPrice}</li>`;
+    })
+    .join('')}</ul>
+  <p><a href="/products">Explore all ${PRODUCTS.length} Narmadeshwar Shivlings</a></p>
+</section>
+<section>
+  <h2>Frequently Asked Questions about Narmadeshwar Shivling</h2>
+  ${HOME_CORE_FAQS.map((f) => `<article><h3>${escapeHtml(f.question)}</h3><p>${escapeHtml(f.answer)}</p></article>`).join('')}
+</section>`;
+
 const homeHtml = renderPageHtml({
   title: DEFAULT_SEO.defaultTitle,
   description:
     'Explore natural Narmadeshwar Shivlings, Jaladhari bases and complete puja sets from Bakawan, Madhya Pradesh. Secure wooden box packaging, verified weights, and worldwide delivery.',
   canonicalPath: '/',
+  bodyHtml: homeBodyHtml,
   extraSchemas: [
     { id: 'schema-faq', data: homeFaqSchema },
     { id: 'schema-itemlist', data: homeFeaturedListSchema },
@@ -376,6 +430,10 @@ const staticPages = [
         },
       },
     ],
+    bodyHtml: `<h1>Narmadeshwar Shivling Collection (${PRODUCTS.length} Natural Pieces)</h1><p>Direct from the Narmada River, Bakawan, Barwaha, Madhya Pradesh. Worldwide delivery.</p><ul>${PRODUCTS.map((p) => {
+      const pr = getPricingDetails(p);
+      return `<li><a href="/products/${escapeAttr(p.id)}">${escapeHtml(p.name)}</a> — ${escapeHtml(p.size)} — ${escapeHtml(p.weight)} — ₹${pr.sellingPrice}</li>`;
+    }).join('')}</ul>`,
   },
   {
     route: 'product',
@@ -562,13 +620,17 @@ function buildProductHtml(product, isAlias = false) {
   const title = `${product.name} (${pieceLabel}, ${product.weight}) | Authentic Narmadeshwar`;
   const description = `Buy ${product.name} (${pieceLabel}, ${product.size}, ${product.weight}, ${product.markingType}) at ₹${pricing.sellingPrice}. ${productType} from Narmada River, Bakawan, MP. Worldwide delivery.`;
   const canonicalUrl = `${SITE_URL}/products/${product.id}`;
+  const rawImages = [product.mainImage, ...(product.galleryImages || [])].filter(Boolean);
+  const uniqueImages = Array.from(
+    new Set(rawImages.map((img) => (img.startsWith('http') ? img : `${SITE_URL}${img}`)))
+  );
 
   const productSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     '@id': `${canonicalUrl}#product`,
     name: `${product.name} (${pieceLabel})`,
-    image: `${SITE_URL}${product.mainImage}`,
+    image: uniqueImages.length > 1 ? uniqueImages : uniqueImages[0],
     description,
     sku: product.id.toUpperCase(),
     mpn: product.id,
@@ -577,7 +639,7 @@ function buildProductHtml(product, isAlias = false) {
     brand: { '@type': 'Brand', name: DEFAULT_SEO.siteName },
     category: product.category || 'Natural Narmadeshwar Shivling',
     size: product.size,
-    weight: { '@type': 'QuantitativeValue', name: product.weight },
+    weight: buildWeightSchema(product.weight),
     offers: {
       '@type': 'Offer',
       url: canonicalUrl,
@@ -594,6 +656,22 @@ function buildProductHtml(product, isAlias = false) {
     },
   };
 
+  const productBodyHtml = `
+<article>
+  <h1>${escapeHtml(product.name)} (${escapeHtml(pieceLabel)})</h1>
+  <p>${escapeHtml(product.shortDescription || description)}</p>
+  <p>${escapeHtml(product.fullDescription || '')}</p>
+  <ul>
+    <li>Price: ₹${pricing.sellingPrice}</li>
+    <li>Size: ${escapeHtml(product.size)}</li>
+    <li>Weight: ${escapeHtml(product.weight)}</li>
+    <li>Material: Natural Narmada River Stone (${escapeHtml(product.markingType)})</li>
+    <li>Origin: Narmada River, Bakawan, Barwaha, Madhya Pradesh, India</li>
+    <li>Availability: ${isInStock ? 'In Stock' : 'Out of Stock'}</li>
+  </ul>
+  <p>Order or inquire on WhatsApp: <a href="https://wa.me/${escapeAttr(BUSINESS_CONFIG.whatsappNumber)}">${escapeHtml(BUSINESS_CONFIG.phoneDisplay)}</a></p>
+</article>`;
+
   return renderPageHtml({
     title,
     description,
@@ -604,6 +682,7 @@ function buildProductHtml(product, isAlias = false) {
     webPageType: 'ItemPage',
     mainEntityId: `${canonicalUrl}#product`,
     noindex: isAlias,
+    bodyHtml: productBodyHtml,
     breadcrumbs: [
       { name: 'Home', url: '/' },
       { name: 'Products Collection', url: '/products' },
@@ -695,6 +774,22 @@ for (const post of BLOG_POSTS) {
     });
   }
 
+  const blogSectionsHtml = (post.contentSections || [])
+    .map((sec) => `<h2>${escapeHtml(sec.heading)}</h2><p>${escapeHtml(sec.body || '')}</p>`)
+    .join('');
+  const blogFaqHtml =
+    post.faqs && post.faqs.length > 0
+      ? `<section><h2>FAQ</h2>${post.faqs
+          .map(
+            (f) =>
+              `<h3>${escapeHtml(isHindi && f.questionHindi ? f.questionHindi : f.question)}</h3><p>${escapeHtml(
+                isHindi && f.answerHindi ? f.answerHindi : f.answer
+              )}</p>`
+          )
+          .join('')}</section>`
+      : '';
+  const blogBodyHtml = `<article><h1>${escapeHtml(post.title)}</h1><p>${escapeHtml(post.excerpt || post.metaDescription)}</p>${blogSectionsHtml}${blogFaqHtml}</article>`;
+
   const blogHtml = renderPageHtml({
     title: post.seoTitle,
     description: post.metaDescription,
@@ -706,6 +801,7 @@ for (const post of BLOG_POSTS) {
     locale: isHindi ? 'hi_IN' : 'en_IN',
     lang: isHindi ? 'hi' : 'en',
     alternateLinks,
+    bodyHtml: blogBodyHtml,
     breadcrumbs: [
       { name: isHindi ? 'मुख्य पृष्ठ' : 'Home', url: '/' },
       { name: isHindi ? 'धार्मिक मार्गदर्शिका' : 'Sacred Guides', url: isHindi ? '/hi/blog' : '/blog' },

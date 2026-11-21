@@ -90,7 +90,7 @@ export const BakawanLocationSection: React.FC = () => {
                       Full Address / मुख्य पता
                     </span>
                     <p className="text-xs sm:text-sm text-stone-800 font-medium leading-relaxed">
-                      Village {BUSINESS_CONFIG.address.village || 'Bakawa'}, Tehsil {BUSINESS_CONFIG.address.tehsil || 'Barwah'}, District {BUSINESS_CONFIG.address.district || 'Khargone'}, {BUSINESS_CONFIG.address.state} - {BUSINESS_CONFIG.address.pincode}, {BUSINESS_CONFIG.address.country}.
+                      Village {BUSINESS_CONFIG.address.village || 'Bakawan'}, Tehsil {BUSINESS_CONFIG.address.tehsil || 'Barwaha'}, District {BUSINESS_CONFIG.address.district || 'Khargone'}, {BUSINESS_CONFIG.address.state} - {BUSINESS_CONFIG.address.pincode}, {BUSINESS_CONFIG.address.country}.
                     </p>
                     <p className="text-[11px] text-stone-500 italic">
                       (नर्मदा नदी के पावन तट पर स्थित बकावां ग्राम)

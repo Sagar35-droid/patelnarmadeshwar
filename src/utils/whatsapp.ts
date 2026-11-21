@@ -65,7 +65,7 @@ export function getProductWhatsAppOrderLink(
 
 export function getGeneralWhatsAppLink(customMessage?: string): string {
   const number = WHATSAPP_NUMBER;
-  const message = customMessage || `Namaste, mujhe Sagar Narmadeshwar Shivling ke baare mein jankari chahiye.`;
+  const message = customMessage || `Namaste, mujhe Authentic Narmadeshwar Shivling ke baare mein jankari chahiye.`;
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
 

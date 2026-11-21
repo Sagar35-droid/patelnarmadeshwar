@@ -16,6 +16,7 @@ export interface ProductSchemaData {
   name: string;
   description: string;
   image: string;
+  images?: string[];
   sku?: string;
   price: number;
   mrp?: number;
@@ -25,6 +26,27 @@ export interface ProductSchemaData {
   weight?: string;
   ratingValue?: number;
   reviewCount?: number;
+}
+
+function buildWeightSchema(weight?: string): Record<string, unknown> | undefined {
+  if (!weight) return undefined;
+  const trimmed = weight.trim();
+  const match = trimmed.match(/^(\d+(?:\.\d+)?)\s*(kg|kgs|gm|grams?|g)\b/i);
+  if (match) {
+    const val = parseFloat(match[1]);
+    const unitRaw = match[2].toLowerCase();
+    const isKg = unitRaw.startsWith('k');
+    return {
+      '@type': 'QuantitativeValue',
+      value: val,
+      unitCode: isKg ? 'KGM' : 'GRM',
+      unitText: trimmed
+    };
+  }
+  return {
+    '@type': 'QuantitativeValue',
+    name: trimmed
+  };
 }
 
 export interface ArticleSchemaData {
@@ -200,19 +222,21 @@ export function updatePageSEO({
   setMetaTag('twitter:image', image);
   setMetaTag('twitter:image:alt', defaultAlt);
 
-  // 7. Organization & OnlineStore JSON-LD Schema (Strictly Verified Business Facts Only)
+  // 7. Organization, LocalBusiness & OnlineStore JSON-LD Schema (Strictly Verified Business Facts Only)
   const businessSchema: Record<string, unknown> = {
     '@context': 'https://schema.org',
-    '@type': ['Organization', 'OnlineStore'],
+    '@type': ['Organization', 'LocalBusiness', 'OnlineStore'],
     '@id': `${SITE_URL}/#organization`,
     name: DEFAULT_SEO.siteName,
-    alternateName: [
-      BUSINESS_CONFIG.name,
-      'Sagar Narmadeshwar Shivling',
-      'Sagar Shivling Bakawan',
-      'सागर नर्मदेश्वर शिवलिंग',
-      'प्रामाणिक नर्मदेश्वर'
-    ],
+    alternateName: Array.from(
+      new Set([
+        BUSINESS_CONFIG.name,
+        'Sagar Narmadeshwar Shivling',
+        'Sagar Shivling Bakawan',
+        'सागर नर्मदेश्वर शिवलिंग',
+        'प्रामाणिक नर्मदेश्वर'
+      ])
+    ).filter((n) => n !== DEFAULT_SEO.siteName),
     description: BUSINESS_CONFIG.taglineEnglish,
     url: SITE_URL,
     logo: {
@@ -225,6 +249,7 @@ export function updatePageSEO({
     taxID: BUSINESS_CONFIG.gstin,
     address: {
       '@type': 'PostalAddress',
+      streetAddress: 'Village Bakawan, Tehsil Barwaha, District Khargone',
       addressLocality: BUSINESS_CONFIG.address.city || 'Bakawan',
       addressRegion: BUSINESS_CONFIG.address.state || 'Madhya Pradesh',
       postalCode: BUSINESS_CONFIG.address.pincode || '451113',
@@ -302,12 +327,17 @@ export function updatePageSEO({
 
   // 10. Product JSON-LD Schema (Strictly factual — matches actual shipping/return policies)
   if (productData) {
+    const rawImages = [productData.image, ...(productData.images || [])].filter(Boolean);
+    const uniqueImages = Array.from(
+      new Set(rawImages.map((img) => (img.startsWith('http') ? img : `${SITE_URL}${img}`)))
+    );
+
     const productSchema: Record<string, unknown> = {
       '@context': 'https://schema.org',
       '@type': 'Product',
       '@id': `${canonicalUrl}#product`,
       name: productData.name,
-      image: productData.image.startsWith('http') ? productData.image : `${SITE_URL}${productData.image}`,
+      image: uniqueImages.length > 1 ? uniqueImages : uniqueImages[0],
       description: productData.description,
       sku: productData.sku || productData.id,
       mpn: productData.id,
@@ -342,11 +372,9 @@ export function updatePageSEO({
     if (productData.size) {
       productSchema.size = productData.size;
     }
-    if (productData.weight) {
-      productSchema.weight = {
-        '@type': 'QuantitativeValue',
-        name: productData.weight
-      };
+    const weightSchema = buildWeightSchema(productData.weight);
+    if (weightSchema) {
+      productSchema.weight = weightSchema;
     }
 
     // Only include aggregateRating if real verified reviewCount > 0 is explicitly supplied

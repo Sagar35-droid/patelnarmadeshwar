@@ -91,7 +91,7 @@ export const ContactPage: React.FC = () => {
                 <div>
                   <strong className="text-[#1A1A1A] block font-bold">Address / पता:</strong>
                   <span className="text-stone-600 leading-relaxed">
-                    Village {BUSINESS_CONFIG.address.village || 'Bakawa'}, Tehsil {BUSINESS_CONFIG.address.tehsil || 'Barwah'}, District {BUSINESS_CONFIG.address.district || 'Khargone'}, {BUSINESS_CONFIG.address.state} - {BUSINESS_CONFIG.address.pincode}, {BUSINESS_CONFIG.address.country}
+                    Village {BUSINESS_CONFIG.address.village || 'Bakawan'}, Tehsil {BUSINESS_CONFIG.address.tehsil || 'Barwaha'}, District {BUSINESS_CONFIG.address.district || 'Khargone'}, {BUSINESS_CONFIG.address.state} - {BUSINESS_CONFIG.address.pincode}, {BUSINESS_CONFIG.address.country}
                   </span>
                 </div>
               </div>

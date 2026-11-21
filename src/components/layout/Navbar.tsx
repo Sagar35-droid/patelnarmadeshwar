@@ -52,7 +52,7 @@ export const Navbar: React.FC = () => {
             className="flex items-center gap-3 cursor-pointer group"
           >
             <div className="w-10 h-10 bg-[#C5A059] rounded-full flex items-center justify-center text-white font-serif italic text-xl shadow-md group-hover:scale-105 transition-transform shrink-0">
-              S
+              A
             </div>
             <div>
               <span className="text-xl font-serif font-bold tracking-tight text-[#1A1A1A] block group-hover:text-[#C5A059] transition-colors leading-none">
@@ -92,7 +92,7 @@ export const Navbar: React.FC = () => {
           {/* Right Action Button (WhatsApp Order) */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent('Namaste, mujhe Sagar Narmadeshwar Shivling order karna hai.')}`}
+              href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent('Namaste, mujhe Authentic Narmadeshwar Shivling order karna hai.')}`}
               onClick={() => trackWhatsAppConversion()}
               target="_blank"
               rel="noopener noreferrer"
@@ -107,7 +107,7 @@ export const Navbar: React.FC = () => {
           {/* Mobile Actions */}
           <div className="flex md:hidden items-center gap-2">
             <a
-              href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent('Namaste, mujhe Sagar Narmadeshwar Shivling order karna hai.')}`}
+              href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent('Namaste, mujhe Authentic Narmadeshwar Shivling order karna hai.')}`}
               onClick={() => trackWhatsAppConversion()}
               target="_blank"
               rel="noopener noreferrer"

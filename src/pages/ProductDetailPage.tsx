@@ -96,6 +96,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId 
         name: `${product.name} (${pieceLabel})`,
         description: cleanDesc,
         image: product.mainImage,
+        images: product.galleryImages,
         sku: product.id.toUpperCase(),
         price: pricing.sellingPrice,
         mrp: pricing.mrp,

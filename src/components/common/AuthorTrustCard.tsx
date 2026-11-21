@@ -11,13 +11,13 @@ interface AuthorTrustCardProps {
 
 export const AuthorTrustCard: React.FC<AuthorTrustCardProps> = ({ category, className = '' }) => {
   const { navigate } = useRouter();
-  const whatsappUrl = getGeneralWhatsAppLink('Namaste! Mujhe Sagar Narmadeshwar Shivling ki authentic jankari aur guidance chahiye.');
+  const whatsappUrl = getGeneralWhatsAppLink('Namaste! Mujhe Authentic Narmadeshwar Shivling ki authentic jankari aur guidance chahiye.');
 
   return (
     <div className={`bg-[#FCFAF7] border-2 border-[#C5A059]/30 rounded-2xl p-5 sm:p-7 shadow-sm ${className}`}>
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pb-4 border-b border-[#C5A059]/20">
         <div className="w-14 h-14 rounded-2xl bg-[#1A1A1A] border-2 border-[#C5A059] flex items-center justify-center text-[#C5A059] font-serif font-bold text-2xl shadow-md shrink-0">
-          S
+          A
         </div>
         <div className="space-y-0.5">
           <div className="flex items-center gap-2 flex-wrap">
@@ -30,7 +30,7 @@ export const AuthorTrustCard: React.FC<AuthorTrustCardProps> = ({ category, clas
           </div>
           <p className="text-xs text-stone-600 flex items-center gap-1.5 pt-0.5">
             <MapPin className="w-3.5 h-3.5 text-[#C5A059] shrink-0" />
-            <span>Village {BUSINESS_CONFIG.address.village || 'Bakawan'}, Tehsil {BUSINESS_CONFIG.address.tehsil || 'Barwah'}, Khargone, Madhya Pradesh</span>
+            <span>Village {BUSINESS_CONFIG.address.village || 'Bakawan'}, Tehsil {BUSINESS_CONFIG.address.tehsil || 'Barwaha'}, Khargone, Madhya Pradesh</span>
           </p>
         </div>
       </div>

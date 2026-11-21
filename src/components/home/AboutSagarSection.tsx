@@ -12,7 +12,7 @@ export const AboutSagarSection: React.FC = () => {
       icon: MapPin,
       title: 'Bakawan, Madhya Pradesh',
       titleHindi: 'बकावां, मध्य प्रदेश',
-      text: 'Our artisan workshop is located in Village Bakawan, Tehsil Barwah, District Khargone, MP — the traditional home of Narmadeshwar Shivling craft.'
+      text: 'Our artisan workshop is located in Village Bakawan, Tehsil Barwaha, District Khargone, MP — the traditional home of Narmadeshwar Shivling craft.'
     },
     {
       icon: Sparkles,

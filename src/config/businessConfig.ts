@@ -1,7 +1,7 @@
 import { BusinessInfo } from '../types';
 
 export const BUSINESS_CONFIG: BusinessInfo = {
-  name: "Sagar Narmadeshwar Shivling",
+  name: "Authentic Narmadeshwar",
   taglineHindi: "प्राकृतिक नर्मदा नदी से प्राप्त पवित्र एवं प्रामाणिक शिवलिंग",
   taglineEnglish: "Authentic & Natural Narmadeshwar Shivling Direct from Narmada River, Bakawan, Madhya Pradesh",
   whatsappNumber: "919301531448", // EDITABLE: Change to your actual WhatsApp number with country code without '+'
@@ -11,8 +11,8 @@ export const BUSINESS_CONFIG: BusinessInfo = {
   email: "keshrilalpatel9@gmail.com",
   address: {
     street: "Bakawan",
-    village: "Bakawa",
-    tehsil: "Barwah",
+    village: "Bakawan",
+    tehsil: "Barwaha",
     district: "Khargone",
     city: "Bakawan",
     state: "Madhya Pradesh",

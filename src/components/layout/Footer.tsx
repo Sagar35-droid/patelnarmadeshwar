@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-[#C5A059] flex items-center justify-center text-white font-serif italic text-xl font-bold">
-                S
+                A
               </div>
               <span className="text-lg font-serif font-bold text-white tracking-wide">
                 {BUSINESS_CONFIG.name}
@@ -228,7 +228,7 @@ export const Footer: React.FC = () => {
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" />
                 <span>
-                  Village {BUSINESS_CONFIG.address.village || 'Bakawa'}, Tehsil {BUSINESS_CONFIG.address.tehsil || 'Barwah'}, District {BUSINESS_CONFIG.address.district || 'Khargone'}, {BUSINESS_CONFIG.address.state} - {BUSINESS_CONFIG.address.pincode}
+                  Village {BUSINESS_CONFIG.address.village || 'Bakawan'}, Tehsil {BUSINESS_CONFIG.address.tehsil || 'Barwaha'}, District {BUSINESS_CONFIG.address.district || 'Khargone'}, {BUSINESS_CONFIG.address.state} - {BUSINESS_CONFIG.address.pincode}
                 </span>
               </li>
               <li className="flex items-center gap-2.5">

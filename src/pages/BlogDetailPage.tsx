@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from '../context/RouterContext';
 import { useProducts } from '../context/ProductContext';
-import { getBlogPostBySlug, getRelatedBlogPosts, BLOG_POSTS } from '../data/blogData';
+import { getBlogPostBySlug, getRelatedBlogPosts } from '../data/blogData';
 import { updatePageSEO } from '../utils/seo';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { AuthorTrustCard } from '../components/common/AuthorTrustCard';
 import { getGeneralWhatsAppLink, trackWhatsAppConversion } from '../utils/whatsapp';
+import { NotFoundPage } from './NotFoundPage';
 import {
   Calendar,
   Clock,
@@ -37,13 +38,15 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [copied, setCopied] = useState(false);
 
-  const post = getBlogPostBySlug(slug) || BLOG_POSTS[0];
-  const relatedPosts = getRelatedBlogPosts(post.relatedBlogSlugs || []);
+  const post = getBlogPostBySlug(slug);
+  const relatedPosts = getRelatedBlogPosts(post?.relatedBlogSlugs || []);
 
   // Filter related products
-  const relatedProductsList = products.filter(
-    (p) => post.relatedProductIds?.includes(p.id) || post.relatedProductIds?.includes(p.slug)
-  ).slice(0, 3);
+  const relatedProductsList = post
+    ? products
+        .filter((p) => post.relatedProductIds?.includes(p.id) || post.relatedProductIds?.includes(p.slug))
+        .slice(0, 3)
+    : [];
 
   useEffect(() => {
     if (post) {
@@ -161,6 +164,10 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({ slug }) => {
       </div>
     );
   };
+
+  if (!post) {
+    return <NotFoundPage />;
+  }
 
   const whatsappInquiryUrl = getGeneralWhatsAppLink(
     `Namaste! I read your article "${post.title}" and would like to ask a question regarding Narmadeshwar Shivling.`
