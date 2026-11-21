@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { updatePageSEO } from '../utils/seo';
 import { HeroSection } from '../components/home/HeroSection';
-import { CategoryShowcase } from '../components/home/CategoryShowcase';
 import { FeaturedProducts } from '../components/home/FeaturedProducts';
 import { WhyChooseUs } from '../components/home/WhyChooseUs';
 import { CustomerReviewsSection } from '../components/common/CustomerReviewsSection';
@@ -65,10 +64,7 @@ export const HomePage: React.FC = () => {
       {/* 1. Hero Section with Exact Approved Headline & Verified Trust Highlights */}
       <HeroSection />
 
-      {/* 2. Product Categories Showcase (1.5", 2", 3", 4", 6" & Temple, Jaladhari, Puja Sets) */}
-      <CategoryShowcase />
-
-      {/* 3. Featured Products Collection with Size Filter Tabs */}
+      {/* 2. Featured Products Collection */}
       <FeaturedProducts />
 
       {/* 4. Why Choose Authentic Narmadeshwar (Strictly Verified Business Facts) */}
