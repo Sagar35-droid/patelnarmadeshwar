@@ -1,1 +1,3 @@
-/*    /index.html   200
+# Redirect rules for Cloudflare Workers Static Assets
+# SPA fallback routing is handled natively via "not_found_handling": "single-page-application" in wrangler.jsonc.
+/home / 301
